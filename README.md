@@ -97,26 +97,29 @@ Report & Presentation
 
 ### Semester 1
 
-| Week | Main Task                           | Status |
-| ---- | ----------------------------------- | ------ |
-| 01   | Project setup and topic exploration | 🔄     |
-| 02   | Literature search                   | ⬜      |
-| 03   | Literature review                   | ⬜      |
-| 04   | Research problem definition         | ⬜      |
-| 05   | Dataset exploration                 | ⬜      |
-| 06   | Dataset preparation                 | ⬜      |
-| 07   | Baseline environment setup          | ⬜      |
-| 08   | Baseline implementation             | ⬜      |
-| 09   | Baseline training                   | ⬜      |
-| 10   | Baseline evaluation                 | ⬜      |
-| 11   | Error analysis                      | ⬜      |
-| 12   | Related method investigation        | ⬜      |
-| 13   | Initial improvement implementation  | ⬜      |
-| 14   | Initial experiments                 | ⬜      |
-| 15   | Experiment analysis                 | ⬜      |
-| 16   | Method refinement                   | ⬜      |
-| 17   | Semester report preparation         | ⬜      |
-| 18   | Semester presentation               | ⬜      |
+Literature review and implementation will run in parallel so that the research
+direction is supported by reproducible experimental evidence from the beginning.
+
+| Week | Main Task                                                        | Status |
+| ---- | ---------------------------------------------------------------- | ------ |
+| 01   | Project setup, core paper search, and pretrained YOLO smoke test | 🔄     |
+| 02   | VisDrone exploration and YOLO baseline training (`EXP-001`)      | ⬜      |
+| 03   | SAHI fixed-tiling reproduction and comparison (`EXP-002`)        | ⬜      |
+| 04   | Baseline error analysis and research-question refinement         | ⬜      |
+| 05   | Study adaptive-tiling methods and define evaluation protocol      | ⬜      |
+| 06   | Design adaptive-tiling method v1                                 | ⬜      |
+| 07   | Implement adaptive-tiling method v1                              | ⬜      |
+| 08   | Debug and validate adaptive-tiling pipeline                       | ⬜      |
+| 09   | Initial adaptive-tiling experiment (`EXP-003`)                    | ⬜      |
+| 10   | Multi-scale training experiment (`EXP-004`)                       | ⬜      |
+| 11   | Combined-method experiment (`EXP-005`)                            | ⬜      |
+| 12   | Accuracy-efficiency comparison                                   | ⬜      |
+| 13   | Ablation study and parameter analysis                            | ⬜      |
+| 14   | Failure-case analysis                                            | ⬜      |
+| 15   | Method refinement and final Semester 1 experiments               | ⬜      |
+| 16   | Results consolidation and visualization                          | ⬜      |
+| 17   | Semester report preparation                                      | ⬜      |
+| 18   | Semester presentation and next-semester plan                     | ⬜      |
 
 ### Semester 2
 
@@ -372,7 +375,7 @@ docs/literature-review/
 Current stage:
 
 ```text
-Project Setup → Topic Exploration → Literature Review
+Project Setup → Literature Review + Pretrained Inference Smoke Test
 ```
 
 ### Week 01
@@ -383,9 +386,17 @@ Current tasks:
 * [x] Create project directory structure
 * [x] Initialize Git repository
 * [x] Create project README
-* [ ] Define initial research scope
-* [ ] Search for related papers
+* [x] Define tentative research scope
+* [x] Create the initial core-paper reading list
+* [ ] Set up the Python environment
+* [ ] Read the VisDrone paper and skim the FPN, YOLO9000, and SAHI papers
+* [ ] Download several VisDrone sample images
+* [ ] Run pretrained YOLO inference on the sample images
+* [ ] Save prediction samples and record observations
 * [ ] Discuss research direction with advisor
+
+Detailed Week 01 tasks and notes are recorded in
+[`docs/weekly-logs/semester-1/week-01.md`](docs/weekly-logs/semester-1/week-01.md).
 
 ---
 
