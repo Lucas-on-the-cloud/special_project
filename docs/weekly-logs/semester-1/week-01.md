@@ -11,12 +11,12 @@ or propose a new method this week.
 
 ## Success Criteria
 
-- [ ] The local Python environment can be recreated.
+- [x] The Kaggle Python environment can be recreated from the notebook.
 - [ ] At least four core papers have been read or skimmed as planned.
-- [ ] Several VisDrone sample images have been inspected.
-- [ ] Pretrained YOLO inference runs successfully on at least one sample image.
-- [ ] Prediction images and initial observations are saved.
-- [ ] The next steps for `EXP-001` are clear.
+- [x] Several VisDrone sample images have been inspected.
+- [x] Pretrained YOLO inference runs successfully on sample images.
+- [x] Prediction images and initial observations are saved.
+- [x] The next steps for `EXP-001` are clear.
 
 ## Task Checklist
 
@@ -25,9 +25,9 @@ or propose a new method this week.
 - [x] Create the GitHub repository.
 - [x] Create the initial repository structure.
 - [x] Add the project README.
-- [ ] Create and activate a Python virtual environment.
-- [ ] Install the initial dependencies.
-- [ ] Record the Python, PyTorch, CUDA, and GPU versions.
+- [x] Configure a Kaggle notebook with a compatible GPU accelerator.
+- [x] Install the initial dependencies in Kaggle.
+- [x] Record the Python, PyTorch, CUDA, and GPU versions.
 - [ ] Confirm that Git ignores datasets, weights, virtual environments, and
       generated experiment outputs.
 
@@ -50,19 +50,19 @@ Questions to answer:
 
 ### 3. Dataset exploration
 
-- [ ] Download or select several VisDrone sample images.
-- [ ] Inspect image resolutions, object sizes, class distribution, density, and
+- [x] Download the VisDrone2019-DET validation split using the notebook.
+- [x] Inspect image resolutions, object sizes, class distribution, density, and
       occlusion.
-- [ ] Do not commit the full dataset to GitHub.
-- [ ] Record where the local dataset is stored.
+- [x] Do not commit the full dataset to GitHub.
+- [x] Record the Kaggle dataset path: `/kaggle/working/datasets/VisDrone`.
 
 ### 4. Pretrained inference smoke test
 
-- [ ] Run a pretrained Ultralytics YOLO model on the sample images.
-- [ ] Save prediction images under `results/smoke-test/` locally.
-- [ ] Record the model name, image size, confidence threshold, device, and
+- [x] Run a pretrained Ultralytics YOLO model on eight sample images.
+- [x] Save prediction images under `results/smoke-test/`.
+- [x] Record the model name, image size, confidence threshold, device, and
       inference time.
-- [ ] Note obvious false positives, false negatives, and missed small objects.
+- [x] Note obvious false positives, false negatives, and missed small objects.
 
 ## Work Completed
 
@@ -71,6 +71,11 @@ Record completed work here during the week.
 - Repository initialized with a README and weekly-log structure.
 - Tentative topic selected: *Improving Small Object Detection in UAV Imagery
   Using Adaptive Image Tiling and Multi-Scale Training*.
+- Created a reproducible Kaggle notebook for `SMOKE-001`.
+- Configured two Tesla T4 GPUs and used GPU 0 for inference.
+- Downloaded the VisDrone2019-DET validation split automatically.
+- Ran COCO-pretrained YOLO11n inference on eight VisDrone validation images.
+- Exported eight prediction images, a CSV summary, and run metadata.
 
 ## Papers Read
 
@@ -86,22 +91,40 @@ Record completed work here during the week.
 | Field | Value |
 | ----- | ----- |
 | Run ID | `SMOKE-001` |
-| Model | TBD |
-| Weights | TBD |
-| Dataset/sample | TBD |
-| Image size | TBD |
-| Confidence threshold | TBD |
-| Device | TBD |
+| Model | Ultralytics YOLO11n |
+| Weights | `yolo11n.pt` (COCO pretrained) |
+| Dataset/sample | 8 VisDrone2019-DET validation images |
+| Image size | 640 |
+| Confidence threshold | 0.25 |
+| IoU threshold | 0.70 |
+| Device | Tesla T4, GPU 0 |
+| Software | Python 3.12.13, PyTorch 2.10.0+cu128, Ultralytics 8.4.152 |
+| Total detections | 89 across 8 images |
+| Reported inference time | 5.207 ms/image (Ultralytics batch-level report) |
 | Output directory | `results/smoke-test/` |
-| Result | Not run |
+| Result | Completed |
 
 ## Problems Encountered
 
-- None recorded yet.
+- Kaggle initially assigned a Tesla P100, whose `sm_60` compute capability was
+  incompatible with the installed PyTorch CUDA 12.8 build. Switching the
+  accelerator to Tesla T4 resolved the warning.
+- `/kaggle/input` was initially empty. The notebook was updated to download the
+  VisDrone validation split automatically when no attached input is found.
 
 ## What I Learned
 
-- To be updated after reading and inference.
+- Medium and large vehicles were detected more consistently than distant small
+  objects.
+- Distant pedestrians, motorcycles, bicycles, and vehicles were frequently
+  missed after resizing images to 640 pixels.
+- False positives and class mismatches included `traffic light` and
+  `potted plant`.
+- An overexposed image produced only one detection despite containing many
+  visible objects.
+- These observations motivate a tiling experiment, but they do not prove that
+  tiling is effective because the smoke-test model has not been trained on
+  VisDrone.
 
 ## Advisor Feedback
 
