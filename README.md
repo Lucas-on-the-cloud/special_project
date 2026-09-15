@@ -71,8 +71,6 @@ This creates a research problem that combines:
 
 ## Research Questions
 
-The tentative research questions are:
-
 ### RQ1
 How accurately can modern object-detection models identify and count multiple medications in a single image?
 
@@ -116,36 +114,64 @@ Because access to real clinical dispensing data is limited, the research will pr
 
 ---
 
+## Verified Research Resources
+
+Detailed paper tracking:
+
+- [`docs/literature-review/paper-table.md`](docs/literature-review/paper-table.md)
+
+Verified dataset links and source notes:
+
+- [`docs/literature-review/datasets.md`](docs/literature-review/datasets.md)
+
+### Highest-priority papers
+
+1. [A Comprehensive Review of Pill Image Recognition](https://doi.org/10.32604/cmc.2025.060793)
+2. [High accurate and explainable multi-pill detection framework with graph neural network-assisted multimodal data fusion](https://doi.org/10.1371/journal.pone.0291865)
+3. [ePillID Dataset: A Low-Shot Fine-Grained Benchmark for Pill Identification](https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html)
+4. [Few-Shot Pill Recognition](https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html)
+5. [Design and Validation of a Cyber-Physical Medication Dispensing Platform Integrating Edge AI Verification, Distributed Control, and Cloud Synchronization](https://doi.org/10.3390/s26123823)
+6. [Code-Based Versus AutoML Methods for Pill Recognition in Clinical Settings: Comparative Performance Study](https://doi.org/10.2196/79160)
+
+### Verified datasets
+
+#### VAIPE — primary candidate
+
+- Associated paper: https://doi.org/10.1371/journal.pone.0291865
+- Public dataset linked by the paper: https://www.kaggle.com/datasets/anhduy091100/vaipe-minimal-dataset
+- VinUniversity Smart Health resource page: https://smarthealth.vinuni.edu.vn/resources/
+
+#### ePillID
+
+- Paper: https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
+- Official benchmark repository: https://github.com/usuyama/ePillID-benchmark
+
+#### CURE
+
+- Paper: https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html
+- Author repository / data instructions: https://github.com/suiyiling/Few-shot-pill-recognition
+
+#### NLM C3PI / RxIMAGE
+
+- Official U.S. government dataset page: https://catalog.data.gov/dataset/computational-photography-project-for-pill-identification-c3pi
+- Challenge paper: https://doi.org/10.1109/AIPR.2016.8010584
+
+---
+
 ## Primary Dataset Direction
 
-### VAIPE
+The current primary candidate is **VAIPE**, because it is particularly relevant to the proposed research problem. It supports multi-pill recognition and is associated with prescription/context information, making it more suitable for medication-verification research than a standard single-pill classification dataset.
 
-The current primary candidate is the **VAIPE multi-pill dataset**, because it is particularly relevant to the proposed research problem.
+Before training, the project will explicitly verify:
 
-It contains multi-pill images, pill annotations, and prescription-related information, making it suitable for studying the relationship between:
+- annotation format
+- exact class mapping
+- dataset split
+- prescription/context fields
+- licensing / usage terms
+- whether context information covers the full dataset or only a subset
 
-```text
-Prescription
-     +
-Multi-pill Image
-     ↓
-Medication Verification
-```
-
-Reference:
-
-- VAIPE paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC10538799/
-
-### Secondary datasets
-
-Additional datasets may be used for comparison, pretraining, or auxiliary experiments:
-
-- **ePillID** — low-shot fine-grained pill identification  
-  https://github.com/usuyama/ePillID-benchmark
-- **CURE** — few-shot pill recognition benchmark
-- **NLM / RxIMAGE / C3PI** — large-scale pill image resources for computer-vision research
-
-The final dataset combination will be decided after examining licensing, labels, class balance, image format, and compatibility with the experimental design.
+Secondary datasets such as ePillID, CURE, and NLM C3PI will only be introduced if they answer a specific research need such as fine-grained recognition, low-shot learning, or auxiliary pretraining.
 
 ---
 
@@ -326,7 +352,8 @@ special_project/
 │   │   ├── semester-1/
 │   │   └── semester-2/
 │   ├── literature-review/
-│   │   └── paper-table.md
+│   │   ├── paper-table.md
+│   │   └── datasets.md
 │   └── meetings/
 │
 ├── experiments/
@@ -336,57 +363,15 @@ special_project/
 └── configs/
 ```
 
-### `docs/weekly-logs`
-
-Contains weekly progress, including:
-
-- Goals
-- Work completed
-- Papers read
-- Experiments performed
-- Problems encountered
-- Advisor feedback
-- Decisions and research pivots
-- Plan for the following week
-
-### `docs/literature-review`
-
-Contains the core-paper tracker and detailed paper notes.
-
-### `experiments`
-
-Contains experiment configurations, outputs, and analyses. Large datasets and trained model weights should **not** be committed directly to GitHub.
-
-### `src`
-
-Contains reusable source code for dataset processing, detection, prescription matching, simulation, evaluation, and inference.
-
-### `notebooks`
-
-Used for dataset exploration, model prototyping, visualization, and experimental analysis.
-
-### `results`
-
-Contains selected figures, result tables, prediction examples, and report-ready outputs.
-
 ---
 
 ## Literature Review Strategy
 
-The first literature-review stage targets approximately **15 core papers**, divided into:
-
-- 2 survey / review papers
-- 4 pill detection or recognition papers
-- 3 dataset / benchmark papers
-- 3 smart dispensing or medication-verification papers
-- 2 recent clinical / real-world AI medication studies
-- 1 main model / methodology paper
-
-The final thesis bibliography is expected to expand beyond these initial core papers as the methodology and experimental design become more specific.
-
-Paper notes are tracked in:
+The first literature-review stage targets approximately **15 core papers**. The verified reading list is maintained in:
 
 [`docs/literature-review/paper-table.md`](docs/literature-review/paper-table.md)
+
+The final thesis bibliography is expected to expand beyond these initial core papers as the methodology and experimental design become more specific.
 
 ---
 
@@ -430,11 +415,13 @@ Dataset Feasibility Validation
 - [x] Preserve the existing Special Project repository and research history
 - [x] Pivot the repository from UAV detection to medication verification
 - [x] Define the tentative research question and scope
+- [x] Replace placeholder literature entries with verified paper links
+- [x] Add verified public dataset sources
 - [ ] Read the first group of core papers
 - [ ] Inspect VAIPE annotations, prescriptions, and train/test structure
 - [ ] Confirm dataset licensing and reproducibility
 - [ ] Build a small dataset-loading notebook
-- [ ] Run the first pretrained/baseline detection test
+- [ ] Run the first baseline detection test
 - [ ] Discuss the revised direction with the advisor
 
 ---
