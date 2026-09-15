@@ -1,129 +1,261 @@
-# Semester 1 — Week 01
+# Semester 1 — Week 01 Progress Report
 
 **Period:** 2026-09-14 to 2026-09-20  
-**Stage:** Research pivot, problem formulation, and literature orientation
-
-## Weekly Goal
-
-Refine the Special Project direction and establish a research problem that is both practically meaningful and feasible using public datasets.
-
-The project initially explored **small-object detection in UAV imagery**. After early investigation, the direction was changed to **AI-assisted medication verification for smart prescription dispensing** because the new topic provides a clearer application scenario and a stronger system-level research question.
-
-The current tentative topic is:
-
-> **Prescription-Aware Multi-Pill Detection and Verification for Smart Medication Dispensing Systems**
+**Stage:** Topic exploration, research pivot, and feasibility validation
 
 ---
 
-## Success Criteria
+## 1. Weekly Objective
 
-- [x] Preserve the existing repository and research history.
-- [x] Document the research pivot clearly.
-- [x] Define a new tentative topic and research questions.
-- [x] Identify public medication-image datasets suitable for experimentation.
-- [x] Identify an initial set of core papers and related systems.
-- [ ] Read and summarize the first 4–5 core papers.
-- [ ] Inspect the VAIPE dataset structure and annotations.
-- [ ] Verify dataset licensing and reproducibility.
-- [ ] Discuss the revised direction with the project advisor.
+The main objective of Week 1 was **not to begin model training immediately**, but to identify a capstone topic that is:
+
+- technically suitable for an Informatics project,
+- meaningful in terms of real-world application,
+- feasible with available public datasets,
+- measurable through reproducible experiments,
+- large enough for a two-semester capstone,
+- but still realistic without access to private industry or hospital data.
+
+The week therefore focused mainly on **research-topic exploration, problem formulation, literature scanning, and dataset feasibility**.
 
 ---
 
-## Research Pivot
+## 2. Initial Research Direction: UAV Small-Object Detection
 
-### Previous direction
+The first tentative direction was:
 
-**Improving Small Object Detection in UAV Imagery Using Adaptive Image Tiling and Multi-Scale Training**
+> **Improving Small Object Detection in UAV Imagery Using Adaptive Image Tiling and Multi-Scale Training**
 
-The UAV direction was useful for learning the research workflow, object-detection pipeline, Kaggle environment, and YOLO inference. However, the application focus was not sufficiently compelling for the intended capstone direction.
+This direction was initially selected because UAV imagery provides a clear computer-vision challenge: objects are often small, densely distributed, partially occluded, and affected by large scale variation.
 
-### New direction
+During the first exploration, I completed the following technical setup:
 
-**AI-Assisted Medication Verification for Smart Prescription Dispensing**
+- created the GitHub repository and research folder structure,
+- configured a Kaggle environment,
+- downloaded the VisDrone2019-DET validation split,
+- ran COCO-pretrained YOLO11n inference on eight UAV images,
+- saved prediction results and runtime metadata,
+- inspected common detection failures.
 
-The new research idea is to compare:
+The smoke test confirmed that the development environment was functional and also showed several expected difficulties in UAV detection, especially missed distant pedestrians, motorcycles, bicycles, and small vehicles.
+
+However, after considering the project from a capstone perspective, I became less confident about the application direction. Small-object detection in UAV imagery is an interesting research problem, but for this project I wanted a topic with a more concrete system-level application and a clearer connection between the AI component and an end-user problem.
+
+This led to a deliberate research pivot rather than continuing with the first idea only because the initial code was already working.
+
+---
+
+## 3. Topic Exploration After the UAV Direction
+
+The next step was to look for applications in which computer vision could perform a well-defined verification task instead of only improving a generic detection benchmark.
+
+One idea that emerged was a **smart medication-dispensing system**.
+
+The initial system concept was:
 
 ```text
-Expected medication from an electronic prescription
-                     ↓
-              Verification
-                     ↑
-Medication detected from an image of dispensed pills
+Patient
+   ↓
+Insurance card / prescription number / QR code
+   ↓
+Retrieve electronic prescription
+   ↓
+Automatic dispensing
+   ↓
+Patient receives medication
 ```
 
-The AI component acts as an independent **verification layer** rather than making medical decisions.
+At first, this idea was mainly an embedded/database/IoT system. The main question was therefore:
 
----
+> Where can AI contribute in a way that is technically meaningful rather than being added artificially?
 
-## Tentative Research Question
+The most promising answer was to use AI **after dispensing**, as an independent visual verification layer.
 
-> **How reliably can a vision-based medication verification system detect dispensing errors by comparing multi-pill detections with an electronic prescription?**
-
-Possible sub-questions:
-
-1. How accurately can object-detection models identify and count multiple pills?
-2. How reliably can the system detect missing, extra, and wrong medication?
-3. How do lighting, occlusion, pill density, and visually similar pills affect verification accuracy?
-4. Can prescription information be used as contextual information to reduce visual-recognition errors?
-
----
-
-## Dataset Feasibility
-
-The project should be feasible without collecting real patient or hospital data.
-
-### Primary candidate: VAIPE
-
-VAIPE is currently the strongest dataset candidate because it contains multi-pill imagery, pill annotations, and prescription-related information.
-
-This makes it directly relevant to the intended pipeline:
+The resulting concept became:
 
 ```text
-Prescription
-     +
-Multi-pill image
-     ↓
-Detection + counting
-     ↓
-Expected vs detected comparison
-     ↓
+Electronic Prescription
+        ↓
+Expected Medication List
+        ↓
+Dispensed Pills
+        ↓
+Camera
+        ↓
+Computer Vision Model
+        ↓
+Detected Medication + Quantity
+        ↓
+Expected vs Detected
+        ↓
 MATCH / MISMATCH
 ```
 
-### Additional datasets to investigate
-
-- ePillID
-- CURE
-- NLM / RxIMAGE / C3PI
-
-These datasets may be useful for fine-grained recognition, auxiliary experiments, or model pretraining.
+This changed the topic from simply building a smart dispenser to studying **AI-assisted medication verification**.
 
 ---
 
-## Literature Review Plan
+## 4. New Tentative Research Direction
 
-The initial literature review will target approximately **15 core papers**:
+The current tentative title is:
 
-- 2 survey / review papers
-- 4 pill detection / recognition papers
-- 3 dataset / benchmark papers
-- 3 smart dispensing / medication-verification papers
-- 2 clinical or real-world medication-AI studies
-- 1 main model / methodology paper
+> **Prescription-Aware Multi-Pill Detection and Verification for Smart Medication Dispensing Systems**
 
-The detailed tracker is maintained in:
+Alternative working title:
+
+> **AI-Assisted Medication Verification for Smart Prescription Dispensing**
+
+The AI component is intentionally limited to **verification**.
+
+The project will not attempt to:
+
+- diagnose disease,
+- recommend treatment,
+- generate prescriptions,
+- replace pharmacists or clinicians.
+
+Instead, the research focuses on whether the medications physically detected after dispensing correspond to an already-authorized prescription.
+
+---
+
+## 5. Tentative Research Question
+
+The current main research question is:
+
+> **How reliably can a vision-based medication verification system detect dispensing errors by comparing multi-pill detections with an electronic prescription?**
+
+Potential sub-questions are:
+
+1. How accurately can modern object-detection models identify and count multiple pills in one image?
+2. How reliably can the system identify missing, extra, and incorrect medications?
+3. How do occlusion, pill density, lighting, confidence thresholds, and visually similar pills affect verification performance?
+4. Can prescription information be used as contextual information to improve verification compared with a vision-only model?
+
+These questions are still tentative and will be refined after deeper reading and dataset inspection.
+
+---
+
+## 6. Literature Exploration
+
+A major concern was whether this topic had enough prior research to support a capstone project while still leaving room for a meaningful research question.
+
+The literature search showed that **pill recognition itself is already a well-established research area**. Therefore, simply training a YOLO model to classify pills would likely provide a weak research contribution.
+
+Several major research directions were identified:
+
+- fine-grained pill identification,
+- low-shot and few-shot pill recognition,
+- multi-pill detection,
+- OCR-based imprint recognition,
+- continual learning for new medication classes,
+- robustness under different backgrounds and lighting conditions,
+- smart medication-dispensing systems,
+- visual medication verification.
+
+This led to an important refinement:
+
+> The contribution should not be “use AI to recognize pills.”
+
+A stronger direction is:
+
+> **Use multi-pill computer vision together with prescription information to verify whether the dispensed medication is correct.**
+
+An initial set of approximately 15 core papers has now been identified and recorded in:
 
 [`docs/literature-review/paper-table.md`](../../literature-review/paper-table.md)
 
+The current highest-priority papers include:
+
+1. **High accurate and explainable multi-pill detection framework with graph neural network-assisted multimodal data fusion** — VAIPE / PGPNet
+2. **A Comprehensive Review of Pill Image Recognition**
+3. **ePillID Dataset: A Low-Shot Fine-Grained Benchmark for Pill Identification**
+4. **Few-Shot Pill Recognition** — CURE
+5. **Design and Validation of a Cyber-Physical Medication Dispensing Platform Integrating Edge AI Verification, Distributed Control, and Cloud Synchronization**
+6. **Code-Based Versus AutoML Methods for Pill Recognition in Clinical Settings: Comparative Performance Study**
+
 ---
 
-## Planned Experimental Direction
+## 7. Dataset Feasibility Exploration
 
-### EXP-001 — Baseline multi-pill detection
+A key feasibility question was whether the project could be completed without collecting real patient, prescription, or hospital data.
+
+The literature search identified several relevant public resources.
+
+### 7.1 VAIPE — Primary Candidate
+
+The strongest current candidate is **VAIPE**.
+
+Paper:
+
+https://doi.org/10.1371/journal.pone.0291865
+
+Dataset resource:
+
+https://www.kaggle.com/datasets/anhduy091100/vaipe-minimal-dataset
+
+VAIPE is especially relevant because it includes:
+
+- multi-pill images,
+- pill annotations,
+- multiple medication classes,
+- varied image-capture conditions,
+- prescription-related contextual information.
+
+This makes it much closer to the planned research problem than a standard single-pill classification dataset.
+
+### 7.2 ePillID
+
+ePillID is useful for fine-grained recognition and visually similar pill classes.
+
+Paper:
+
+https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
+
+Repository:
+
+https://github.com/usuyama/ePillID-benchmark
+
+### 7.3 CURE
+
+CURE is useful for few-shot pill recognition.
+
+Paper:
+
+https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html
+
+Repository:
+
+https://github.com/suiyiling/Few-shot-pill-recognition
+
+### 7.4 NLM / C3PI / RxIMAGE
+
+The NLM/C3PI resource provides a large historical pill-image collection that may be useful for auxiliary experiments or pretraining.
+
+Official data resource:
+
+https://catalog.data.gov/dataset/computational-photography-project-for-pill-identification-c3pi
+
+A detailed dataset-source tracker is maintained in:
+
+[`docs/literature-review/datasets.md`](../../literature-review/datasets.md)
+
+---
+
+## 8. Proposed Experimental Direction
+
+After exploring the literature and available data, the project now has an initial experimental roadmap.
+
+### EXP-001 — Baseline Multi-Pill Detection
 
 Train or fine-tune a baseline detector on the selected public dataset.
 
-Candidate metrics:
+Possible models:
+
+- YOLO11,
+- another YOLO baseline,
+- RT-DETR or another detector for comparison.
+
+Metrics:
 
 - Precision
 - Recall
@@ -132,89 +264,174 @@ Candidate metrics:
 - Per-class AP
 - Inference latency
 
-### EXP-002 — Prescription matching baseline
+### EXP-002 — Prescription Matching Baseline
 
-Convert the expected prescription and detected pills into structured medication counts and determine whether they match.
+Represent both the electronic prescription and the detected medication set as structured medication counts.
 
-### EXP-003 — Simulated dispensing errors
-
-Programmatically create controlled scenarios such as:
+Example:
 
 ```text
-Expected: A A B C
-
-Correct:    A A B C
-Missing:    A B C
-Extra:      A A A B C
-Wrong pill: A A B D
-Multiple:   A B D
+Expected = {A: 2, B: 1, C: 1}
+Detected = {A: 2, B: 1, C: 1}
 ```
 
-Evaluate whether the verification system identifies each error type.
+Then verify whether the two sets match.
 
-Potential safety-oriented metrics:
+### EXP-003 — Simulated Dispensing Errors
 
-- Verification accuracy
-- False Acceptance Rate
-- False Rejection Rate
-- Missing-pill detection rate
-- Extra-pill detection rate
-- Wrong-pill detection rate
+Because real dispensing-error data is difficult to obtain, controlled error cases can be generated programmatically.
 
----
+Example:
 
-## Previous UAV Work Completed
+```text
+Expected:     A A B C
 
-Before the research pivot, the following exploratory work was completed:
+Correct:      A A B C
+Missing:      A B C
+Extra:        A A A B C
+Wrong pill:   A A B D
+Multiple:     A B D
+```
 
-- Repository structure created.
-- Kaggle environment configured.
-- VisDrone2019-DET validation data downloaded.
-- COCO-pretrained YOLO11n inference run on eight UAV images.
-- Prediction samples and metadata exported.
-- Basic failure cases in small-object UAV detection observed.
+This allows reproducible large-scale evaluation without private patient data.
 
-This work is retained as part of the research history, but it will not be continued unless specifically required later.
+### EXP-004 — Model and Threshold Comparison
 
----
+Compare detection models and confidence thresholds to study the relationship between detection performance and verification safety.
 
-## What I Learned
+### EXP-005 — Robustness Evaluation
 
-### From the UAV exploration
+Evaluate difficult cases such as:
 
-- A research topic should not be selected only because a model or dataset is technically interesting.
-- The application context and research question need to be clear enough to justify the experiments.
-- A pretrained inference smoke test is useful for validating the development environment before committing to a research direction.
+- pill overlap,
+- occlusion,
+- high pill density,
+- visually similar medications,
+- lighting changes,
+- background changes.
 
-### From the medication-verification investigation
+### EXP-006 — Prescription-Aware Verification
 
-- Pill recognition already has substantial prior research, so simply training YOLO to identify pills would be a weak contribution.
-- A stronger direction is **prescription-aware verification**, where vision predictions are evaluated in the context of an expected prescription.
-- Public datasets make it possible to design reproducible experiments without collecting real patient data.
-- False acceptance of incorrect medication should be treated as an especially important failure mode.
+Explore whether prescription information can constrain candidate medication classes or otherwise improve verification compared with vision-only prediction.
 
 ---
 
-## Advisor Feedback
+## 9. Safety-Oriented Evaluation
 
-- No feedback recorded yet.
+In addition to normal computer-vision metrics, the project should evaluate the verification layer directly.
+
+Candidate metrics include:
+
+- Verification Accuracy
+- Dispensing-Error Detection Rate
+- False Acceptance Rate (FAR)
+- False Rejection Rate (FRR)
+- Missing-Pill Detection Rate
+- Extra-Pill Detection Rate
+- Wrong-Pill Detection Rate
+
+Among these, **False Acceptance Rate** is especially important.
+
+A false acceptance means:
+
+```text
+Incorrect medication set
+        ↓
+System says MATCH
+```
+
+This is more dangerous than a normal classification mistake and therefore should be analyzed separately.
 
 ---
 
-## Plan for Week 02
+## 10. Feasibility Assessment
+
+At the end of Week 1, the new topic appears feasible for the following reasons:
+
+1. Relevant public datasets already exist.
+2. A full physical dispenser is not required to study the central research question.
+3. The main experiments can be completed using public image data and simulated dispensing errors.
+4. Computer-vision training can be performed on Kaggle or university GPU resources.
+5. The research problem can be evaluated quantitatively.
+6. The project combines AI, data processing, system logic, and application design without requiring sensitive patient data.
+7. There is enough prior literature to support the project, but the prescription-verification angle provides a clearer research direction than generic pill classification.
+
+---
+
+## 11. Main Decisions Made This Week
+
+- [x] Do not continue the UAV topic only because the initial pipeline already works.
+- [x] Pivot toward a problem with a clearer practical application.
+- [x] Use AI as a **verification layer**, not as a clinical decision-maker.
+- [x] Focus the research question on **dispensing error detection**.
+- [x] Use public datasets rather than private clinical data.
+- [x] Select VAIPE as the primary dataset candidate.
+- [x] Maintain ePillID, CURE, and NLM/C3PI as secondary resources.
+- [x] Build the literature review around approximately 15 core papers.
+- [x] Define initial experiments before starting large-scale implementation.
+
+---
+
+## 12. What I Learned
+
+### Research-process lessons
+
+- A technically interesting task is not automatically a strong capstone topic.
+- The application and research question should be evaluated before investing heavily in implementation.
+- Running a small technical smoke test is useful, but the research direction should remain flexible during the exploration stage.
+- Existing literature should be checked early to avoid proposing a contribution that has already been extensively studied.
+- Dataset availability is a major factor in determining whether a research idea is realistically executable.
+
+### Technical lessons
+
+- Pill identification is a fine-grained recognition problem because many medications have very similar shape, color, and markings.
+- Multi-pill detection is closer to the intended dispensing scenario than single-pill classification.
+- Prescription context may provide useful information beyond visual appearance alone.
+- Verification should be evaluated differently from ordinary classification because unsafe false acceptance is a critical failure case.
+
+---
+
+## 13. Problems / Open Questions
+
+Several questions remain unresolved and will be investigated in Week 2:
+
+1. How exactly is prescription information represented in VAIPE?
+2. Can the VAIPE minimal dataset directly support prescription-to-image verification experiments?
+3. How many medication classes are sufficiently represented for a reliable baseline?
+4. Should the first baseline use full VAIPE or a controlled subset of classes?
+5. Is object detection sufficient, or will detection + fine-grained classification be necessary?
+6. Which verification metric should be treated as the primary project metric?
+7. What is the strongest research gap after comparing recent multi-pill and smart-dispensing papers?
+
+---
+
+## 14. Advisor Feedback
+
+No advisor feedback has been recorded yet for the revised direction.
+
+The current proposal has been prepared for discussion with the advisor:
+
+[`docs/capstone-proposal.md`](../../capstone-proposal.md)
+
+---
+
+## 15. Plan for Week 02
+
+The Week 2 objectives are:
 
 1. Read the VAIPE paper carefully.
-2. Read one recent pill-recognition review paper.
+2. Read the 2025 pill-recognition review paper.
 3. Read the ePillID and CURE benchmark papers.
-4. Read at least one recent smart medication-dispenser / AI-verification system paper.
-5. Inspect the VAIPE dataset structure and annotation format.
-6. Verify whether prescription information is directly usable for the planned experiments.
-7. Create a small exploratory notebook for dataset loading and visualization.
-8. Refine the final research question based on the literature findings.
-9. Discuss the revised topic and feasibility with the advisor.
+4. Read at least one recent smart medication-dispensing / AI-verification paper.
+5. Download and inspect the VAIPE dataset.
+6. Understand its folder structure, annotation format, pill classes, and prescription information.
+7. Build a small exploratory notebook for image and annotation visualization.
+8. Decide whether to use the full dataset or an initial subset.
+9. Finalize the first baseline experiment (`EXP-001`).
+10. Discuss the topic, scope, and feasibility with the advisor.
 
 ---
 
-## Weekly Summary
+## 16. Week 01 Summary
 
-The first week began with an exploration of UAV small-object detection, including a reproducible Kaggle environment and a YOLO inference smoke test. During problem formulation, the project direction was reconsidered because the intended application and contribution were not sufficiently clear. The new tentative direction is AI-assisted medication verification for smart prescription dispensing. Initial literature and dataset investigation indicates that public datasets such as VAIPE may allow the project to study multi-pill detection and prescription-based verification without requiring real patient data. The project will therefore focus next on literature review, dataset validation, and formulation of a reproducible dispensing-error experiment. The immediate priority for Week 02 is to determine whether VAIPE can support the proposed end-to-end verification pipeline.
+Week 1 focused primarily on identifying a suitable research direction rather than immediately committing to model training. The project initially explored small-object detection in UAV imagery, and a complete YOLO inference smoke test was successfully performed on VisDrone data. However, after evaluating the broader application and potential research contribution, the UAV direction was reconsidered. A new idea involving smart medication dispensing was then explored, with the AI component reformulated as an independent visual verification layer rather than a prescribing or diagnostic system. Initial literature review showed that pill recognition is already an established field, which motivated a more specific research question around **prescription-aware multi-pill verification and dispensing-error detection**. Public datasets including VAIPE, ePillID, CURE, and NLM/C3PI were identified, with VAIPE currently considered the strongest primary dataset candidate. By the end of the week, the project had a tentative research question, a public-data strategy, an initial set of core papers, and a six-experiment roadmap. The highest-priority task for Week 2 is to validate whether VAIPE can support the proposed prescription-to-dispensed-medication verification pipeline.
