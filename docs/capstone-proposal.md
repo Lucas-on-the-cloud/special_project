@@ -84,13 +84,14 @@ The project aims to:
 
 1. Review the existing literature on pill recognition, multi-pill detection, and smart medication-dispensing systems.
 2. Select and validate suitable public datasets for reproducible experimentation.
-3. Build a baseline multi-pill detection model.
-4. Build a prescription-matching module that compares expected and detected medication sets.
-5. Develop a controlled simulation framework for common dispensing errors.
-6. Evaluate the complete verification pipeline using both computer-vision and safety-oriented metrics.
-7. Analyze failure cases and robustness under difficult visual conditions.
-8. Explore a prescription-aware method in which structured prescription information helps constrain or improve visual predictions.
-9. Produce a reproducible research prototype, final report, and demonstration.
+3. Reproduce at least one published pill-recognition pipeline with public code and data to validate the research environment.
+4. Build a baseline multi-pill detection model using a mature public framework.
+5. Build a prescription-matching module that compares expected and detected medication sets.
+6. Develop a controlled simulation framework for common dispensing errors.
+7. Evaluate the complete verification pipeline using both computer-vision and safety-oriented metrics.
+8. Analyze failure cases and robustness under difficult visual conditions.
+9. Explore a prescription-aware method in which structured prescription information helps constrain or improve visual predictions.
+10. Produce a reproducible research prototype, final report, and demonstration.
 
 ---
 
@@ -123,11 +124,57 @@ The project will be presented strictly as an **academic research prototype**.
 
 ---
 
-## 6. Datasets
+## 6. Reproducibility Strategy
+
+Because the project will be developed largely independently, implementation choices will prioritize **reproducibility and maintainability**.
+
+The preferred order for implementation-related papers is:
+
+```text
+Official code + public dataset + runnable instructions
+                        ↓
+Official code + accessible dataset
+                        ↓
+Public dataset + standard maintained framework
+                        ↓
+Paper with no code
+```
+
+A paper without source code may still be important for motivation, system architecture, or research-gap analysis, but it will not automatically become the main reproduction target.
+
+### Initial reproducible resources
+
+#### ePillID
+
+Paper:  
+https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
+
+Official repository:  
+https://github.com/usuyama/ePillID-benchmark
+
+This repository provides public code, data access, environment instructions, and a tutorial workflow. It is a strong candidate for the first published baseline reproduction.
+
+#### CG-IMIF / VAIPE-PCIL
+
+Paper:  
+https://openaccess.thecvf.com/content/ACCV2022/html/Nguyen_Multi-stream_Fusion_for_Class_Incremental_Learning_in_Pill_Image_Classification_ACCV_2022_paper.html
+
+Official repository:  
+https://github.com/vinuni-vishc/CG-IMIF
+
+This project provides a second reproducible example within the VAIPE research ecosystem.
+
+### Important implementation decision
+
+The VAIPE / PGPNet paper is highly relevant to the capstone, but an official implementation of PGPNet has not been confirmed in the current review. Therefore, the project will initially use **VAIPE as the primary dataset while training a standard maintained detector such as Ultralytics YOLO**, instead of spending several weeks recreating PGPNet from scratch.
+
+---
+
+## 7. Datasets
 
 The project will rely on public datasets because access to real hospital dispensing data is not available.
 
-### 6.1 Primary dataset: VAIPE
+### 7.1 Primary dataset: VAIPE
 
 The primary candidate is the VAIPE dataset introduced in:
 
@@ -160,17 +207,18 @@ Expected vs detected comparison
 MATCH / MISMATCH
 ```
 
-### 6.2 Secondary datasets
+### 7.2 Secondary datasets
 
 #### ePillID
-
-Paper:  
-https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
 
 Official benchmark repository:  
 https://github.com/usuyama/ePillID-benchmark
 
-Potential use: fine-grained recognition and visually similar pill classes.
+Potential use:
+
+- first code reproduction,
+- fine-grained recognition,
+- visually similar pill classes.
 
 #### CURE
 
@@ -180,7 +228,7 @@ https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognit
 Author repository:  
 https://github.com/suiyiling/Few-shot-pill-recognition
 
-Potential use: few-shot recognition and auxiliary comparison.
+Potential use: few-shot recognition and robustness comparison.
 
 #### NLM / C3PI / RxIMAGE
 
@@ -193,31 +241,31 @@ These datasets will be evaluated for licensing, annotation format, class balance
 
 ---
 
-## 7. Proposed Methodology
+## 8. Proposed Methodology
 
-### Phase 1 — Literature Review and Dataset Validation
+### Phase 1 — Literature Review, Code Review, and Dataset Validation
 
-The first stage will study approximately 15 core papers covering:
+The first stage will study the core literature while explicitly checking:
 
-- pill recognition,
-- fine-grained pill identification,
-- multi-pill detection,
-- smart dispensing systems,
-- clinical robustness,
-- medication verification,
-- relevant public datasets.
+- whether code is public,
+- whether data are accessible,
+- whether environment instructions are available,
+- whether pretrained weights or evaluation scripts exist,
+- whether the method can run on Kaggle/Colab or available GPU resources.
 
-The literature review will be used to define the final research gap and baseline models.
+At least one published public-code baseline, most likely ePillID, will be reproduced before developing the final capstone pipeline.
 
 ### Phase 2 — Baseline Multi-Pill Detection
 
-A baseline object-detection model will be trained or fine-tuned on the selected public dataset.
+The primary baseline will use a mature, documented object-detection implementation.
 
-Candidate models include:
+Current first choice:
 
-- YOLO11,
-- another YOLO variant where appropriate,
-- RT-DETR or another detector for comparison.
+- **Ultralytics YOLO**
+
+Possible comparison:
+
+- RT-DETR or another public detector after the baseline is stable.
 
 Each detected pill will be represented as:
 
@@ -249,25 +297,11 @@ Detected = {
 }
 ```
 
-The system will then classify the event as:
-
-```text
-MATCH
-```
-
-or
-
-```text
-MISMATCH
-```
-
-and explain which medication is missing, extra, or incorrect.
+The system will then classify the event as `MATCH` or `MISMATCH` and identify missing, extra, or unexpected medication.
 
 ### Phase 4 — Simulated Dispensing Errors
 
-Since real dispensing-error data is difficult to obtain, controlled error scenarios will be generated programmatically.
-
-For example:
+Controlled error scenarios will be generated programmatically:
 
 ```text
 Expected:    A A B C
@@ -278,11 +312,11 @@ Wrong pill:  A A B D
 Multiple:    A B D
 ```
 
-This allows thousands of reproducible verification trials to be generated without collecting private patient data.
+This allows large-scale reproducible verification experiments without collecting private patient data.
 
 ### Phase 5 — Robustness Evaluation
 
-The system will be evaluated under difficult visual conditions such as:
+The system will be evaluated under:
 
 - pill overlap,
 - occlusion,
@@ -294,19 +328,18 @@ The system will be evaluated under difficult visual conditions such as:
 
 ### Phase 6 — Prescription-Aware Verification
 
-After establishing a baseline, the project will explore whether prescription context can improve performance.
+After the baseline is working, the project will explore whether prescription context can improve verification.
 
-For example, if the visual model assigns similar probabilities to several visually similar medications, the prescription may provide a constrained candidate set.
-
-This stage is intended to investigate whether a **prescription-aware model** can reduce unsafe verification errors compared with a vision-only baseline.
+For example, the prescription may provide a constrained candidate set for ambiguous visual predictions.
 
 ---
 
-## 8. Experimental Plan
+## 9. Experimental Plan
 
 | Experiment | Description |
 |---|---|
-| EXP-001 | Baseline multi-pill detection |
+| REP-001 | Reproduce a public-code pill-recognition baseline (ePillID preferred) |
+| EXP-001 | Baseline multi-pill detection on VAIPE |
 | EXP-002 | Prescription-to-detection matching baseline |
 | EXP-003 | Simulated missing / extra / wrong-pill detection |
 | EXP-004 | Model and confidence-threshold comparison |
@@ -316,8 +349,10 @@ This stage is intended to investigate whether a **prescription-aware model** can
 Each experiment will record:
 
 - hypothesis,
+- repository / source commit where applicable,
 - dataset and split,
 - model configuration,
+- dependency versions,
 - random seed,
 - hardware/software environment,
 - evaluation metrics,
@@ -327,7 +362,7 @@ Each experiment will record:
 
 ---
 
-## 9. Evaluation Metrics
+## 10. Evaluation Metrics
 
 ### Computer-vision metrics
 
@@ -352,9 +387,9 @@ Particular attention will be paid to **False Acceptance Rate**, because a false 
 
 ---
 
-## 10. Expected Contribution
+## 11. Expected Contribution
 
-The project does not aim to claim a new pill-recognition problem. Instead, the intended contribution is a reproducible framework that connects three components:
+The project does not aim to claim a new pill-recognition problem. Instead, the intended contribution is a reproducible framework connecting:
 
 ```text
 Multi-pill visual perception
@@ -364,7 +399,7 @@ Electronic prescription context
 Safety-oriented dispensing verification
 ```
 
-The expected contribution is therefore:
+Expected outputs include:
 
 1. a reproducible public-dataset-based verification pipeline,
 2. a controlled dispensing-error simulation framework,
@@ -374,54 +409,59 @@ The expected contribution is therefore:
 
 ---
 
-## 11. Feasibility
+## 12. Feasibility
 
-The project is considered feasible for an undergraduate capstone because:
+The project is considered feasible because:
 
-- public datasets already exist,
-- the experiments do not require private hospital data,
-- the core task can be implemented using standard computer-vision frameworks,
-- training can be performed using Kaggle or university GPU resources,
-- the project can be completed as a software research prototype even without constructing a full physical medication dispenser.
+- public datasets exist,
+- several related benchmarks have public code,
+- the core implementation can use maintained computer-vision frameworks,
+- no private patient data are required,
+- Kaggle/Colab can be used for reproducible experiments,
+- the project can remain software-based even without a physical dispenser.
 
-If time permits, a small simulated dispensing interface or hardware demonstration may be added, but the research contribution will remain centered on the AI verification pipeline.
+If time permits, a simulated dispensing interface or hardware demonstration may be added.
 
 ---
 
-## 12. Risks and Mitigation
+## 13. Risks and Mitigation
 
-### Risk 1 — Dataset access or annotation limitations
+### Risk 1 — Important paper has no code
+
+**Mitigation:** use the paper for theory/background and reproduce a nearby method with public code instead. Do not spend several weeks recreating an undocumented implementation unless it becomes essential.
+
+### Risk 2 — Dataset access or annotation limitations
 
 **Mitigation:** evaluate VAIPE first and keep ePillID, CURE, and NLM/C3PI as secondary resources.
 
-### Risk 2 — Too many visually similar classes
+### Risk 3 — Too many visually similar classes
 
-**Mitigation:** begin with a controlled subset of classes, then scale up gradually.
+**Mitigation:** begin with a controlled subset of classes and scale up gradually.
 
-### Risk 3 — Detection accuracy is insufficient for verification
+### Risk 4 — Detection accuracy is insufficient
 
-**Mitigation:** perform per-class and failure-case analysis, tune thresholds, compare detectors, and test prescription-aware constraints.
+**Mitigation:** perform per-class analysis, tune thresholds, compare documented detectors, and test prescription-aware constraints.
 
-### Risk 4 — Project becomes only a system integration project
+### Risk 5 — Project becomes only system integration
 
-**Mitigation:** keep the research question centered on measurable verification reliability, error detection, and false acceptance rather than only building a dispenser interface.
+**Mitigation:** center the research question on measurable verification reliability, error detection, and false acceptance.
 
-### Risk 5 — Project scope becomes too large
+### Risk 6 — Scope becomes too large
 
-**Mitigation:** prioritize the software verification pipeline first. Hardware is optional.
+**Mitigation:** prioritize the software verification pipeline. Hardware remains optional.
 
 ---
 
-## 13. Tentative Timeline
+## 14. Tentative Timeline
 
 ### Semester 1
 
 | Week | Main Task |
 |---|---|
 | 1 | Explore research topics, pivot from UAV detection, define medication-verification direction |
-| 2 | Read core papers and inspect VAIPE |
-| 3 | Dataset pipeline and exploratory analysis |
-| 4 | Baseline multi-pill detection |
+| 2 | Read core papers, inspect code repositories, and inspect VAIPE |
+| 3 | Reproduce one public-code pill-recognition baseline and build dataset pipeline |
+| 4 | Baseline VAIPE multi-pill detection |
 | 5 | Baseline evaluation and failure-case analysis |
 | 6 | Prescription representation and matching module |
 | 7 | Verification baseline |
@@ -437,11 +477,11 @@ If time permits, a small simulated dispensing interface or hardware demonstratio
 
 ### Semester 2
 
-The second semester will focus on method refinement, larger experiments, ablation studies, error analysis, report writing, and final presentation.
+The second semester will focus on method refinement, larger experiments, ablation studies, error analysis, final report writing, and presentation.
 
 ---
 
-## 14. Initial Core References
+## 15. Initial Core References
 
 1. **A Comprehensive Review of Pill Image Recognition** (2025)  
    https://doi.org/10.32604/cmc.2025.060793
@@ -450,24 +490,28 @@ The second semester will focus on method refinement, larger experiments, ablatio
    https://doi.org/10.1371/journal.pone.0291865
 
 3. **ePillID Dataset: A Low-Shot Fine-Grained Benchmark for Pill Identification** (2020)  
-   https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
+   https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html  
+   Code: https://github.com/usuyama/ePillID-benchmark
 
 4. **Few-Shot Pill Recognition** (2020)  
-   https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html
+   https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html  
+   Data/repo: https://github.com/suiyiling/Few-shot-pill-recognition
 
-5. **Design and Validation of a Cyber-Physical Medication Dispensing Platform Integrating Edge AI Verification, Distributed Control, and Cloud Synchronization** (2026)  
+5. **Multi-stream Fusion for Class Incremental Learning in Pill Image Classification** (2022)  
+   https://openaccess.thecvf.com/content/ACCV2022/html/Nguyen_Multi-stream_Fusion_for_Class_Incremental_Learning_in_Pill_Image_Classification_ACCV_2022_paper.html  
+   Code: https://github.com/vinuni-vishc/CG-IMIF
+
+6. **Design and Validation of a Cyber-Physical Medication Dispensing Platform Integrating Edge AI Verification, Distributed Control, and Cloud Synchronization** (2026)  
    https://doi.org/10.3390/s26123823
 
-6. **Code-Based Versus AutoML Methods for Pill Recognition in Clinical Settings: Comparative Performance Study** (2026)  
-   https://doi.org/10.2196/79160
+Detailed literature and reproducibility tracking:
 
-A larger literature tracker is maintained in:
-
-[`docs/literature-review/paper-table.md`](literature-review/paper-table.md)
+- [`docs/literature-review/paper-table.md`](literature-review/paper-table.md)
+- [`docs/literature-review/reproducibility-priority.md`](literature-review/reproducibility-priority.md)
 
 ---
 
-## 15. Current Status
+## 16. Current Status
 
 The project is currently at the **topic exploration and feasibility-validation stage**.
 
@@ -476,9 +520,10 @@ Week 1 has been used to:
 - explore an initial UAV object-detection topic,
 - evaluate its application relevance,
 - identify a stronger medication-verification problem,
-- review the available pill-recognition research landscape,
+- review the pill-recognition research landscape,
 - identify public datasets,
+- identify reproducible paper/code resources,
 - formulate a tentative research question,
 - define the first experimental roadmap.
 
-The next immediate step is to validate VAIPE in detail and determine whether its prescription information can directly support the proposed verification experiments.
+The next immediate step is to inspect VAIPE in detail and reproduce at least one public-code pill-recognition baseline before beginning the main VAIPE detector experiments.
