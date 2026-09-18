@@ -2,205 +2,179 @@
 
 ## Title
 
-**Prescription-Aware Multi-Pill Detection and Verification for Smart Medication Dispensing Systems**
+**Robust Vision-Based Parking Occupancy Monitoring Across Different Parking Lots and Weather Conditions**
 
 **Project type:** Undergraduate Special Project / Capstone Project  
-**Duration:** Two semesters (36 weeks)  
-**Credits:** 6 credits
+**Duration:** Two semesters  
+**Compute:** Kaggle notebooks and public datasets
 
----
+## 1. Background and motivation
 
-## 1. Background and Motivation
+Camera-based parking monitoring can estimate which parking spaces are occupied without installing a physical sensor in every space. A practical system can display free spaces, help drivers locate parking, and support parking-lot management.
 
-Smart medication-dispensing systems can use a prescription number, QR code, insurance card, or another digital identifier to retrieve an authorized prescription and dispense the required medication. However, a mechanical dispensing process does not guarantee that the physical pills released by the system exactly match the electronic prescription. Errors may still occur because of incorrect container mapping, pill jamming, mechanical failure, or recognition errors.
+Parking-space classifiers often achieve high accuracy when training and testing on images captured by the same camera. However, real deployment introduces changes in camera viewpoint, parking-lot layout, background, weather, illumination, shadows, and image quality. Video datasets also contain many near-duplicate frames. If adjacent frames are randomly divided between training and test sets, reported performance may overestimate the ability to generalize.
 
-This project proposes an **AI-based visual verification layer** for this workflow. The AI will not diagnose disease or generate prescriptions. Instead, it will identify and count the pills that have been dispensed, compare them with the expected medication list, and determine whether the dispensing event is correct.
+This project therefore focuses on **robust occupancy classification**, not only high accuracy on one dataset.
 
-```text
-Electronic Prescription
-        ↓
-Expected Medication Set
-        ↓
-Dispensing Process
-        ↓
-Image of Dispensed Pills
-        ↓
-Computer Vision Model
-        ↓
-Detected Medication + Quantity
-        ↓
-Expected vs Detected
-        ↓
-MATCH / MISMATCH / UNCERTAIN
-```
+## 2. Problem definition
 
-The project therefore focuses on **medication verification and dispensing-error detection**, rather than general pill classification alone.
-
----
-
-## 2. Research Problem and Questions
-
-Existing research has already demonstrated pill identification, fine-grained pill recognition, and multi-pill detection. Public benchmarks such as **ePillID, CURE, NLM/C3PI, and VAIPE** provide data for these tasks. However, a smart dispensing system must answer a more safety-oriented question:
-
-> **Does the medication physically dispensed match what was prescribed?**
-
-The main research question is:
-
-> **How reliably can a vision-based medication verification system detect dispensing errors by comparing multi-pill detections with an electronic prescription?**
-
-The project will investigate four sub-questions:
-
-1. How accurately can a modern detector identify and count multiple pills in one image?
-2. How reliably can the system detect missing, extra, and incorrect medication?
-3. Which conditions cause the most dangerous verification failures, especially false acceptance of an incorrect medication set?
-4. Can prescription context improve verification compared with a vision-only baseline?
-
----
-
-## 3. Data and Reproducibility Strategy
-
-The project will use **public datasets** so that the experiments can be reproduced without access to private patient or hospital data.
-
-### Primary dataset: VAIPE
-
-The main candidate is **VAIPE**, introduced in the 2023 PLOS ONE paper *High accurate and explainable multi-pill detection framework with graph neural network-assisted multimodal data fusion*.
-
-VAIPE is especially suitable because it contains multi-pill images, pill annotations, varied capture conditions, and prescription-related contextual information.
-
-- Paper: https://doi.org/10.1371/journal.pone.0291865
-- Dataset: https://www.kaggle.com/datasets/anhduy091100/vaipe-minimal-dataset
-
-### Reproducible supporting resources
-
-Implementation work will prioritize **public code + public data + runnable instructions**.
-
-- **ePillID** — code and benchmark data: https://github.com/usuyama/ePillID-benchmark
-- **CG-IMIF / VAIPE-PCIL** — official implementation in the VAIPE research ecosystem: https://github.com/vinuni-vishc/CG-IMIF
-- **CURE** — author repository and dataset source: https://github.com/suiyiling/Few-shot-pill-recognition
-
-A paper without code may still be used for background or system design, but it will not automatically become the main reproduction target.
-
----
-
-## 4. Proposed Methodology
-
-The project will follow the sequence **Read → Reproduce → Baseline → Error Analysis → Improve → Compare**.
-
-### Stage 1 — Literature review and reproduction
-
-Read the core pill-recognition and smart-dispensing papers and reproduce at least one public-code baseline, most likely ePillID. The goal is to validate the environment and understand the end-to-end research workflow before developing the main capstone system.
-
-### Stage 2 — Baseline multi-pill detection
-
-Train a standard, maintained detector on VAIPE. The first baseline will likely use **Ultralytics YOLO** because it is well documented and easy to reproduce on Kaggle/Colab. A second detector such as RT-DETR may be added later for comparison.
-
-### Stage 3 — Prescription matching
-
-Convert both the prescription and visual detections into structured medication counts.
+The initial application assumes a fixed camera and known parking-space polygons:
 
 ```text
-Expected = {A: 2, B: 1, C: 1}
-Detected = {A: 2, B: 1, C: 1}
+Parking-lot image
+        ↓
+Predefined parking-space polygons
+        ↓
+Crop each parking space
+        ↓
+Occupied / vacant classifier
+        ↓
+Parking-map overlay + available-space count
 ```
 
-The verification module will return `MATCH`, `MISMATCH`, or potentially `UNCERTAIN`, together with the missing, extra, or unexpected medication.
+The central research problem is:
 
-### Stage 4 — Simulated dispensing errors
+> How can a lightweight visual parking-space classifier remain reliable when the parking lot, camera, weather, or illumination differs from its training data?
 
-Because real hospital dispensing-error data are not available, controlled error cases will be generated programmatically:
+### Research questions
 
-```text
-Correct:     A A B C
-Missing:     A B C
-Extra:       A A A B C
-Wrong pill:  A A B D
-Multiple:    A B D
-```
+1. How much does performance decline on an unseen parking lot or external dataset?
+2. Can weather- and lighting-aware augmentation reduce this generalization gap?
+3. Which lightweight backbone provides the best accuracy–latency trade-off for a practical monitoring system?
 
-This allows large-scale, reproducible safety evaluation without private medical data.
+## 3. Proposed contributions
 
-### Stage 5 — Error analysis and improvement
+### C1. Leakage-resistant evaluation
 
-The improvement method will **not be selected in advance**. It will be chosen according to measured baseline failures.
+Create reproducible splits separated by parking lot, camera, capture session, or official sequence. Compare these results with conventional in-domain evaluation and document the effect of near-duplicate-frame leakage.
 
-Possible directions include:
+### C2. Robustness improvement
 
-- confidence calibration if incorrect predictions are overconfident;
-- reject/abstain mechanisms for uncertain cases;
-- supervised contrastive or metric learning for visually similar pills;
-- prescription-based candidate filtering or reranking;
-- set-based or graph-based context models if medication relationships prove useful.
+Build a transparent weather/lighting augmentation baseline, then compare it with selected published methods such as RandAugment, AugMix, or MixStyle. The project will add a method only when error analysis supports it.
 
-Every additional method must be justified by an observed failure and compared with a simpler alternative.
+### C3. Application and efficiency study
 
----
+Build a working image/video prototype that overlays occupancy status and counts free spaces. Compare accuracy, macro F1, latency, throughput, memory, and model size for lightweight backbones.
 
-## 5. Experimental Plan and Evaluation
+The intended undergraduate contribution is an evidence-based evaluation and practical improvement—not a new large neural-network architecture.
 
-| ID | Experiment |
+## 4. Data and reproducibility strategy
+
+### ACPDS — first reproduction
+
+The paper *Image-Based Parking Space Occupancy Classification: Dataset and Baseline* provides a small public dataset, annotations, code, and pretrained resources. It will be used to learn and verify the complete reproduction workflow.
+
+- Paper: https://arxiv.org/abs/2107.12207
+- Official repository: https://github.com/martin-marek/parking-space-occupancy
+
+### PKLot — main benchmark
+
+PKLot contains images from multiple parking lots and weather conditions. It supports leave-one-parking-lot-out and weather-aware experiments.
+
+- Dataset: https://web.inf.ufpr.br/vri/databases/parking-lot-database/
+- Paper: https://doi.org/10.1016/j.eswa.2015.02.009
+
+### CNRPark+EXT — external evaluation
+
+CNRPark+EXT provides another camera environment and will serve as an external test set for measuring cross-dataset generalization.
+
+- Paper/data record: https://openportal.isti.cnr.it/doc?id=people______::f0ae3d0d7a052b367753c8a217c77897
+
+Dataset archives and model weights will not be committed to Git. The repository will store notebooks, data manifests, split definitions, configurations, compact metrics, and selected figures.
+
+## 5. Methodology
+
+### Stage 1 — Reproduce and verify
+
+1. Run the official ACPDS code on Kaggle.
+2. Record the Git revision, packages, hardware, data counts, split, and metrics.
+3. Document discrepancies between the paper, repository, and current environment.
+
+### Stage 2 — Establish modern baselines
+
+Train lightweight classifiers such as ResNet18, MobileNetV3, and EfficientNet-B0 under the same input resolution, training budget, and split. Select one baseline before adding improvements.
+
+### Stage 3 — Measure the domain gap
+
+Evaluate:
+
+- in-domain validation;
+- leave-one-parking-lot-out testing on PKLot;
+- frozen PKLot-to-CNRPark+EXT transfer.
+
+Break errors down by parking lot, camera, weather, lighting, and class.
+
+### Stage 4 — Improve robustness
+
+Compare the standard baseline with:
+
+1. manual weather/lighting augmentation;
+2. RandAugment or AugMix;
+3. MixStyle if camera/style shift remains dominant.
+
+Deep CORAL or Tent will be optional because they assume access to unlabeled target-domain images.
+
+### Stage 5 — Build the application
+
+Load an image or video, crop known parking spaces, classify each crop, draw colored polygons, and show the number of occupied and free spaces. Benchmark latency and throughput on a consistent environment.
+
+## 6. Evaluation
+
+### Classification metrics
+
+- accuracy and balanced accuracy;
+- macro F1;
+- occupied/vacant precision and recall;
+- confusion matrix;
+- AUROC when appropriate.
+
+### Efficiency metrics
+
+- median and p95 inference latency;
+- spaces processed per second;
+- parameter count and model-file size;
+- peak GPU memory.
+
+### Experimental rules
+
+- Never randomly distribute adjacent frames across train and test.
+- Tune hyperparameters on validation data only.
+- Keep training budget and evaluation code constant in comparisons.
+- Separate zero-shot cross-dataset evaluation from adaptation using target images.
+- Report multiple seeds for final comparisons when Kaggle compute permits.
+
+## 7. Expected outcome
+
+The expected result is a reproducible parking-occupancy benchmark, an experimentally justified robustness method, and an end-to-end monitoring prototype. Even if a proposed method does not improve accuracy, a controlled negative result with error analysis remains a valid research outcome.
+
+## 8. Scope and risk control
+
+The first version excludes automatic parking-slot localization, license-plate recognition, tracking, payments, reservations, and IoT sensors. Known parking-space polygons keep the project feasible when advisor support and compute are limited.
+
+If cross-dataset training is difficult, the fallback is a complete ACPDS reproduction plus a parking-lot-separated PKLot benchmark, one augmentation study, and the application demo.
+
+## 9. Semester 1 milestones
+
+| Period | Deliverable |
 |---|---|
-| `REP-001` | Reproduce one public-code pill-recognition baseline |
-| `EXP-001` | Baseline multi-pill detection on VAIPE |
-| `EXP-002` | Prescription-to-detection matching baseline |
-| `EXP-003` | Missing / extra / wrong-pill error simulation |
-| `EXP-004` | Confidence-threshold and model comparison |
-| `EXP-005` | Robustness analysis: occlusion, density, lighting, similar pills |
-| `EXP-006` | Evidence-driven improvement method |
+| Weeks 1–2 | Scope, literature map, ACPDS reproduction |
+| Weeks 3–5 | PKLot preparation and lightweight baselines |
+| Weeks 6–7 | Cross-lot and cross-dataset evaluation |
+| Weeks 8–10 | Weather/lighting augmentation experiments |
+| Weeks 11–12 | RandAugment/AugMix and optional MixStyle |
+| Weeks 13–14 | Ablations and efficiency benchmark |
+| Weeks 15–16 | Parking-monitoring prototype |
+| Weeks 17–18 | Consolidated results and Semester 1 report |
 
-Computer-vision performance will be evaluated using **Precision, Recall, mAP@0.5, mAP@0.5:0.95, per-class AP, and inference latency**.
+## 10. Success criteria
 
-Verification performance will be evaluated using **verification accuracy, False Acceptance Rate (FAR), False Rejection Rate (FRR), and detection rates for missing, extra, and incorrect medication**.
+The Semester 1 project is successful when it contains:
 
-FAR is particularly important because it represents a dangerous case where an incorrect medication set is wrongly accepted as valid.
+- one verified official reproduction;
+- one modern lightweight baseline;
+- one leakage-resistant unseen-lot evaluation;
+- one cross-dataset result or documented feasibility limitation;
+- one justified robustness experiment with ablation;
+- one working occupancy visualization;
+- complete experiment records sufficient for another student to rerun the work.
 
----
-
-## 6. Expected Contribution and Feasibility
-
-The intended contribution is not simply “using YOLO to recognize pills.” The project aims to connect:
-
-```text
-Multi-pill visual detection
-          +
-Electronic prescription context
-          +
-Safety-oriented verification
-```
-
-Expected outputs are:
-
-1. a reproducible public-dataset-based medication verification pipeline;
-2. a controlled dispensing-error simulation framework;
-3. a safety-oriented evaluation protocol centered on false acceptance;
-4. a detailed failure analysis of vision-based medication verification;
-5. an improvement method selected from the observed failure modes.
-
-The project is feasible as an undergraduate capstone because public datasets and public code are available, no private patient data are required, and the main experiments can be performed using Kaggle/Colab or available GPU resources. A physical dispenser is optional; the core research contribution can be completed as a software prototype.
-
----
-
-## 7. Tentative Schedule
-
-**Semester 1:** literature review, code reproduction, VAIPE exploration, baseline detector, prescription matching, simulated error evaluation, failure analysis, and initial improvement method.
-
-**Semester 2:** method refinement, comparison experiments, robustness tests, ablation study, final evaluation, report writing, and demonstration.
-
-The immediate next step is to validate the VAIPE dataset in detail and reproduce one code-supported pill-recognition pipeline before starting the main baseline experiment.
-
----
-
-## Key References
-
-1. Nguyen et al., **High accurate and explainable multi-pill detection framework with graph neural network-assisted multimodal data fusion**, PLOS ONE, 2023.  
-   https://doi.org/10.1371/journal.pone.0291865
-
-2. Usuyama et al., **ePillID Dataset: A Low-Shot Fine-Grained Benchmark for Pill Identification**, CVPR Workshops, 2020.  
-   https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
-
-3. Ling et al., **Few-Shot Pill Recognition**, CVPR, 2020.  
-   https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html
-
-4. Nguyen et al., **Multi-stream Fusion for Class Incremental Learning in Pill Image Classification**, ACCV, 2022.  
-   https://openaccess.thecvf.com/content/ACCV2022/html/Nguyen_Multi-stream_Fusion_for_Class_Incremental_Learning_in_Pill_Image_Classification_ACCV_2022_paper.html
-
-Detailed literature and methodology notes are maintained separately under `docs/literature-review/`.

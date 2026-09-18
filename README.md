@@ -149,7 +149,7 @@ Open `notebooks/acpds-paper-reproduction-kaggle.ipynb` in Kaggle, enable a GPU a
 
 ## Pivot history
 
-The repository explored UAV small-object detection and medication verification before settling on parking occupancy monitoring. Earlier files are retained as project history; they are not part of the active research scope.
+The repository explored UAV small-object detection and medication verification before settling on parking occupancy monitoring. Obsolete notebooks, proposals, and result artifacts have been removed from the active tree; they remain recoverable through Git history.
 
 ## Core external resources
 
@@ -157,4 +157,3 @@ The repository explored UAV small-object detection and medication verification b
 - [PKLot official dataset](https://web.inf.ufpr.br/vri/databases/parking-lot-database/)
 - [CNRPark+EXT paper and dataset record](https://openportal.isti.cnr.it/doc?id=people______::f0ae3d0d7a052b367753c8a217c77897)
 - [Systematic review of vision-based parking occupancy detection](https://arxiv.org/abs/2203.06463)
-
