@@ -6,7 +6,7 @@ This table contains **17 parking-specific papers** plus **5 general improvement-
 
 | # | Paper (year) | Focus | Dataset/code | How it informs this project | Priority |
 |---:|---|---|---|---|---|
-| 1 | [Image-Based Parking Space Occupancy Classification: Dataset and Baseline](https://arxiv.org/abs/2107.12207) (2021, preprint) | Compact occupancy dataset and CNN baseline | [Official repository](https://github.com/martin-marek/parking-space-occupancy) | First exact reproduction; understand unique-view splits and paper-to-code reproducibility | **Implement now** |
+| 1 | [Image-Based Parking Space Occupancy Classification: Dataset and Baseline](https://arxiv.org/abs/2107.12207) (2021, preprint) | Compact occupancy dataset and CNN baseline | [Official repository](https://github.com/martin-marek/parking-space-occupancy) | Reproduced in EXP-001: 97.99% pretrained and 97.72% independently trained test accuracy | **Reproduced** |
 | 2 | [PKLot—A robust dataset for parking lot classification](https://doi.org/10.1016/j.eswa.2015.02.009) (2015) | Large multi-lot, multi-weather occupancy benchmark | [Official dataset](https://web.inf.ufpr.br/vri/databases/parking-lot-database/) | Main dataset and weather-aware evaluation | **Read now** |
 | 3 | [Deep learning for decentralized parking lot occupancy detection](https://doi.org/10.1016/j.eswa.2016.10.055) (2017) | Decentralized CNN occupancy classification; CNRPark+EXT | [Paper/data record](https://openportal.isti.cnr.it/doc?id=people______::f0ae3d0d7a052b367753c8a217c77897) | External dataset and camera/weather domain shift | **Read now** |
 | 4 | [Vision-based parking lot occupancy detection methods: A systematic review](https://arxiv.org/abs/2203.06463) (2022) | Datasets, methods, evaluation weaknesses, open problems | Review | Establish research gap and avoid misleading frame-level splits | **Read now** |
@@ -96,4 +96,3 @@ Create notes using this template:
 - Verify reported dataset sizes against the downloaded files before using them in the thesis.
 - Do not copy headline accuracy without also recording the split and whether test scenes were independent.
 - A paper with code is easier to reproduce, but code availability does not guarantee a fair evaluation protocol.
-

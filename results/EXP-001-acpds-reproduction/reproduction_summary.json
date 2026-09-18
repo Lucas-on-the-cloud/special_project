@@ -1,0 +1,37 @@
+{
+  "paper": "Image-Based Parking Space Occupancy Classification: Dataset and Baseline",
+  "official_repository": "https://github.com/martin-marek/parking-space-occupancy",
+  "official_commit": "17da2c8b33055be8019483260f0efbcbdfda0478",
+  "dataset": "ACPDS / Action-Camera Parking Dataset",
+  "model": "RCNN_128_square",
+  "seed": 42,
+  "environment": {
+    "python": "3.12.13",
+    "pytorch": "2.10.0+cu128",
+    "torchvision": "0.25.0+cu128",
+    "gpu": "Tesla T4",
+    "cuda_capability": [
+      7,
+      5
+    ]
+  },
+  "pretrained_test": {
+    "loss": 0.16946686804294586,
+    "accuracy": 0.9798657894134521
+  },
+  "smoke_training": {
+    "epochs": 5,
+    "test": {
+      "loss": 0.0933869332075119,
+      "accuracy": 0.9644295573234558
+    }
+  },
+  "full_training": {
+    "epochs": 100,
+    "test": {
+      "loss": 0.17110233008861542,
+      "accuracy": 0.9771811962127686
+    }
+  },
+  "paper_reported_baseline": "approximately 98% accuracy on unseen parking lots"
+}

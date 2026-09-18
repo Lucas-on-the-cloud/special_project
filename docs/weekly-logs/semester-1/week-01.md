@@ -51,10 +51,11 @@ The project will run on Kaggle rather than the local Windows Python installation
 - [x] Created a complete Kaggle reproduction notebook.
 - [x] Catalogued 17 parking papers and 5 method-improvement papers.
 - [x] Catalogued 6 datasets and selected 3 for the main project.
-- [ ] Finish ACPDS dataset download/preparation.
-- [ ] Run pretrained evaluation and save actual metrics.
-- [ ] Complete the short smoke-training run.
-- [ ] Compare observed output with the paper/repository claim.
+- [x] Finished ACPDS dataset download/preparation.
+- [x] Evaluated the official pretrained model: **97.99% test accuracy**.
+- [x] Completed the five-epoch smoke run: **96.44% test accuracy**.
+- [x] Completed one 100-epoch `RCNN-128-square` run: **97.72% test accuracy**.
+- [x] Compared the result with the paper's `97.97 ± 0.07%` result for the same setting.
 
 ## Important correction to earlier assumptions
 
@@ -68,26 +69,30 @@ The ACPDS dataset contains only 293 source images, but the value of the paper is
 4. Dataset catalogue
 5. Method-improvement shortlist
 
-## Evidence still needed
+## EXP-001 result
 
-Do not fill in accuracy, loss, runtime, or reproduction success until the notebook cells have actually produced those values. Save:
+| Run | Epochs | Test loss | Test accuracy |
+|---|---:|---:|---:|
+| Official pretrained model | — | 0.1695 | **97.99%** |
+| Smoke training | 5 | 0.0934 | 96.44% |
+| Independent full training | 100 | 0.1711 | **97.72%** |
+| Paper, same configuration | 100 | — | **97.97 ± 0.07%** |
 
-- Kaggle hardware and package versions;
-- official Git commit;
-- downloaded dataset file counts;
-- pretrained evaluation metrics;
-- smoke-training log;
-- final confusion matrix and per-class metrics;
-- deviations from the official instructions.
+Environment: Python 3.12.13, PyTorch 2.10.0+cu128, Torchvision 0.25.0+cu128, Tesla T4, seed 42. Official repository commit: `17da2c8b33055be8019483260f0efbcbdfda0478`.
+
+The pretrained checkpoint almost exactly reproduces the paper result. The independently trained model is 0.25 percentage points below the reported mean. This is treated as a successful close reproduction, not an exact statistical replication, because only one seed was trained and the software environment differs from the original 2021 setup.
+
+The full run reached 100% training accuracy and 98.84% final validation accuracy. Validation loss was lowest at epoch 24 and increased later while validation accuracy remained high, so future experiments should preserve both the final checkpoint and the checkpoint with the best validation criterion.
+
+Compact logs, hashes, and learning curves are recorded in `experiments/EXP-001-acpds-reproduction/` and `results/EXP-001-acpds-reproduction/`. Model checkpoints and the 168 MB export archive are excluded from Git.
 
 ## Next action — one step at a time
 
-Run the ACPDS notebook through the dataset-preparation cell. Verify the discovered dataset paths and class counts before starting pretrained evaluation. If that cell succeeds, record its output here and continue to only the next evaluation cell.
+Start Week 2 by reading the ACPDS method/evaluation sections against the observed results, then define the first modern lightweight baseline. Do not begin robustness improvements until the dataset split and evaluation protocol are fixed.
 
 ## Week 2 preview
 
-- complete and document ACPDS reproduction;
+- use the completed ACPDS reproduction as the reference baseline;
 - read ACPDS, PKLot, CNRPark+EXT, and the systematic review in detail;
 - create a deterministic dataset manifest;
 - decide the first modern backbone only after the official baseline is understood.
-

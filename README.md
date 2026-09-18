@@ -6,7 +6,7 @@
 
 - **Stage:** Semester 1, Week 1
 - **Compute environment:** Kaggle notebooks only
-- **Current activity:** Reproducing the ACPDS paper baseline
+- **Current activity:** EXP-001 ACPDS reproduction completed; preparing the modern lightweight baseline
 - **Topic status:** Working direction; confirm the final wording with the advisor after the first cross-dataset experiment
 
 ## Problem statement
@@ -85,7 +85,7 @@ See [the paper table](docs/literature-review/paper-table.md) and [method-improve
 
 | ID | Experiment | Purpose |
 |---|---|---|
-| EXP-001 | Reproduce ACPDS official baseline | Verify data, training, and evaluation pipeline |
+| EXP-001 | Reproduce ACPDS official baseline | **Completed:** 97.99% pretrained / 97.72% independently trained test accuracy |
 | EXP-002 | ResNet18 / MobileNetV3 / EfficientNet-B0 | Establish modern lightweight baselines |
 | EXP-003 | Leave-one-parking-lot-out evaluation | Measure unseen-lot generalization |
 | EXP-004 | PKLot → CNRPark+EXT | Measure cross-dataset domain gap |
@@ -139,6 +139,8 @@ special_project/
 ## Reproduction notebook
 
 Open `notebooks/acpds-paper-reproduction-kaggle.ipynb` in Kaggle, enable a GPU accelerator, and run the cells in order. The notebook clones the official repository, checks the environment, downloads ACPDS, evaluates the pretrained model, provides a short smoke-training run, and exports the outputs.
+
+The completed run and compact artifacts are documented in [`experiments/EXP-001-acpds-reproduction`](experiments/EXP-001-acpds-reproduction/README.md). Large checkpoints are intentionally excluded from Git.
 
 ## Reproducibility rules
 
