@@ -1,182 +1,146 @@
 # Project Scope
 
-## Working Title
+## Working title
 
-**Prescription-Aware Multi-Pill Detection and Verification for Smart Medication Dispensing Systems**
+**Robust Vision-Based Parking Occupancy Monitoring Across Different Parking Lots and Weather Conditions**
 
-## Core Idea
+Alternative title after experiments:
 
-This project studies whether computer vision can act as a verification layer in a smart medication-dispensing workflow.
+**Cross-Domain Parking-Space Occupancy Classification with Weather- and Lighting-Aware Robustness**
 
-The intended logic is:
+## Application problem
 
-```text
-Electronic prescription
-        ↓
-Expected medication set
-        ↓
-Dispensed medication image
-        ↓
-AI detection / recognition / counting
-        ↓
-Detected medication set
-        ↓
-Expected vs detected comparison
-        ↓
-MATCH / MISMATCH
-```
+A fixed camera observes a parking area. The system receives predefined parking-space polygons, crops each space, classifies it as occupied or vacant, and produces a visual parking map plus the number of available spaces.
 
-The project does not attempt to diagnose disease, recommend treatment, or prescribe medication.
+The application is straightforward; the research problem is reliability when the environment changes.
 
----
+## Main research gap
 
-## Research Problem
+High within-dataset accuracy does not guarantee deployment reliability. Parking datasets contain sequences of highly similar frames, so random image-level splitting may place nearly identical scenes in both training and test sets. A useful project must evaluate unseen cameras/parking lots and weather/lighting shifts.
 
-Existing pill-recognition research shows that AI can identify medication images, but a smart dispensing system must answer a more safety-oriented question:
+## Research questions
 
-> **Does the medication physically dispensed match what was prescribed?**
+- **RQ1:** How large is the generalization gap between an in-domain split and an unseen-parking-lot or unseen-dataset test?
+- **RQ2:** Does weather- and lighting-aware augmentation reduce this gap?
+- **RQ3:** Which lightweight backbone gives the best accuracy–latency trade-off on the same evaluation protocol?
 
-This creates a verification problem involving both visual perception and structured prescription information.
+## Hypotheses
 
----
+- **H1:** Random frame-level splitting produces materially higher scores than parking-lot-separated evaluation.
+- **H2:** Weather/lighting augmentation improves macro F1 on unseen parking lots without a large in-domain accuracy loss.
+- **H3:** A lightweight backbone can provide application-ready throughput while retaining most of the robust model's accuracy.
 
-## Current Research Question
+## Contribution layers
 
-> **How reliably can a vision-based medication verification system detect dispensing errors by comparing multi-pill detections with an electronic prescription?**
+### 1. Reproducibility contribution
 
-### Candidate sub-questions
+- Reproduce the ACPDS baseline from its public repository.
+- Record code revision, environment, split, and discrepancies.
+- Supply a Kaggle notebook that another student can rerun.
 
-1. How accurately can different detection models identify and count pills in multi-pill images?
-2. How well can the system detect missing, extra, and incorrect medication?
-3. Which conditions most strongly increase false acceptance: occlusion, density, confidence threshold, or visually similar pills?
-4. Does using prescription context improve verification compared with vision-only prediction?
+### 2. Research contribution
 
----
+- Build a leakage-resistant cross-lot/cross-dataset benchmark.
+- Quantify domain shifts by lot, camera, weather, and lighting.
+- Compare a simple weather-aware baseline with selected robustness/domain-generalization methods.
+- Perform ablation studies so any improvement has an identifiable cause.
 
-## Data Strategy
+### 3. Application contribution
 
-The project should be reproducible using public datasets rather than private hospital or patient data.
+- Convert model predictions into an occupancy overlay and available-space count.
+- Benchmark latency, throughput, model size, and memory.
+- Demonstrate the system on held-out images or video.
 
-### Primary candidate
+## Main datasets
 
-**VAIPE**
+1. **ACPDS:** first reproduction and pipeline verification.
+2. **PKLot:** primary dataset because it includes multiple parking lots and weather categories.
+3. **CNRPark+EXT:** external dataset for cross-dataset evaluation.
 
-Reason:
+Tongji ps2.0, SNU, and SUPS are literature/future-work datasets for automatic parking-slot detection. They are not required for the core project.
 
-- multi-pill imagery
-- medication annotations
-- prescription-linked information
-- suitable for detection and verification experiments
+## Minimum viable capstone
 
-### Secondary candidates
+The project is complete at minimum when it contains:
 
-- ePillID
-- CURE
-- NLM / C3PI / RxIMAGE
+- one reproducible official baseline;
+- one modern lightweight baseline;
+- a leakage-resistant in-domain and cross-domain evaluation;
+- one justified robustness improvement;
+- an ablation and error analysis;
+- a working occupancy visualization;
+- a report that discusses accuracy–efficiency trade-offs and limitations.
 
-These may support fine-grained recognition, auxiliary evaluation, or pretraining.
+## Stretch goals
 
----
+- MixStyle feature-statistics domain generalization;
+- unsupervised Deep CORAL adaptation when unlabeled target images are available;
+- Tent test-time adaptation;
+- automatic slot localization using a separate detector.
 
-## Experimental Strategy
+Only one stretch method should be attempted at a time.
 
-### Phase 1 — Perception baseline
+## Explicit non-goals
 
-Train or evaluate a baseline multi-pill detector.
+- New end-to-end parking infrastructure or hardware
+- License-plate recognition
+- Payment/reservation systems
+- Multi-object tracking
+- Training a large foundation model
+- Solving occupancy classification and automatic slot localization simultaneously in the first semester
 
-Output:
+## Metrics
 
-```text
-pill class + bounding box + confidence
-```
+### Predictive performance
 
-### Phase 2 — Verification baseline
+- Accuracy and balanced accuracy
+- Macro F1
+- Occupied/vacant precision and recall
+- Confusion matrix
+- AUROC when probability calibration is meaningful
 
-Convert both prescription and detections into medication-count dictionaries.
+### Deployment performance
 
-Example:
+- Median and p95 latency
+- Crops/spaces processed per second
+- Model parameters and file size
+- Peak GPU memory
 
-```text
-Expected = {A: 2, B: 1, C: 1}
-Detected = {A: 2, B: 1, C: 1}
-```
+### Robustness breakdowns
 
-Then classify the event as valid or invalid.
+- Parking lot/camera
+- Sunny, cloudy, rainy, shadow, haze, and night when labels exist
+- In-domain versus unseen-lot versus unseen-dataset
 
-### Phase 3 — Controlled error simulation
+## Experimental controls
 
-Generate reproducible dispensing-error scenarios in software:
+- Use official sequence/parking-lot splits where available.
+- Never randomly mix adjacent frames across train and test.
+- Hold seeds, input resolution, training budget, and evaluation code constant in model comparisons.
+- Tune on validation data only; do not tune on CNRPark+EXT when it is the external test set.
+- Report mean and standard deviation over multiple seeds for the final experiments when compute permits.
 
-- missing medication
-- extra medication
-- wrong medication
-- multiple simultaneous errors
+## Decision gates
 
-### Phase 4 — Robustness evaluation
+| Gate | Evidence required | Decision |
+|---|---|---|
+| G1 | ACPDS notebook runs end to end | Move to modern baseline |
+| G2 | Cross-lot score is lower than in-domain score | Continue with robustness question |
+| G3 | Error breakdown shows weather/lighting sensitivity | Implement targeted augmentation |
+| G4 | Augmentation baseline is stable | Try AugMix or MixStyle |
+| G5 | Clear accuracy–latency candidate exists | Build application demo |
 
-Evaluate performance under difficult cases such as:
+## Risk and fallback plan
 
-- occlusion
-- pill overlap
-- high pill density
-- visually similar pills
-- lighting/background variation
-- different confidence thresholds
+| Risk | Fallback |
+|---|---|
+| Dataset download or format problems | Finish ACPDS reproduction and create deterministic loaders for PKLot |
+| Improvement does not outperform baseline | Report the negative result and analyze conditions/ablation |
+| Cross-dataset label mismatch | Map to the common occupied/vacant task and document exclusions |
+| Kaggle GPU time limits | Use frozen backbones, smaller input sizes, early smoke runs, and cached crops |
+| Automatic slot detection is too complex | Keep predefined polygons; automatic localization remains future work |
 
-### Phase 5 — Prescription-aware method
+## Scope freeze rule
 
-If supported by the literature and baseline results, develop a method that uses the prescription as contextual information to improve visual verification.
+Do not add detection, tracking, license plates, or IoT features before EXP-005 is complete. New ideas belong in a future-work list until the main research question has evidence.
 
----
-
-## Evaluation
-
-### Vision metrics
-
-- Precision
-- Recall
-- mAP@0.5
-- mAP@0.5:0.95
-- Per-class AP
-- Inference latency
-
-### Verification metrics
-
-- Verification accuracy
-- False Acceptance Rate (FAR)
-- False Rejection Rate (FRR)
-- Missing-pill detection rate
-- Extra-pill detection rate
-- Wrong-pill detection rate
-
-The project should pay particular attention to **False Acceptance Rate**, because this corresponds to an incorrect medication set being incorrectly accepted as valid.
-
----
-
-## Expected Deliverables
-
-By the end of the project, the target outputs are:
-
-1. A structured literature review.
-2. A reproducible public-dataset pipeline.
-3. A baseline multi-pill detector.
-4. A prescription-matching verification module.
-5. A dispensing-error simulation framework.
-6. Comparative and robustness experiments.
-7. Error analysis and ablation results.
-8. A final research report.
-9. A small demonstration interface or API if time permits.
-
----
-
-## Explicit Non-Goals
-
-This project will not claim:
-
-- clinical readiness
-- medical-device certification
-- diagnostic capability
-- treatment recommendation capability
-- safe deployment without pharmacist / clinician validation
-
-The output should be presented as an academic research prototype.

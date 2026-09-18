@@ -1,252 +1,97 @@
-# Dataset Resources
+# Parking Dataset Catalogue
 
-This file tracks **real, traceable dataset sources** for the medication-verification project.
+This catalogue separates datasets needed for the main occupancy-classification project from datasets useful only if automatic parking-slot localization becomes future work.
 
-The goal is to distinguish:
+## Recommended dataset stack
 
-- original / official sources
-- paper-associated downloads
-- mirrors or derivative repositories
+| Priority | Dataset | Task and approximate size | Conditions/labels | Planned role | Official source |
+|---:|---|---|---|---|---|
+| 1 | ACPDS | 293 parking-lot images with space polygons and occupied/vacant labels | Unique viewpoints; official train/validation/test organization | Paper reproduction and pipeline smoke test | [Paper](https://arxiv.org/abs/2107.12207), [code/data](https://github.com/martin-marek/parking-space-occupancy) |
+| 2 | PKLot | 12,417 full images and roughly 696k labeled parking-space crops | Three parking lots; sunny, cloudy, and rainy | Main training and leave-one-lot/weather benchmark | [Official dataset](https://web.inf.ufpr.br/vri/databases/parking-lot-database/), [paper](https://doi.org/10.1016/j.eswa.2015.02.009) |
+| 3 | CNRPark+EXT | Roughly 150k labeled patches from 164 spaces | Multiple viewpoints, weather, and illumination | External test and optional target-domain adaptation | [Paper/data record](https://openportal.isti.cnr.it/doc?id=people______::f0ae3d0d7a052b367753c8a217c77897) |
+| 4 | Tongji ps2.0 | 12,165 around-view images (9,827 train, 2,338 test) | Indoor/outdoor, rain, shadow, street light, slanted slots | Optional automatic slot-detection research | [DeepPS project and dataset](https://cslinzhang.github.io/deepps/) |
+| 5 | SNU Context-Based Parking Slot Dataset | 22,817 images | Realistic external conditions and parking-slot attributes | Optional context-aware slot detection | [Code/data](https://github.com/dohoseok/context-based-parking-slot-detect), [paper](https://doi.org/10.1109/ACCESS.2020.3024668) |
+| 6 | SUPS | Simulated underground parking, multi-sensor annotations | Low light, underground structure, synthetic variation | Optional synthetic pretraining/domain-shift study | [Paper](https://arxiv.org/abs/2302.12966), [code/data](https://github.com/jarvishou829/SUPS) |
 
-Do not treat a random re-upload as the canonical source unless the original source is unavailable.
+Sizes are approximate catalogue values. Record the exact downloaded version and file counts before reporting experiments.
 
----
+## Which datasets should actually be used?
 
-## 1. VAIPE — Primary Dataset Candidate
+### Semester 1
 
-### Why it is important
+1. Start with **ACPDS** because its paper, repository, labels, pretrained model, and training scripts form a compact reproduction target.
+2. Move to **PKLot** for the main experiments because parking-lot identity and weather categories support the research questions.
+3. Add **CNRPark+EXT** only after the PKLot baseline is deterministic. Treat it as an untouched external test set at first.
 
-VAIPE is currently the strongest candidate for this project because it was designed for **real-world multi-pill recognition** and is linked to prescription/context information.
+This is enough for a strong project. Do not download all six datasets immediately.
 
-Relevant paper:
+### Future work only
 
-- **High accurate and explainable multi-pill detection framework with graph neural network-assisted multimodal data fusion**
-- PLOS ONE, 2023
-- DOI: https://doi.org/10.1371/journal.pone.0291865
+Tongji ps2.0, SNU, and SUPS address parking-slot geometry/localization more directly. They become relevant only if predefined polygons are later removed from the application assumptions.
 
-### Dataset download
+## Evaluation protocols
 
-The paper's Data Availability section points to a public Kaggle release:
+### Protocol A — Official ACPDS reproduction
 
-- **VAIPE minimal dataset**  
-  https://www.kaggle.com/datasets/anhduy091100/vaipe-minimal-dataset
+- Use the repository's stated split and model configuration.
+- Record the official Git commit and any changes required for current Kaggle packages.
+- Compare pretrained evaluation with a short smoke-training run before a full run.
 
-### Additional project/resource page
+### Protocol B — PKLot leave-one-parking-lot-out
 
-VinUniversity Smart Health resource page:
+For each fold:
 
-- https://smarthealth.vinuni.edu.vn/resources/
+- train on two parking lots;
+- validate using held-out sequences from the training lots;
+- test once on the unseen third lot;
+- report per-lot and aggregate metrics.
 
-### Intended use in this project
+Do not randomly shuffle image crops across the entire dataset.
 
-- multi-pill object detection
-- medication classification
-- medication counting
-- prescription/context-aware verification
-- robustness analysis
+### Protocol C — Weather holdout
 
-### Important checks before training
+- Train on selected weather categories.
+- Test on a held-out weather category when the dataset distribution is sufficient.
+- Keep parking-lot and temporal leakage under control; weather alone is not a valid split if near-identical frames cross partitions.
 
-- inspect exact annotation format
-- verify class count and class mapping
-- confirm train/validation/test organization
-- inspect prescription-linked metadata
-- check license / redistribution terms on the download page
-- verify whether every image has prescription/context information or only a subset
+### Protocol D — Cross-dataset
 
----
+- Train and select hyperparameters on PKLot only.
+- Map labels to a shared binary occupied/vacant definition.
+- Evaluate the frozen model on CNRPark+EXT.
+- If adaptation is studied, separate the zero-shot result from results that used unlabeled target images.
 
-## 2. ePillID
+## Leakage checklist
 
-### Paper
+Before training, answer all of the following:
 
-- **ePillID Dataset: A Low-Shot Fine-Grained Benchmark for Pill Identification**
-- CVPR Workshops 2020
-- Paper: https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
+- Are neighboring frames from one video sequence present in different splits?
+- Does one physical parking space appear in both train and test under almost identical conditions?
+- Is the test parking lot unseen during training?
+- Were target-test labels used to tune thresholds or augmentation?
+- Are multiple crops from the same source frame grouped together?
 
-### Official benchmark repository
+If the answer to the first, second, or fifth question is “yes,” revise the split.
 
-- https://github.com/usuyama/ePillID-benchmark
+## Storage and repository policy
 
-The repository contains benchmark information and dataset-access instructions.
+- Datasets live in Kaggle inputs or `/kaggle/working`, never in Git.
+- Commit manifests, download instructions, split CSVs, and small metric files only.
+- Record dataset URL, license/terms, download date, archive checksum, extracted file count, and exclusions.
+- Do not redistribute a dataset unless its license explicitly allows it.
 
-### Why it is useful
+## Dataset manifest template
 
-- fine-grained pill identification
-- visually similar pill classes
-- low-shot / few-shot evaluation
-- reference-image vs consumer-image matching
-
-### Role in this project
-
-Likely a **secondary dataset**, useful for studying visually similar medications or as an auxiliary recognition benchmark rather than the main multi-pill verification dataset.
-
----
-
-## 3. CURE — Few-Shot Pill Recognition Dataset
-
-### Paper
-
-- **Few-Shot Pill Recognition**
-- CVPR 2020
-- Paper: https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html
-
-### Author repository
-
-- https://github.com/suiyiling/Few-shot-pill-recognition
-
-The repository contains code and dataset-download information associated with the paper.
-
-### Why it is useful
-
-- few-shot recognition
-- difficult fine-grained pill classes
-- varied imaging conditions
-- comparison with ePillID-style identification tasks
-
-### Role in this project
-
-Secondary benchmark for fine-grained recognition and generalization experiments.
-
----
-
-## 4. NLM C3PI / RxIMAGE
-
-### Official project/data source
-
-U.S. government Data.gov entry for the National Library of Medicine's **Computational Photography Project for Pill Identification (C3PI)**:
-
-- https://catalog.data.gov/dataset/computational-photography-project-for-pill-identification-c3pi
-
-### Related challenge paper
-
-- **The National Library of Medicine Pill Image Recognition Challenge: An Initial Report**
-- DOI: https://doi.org/10.1109/AIPR.2016.8010584
-
-### Why it is useful
-
-Historically one of the major pill-identification image resources. It is useful for:
-
-- reference pill images
-- consumer-quality pill images
-- pill-image retrieval / identification research
-- pretraining or auxiliary experiments
-
-### Important limitation
-
-The C3PI project is historical and is **not a current clinical drug database**. Drug identifiers or metadata should not be treated as current prescribing information.
-
-Use it as a **computer-vision research dataset**, not as an authoritative medication database.
-
----
-
-## 5. VAIPE-PCIL
-
-### Paper
-
-- **Multi-stream Fusion for Class Incremental Learning in Pill Image Classification**
-- ACCV 2022
-- Paper: https://openaccess.thecvf.com/content/ACCV2022/html/Nguyen_Multi-stream_Fusion_for_Class_Incremental_Learning_in_Pill_Image_Classification_ACCV_2022_paper.html
-
-### Code / dataset repository
-
-- https://github.com/vinuni-vishc/CG-IMIF
-
-### Why it is useful
-
-The dataset/repository is relevant if the project later studies **class-incremental learning**, i.e. adding new medication classes without retraining from scratch.
-
-This is not necessary for the first baseline.
-
----
-
-# Dataset Selection Recommendation
-
-## Primary
-
-**VAIPE**
-
-Use it first because the project is focused on:
-
-```text
-multiple pills
-+
-context / prescription information
-+
-verification
+```yaml
+name: PKLot
+source_url: https://web.inf.ufpr.br/vri/databases/parking-lot-database/
+downloaded_at: YYYY-MM-DD
+archive_sha256: ...
+full_images: ...
+space_crops: ...
+parking_lots: ...
+split_protocol: leave-one-parking-lot-out
+excluded_files: []
+notes: ...
 ```
 
-## Secondary
-
-**ePillID / CURE**
-
-Use these if the project needs deeper analysis of:
-
-- visually similar medications
-- few-shot recognition
-- low-shot generalization
-
-## Auxiliary
-
-**NLM C3PI / RxIMAGE**
-
-Potential use:
-
-- auxiliary pretraining
-- historical benchmark comparison
-- image retrieval experiments
-
----
-
-# What Not to Do
-
-Do not combine datasets immediately just because more images appear better.
-
-Different datasets may have incompatible:
-
-- medication identifiers
-- image domains
-- annotation formats
-- label definitions
-- class taxonomies
-- licensing terms
-
-First reproduce a clean baseline on **one primary dataset**.
-
-Recommended order:
-
-```text
-VAIPE inspection
-      ↓
-VAIPE baseline
-      ↓
-verification experiment
-      ↓
-identify limitation
-      ↓
-only then decide whether another dataset is needed
-```
-
----
-
-# Dataset Verification Checklist
-
-Before using any dataset in an experiment, record:
-
-```text
-Dataset name:
-Original source:
-Associated paper:
-Download URL:
-License / terms:
-Number of images:
-Number of classes:
-Single-pill or multi-pill:
-Annotation format:
-Prescription/context data available?:
-Official train/val/test split?:
-Known limitations:
-Date accessed:
-```
-
-This information should later be included in the methodology section of the final report.

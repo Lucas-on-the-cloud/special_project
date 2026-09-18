@@ -1,183 +1,99 @@
-# Literature Review Tracker
+# Literature Review: Parking Occupancy and Robustness
 
-Tentative topic:
+This table contains **17 parking-specific papers** plus **5 general improvement-method papers**. It is a research map, not a requirement to implement every paper.
 
-**Prescription-Aware Multi-Pill Detection and Verification for Smart Medication Dispensing Systems**
+## A. Parking-specific literature
 
-This file contains the first **15 verified core papers** for the project. Because the project will be developed largely independently, implementation priority is based not only on scientific relevance but also on **availability of code, public data, and reproducible instructions**.
+| # | Paper (year) | Focus | Dataset/code | How it informs this project | Priority |
+|---:|---|---|---|---|---|
+| 1 | [Image-Based Parking Space Occupancy Classification: Dataset and Baseline](https://arxiv.org/abs/2107.12207) (2021, preprint) | Compact occupancy dataset and CNN baseline | [Official repository](https://github.com/martin-marek/parking-space-occupancy) | First exact reproduction; understand unique-view splits and paper-to-code reproducibility | **Implement now** |
+| 2 | [PKLot—A robust dataset for parking lot classification](https://doi.org/10.1016/j.eswa.2015.02.009) (2015) | Large multi-lot, multi-weather occupancy benchmark | [Official dataset](https://web.inf.ufpr.br/vri/databases/parking-lot-database/) | Main dataset and weather-aware evaluation | **Read now** |
+| 3 | [Deep learning for decentralized parking lot occupancy detection](https://doi.org/10.1016/j.eswa.2016.10.055) (2017) | Decentralized CNN occupancy classification; CNRPark+EXT | [Paper/data record](https://openportal.isti.cnr.it/doc?id=people______::f0ae3d0d7a052b367753c8a217c77897) | External dataset and camera/weather domain shift | **Read now** |
+| 4 | [Vision-based parking lot occupancy detection methods: A systematic review](https://arxiv.org/abs/2203.06463) (2022) | Datasets, methods, evaluation weaknesses, open problems | Review | Establish research gap and avoid misleading frame-level splits | **Read now** |
+| 5 | [Real-time image-based parking occupancy detection using deep learning](https://ceur-ws.org/Vol-2087/paper5.pdf) (2018) | CNN features plus SVM; transfer evaluation | [Author code](https://github.com/debaditya-unimelb/real-time-car-parking-occupancy) | Early application-oriented transfer-learning baseline | Read next |
+| 6 | [Transfer Learning for Classification of Parking Spots Using Residual Networks](https://doi.org/10.1016/j.trpro.2019.07.184) (2019) | Residual-network transfer learning | PKLot/parking crops | Supports a modern ResNet baseline and limited-data setting | Read next |
+| 7 | [Parking Lot Occupancy Detection with Improved MobileNetV3](https://doi.org/10.3390/s23177642) (2023) | Lightweight classifier for deployment | Parking occupancy datasets | Backbone/efficiency comparison; consult the [published correction](https://www.mdpi.com/1424-8220/24/16/5236) | Read next |
+| 8 | [Smart Parking Space Detection under Hazy Conditions](https://arxiv.org/abs/2201.05858) (2022, preprint) | Haze-aware parking occupancy | Parking images under degraded visibility | Condition-specific robustness and error categories | Read next |
+| 9 | [Generalized parking occupancy analysis based on dilated CNN](https://doi.org/10.3390/s19020277) (2019) | Generalized occupancy classification with dilated convolutions | PKLot/CNRPark-style benchmarks | Compare claimed generalization with our cross-lot protocol | Later |
+| 10 | [Car parking occupancy detection using smart camera networks and deep learning](https://doi.org/10.1109/ISCC.2016.7543901) (2016) | Smart-camera network and CNN application | CNRPark lineage | System architecture and edge-deployment context | Later |
+| 11 | [A visual sensor network for parking lot occupancy detection in smart cities](https://doi.org/10.1109/WF-IoT.2015.7389147) (2015) | Distributed visual sensing for smart parking | Camera network | Application motivation and system constraints | Later |
+| 12 | [Automated Parking Space Detection Using Convolutional Neural Networks](https://arxiv.org/abs/2106.07228) (2021, preprint) | Occupancy classification with saved parking polygons | Public implementation described in paper | Confirms the practical predefined-polygon pipeline | Later |
+| 13 | [Automatic Vision-Based Parking Slot Detection and Occupancy Classification](https://arxiv.org/abs/2308.08192) (2023) | Automatic slot localization plus ResNet occupancy classification | PKLot, CNRPark+EXT | Future removal of predefined polygons; not Semester 1 core | Future work |
+| 14 | [Vehicle Occurrence-Based Parking Space Detection](https://arxiv.org/abs/2306.09940) (2023) | Learns slot coordinates from repeated vehicle occurrences | Vehicle instance segmentation/heatmaps | Application extension using historical camera footage | Future work |
+| 15 | [DMPR-PS: A Novel Approach for Parking-Slot Detection Using Directional Marking-Point Regression](https://github.com/Teoge/DMPR-PS) (2019) | Directional marking-point regression | Official code; ps2.0 | Strong reference for automatic slot geometry | Future work |
+| 16 | [Vision-Based Parking-Slot Detection: A DCNN-Based Approach and a Large-Scale Benchmark Dataset](https://cslinzhang.github.io/deepps/) (2018) | DeepPS detector and Tongji ps2.0 benchmark | Project page and dataset | Benchmark for around-view slot detection under varied conditions | Future work |
+| 17 | [Context-Based Parking Slot Detection With a Realistic Dataset](https://doi.org/10.1109/ACCESS.2020.3024668) (2020) | Context-aware slot detection and SNU dataset | [Official code/data](https://github.com/dohoseok/context-based-parking-slot-detect) | Realistic slot attributes/conditions for future extension | Future work |
 
-> For implementation work, prefer: **official code + public data + runnable instructions**. Papers without code remain useful for background, architecture, and research-gap analysis.
+Additional optional automatic-slot references:
 
-See also: [`reproducibility-priority.md`](reproducibility-priority.md)
+- [End-to-End Trainable One-Stage Parking Slot Detection Integrating Global and Local Information](https://arxiv.org/abs/2003.02445)
+- [Attentional Graph Neural Network for Parking-Slot Detection](https://arxiv.org/abs/2104.02576) and [official code](https://github.com/Jiaolong/gcn-parking-slot)
+- [SUPS: A Simulated Underground Parking Scenario Dataset](https://arxiv.org/abs/2302.12966) and [data/code](https://github.com/jarvishou829/SUPS)
+- [Parking Slot Detection on Around-View Images Using DCNN](https://www.frontiersin.org/journals/neurorobotics/articles/10.3389/fnbot.2020.00046/full)
 
----
+## B. Five general method-improvement papers
 
-## Core Papers and Reproducibility Priority
+| # | Paper (year) | Method type | Proposed use | Code | Priority |
+|---:|---|---|---|---|---|
+| M1 | [RandAugment: Practical Automated Data Augmentation with a Reduced Search Space](https://arxiv.org/abs/1909.13719) (2020) | Generic augmentation | Low-cost augmentation baseline | `torchvision.transforms.RandAugment` | **Implement** |
+| M2 | [AugMix: A Simple Data Processing Method to Improve Robustness and Uncertainty](https://arxiv.org/abs/1912.02781) (2020) | Corruption robustness/consistency | Weather and image-corruption robustness | [Official code](https://github.com/google-research/augmix) | **Implement** |
+| M3 | [Domain Generalization with MixStyle](https://arxiv.org/abs/2104.02008) (2021) | Feature-level domain generalization | Generalize across camera/background/weather styles | [Official code](https://github.com/KaiyangZhou/mixstyle-release) | Implement after baseline |
+| M4 | [Deep CORAL: Correlation Alignment for Deep Domain Adaptation](https://arxiv.org/abs/1607.01719) (2016) | Unsupervised domain adaptation | Adapt with unlabeled target-lot images | Straightforward loss; community implementations | Optional |
+| M5 | [Tent: Fully Test-Time Adaptation by Entropy Minimization](https://arxiv.org/abs/2006.10726) (2021) | Test-time adaptation | Adapt to target camera/weather batches at deployment | [Official code](https://github.com/DequanWang/tent) | Optional |
 
-| # | Paper | Year | Role | Reproducibility | Code / data | Priority |
-|---:|---|---:|---|---|---|---|
-| 1 | [A Comprehensive Review of Pill Image Recognition](https://doi.org/10.32604/cmc.2025.060793) | 2025 | Field overview | Review only | Reviews NLM, ePillID, CURE, VAIPE, VAIPE-PCIL | High for reading |
-| 2 | [High accurate and explainable multi-pill detection framework with graph neural network-assisted multimodal data fusion](https://doi.org/10.1371/journal.pone.0291865) | 2023 | Primary VAIPE / prescription-context paper | **Public data; official PGPNet code not confirmed** | [VAIPE dataset](https://www.kaggle.com/datasets/anhduy091100/vaipe-minimal-dataset) | **Very high for problem/data; medium for reproduction** |
-| 3 | [ePillID Dataset: A Low-Shot Fine-Grained Benchmark for Pill Identification](https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html) | 2020 | Fine-grained benchmark | **Excellent** | [Official repo: code + data + tutorial](https://github.com/usuyama/ePillID-benchmark) | **Very high for reproduction** |
-| 4 | [Few-Shot Pill Recognition](https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html) | 2020 | CURE benchmark / robustness | Good for dataset; implementation support is more limited | [Author repo + CURE data](https://github.com/suiyiling/Few-shot-pill-recognition) | High for data, medium for reproduction |
-| 5 | [The National Library of Medicine Pill Image Recognition Challenge: An Initial Report](https://doi.org/10.1109/AIPR.2016.8010584) | 2016/2017 | Benchmark history | Public government data | [C3PI / RxIMAGE data](https://catalog.data.gov/dataset/computational-photography-project-for-pill-identification-c3pi) | Medium |
-| 6 | [Development of fine-grained pill identification algorithm using deep convolutional network](https://doi.org/10.1016/j.jbi.2017.09.005) | 2017 | Historical fine-grained method | Code not prioritized | Paper datasets / method description | Background |
-| 7 | [An Accurate Deep Learning-Based System for Automatic Pill Identification: Model Development and Validation](https://doi.org/10.2196/41043) | 2023 | Visual + imprint identification | Partial reproducibility | Uses open medication databases | Background / method ideas |
-| 8 | [Effects of Background Colors, Flashes, and Exposure Values on the Accuracy of a Smartphone-Based Pill Recognition System Using a Deep Convolutional Neural Network](https://doi.org/10.2196/26000) | 2021 | Robustness study | Method reproducible conceptually; exact setup custom | Experimental study | High for experiment design |
-| 9 | [Multi-stream Fusion for Class Incremental Learning in Pill Image Classification](https://openaccess.thecvf.com/content/ACCV2022/html/Nguyen_Multi-stream_Fusion_for_Class_Incremental_Learning_in_Pill_Image_Classification_ACCV_2022_paper.html) | 2022 | VAIPE-derived continual learning | **Excellent** | [Official CG-IMIF code + VAIPE-PCIL](https://github.com/vinuni-vishc/CG-IMIF) | **Very high for reproduction** |
-| 10 | [Enhanced Multi-Pill Detection and Recognition Using VFI Augmentation and Auto-Labeling for Limited Single-Pill Data](https://doi.org/10.1109/ACCESS.2025.3557569) | 2025 | Recent multi-pill detection | Code not yet confirmed | See paper | Background unless code is found |
-| 11 | [Code-Based Versus AutoML Methods for Pill Recognition in Clinical Settings: Comparative Performance Study](https://doi.org/10.2196/79160) | 2026 | Clinical YOLO11 evaluation | Model framework is public; clinical data not fully public | YOLO11 + AutoML | High for model/evaluation ideas |
-| 12 | [A hybrid framework for pill identification using convolutional neural networks and optical character recognition](https://doi.org/10.1007/s44163-026-01405-x) | 2026 | CNN + OCR | Uses public datasets; exact code availability not prioritized | C3PI, ePillID and other public sets | Medium |
-| 13 | [Design and Validation of a Cyber-Physical Medication Dispensing Platform Integrating Edge AI Verification, Distributed Control, and Cloud Synchronization](https://doi.org/10.3390/s26123823) | 2026 | Closest end-to-end smart dispenser | Custom system/data | No implementation target | **Very high for architecture, low for reproduction** |
-| 14 | [Design and Implementation of a Smart Medication Dispensing System with Visual and Weight-Based Verification for Patient Safety](https://doi.org/10.1109/ELECO69582.2025.11329260) | 2025 | Vision + weight verification | Custom prototype | Custom data | Architecture reference |
-| 15 | [A Vision-Guided, IoT-Integrated Pill Dispensing System for Intelligent Medication Adherence](https://doi.org/10.1109/EDCT65302.2025.11495984) | 2025 | Vision + IoT dispenser | Custom prototype | Custom data | Architecture reference |
+See [method-improvement.md](method-improvement.md) for assumptions and a fair experimental sequence.
 
----
+## Reading order
 
-## Recommended Reproduction Path
+### Week 1: establish the problem
 
-The project should **not** attempt to reproduce all 15 papers.
+1. ACPDS: read Abstract, Introduction, Dataset, Experimental Setup, Results, and repository README.
+2. Systematic review: focus on datasets, evaluation practices, limitations, and future work.
+3. PKLot: understand parking lots, weather categories, annotations, and official organization.
+4. CNRPark+EXT: understand cameras, patches, conditions, and intended decentralized deployment.
 
-A practical independent-development path is:
+### Week 2: establish modern application baselines
 
-### Reproduction 1 — ePillID
+5. Real-time occupancy detection.
+6. Residual-network transfer learning.
+7. Improved MobileNetV3, including its correction.
+8. Hazy-condition parking detection.
 
-Use the official ePillID repository to understand:
+### After the domain gap is measured
 
-- environment setup,
-- dataset loading,
-- published training/evaluation workflow,
-- fine-grained medication recognition,
-- reproducible research organization.
+9. RandAugment and AugMix.
+10. MixStyle.
+11. Deep CORAL or Tent only if deployment assumptions justify target-domain access.
 
-Repository:
-https://github.com/usuyama/ePillID-benchmark
+Automatic slot-detection papers are for Related Work and future scope; they should not delay the occupancy baseline.
 
-### Reproduction 2 — VAIPE-related code
+## Paper-review template
 
-Use VAIPE as the main capstone dataset but start with a **standard, maintained detector** such as Ultralytics YOLO rather than rebuilding PGPNet without official code.
+Create notes using this template:
 
-```text
-VAIPE dataset
-    ↓
-YOLO baseline
-    ↓
-Detection + counting
-    ↓
-Prescription matching
-    ↓
-Verification metrics
+```markdown
+# Paper title
+
+- Citation / link:
+- Research problem:
+- Dataset and split:
+- Input and labels:
+- Baseline:
+- Proposed method:
+- Metrics:
+- Main result:
+- Code/checkpoint available:
+- Reproducibility concerns:
+- Limitation or gap:
+- How this affects our project:
+- One experiment inspired by the paper:
 ```
 
-A community VAIPE challenge implementation can be used only as an engineering reference:
+## Evidence rules
 
-https://github.com/lynguyenminh/VAIPE2022.Medicine-Pill-Image-Recognition
+- Distinguish peer-reviewed articles from preprints.
+- Prefer official project pages, publisher/DOI pages, and author repositories.
+- Verify reported dataset sizes against the downloaded files before using them in the thesis.
+- Do not copy headline accuracy without also recording the split and whether test scenes were independent.
+- A paper with code is easier to reproduce, but code availability does not guarantee a fair evaluation protocol.
 
-It should **not** be described as the official PGPNet implementation.
-
-### Reproduction 3 — CG-IMIF
-
-Use the official CG-IMIF repository as a second example of a reproducible VAIPE-related research pipeline:
-
-https://github.com/vinuni-vishc/CG-IMIF
-
-This is optional unless continual/class-incremental learning becomes relevant to the final research question.
-
----
-
-## Baseline Technology Policy
-
-For implementation, prefer mature frameworks with strong documentation.
-
-### Primary baseline
-
-**Ultralytics YOLO**
-
-Why:
-
-- simple Kaggle/Colab workflow,
-- maintained public implementation,
-- standard detection metrics,
-- easy dataset conversion,
-- pretrained weights,
-- straightforward inference and visualization.
-
-### Secondary baseline
-
-**RT-DETR** or another public detector may be added after the YOLO baseline is stable.
-
-Do not spend several weeks implementing a complex detector from a paper before the complete baseline/evaluation pipeline works.
-
----
-
-## Reading Order
-
-### Stage 1 — Define the problem
-
-1. Review paper (#1)
-2. VAIPE / PGPNet (#2)
-3. Cyber-physical dispenser (#13)
-
-### Stage 2 — Read papers you can actually reproduce
-
-4. ePillID (#3) + run official code
-5. CURE (#4) + inspect dataset
-6. CG-IMIF (#9) + inspect/run official code
-
-### Stage 3 — Design experiments
-
-7. Capture robustness paper (#8)
-8. Clinical YOLO11 paper (#11)
-9. Recent multi-pill detection paper (#10)
-
-### Stage 4 — System/background reading
-
-10. Smart dispenser papers (#14, #15)
-11. Other identification/OCR papers as needed
-
----
-
-## Paper Selection Checklist
-
-Before making a paper an implementation priority:
-
-- [ ] Official/author-maintained repository exists
-- [ ] Public dataset is accessible
-- [ ] Training instructions exist
-- [ ] Dependency/environment instructions exist
-- [ ] Pretrained weights exist, if applicable
-- [ ] Evaluation code exists
-- [ ] Runnable on Kaggle / Colab / available GPU
-- [ ] License permits academic use
-
-Papers satisfying most of these conditions should be implemented before papers that require full reimplementation from scratch.
-
----
-
-## Detailed Review Table
-
-| Paper | Task | Dataset | Code status | Can reproduce? | Main metric | Key result | Failure case | Useful idea / gap |
-|---|---|---|---|---|---|---|---|---|
-| #1 Review |  |  | N/A | N/A |  |  |  |  |
-| #2 VAIPE / PGPNet |  |  | Data public; official method code not confirmed | Partial |  |  |  |  |
-| #3 ePillID |  |  | Official | Yes |  |  |  |  |
-| #4 CURE |  |  | Author repo/data | Partial |  |  |  |  |
-| #5 NLM Challenge |  |  | Public data | Baseline possible |  |  |  |  |
-| #6 Fine-grained DCN |  |  | Not priority |  |  |  |  |  |
-| #7 Automatic Pill ID |  |  | Partial |  |  |  |  |  |
-| #8 Capture Robustness |  |  | Custom experiment | Conceptually |  |  |  |  |
-| #9 CG-IMIF |  |  | Official | Yes |  |  |  |  |
-| #10 Multi-Pill + VFI |  |  | To verify |  |  |  |  |  |
-| #11 Clinical YOLO11 |  |  | Framework public, data limited | Partial |  |  |  |  |
-| #12 CNN + OCR |  |  | To verify |  |  |  |  |  |
-| #13 Edge-AI Dispenser |  |  | Custom | No need |  |  |  |  |
-| #14 Vision + Weight |  |  | Custom | No need |  |  |  |  |
-| #15 Vision + IoT |  |  | Custom | No need |  |  |  |  |
-
----
-
-## Project Rule
-
-> **A working, measurable baseline is more valuable than spending weeks recreating an undocumented research implementation.**
-
-The intended contribution should not be merely “use YOLO to recognize pills.” The stronger direction remains **prescription-aware multi-pill verification and dispensing-error detection**, built on reproducible components.

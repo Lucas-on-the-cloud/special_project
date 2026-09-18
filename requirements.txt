@@ -1,0 +1,15 @@
+# Kaggle already provides many of these packages. Pin exact versions only after
+# the first reproducible baseline is complete and its environment is recorded.
+torch
+torchvision
+numpy
+pandas
+matplotlib
+scikit-learn
+opencv-python-headless
+albumentations
+tqdm
+requests
+Pillow
+streamlit
+

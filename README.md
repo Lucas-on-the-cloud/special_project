@@ -1,447 +1,160 @@
-# AI-Assisted Medication Verification for Smart Prescription Dispensing
+# Robust Vision-Based Parking Occupancy Monitoring
 
-## Overview
+> An application-oriented capstone project on parking-space occupancy classification that remains reliable across different parking lots, cameras, weather, and lighting conditions.
 
-This repository documents the development of my undergraduate **Special Project / Capstone Project**.
+## Project status
 
-The project is a **6-credit research project conducted over one academic year**:
+- **Stage:** Semester 1, Week 1
+- **Compute environment:** Kaggle notebooks only
+- **Current activity:** Reproducing the ACPDS paper baseline
+- **Topic status:** Working direction; confirm the final wording with the advisor after the first cross-dataset experiment
 
-- Semester 1: 3 credits, 18 weeks
-- Semester 2: 3 credits, 18 weeks
-- Total duration: 36 weeks
+## Problem statement
 
-The current research direction focuses on **computer-vision-based medication verification for smart dispensing systems**. The central idea is to compare the medications detected in an image with the medications expected from an electronic prescription and determine whether the dispensing event is correct.
+Most public parking-occupancy models report strong results when training and testing on frames from the same parking lot. This can overestimate real-world performance because nearby video frames share the same camera, background, weather, and parked vehicles. This project studies whether a model trained on one set of parking lots can generalize to an unseen lot and to different weather or lighting conditions.
 
-> **Project status:** research direction recently pivoted from UAV small-object detection to medication verification. The topic is still tentative and will be refined through literature review and baseline experiments.
+The initial system assumes that parking-space polygons are already known. Each polygon is cropped from a fixed-camera image and classified as **occupied** or **vacant**.
 
----
+## Application workflow
 
-## Tentative Research Topic
-
-**Prescription-Aware Multi-Pill Detection and Verification for Smart Medication Dispensing Systems**
-
-Alternative working title:
-
-**AI-Assisted Medication Verification for Smart Prescription Dispensing**
-
-The project does **not** aim to let AI prescribe medication or make clinical decisions. AI is used as an independent visual verification layer after a prescription has already been created.
-
----
-
-## Research Motivation
-
-A smart medication dispenser can retrieve a prescription and mechanically dispense medicine, but a complete system also needs a way to verify that the physical output matches the prescription.
-
-A possible workflow is:
-
-```text
-Patient / Prescription ID
-          ↓
-Electronic Prescription
-          ↓
-Expected Medication List
-          ↓
-Smart Dispensing Process
-          ↓
-Camera Image of Dispensed Pills
-          ↓
-Computer Vision Model
-          ↓
-Detected Medication + Quantity
-          ↓
-Expected vs Detected Comparison
-          ↓
-     MATCH / MISMATCH
+```mermaid
+flowchart LR
+    A[Fixed parking camera] --> B[Known space polygons]
+    B --> C[Crop each space]
+    C --> D[Occupied / vacant classifier]
+    D --> E[Map overlay and availability count]
 ```
 
-The research focus is therefore not simply *"Can a model recognize pills?"* but rather:
+## Research questions
 
-> **How reliably can a vision-based verification system detect medication dispensing errors by comparing multi-pill detections with an electronic prescription?**
+1. How much does performance decrease when the test parking lot or dataset is unseen during training?
+2. Can weather- and lighting-aware augmentation improve cross-lot and cross-dataset generalization?
+3. Which lightweight backbone provides the best accuracy–latency trade-off for a practical parking-monitoring application?
 
-This creates a research problem that combines:
+## Tentative contributions
 
-- Multi-pill object detection
-- Fine-grained visual recognition
-- Medication counting
-- Prescription-aware verification
-- Dispensing-error detection
-- Safety-oriented evaluation
+1. A reproducible evaluation protocol that separates parking lots/cameras and prevents adjacent-frame data leakage.
+2. An empirical study of weather- and lighting-aware augmentation for unseen parking lots.
+3. A lightweight end-to-end prototype that reports occupancy, latency, throughput, and model size—not accuracy alone.
 
----
+The project does **not** need a new neural-network architecture to be a valid undergraduate contribution. A carefully designed benchmark, a justified improvement, honest ablations, and a working application are sufficient.
 
-## Research Questions
-
-### RQ1
-How accurately can modern object-detection models identify and count multiple medications in a single image?
-
-### RQ2
-How reliably can the system detect simulated dispensing errors such as missing, extra, and incorrect medication?
-
-### RQ3
-How do confidence thresholds, occlusion, pill density, lighting, and visually similar medications affect verification performance?
-
-### RQ4
-Can prescription information be used as contextual information to reduce medication-verification errors compared with vision-only prediction?
-
-RQ4 is exploratory and may be refined after the baseline experiments.
-
----
-
-## Project Scope
+## Scope
 
 ### In scope
 
-- Public medication-image datasets
-- Multi-pill detection and classification
-- Medication counting
-- Electronic-prescription representation
-- Prescription-to-image matching
-- Simulated dispensing-error generation
-- Comparison of computer vision models
-- Error analysis and robustness experiments
-- Prototype verification API or dashboard if time permits
+- Image-based occupied/vacant classification
+- Fixed cameras and predefined parking-space polygons
+- Cross-parking-lot and cross-dataset evaluation
+- Weather and lighting robustness
+- Lightweight CNN comparison
+- Kaggle training and evaluation
+- Image/video overlay prototype and occupancy statistics
 
-### Out of scope
+### Out of scope for the first version
 
-- AI-generated prescriptions
-- Diagnosis or treatment recommendation
-- Clinical deployment
-- Testing on real patients
-- Hospital information-system integration
-- Claims that the prototype is a certified medical device
+- License-plate recognition, payment, reservations, or user accounts
+- Vehicle tracking
+- IoT sensor fusion
+- Fully automatic parking-slot localization
 
-Because access to real clinical dispensing data is limited, the research will primarily use **public datasets and reproducible simulated dispensing scenarios**.
+Automatic slot localization may become future work only after the classification pipeline is reliable.
 
----
+## Datasets
 
-## Verified Research Resources
+| Role | Dataset | Planned use |
+|---|---|---|
+| Reproduction | ACPDS | Reproduce the official image-based baseline and verify the pipeline |
+| Main benchmark | PKLot | Weather-aware training and parking-lot-separated evaluation |
+| External test | CNRPark+EXT | Measure cross-dataset generalization |
+| Optional future work | Tongji ps2.0, SNU, SUPS | Automatic parking-slot detection/localization |
 
-Detailed paper tracking:
+See [the dataset catalogue](docs/literature-review/datasets.md) for sizes, labels, sources, and limitations.
 
-- [`docs/literature-review/paper-table.md`](docs/literature-review/paper-table.md)
+## Literature map
 
-Verified dataset links and source notes:
+The repository currently tracks:
 
-- [`docs/literature-review/datasets.md`](docs/literature-review/datasets.md)
+- **17 parking-specific papers** covering occupancy classification, transfer learning, robustness, automatic slot detection, and surveys.
+- **5 improvement-method papers** covering RandAugment, AugMix, MixStyle, Deep CORAL, and Tent.
+- **6 candidate datasets**, with only three selected for the main experiments.
 
-### Highest-priority papers
+See [the paper table](docs/literature-review/paper-table.md) and [method-improvement plan](docs/literature-review/method-improvement.md).
 
-1. [A Comprehensive Review of Pill Image Recognition](https://doi.org/10.32604/cmc.2025.060793)
-2. [High accurate and explainable multi-pill detection framework with graph neural network-assisted multimodal data fusion](https://doi.org/10.1371/journal.pone.0291865)
-3. [ePillID Dataset: A Low-Shot Fine-Grained Benchmark for Pill Identification](https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html)
-4. [Few-Shot Pill Recognition](https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html)
-5. [Design and Validation of a Cyber-Physical Medication Dispensing Platform Integrating Edge AI Verification, Distributed Control, and Cloud Synchronization](https://doi.org/10.3390/s26123823)
-6. [Code-Based Versus AutoML Methods for Pill Recognition in Clinical Settings: Comparative Performance Study](https://doi.org/10.2196/79160)
+## Experiment roadmap
 
-### Verified datasets
+| ID | Experiment | Purpose |
+|---|---|---|
+| EXP-001 | Reproduce ACPDS official baseline | Verify data, training, and evaluation pipeline |
+| EXP-002 | ResNet18 / MobileNetV3 / EfficientNet-B0 | Establish modern lightweight baselines |
+| EXP-003 | Leave-one-parking-lot-out evaluation | Measure unseen-lot generalization |
+| EXP-004 | PKLot → CNRPark+EXT | Measure cross-dataset domain gap |
+| EXP-005 | Weather/lighting augmentation | Test the main practical improvement |
+| EXP-006 | RandAugment and AugMix | Compare general-purpose robustness methods |
+| EXP-007 | MixStyle | Test feature-statistics domain generalization |
+| EXP-008 | Deep CORAL or Tent (optional) | Test adaptation only if a clear domain gap exists |
+| EXP-009 | Accuracy–efficiency comparison | Latency, throughput, memory, and model size |
+| EXP-010 | Application demo | Parking overlay and available-space count |
 
-#### VAIPE — primary candidate
+## Evaluation protocol
 
-- Associated paper: https://doi.org/10.1371/journal.pone.0291865
-- Public dataset linked by the paper: https://www.kaggle.com/datasets/anhduy091100/vaipe-minimal-dataset
-- VinUniversity Smart Health resource page: https://smarthealth.vinuni.edu.vn/resources/
+Report accuracy, balanced accuracy, macro F1, per-class precision/recall, confusion matrix, inference latency, spaces per second, model size, and peak memory.
 
-#### ePillID
+**Critical rule:** split by parking lot, camera, capture session, or official sequence—not by randomly shuffling adjacent frames. Near-duplicate frames in train and test would produce misleadingly high results.
 
-- Paper: https://openaccess.thecvf.com/content_CVPRW_2020/html/w54/Usuyama_ePillID_Dataset_A_Low-Shot_Fine-Grained_Benchmark_for_Pill_Identification_CVPRW_2020_paper.html
-- Official benchmark repository: https://github.com/usuyama/ePillID-benchmark
+## Semester 1 plan
 
-#### CURE
+| Week | Milestone |
+|---:|---|
+| 01 | Confirm scope, catalogue literature/datasets, run ACPDS notebook |
+| 02 | Finish ACPDS reproduction and document reproducibility gaps |
+| 03 | Prepare PKLot and reproduce a modern lightweight baseline |
+| 04 | Establish parking-lot-separated evaluation |
+| 05 | Run first PKLot → CNRPark+EXT experiment |
+| 06 | Analyze errors by weather, illumination, and camera |
+| 07–08 | Implement weather/lighting augmentation baseline |
+| 09–10 | Compare RandAugment and AugMix |
+| 11–12 | Evaluate MixStyle; decide whether adaptation is justified |
+| 13–14 | Efficiency benchmark and ablations |
+| 15–16 | Build application prototype |
+| 17–18 | Consolidate results and write Semester 1 report |
 
-- Paper: https://openaccess.thecvf.com/content_CVPR_2020/html/Ling_Few-Shot_Pill_Recognition_CVPR_2020_paper.html
-- Author repository / data instructions: https://github.com/suiyiling/Few-shot-pill-recognition
-
-#### NLM C3PI / RxIMAGE
-
-- Official U.S. government dataset page: https://catalog.data.gov/dataset/computational-photography-project-for-pill-identification-c3pi
-- Challenge paper: https://doi.org/10.1109/AIPR.2016.8010584
-
----
-
-## Primary Dataset Direction
-
-The current primary candidate is **VAIPE**, because it is particularly relevant to the proposed research problem. It supports multi-pill recognition and is associated with prescription/context information, making it more suitable for medication-verification research than a standard single-pill classification dataset.
-
-Before training, the project will explicitly verify:
-
-- annotation format
-- exact class mapping
-- dataset split
-- prescription/context fields
-- licensing / usage terms
-- whether context information covers the full dataset or only a subset
-
-Secondary datasets such as ePillID, CURE, and NLM C3PI will only be introduced if they answer a specific research need such as fine-grained recognition, low-shot learning, or auxiliary pretraining.
-
----
-
-## Proposed Research Workflow
-
-```text
-Literature Review
-       ↓
-Problem Definition
-       ↓
-Dataset Selection & Exploration
-       ↓
-Baseline Multi-Pill Detector
-       ↓
-Detection Error Analysis
-       ↓
-Prescription-Matching Baseline
-       ↓
-Synthetic Dispensing-Error Generator
-       ↓
-Verification Experiments
-       ↓
-Robustness / Model Comparison
-       ↓
-Prescription-Aware Method Development
-       ↓
-Ablation & Error Analysis
-       ↓
-Final Evaluation
-       ↓
-Report & Presentation
-```
-
----
-
-## Planned Experiments
-
-| Experiment | Description | Status |
-| --- | --- | --- |
-| `EXP-001` | Baseline multi-pill detection on the selected public dataset | Planned |
-| `EXP-002` | Prescription-to-detection matching baseline | Planned |
-| `EXP-003` | Simulated missing / extra / wrong-pill error detection | Planned |
-| `EXP-004` | Model and confidence-threshold comparison | Planned |
-| `EXP-005` | Robustness analysis: occlusion, density, lighting, similar pills | Planned |
-| `EXP-006` | Prescription-aware verification method | Tentative |
-
-Each experiment should record:
-
-- Research hypothesis
-- Dataset and split
-- Model and weights
-- Training configuration
-- Evaluation metrics
-- Random seed where applicable
-- Hardware and software environment
-- Results
-- Failure cases
-- Interpretation
-- Conclusion
-
----
-
-## Evaluation Metrics
-
-### Object detection
-
-- Precision
-- Recall
-- mAP@0.5
-- mAP@0.5:0.95
-- Per-class AP
-- Inference latency
-
-### Medication verification
-
-- Verification accuracy
-- Dispensing-error detection rate
-- False Acceptance Rate (FAR)
-- False Rejection Rate (FRR)
-- Missing-pill detection rate
-- Extra-pill detection rate
-- Wrong-pill detection rate
-
-For this project, **False Acceptance Rate is especially important** because a false acceptance means an incorrect medication set is incorrectly classified as valid.
-
----
-
-## Simulated Dispensing Errors
-
-A key part of the project is to evaluate the verification layer without requiring access to real hospital dispensing errors.
-
-Given an expected prescription such as:
-
-```text
-Drug A × 2
-Drug B × 1
-Drug C × 1
-```
-
-reproducible test cases can be generated programmatically:
-
-```text
-Correct       A A B C
-Missing       A B C
-Extra         A A A B C
-Wrong pill    A A B D
-Multiple      A B D
-```
-
-This allows large-scale controlled experiments while keeping the project reproducible and independent of private patient data.
-
----
-
-## Semester 1 Timeline
-
-The first semester focuses on literature review, public-dataset validation, baselines, and formulation of the final research method.
-
-| Week | Main Task | Status |
-| --- | --- | --- |
-| 01 | Research pivot, problem formulation, repository restructuring | 🔄 |
-| 02 | Review core medication-verification papers and inspect VAIPE | ⬜ |
-| 03 | Dataset pipeline and exploratory analysis | ⬜ |
-| 04 | Baseline multi-pill detection (`EXP-001`) | ⬜ |
-| 05 | Baseline evaluation and failure-case analysis | ⬜ |
-| 06 | Prescription representation and matching pipeline | ⬜ |
-| 07 | Prescription-verification baseline (`EXP-002`) | ⬜ |
-| 08 | Synthetic dispensing-error generator | ⬜ |
-| 09 | Error-detection experiment (`EXP-003`) | ⬜ |
-| 10 | Compare models / confidence thresholds (`EXP-004`) | ⬜ |
-| 11 | Robustness experiment design | ⬜ |
-| 12 | Robustness experiments (`EXP-005`) | ⬜ |
-| 13 | Research-gap review and final method selection | ⬜ |
-| 14 | Implement prescription-aware method v1 | ⬜ |
-| 15 | Initial proposed-method experiment | ⬜ |
-| 16 | Results consolidation and visualization | ⬜ |
-| 17 | Semester report preparation | ⬜ |
-| 18 | Semester presentation and Semester 2 plan | ⬜ |
-
----
-
-## Semester 2 Timeline
-
-| Week | Main Task | Status |
-| --- | --- | --- |
-| 01 | Review Semester 1 findings and finalize research question | ⬜ |
-| 02 | Refine proposed method | ⬜ |
-| 03 | Implementation | ⬜ |
-| 04 | Implementation and debugging | ⬜ |
-| 05 | Main experiment setup | ⬜ |
-| 06 | Main experiments | ⬜ |
-| 07 | Main experiments | ⬜ |
-| 08 | Parameter tuning | ⬜ |
-| 09 | Comparison experiments | ⬜ |
-| 10 | Comparison experiments | ⬜ |
-| 11 | Ablation study | ⬜ |
-| 12 | Safety-oriented verification evaluation | ⬜ |
-| 13 | Error and failure-case analysis | ⬜ |
-| 14 | Result visualization | ⬜ |
-| 15 | Final report writing | ⬜ |
-| 16 | Final report writing | ⬜ |
-| 17 | Demo and presentation preparation | ⬜ |
-| 18 | Final presentation | ⬜ |
-
----
-
-## Repository Structure
+## Repository structure
 
 ```text
 special_project/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
+├── configs/                     # Experiment configurations
 ├── docs/
-│   ├── project-scope.md
-│   ├── weekly-logs/
-│   │   ├── semester-1/
-│   │   └── semester-2/
-│   ├── literature-review/
-│   │   ├── paper-table.md
-│   │   └── datasets.md
-│   └── meetings/
-│
-├── experiments/
-├── src/
+│   ├── literature-review/       # Paper, dataset, and method catalogue
+│   ├── weekly-logs/             # Weekly decisions and evidence
+│   └── project-scope.md         # Scope and acceptance criteria
+├── experiments/                 # One folder/README per experiment
 ├── notebooks/
-├── results/
-└── configs/
+│   └── acpds-paper-reproduction-kaggle.ipynb
+├── results/                     # Small tables/figures; no model weights
+├── src/                         # Reusable training/evaluation/application code
+└── requirements.txt
 ```
 
----
+## Reproduction notebook
 
-## Literature Review Strategy
+Open `notebooks/acpds-paper-reproduction-kaggle.ipynb` in Kaggle, enable a GPU accelerator, and run the cells in order. The notebook clones the official repository, checks the environment, downloads ACPDS, evaluates the pretrained model, provides a short smoke-training run, and exports the outputs.
 
-The first literature-review stage targets approximately **15 core papers**. The verified reading list is maintained in:
+## Reproducibility rules
 
-[`docs/literature-review/paper-table.md`](docs/literature-review/paper-table.md)
+- Record the Git commit, dataset version, split, seed, model, image size, epochs, batch size, GPU, and runtime.
+- Never commit datasets, checkpoints, Kaggle credentials, or large generated outputs.
+- Save compact CSV/JSON metrics and selected figures under `results/`.
+- Keep claims proportional to the evidence; negative results are still useful when the protocol is sound.
 
-The final thesis bibliography is expected to expand beyond these initial core papers as the methodology and experimental design become more specific.
+## Pivot history
 
----
+The repository explored UAV small-object detection and medication verification before settling on parking occupancy monitoring. Earlier files are retained as project history; they are not part of the active research scope.
 
-## Possible Technologies
+## Core external resources
 
-The project may use:
+- [ACPDS paper](https://arxiv.org/abs/2107.12207) and [official code/data](https://github.com/martin-marek/parking-space-occupancy)
+- [PKLot official dataset](https://web.inf.ufpr.br/vri/databases/parking-lot-database/)
+- [CNRPark+EXT paper and dataset record](https://openportal.isti.cnr.it/doc?id=people______::f0ae3d0d7a052b367753c8a217c77897)
+- [Systematic review of vision-based parking occupancy detection](https://arxiv.org/abs/2203.06463)
 
-- Python
-- PyTorch
-- Ultralytics YOLO
-- RT-DETR or another comparison detector
-- OpenCV
-- NumPy
-- Pandas
-- Matplotlib
-- Jupyter / Kaggle
-- CUDA
-- Git / GitHub
-
-The technology stack is intentionally flexible during the literature-review and baseline stage.
-
----
-
-## Current Progress
-
-**Semester:** 1  
-**Current Week:** Week 01 / 18
-
-Current stage:
-
-```text
-Research Pivot
-      ↓
-Literature Review
-      ↓
-Dataset Feasibility Validation
-```
-
-### Current priorities
-
-- [x] Preserve the existing Special Project repository and research history
-- [x] Pivot the repository from UAV detection to medication verification
-- [x] Define the tentative research question and scope
-- [x] Replace placeholder literature entries with verified paper links
-- [x] Add verified public dataset sources
-- [ ] Read the first group of core papers
-- [ ] Inspect VAIPE annotations, prescriptions, and train/test structure
-- [ ] Confirm dataset licensing and reproducibility
-- [ ] Build a small dataset-loading notebook
-- [ ] Run the first baseline detection test
-- [ ] Discuss the revised direction with the advisor
-
----
-
-## Research Pivot Note
-
-The project initially explored **small-object detection in UAV imagery**. During the early problem-formulation stage, the direction was changed to medication verification because the new topic offers a clearer application scenario and a stronger system-level research question for the capstone.
-
-The earlier UAV exploration remains part of the repository history, but all new experiments should follow the medication-verification research direction unless another change is explicitly documented.
-
----
-
-## Important Note
-
-This repository documents an **ongoing academic research project**. The final research question, datasets, models, and experimental protocol may change based on literature findings, advisor feedback, dataset feasibility, and experimental evidence.
-
-This project is a research prototype and is **not intended for clinical use**.
-
----
-
-## Project Status
-
-🚧 **Work in Progress — Semester 1, Week 01**
