@@ -85,5 +85,4 @@ The following files were retained outside Git because each checkpoint is roughly
 
 ## Next experiment
 
-Create EXP-002 using a maintained lightweight classifier such as ResNet18, MobileNetV3, or EfficientNet-B0. Fix the split and evaluation protocol before adding weather augmentation or domain-generalization methods.
-
+Create EXP-002 as a PKLot dataset audit and split-validation notebook. Only after its leakage checks and partitions are accepted should EXP-003 train maintained lightweight classifiers such as ResNet18, MobileNetV3, or EfficientNet-B0.

@@ -4,9 +4,9 @@
 
 ## Project status
 
-- **Stage:** Semester 1, Week 1
+- **Stage:** Semester 1, Week 2 completed
 - **Compute environment:** Kaggle notebooks only
-- **Current activity:** EXP-001 ACPDS reproduction completed; preparing the modern lightweight baseline
+- **Current activity:** ACPDS reproduction and guided paper review completed; next milestone is the EXP-002 PKLot dataset audit
 - **Topic status:** Working direction; confirm the final wording with the advisor after the first cross-dataset experiment
 
 ## Problem statement
@@ -88,15 +88,16 @@ The completed guided reading and paper-to-experiment analysis for the first base
 | ID | Experiment | Purpose |
 |---|---|---|
 | EXP-001 | Reproduce ACPDS official baseline | **Completed:** 97.99% pretrained / 97.72% independently trained test accuracy |
-| EXP-002 | ResNet18 / MobileNetV3 / EfficientNet-B0 | Establish modern lightweight baselines |
-| EXP-003 | Leave-one-parking-lot-out evaluation | Measure unseen-lot generalization |
-| EXP-004 | PKLot → CNRPark+EXT | Measure cross-dataset domain gap |
-| EXP-005 | Weather/lighting augmentation | Test the main practical improvement |
-| EXP-006 | RandAugment and AugMix | Compare general-purpose robustness methods |
-| EXP-007 | MixStyle | Test feature-statistics domain generalization |
-| EXP-008 | Deep CORAL or Tent (optional) | Test adaptation only if a clear domain gap exists |
-| EXP-009 | Accuracy–efficiency comparison | Latency, throughput, memory, and model size |
-| EXP-010 | Application demo | Parking overlay and available-space count |
+| EXP-002 | PKLot dataset audit and split validation | Inspect lots, weather, class balance, grouping, and leakage risk before training |
+| EXP-003 | ResNet18 / MobileNetV3 / EfficientNet-B0 | Establish modern lightweight baselines |
+| EXP-004 | Leave-one-parking-lot-out evaluation | Measure unseen-lot generalization |
+| EXP-005 | PKLot → CNRPark+EXT | Measure cross-dataset domain gap |
+| EXP-006 | Weather/lighting augmentation | Test the main practical improvement |
+| EXP-007 | RandAugment and AugMix | Compare general-purpose robustness methods |
+| EXP-008 | MixStyle | Test feature-statistics domain generalization |
+| EXP-009 | Deep CORAL or Tent (optional) | Test adaptation only if a clear domain gap exists |
+| EXP-010 | Accuracy–efficiency comparison | Latency, throughput, memory, and model size |
+| EXP-011 | Application demo | Parking overlay and available-space count |
 
 ## Evaluation protocol
 
@@ -108,18 +109,19 @@ Report accuracy, balanced accuracy, macro F1, per-class precision/recall, confus
 
 | Week | Milestone |
 |---:|---|
-| 01 | Confirm scope, catalogue literature/datasets, run ACPDS notebook |
-| 02 | Finish ACPDS reproduction and document reproducibility gaps |
-| 03 | Prepare PKLot and reproduce a modern lightweight baseline |
-| 04 | Establish parking-lot-separated evaluation |
-| 05 | Run first PKLot → CNRPark+EXT experiment |
-| 06 | Analyze errors by weather, illumination, and camera |
-| 07–08 | Implement weather/lighting augmentation baseline |
-| 09–10 | Compare RandAugment and AugMix |
-| 11–12 | Evaluate MixStyle; decide whether adaptation is justified |
-| 13–14 | Efficiency benchmark and ablations |
-| 15–16 | Build application prototype |
-| 17–18 | Consolidate results and write Semester 1 report |
+| **01** | **Completed:** confirm scope, catalogue literature/datasets, run ACPDS notebook |
+| **02** | **Completed:** finish ACPDS reproduction and guided paper review |
+| 03 | Audit PKLot and validate a leakage-resistant split |
+| 04 | Train modern lightweight baselines |
+| 05 | Establish leave-one-parking-lot-out evaluation |
+| 06 | Run the first PKLot → CNRPark+EXT experiment |
+| 07 | Analyze errors by weather, illumination, and camera |
+| 08–09 | Implement weather/lighting augmentation baseline |
+| 10 | Compare RandAugment and AugMix |
+| 11 | Evaluate MixStyle; decide whether adaptation is justified |
+| 12–13 | Efficiency benchmark and ablations |
+| 14–15 | Build application prototype |
+| 16–18 | Consolidate results and write Semester 1 report |
 
 ## Repository structure
 

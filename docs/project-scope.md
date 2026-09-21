@@ -122,13 +122,13 @@ Only one stretch method should be attempted at a time.
 
 ## Decision gates
 
-| Gate | Evidence required | Decision |
-|---|---|---|
-| G1 | ACPDS notebook runs end to end | Move to modern baseline |
-| G2 | Cross-lot score is lower than in-domain score | Continue with robustness question |
-| G3 | Error breakdown shows weather/lighting sensitivity | Implement targeted augmentation |
-| G4 | Augmentation baseline is stable | Try AugMix or MixStyle |
-| G5 | Clear accuracy–latency candidate exists | Build application demo |
+| Gate | Evidence required | Status | Decision |
+|---|---|---|---|
+| G1 | ACPDS notebook runs end to end | **Passed — EXP-001** | Audit PKLot before building the modern baseline |
+| G2 | Cross-lot score is lower than in-domain score | Pending | Continue with robustness question |
+| G3 | Error breakdown shows weather/lighting sensitivity | Pending | Implement targeted augmentation |
+| G4 | Augmentation baseline is stable | Pending | Try AugMix or MixStyle |
+| G5 | Clear accuracy–latency candidate exists | Pending | Build application demo |
 
 ## Risk and fallback plan
 
@@ -142,5 +142,4 @@ Only one stretch method should be attempted at a time.
 
 ## Scope freeze rule
 
-Do not add detection, tracking, license plates, or IoT features before EXP-005 is complete. New ideas belong in a future-work list until the main research question has evidence.
-
+Do not add detection, tracking, license plates, or IoT features before EXP-006 is complete. New ideas belong in a future-work list until the main research question has evidence.

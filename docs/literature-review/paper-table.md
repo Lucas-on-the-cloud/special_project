@@ -45,14 +45,17 @@ See [method-improvement.md](method-improvement.md) for assumptions and a fair ex
 
 ## Reading order
 
-### Week 1: establish the problem
+### Completed through Week 2
 
 1. ACPDS: read Abstract, Introduction, Dataset, Experimental Setup, Results, and repository README.
+
+### Week 3: prepare PKLot and broaden the evidence base
+
 2. Systematic review: focus on datasets, evaluation practices, limitations, and future work.
 3. PKLot: understand parking lots, weather categories, annotations, and official organization.
 4. CNRPark+EXT: understand cameras, patches, conditions, and intended decentralized deployment.
 
-### Week 2: establish modern application baselines
+### After the PKLot audit: establish modern application baselines
 
 5. Real-time occupancy detection.
 6. Residual-network transfer learning.

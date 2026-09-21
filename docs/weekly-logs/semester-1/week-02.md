@@ -1,4 +1,7 @@
-# Semester 1 — Week 02
+# Semester 1 — Week 02 — Complete
+
+**Status:** Completed  
+**Outcome:** EXP-001 was converted from a successful code run into a documented and understood paper reproduction.
 
 ## Week goal
 
@@ -28,9 +31,8 @@ The most important lesson is that high occupancy accuracy is only meaningful whe
 - Independent 100-epoch ACPDS test accuracy: 97.72%.
 - Paper mean for the same configuration: 97.97 ± 0.07%.
 
-## Next single action
+## Week 03 handoff
 
 Create EXP-002 as a **PKLot dataset audit and split-validation notebook** on Kaggle. Before training any model, it must report dataset structure, parking lots, weather categories, class balance, temporal/file grouping, duplicates or near-duplicates, and proposed train/validation/test partitions.
 
 No robustness method will be implemented until this split is verified.
-

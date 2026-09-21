@@ -88,11 +88,11 @@ Compact logs, hashes, and learning curves are recorded in `experiments/EXP-001-a
 
 ## Next action — one step at a time
 
-Start Week 2 by reading the ACPDS method/evaluation sections against the observed results, then define the first modern lightweight baseline. Do not begin robustness improvements until the dataset split and evaluation protocol are fixed.
+Start Week 2 by reading the ACPDS method/evaluation sections against the observed results, then prepare the PKLot dataset audit. Do not select a modern baseline or begin robustness improvements until the split and evaluation protocol are fixed.
 
-## Week 2 preview
+## Week 2 preview — revised at close
 
 - use the completed ACPDS reproduction as the reference baseline;
-- read ACPDS, PKLot, CNRPark+EXT, and the systematic review in detail;
-- create a deterministic dataset manifest;
-- decide the first modern backbone only after the official baseline is understood.
+- complete the guided ACPDS paper review;
+- move the PKLot, CNRPark+EXT, and systematic-review reading to Week 3 alongside the dataset audit;
+- decide the first modern backbone only after the PKLot split is verified.
