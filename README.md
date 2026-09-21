@@ -81,6 +81,8 @@ The repository currently tracks:
 
 See [the paper table](docs/literature-review/paper-table.md) and [method-improvement plan](docs/literature-review/method-improvement.md).
 
+The completed guided reading and paper-to-experiment analysis for the first baseline is available in [ACPDS paper notes](docs/literature-review/acpds-paper-notes.md).
+
 ## Experiment roadmap
 
 | ID | Experiment | Purpose |
