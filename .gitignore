@@ -4,14 +4,16 @@ __pycache__/
 .env
 .venv/
 
-# Datasets and generated outputs
+# Datasets, extracted media, and generated outputs
 data/
 datasets/
+frames/
+faces/
 outputs/
 runs/
 wandb/
 
-# Large model/archive files
+# Model and archive files
 *.pt
 *.pth
 *.ckpt
@@ -19,6 +21,15 @@ wandb/
 *.zip
 *.tar
 *.tar.gz
+
+# Video/audio assets should not be committed
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
 
 # OS/editor files
 .DS_Store

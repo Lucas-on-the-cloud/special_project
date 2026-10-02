@@ -1,15 +1,14 @@
-# Kaggle already provides many of these packages. Pin exact versions only after
-# the first reproducible baseline is complete and its environment is recorded.
+# Kaggle provides many base packages. Exact versions will be pinned after the
+# first baseline repository and notebook environment are selected.
 torch
 torchvision
+timm
 numpy
 pandas
 matplotlib
 scikit-learn
 opencv-python-headless
 albumentations
-tqdm
-requests
 Pillow
-streamlit
+tqdm
 

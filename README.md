@@ -1,127 +1,77 @@
-# Robust Vision-Based Parking Occupancy Monitoring
+# Deepfake Detection — Capstone Project
 
-> An application-oriented capstone project on parking-space occupancy classification that remains reliable across different parking lots, cameras, weather, and lighting conditions.
+> A research-oriented computer-vision capstone on detecting manipulated visual media.
 
 ## Project status
 
-- **Stage:** Semester 1, Week 2 completed
+- **Stage:** Semester 1, Week 3 topic pivot
+- **Current direction:** Deepfake detection
 - **Compute environment:** Kaggle notebooks only
-- **Current activity:** ACPDS reproduction and guided paper review completed; next milestone is the EXP-002 PKLot dataset audit
-- **Topic status:** Working direction; confirm the final wording with the advisor after the first cross-dataset experiment
+- **Scope status:** Provisional — dataset, baseline, evaluation protocol, and improvement method will be selected after reviewing the new source materials
+- **Previous direction:** Parking occupancy work has been removed from the active tree and remains recoverable through Git history
 
-## Problem statement
+## Current objective
 
-Most public parking-occupancy models report strong results when training and testing on frames from the same parking lot. This can overestimate real-world performance because nearby video frames share the same camera, background, weather, and parked vehicles. This project studies whether a model trained on one set of parking lots can generalize to an unseen lot and to different weather or lighting conditions.
+Build a reproducible deepfake-detection project with:
 
-The initial system assumes that parking-space polygons are already known. Each polygon is cropped from a fixed-camera image and classified as **occupied** or **vacant**.
+1. public data and preferably official/public code;
+2. a clearly reproduced baseline;
+3. an evaluation protocol that measures generalization rather than only in-dataset accuracy;
+4. one evidence-driven improvement;
+5. a Kaggle-runnable pipeline and a practical demonstration.
 
-## Application workflow
+The exact task is intentionally not locked yet. After the supplied papers and resources are reviewed, the project will decide whether it focuses on image-level, frame-level, or video-level detection and which manipulation types are in scope.
 
-```mermaid
-flowchart LR
-    A[Fixed parking camera] --> B[Known space polygons]
-    B --> C[Crop each space]
-    C --> D[Occupied / vacant classifier]
-    D --> E[Map overlay and availability count]
+## Decisions that must be supported by sources
+
+| Decision | Questions to resolve |
+|---|---|
+| Task unit | Image, sampled video frames, or full video? |
+| Dataset | Which public datasets are accessible, licensed, and realistic for Kaggle? |
+| Baseline | Which paper has runnable code, pretrained weights, and clear evaluation instructions? |
+| Generalization | In-dataset, cross-manipulation, cross-dataset, or unseen-generator evaluation? |
+| Improvement | Spatial artifacts, frequency cues, temporal cues, augmentation, domain generalization, or another justified method? |
+| Metrics | Accuracy alone or also AUC, F1, EER, calibration, latency, and robustness? |
+| Application | Upload-based detector, batch analysis, or another feasible demo? |
+
+## Research workflow
+
+```text
+Review supplied sources
+        ↓
+Freeze problem and evaluation protocol
+        ↓
+Select code-first baseline and dataset
+        ↓
+Reproduce on Kaggle
+        ↓
+Analyze failure modes and generalization gap
+        ↓
+Select one justified improvement
+        ↓
+Ablation, robustness evaluation, and demo
 ```
 
-## Research questions
+## Current scope guardrails
 
-1. How much does performance decrease when the test parking lot or dataset is unseen during training?
-2. Can weather- and lighting-aware augmentation improve cross-lot and cross-dataset generalization?
-3. Which lightweight backbone provides the best accuracy–latency trade-off for a practical parking-monitoring application?
+### In scope now
 
-## Tentative contributions
+- Deepfake detection research
+- Public datasets and reproducible baselines
+- Kaggle-only execution
+- Evidence-based experiment design
+- Compact metrics, plots, configs, and reports committed to GitHub
 
-1. A reproducible evaluation protocol that separates parking lots/cameras and prevents adjacent-frame data leakage.
-2. An empirical study of weather- and lighting-aware augmentation for unseen parking lots.
-3. A lightweight end-to-end prototype that reports occupancy, latency, throughput, and model size—not accuracy alone.
+### Not yet approved
 
-The project does **not** need a new neural-network architecture to be a valid undergraduate contribution. A carefully designed benchmark, a justified improvement, honest ablations, and a working application are sufficient.
+- A particular architecture or dataset
+- Deepfake generation
+- Localization or segmentation of manipulated regions
+- Audio deepfake detection or audio-visual fusion
+- Real-time deployment claims
+- A final capstone title or novelty claim
 
-## Scope
-
-### In scope
-
-- Image-based occupied/vacant classification
-- Fixed cameras and predefined parking-space polygons
-- Cross-parking-lot and cross-dataset evaluation
-- Weather and lighting robustness
-- Lightweight CNN comparison
-- Kaggle training and evaluation
-- Image/video overlay prototype and occupancy statistics
-
-### Out of scope for the first version
-
-- License-plate recognition, payment, reservations, or user accounts
-- Vehicle tracking
-- IoT sensor fusion
-- Fully automatic parking-slot localization
-
-Automatic slot localization may become future work only after the classification pipeline is reliable.
-
-## Datasets
-
-| Role | Dataset | Planned use |
-|---|---|---|
-| Reproduction | ACPDS | Reproduce the official image-based baseline and verify the pipeline |
-| Main benchmark | PKLot | Weather-aware training and parking-lot-separated evaluation |
-| External test | CNRPark+EXT | Measure cross-dataset generalization |
-| Optional future work | Tongji ps2.0, SNU, SUPS | Automatic parking-slot detection/localization |
-
-See [the dataset catalogue](docs/literature-review/datasets.md) for sizes, labels, sources, and limitations.
-
-## Literature map
-
-The repository currently tracks:
-
-- **17 parking-specific papers** covering occupancy classification, transfer learning, robustness, automatic slot detection, and surveys.
-- **5 improvement-method papers** covering RandAugment, AugMix, MixStyle, Deep CORAL, and Tent.
-- **6 candidate datasets**, with only three selected for the main experiments.
-
-See [the paper table](docs/literature-review/paper-table.md) and [method-improvement plan](docs/literature-review/method-improvement.md).
-
-The completed guided reading and paper-to-experiment analysis for the first baseline is available in [ACPDS paper notes](docs/literature-review/acpds-paper-notes.md).
-
-## Experiment roadmap
-
-| ID | Experiment | Purpose |
-|---|---|---|
-| EXP-001 | Reproduce ACPDS official baseline | **Completed:** 97.99% pretrained / 97.72% independently trained test accuracy |
-| EXP-002 | PKLot dataset audit and split validation | Inspect lots, weather, class balance, grouping, and leakage risk before training |
-| EXP-003 | ResNet18 / MobileNetV3 / EfficientNet-B0 | Establish modern lightweight baselines |
-| EXP-004 | Leave-one-parking-lot-out evaluation | Measure unseen-lot generalization |
-| EXP-005 | PKLot → CNRPark+EXT | Measure cross-dataset domain gap |
-| EXP-006 | Weather/lighting augmentation | Test the main practical improvement |
-| EXP-007 | RandAugment and AugMix | Compare general-purpose robustness methods |
-| EXP-008 | MixStyle | Test feature-statistics domain generalization |
-| EXP-009 | Deep CORAL or Tent (optional) | Test adaptation only if a clear domain gap exists |
-| EXP-010 | Accuracy–efficiency comparison | Latency, throughput, memory, and model size |
-| EXP-011 | Application demo | Parking overlay and available-space count |
-
-## Evaluation protocol
-
-Report accuracy, balanced accuracy, macro F1, per-class precision/recall, confusion matrix, inference latency, spaces per second, model size, and peak memory.
-
-**Critical rule:** split by parking lot, camera, capture session, or official sequence—not by randomly shuffling adjacent frames. Near-duplicate frames in train and test would produce misleadingly high results.
-
-## Semester 1 plan
-
-| Week | Milestone |
-|---:|---|
-| **01** | **Completed:** confirm scope, catalogue literature/datasets, run ACPDS notebook |
-| **02** | **Completed:** finish ACPDS reproduction and guided paper review |
-| 03 | Audit PKLot and validate a leakage-resistant split |
-| 04 | Train modern lightweight baselines |
-| 05 | Establish leave-one-parking-lot-out evaluation |
-| 06 | Run the first PKLot → CNRPark+EXT experiment |
-| 07 | Analyze errors by weather, illumination, and camera |
-| 08–09 | Implement weather/lighting augmentation baseline |
-| 10 | Compare RandAugment and AugMix |
-| 11 | Evaluate MixStyle; decide whether adaptation is justified |
-| 12–13 | Efficiency benchmark and ablations |
-| 14–15 | Build application prototype |
-| 16–18 | Consolidate results and write Semester 1 report |
+These may be added only when the literature and available code justify them.
 
 ## Repository structure
 
@@ -129,37 +79,27 @@ Report accuracy, balanced accuracy, macro F1, per-class precision/recall, confus
 special_project/
 ├── configs/                     # Experiment configurations
 ├── docs/
-│   ├── literature-review/       # Paper, dataset, and method catalogue
+│   ├── literature-review/       # Source intake and paper notes
 │   ├── weekly-logs/             # Weekly decisions and evidence
-│   └── project-scope.md         # Scope and acceptance criteria
-├── experiments/                 # One folder/README per experiment
-├── notebooks/
-│   └── acpds-paper-reproduction-kaggle.ipynb
-├── results/                     # Small tables/figures; no model weights
-├── src/                         # Reusable training/evaluation/application code
+│   ├── meetings/                # Advisor meeting records
+│   └── project-scope.md         # Current boundaries and open decisions
+├── experiments/                 # One documented folder per experiment
+├── notebooks/                   # Kaggle notebooks
+├── results/                     # Small metrics and figures only
+├── src/                         # Reusable training/evaluation code
 └── requirements.txt
 ```
 
-## Reproduction notebook
+## Kaggle-only workflow
 
-Open `notebooks/acpds-paper-reproduction-kaggle.ipynb` in Kaggle, enable a GPU accelerator, and run the cells in order. The notebook clones the official repository, checks the environment, downloads ACPDS, evaluates the pretrained model, provides a short smoke-training run, and exports the outputs.
+1. Notebooks are authored and committed here.
+2. Training and evaluation run on Kaggle.
+3. Datasets and checkpoints stay on Kaggle or approved external storage.
+4. Only compact JSON/CSV metrics, selected figures, and documentation return to GitHub.
 
-The completed run and compact artifacts are documented in [`experiments/EXP-001-acpds-reproduction`](experiments/EXP-001-acpds-reproduction/README.md). Large checkpoints are intentionally excluded from Git.
+Do not commit videos, extracted frames, datasets, checkpoints, Kaggle credentials, or large archives.
 
-## Reproducibility rules
+## Immediate next action
 
-- Record the Git commit, dataset version, split, seed, model, image size, epochs, batch size, GPU, and runtime.
-- Never commit datasets, checkpoints, Kaggle credentials, or large generated outputs.
-- Save compact CSV/JSON metrics and selected figures under `results/`.
-- Keep claims proportional to the evidence; negative results are still useful when the protocol is sound.
+Receive and review the new papers, repositories, datasets, and advisor guidance. Each source will be recorded in `docs/literature-review/README.md`, then the project scope and first reproduction target will be updated in one evidence-based commit.
 
-## Pivot history
-
-The repository explored UAV small-object detection and medication verification before settling on parking occupancy monitoring. Obsolete notebooks, proposals, and result artifacts have been removed from the active tree; they remain recoverable through Git history.
-
-## Core external resources
-
-- [ACPDS paper](https://arxiv.org/abs/2107.12207) and [official code/data](https://github.com/martin-marek/parking-space-occupancy)
-- [PKLot official dataset](https://web.inf.ufpr.br/vri/databases/parking-lot-database/)
-- [CNRPark+EXT paper and dataset record](https://openportal.isti.cnr.it/doc?id=people______::f0ae3d0d7a052b367753c8a217c77897)
-- [Systematic review of vision-based parking occupancy detection](https://arxiv.org/abs/2203.06463)
