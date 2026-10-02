@@ -1,7 +1,7 @@
 # Semester 1 — Week 03 — Topic Pivot
 
 **Date:** 2026-10-02  
-**Status:** In progress
+**Status:** Completed
 
 ## Decision
 
@@ -22,9 +22,20 @@ The student will provide new papers and resources suitable for the deepfake proj
 - [x] Updated dependency and Git-ignore policies for video/deepfake work.
 - [x] Removed active parking-specific artifacts.
 
+## Report consolidation
+
+The progress report consolidated the previous two weeks into four sections:
+
+- manipulation technologies;
+- real-world forensic challenges;
+- demographic and spectral bias;
+- candidate technical solutions for generalization and fairness.
+
+The report is evidence for the project direction, not an experiment result. No reproduction claim is made for Week 3.
+
 ## Next single action
 
-Receive the new papers, repositories, datasets, or advisor instructions. Review them before creating the first deepfake notebook or experiment ID.
+Review the five sources assigned by the advisor and select one Kaggle-feasible reproduction target.
 
 ## Evidence policy
 
@@ -37,4 +48,3 @@ The next project decisions must record:
 - reported evaluation protocol;
 - Kaggle compute feasibility;
 - limitations and relevance to the capstone.
-

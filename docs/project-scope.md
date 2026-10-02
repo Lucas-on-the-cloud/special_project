@@ -2,13 +2,13 @@
 
 ## Status
 
-This document is intentionally provisional. The previous parking-occupancy scope is retired. The final task, title, dataset, baseline, and contribution will be decided after reviewing the new materials supplied for the deepfake direction.
+This document remains provisional. The Week 1–3 review established generalization, robustness, and bias as the main concerns. The Week 4 source review will decide the exact dataset, baseline, and first reproducible experiment.
 
 ## Working title
 
-**Deepfake Detection: Reproducible Baselines and Generalization Evaluation**
+**Generalizable and Bias-Resilient Deepfake Detection under Compression and Domain Shift**
 
-This is a placeholder, not the final title.
+This is a working title, not a novelty claim or final title.
 
 ## Locked constraints
 
@@ -17,6 +17,8 @@ This is a placeholder, not the final title.
 - Public data and papers with code are preferred because advisor support is limited.
 - The first milestone must be a reproduced baseline, not a new architecture.
 - Final claims must include the dataset split and evaluation setting.
+- Compression or another explicit domain shift must be evaluated.
+- Demographic fairness is evaluated only with valid metadata; it is not inferred from appearance.
 - Large datasets, videos, extracted frames, and checkpoints remain outside GitHub.
 
 ## Open decisions
@@ -27,7 +29,7 @@ The source review must answer:
 2. Which manipulation families are included?
 3. Which public dataset is the primary training benchmark?
 4. Which dataset or manipulation family is held out for generalization testing?
-5. Which baseline has usable code, weights, and instructions?
+5. Is DFD-HR checkpoint evaluation practical on Kaggle, and is the NTIRE ensemble a viable fallback or only a reference?
 6. Which metrics are required by the selected literature?
 7. What deployment/demo assumption is realistic?
 8. Which single improvement is justified by baseline failure analysis?
@@ -68,14 +70,23 @@ After the scope is frozen, a complete project should contain:
 
 | Gate | Evidence required | Current status |
 |---|---|---|
-| D1 | Supplied sources are catalogued and compared | Pending |
+| D1 | Supplied sources are catalogued and compared | Initial audit complete; deep reading in progress |
 | D2 | Dataset, task unit, and evaluation protocol are selected | Pending |
 | D3 | Baseline runs end to end on Kaggle | Pending |
 | D4 | A measurable failure/generalization gap is established | Pending |
 | D5 | One improvement is selected from evidence | Pending |
 | D6 | Final comparison and demo are complete | Pending |
 
-## Rule for the next commit
+## Current candidate hierarchy
 
-Do not add a final method, dataset, title, or accuracy target merely because it is popular. Every choice must cite the supplied literature, confirm resource availability, and fit Kaggle constraints.
+| Role | Candidate | Rationale | Status |
+|---|---|---|---|
+| First reproduction | DFD-HR checkpoint evaluation | Official code, released checkpoint, and documented single-GPU test path | Provisional |
+| Robustness reference | NTIRE 2026 complementary ensemble | Directly addresses compound degradation and releases inference code/weights, but setup is heavy | Reference / fallback |
+| Improvement direction | WGN-style frequency guidance | Lightweight, compression-aware, and reported on a 12 GB GPU | Provisional |
+| Future work | Domain-incremental curriculum | Relevant to evolving generators but uses DF40 plus continual-learning machinery | Deferred |
+| Interpretability reference | VRAG-DFD | Strong RAG/MLLM reasoning direction but full reproduction requires multi-stage alignment, SFT, and GRPO | Background |
 
+## Rule for the next decision
+
+Do not lock a final method, dataset, or accuracy target before the Week 5 smoke test. Every choice must cite the supplied literature, confirm resource availability, and fit Kaggle constraints.

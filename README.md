@@ -1,18 +1,20 @@
-# Deepfake Detection — Capstone Project
+# Generalizable Deepfake Detection — Capstone Project
 
 > A research-oriented computer-vision capstone on detecting manipulated visual media.
 
 ## Project status
 
-- **Stage:** Semester 1, Week 3 topic pivot
-- **Current direction:** Deepfake detection
+- **Stage:** Semester 1, Week 4 literature and reproducibility review
+- **Current direction:** Generalizable and bias-resilient deepfake detection
 - **Compute environment:** Kaggle notebooks only
-- **Scope status:** Provisional — dataset, baseline, evaluation protocol, and improvement method will be selected after reviewing the new source materials
+- **Scope status:** Provisional — the Week 4 review will select the first reproduction target and evaluation protocol
 - **Previous direction:** Parking occupancy work has been removed from the active tree and remains recoverable through Git history
 
 ## Current objective
 
-Build a reproducible deepfake-detection project with:
+Build a reproducible deepfake-detection project that studies performance under compression, unseen manipulation methods, and dataset shift, while treating demographic fairness as an evaluation requirement when suitable metadata is available.
+
+The project must include:
 
 1. public data and preferably official/public code;
 2. a clearly reproduced baseline;
@@ -20,7 +22,13 @@ Build a reproducible deepfake-detection project with:
 4. one evidence-driven improvement;
 5. a Kaggle-runnable pipeline and a practical demonstration.
 
-The exact task is intentionally not locked yet. After the supplied papers and resources are reviewed, the project will decide whether it focuses on image-level, frame-level, or video-level detection and which manipulation types are in scope.
+The current evidence favors image/frame-level classification and cross-dataset evaluation. This will be frozen only after the Week 4 code and dataset feasibility review.
+
+## Current Week 4 reading
+
+The advisor supplied five sources covering robust ensembles, hierarchical routing, retrieval-augmented MLLMs, domain-incremental learning, and wavelet-guided detection. Their verified roles and Kaggle feasibility are tracked in [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md).
+
+The complete weekly checklist is in [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md).
 
 ## Decisions that must be supported by sources
 
@@ -101,5 +109,4 @@ Do not commit videos, extracted frames, datasets, checkpoints, Kaggle credential
 
 ## Immediate next action
 
-Receive and review the new papers, repositories, datasets, and advisor guidance. Each source will be recorded in `docs/literature-review/README.md`, then the project scope and first reproduction target will be updated in one evidence-based commit.
-
+Complete the Week 4 paper matrix, then make a go/no-go decision for a small Kaggle inference reproduction. The current preferred candidate is DFD-HR because its official repository includes a checkpoint and a single-GPU testing path; WGN is the leading candidate for a later lightweight improvement. These are provisional choices, not completed reproductions.
