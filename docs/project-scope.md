@@ -2,7 +2,7 @@
 
 ## Status
 
-This document remains provisional. The Week 1–3 review established generalization, robustness, and bias as the main concerns. The Week 4 source review will decide the exact dataset, baseline, and first reproducible experiment.
+This document remains provisional. Weeks 1–2 reviewed the five papers cited in the progress report. Weeks 3–4 review the five newer sources assigned by the professor. Only after this two-stage literature review will the project select the exact dataset, baseline, and first reproducible experiment.
 
 ## Working title
 

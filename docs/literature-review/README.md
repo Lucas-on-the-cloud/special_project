@@ -1,22 +1,26 @@
 # Deepfake Literature Intake
 
-The first source set has been received. Weeks 1–3 established the background on manipulation types, compression, generalization, spectral bias, and demographic fairness. Week 4 evaluates five 2026 sources assigned by the advisor.
+The literature review is organized into two two-week reading blocks:
+
+- **Weeks 1–2:** the five papers cited in the progress report.
+- **Weeks 3–4:** the five newer sources assigned by the professor.
 
 ## Source intake table
 
 | ID | Source | Type | Code | Data/weights | Proposed role | Verification status |
 |---|---|---|---|---|---|---|
-| W1-01 | FaceForensics++ | Benchmark paper | Public framework/data by request | Dataset protocol | Manipulation taxonomy and compression background | Reviewed |
-| W2-01 | UCF | Generalizable detector | Public research code to verify before use | Paper resources | Generalization background | Reviewed at report level |
-| W2-02 | FreqDebias | Frequency-debiasing method | To verify | Paper resources | Spectral-bias background | Reviewed at report level |
-| W2-03 | Synergistic Fairness Optimization | Fairness method | To verify | Paper resources | Demographic fairness background | Reviewed at report level |
-| W4-01 | NTIRE 2026 complementary ensemble | Paper + repository | Yes | Pretrained weights | Robustness reference / inference fallback | Initial audit complete |
-| W4-02 | DFD-HR | CVPR paper + repository | Yes | Checkpoint released | Preferred reproduction candidate | Initial audit complete |
-| W4-03 | VRAG-DFD | CVPR Findings paper + repository link | Yes | Training resources require further audit | Interpretability and future work | Initial audit complete |
-| W4-04 | Domain-incremental curriculum | CVPR Workshop paper | No official code link found in the paper | DF40 + recent-generator data | Continual-learning reference | Initial audit complete |
-| W4-05 | WGN | CVPR Workshop paper | No official code link found in the paper | FF++, FaceShifter, Celeb-DF, DFDC, WDF | Candidate lightweight improvement | Initial audit complete |
+| W01–02-01 | Analyzing Fairness in Deepfake Detection With Massively Annotated Databases | Fairness analysis | To verify before implementation | Annotated benchmark resources | Demographic-bias background | Reviewed at report level |
+| W01–02-02 | FaceForensics++ | Benchmark paper | Public framework/data by request | Dataset protocol | Manipulation taxonomy and compression background | Reviewed at report level |
+| W01–02-03 | FreqDebias | Frequency-debiasing method | To verify before implementation | Paper resources | Spectral-bias and generalization background | Reviewed at report level |
+| W01–02-04 | Synergistic Fairness Optimization for Deepfake Detection | Fairness method | To verify before implementation | Paper resources | Fairness-method background | Reviewed at report level |
+| W01–02-05 | UCF: Unsupervised Cross-domain Deepfake Detection | Generalizable detector | To verify before implementation | Paper resources | Cross-domain background | Reviewed at report level |
+| W03–04-01 | NTIRE 2026 complementary ensemble | Paper + repository | Yes | Pretrained weights | Robustness reference / inference fallback | Initial audit complete; reading continues |
+| W03–04-02 | DFD-HR | CVPR paper + repository | Yes | Checkpoint released | Preferred reproduction candidate | Initial audit complete; reading continues |
+| W03–04-03 | VRAG-DFD | CVPR Findings paper + repository link | Yes | Training resources require further audit | Interpretability and future work | Initial audit complete; reading continues |
+| W03–04-04 | Domain-incremental curriculum | CVPR Workshop paper | No official code link found in the paper | DF40 + recent-generator data | Continual-learning reference | Initial audit complete; reading continues |
+| W03–04-05 | WGN | CVPR Workshop paper | No official code link found in the paper | FF++, FaceShifter, Celeb-DF, DFDC, WDF | Candidate lightweight improvement | Initial audit complete; reading continues |
 
-See [`week-04-paper-matrix.md`](week-04-paper-matrix.md) for the detailed feasibility comparison.
+See [`week-04-paper-matrix.md`](week-04-paper-matrix.md) for the detailed comparison of the **Weeks 3–4** paper set.
 
 ## Review order
 

@@ -1,19 +1,23 @@
-# Semester 1 — Week 01 — Deepfake Foundations
+# Semester 1 — Week 01 — First Five-Paper Reading Block
 
-**Status:** Completed and reconstructed from the Week 3 progress report
+**Status:** Completed at first-pass level
 
-## Completed
+## Reading set for Weeks 1–2
 
-- [x] Distinguished identity swapping from expression reenactment.
-- [x] Reviewed DeepFakes, FaceSwap, Face2Face, and NeuralTextures.
-- [x] Selected image/frame deepfake classification as the initial task family.
-- [x] Identified viewpoint, scale, compression, and post-processing as practical challenges.
-- [x] Reviewed FaceForensics++ as a benchmark and manipulation taxonomy source.
+1. Analyzing Fairness in Deepfake Detection With Massively Annotated Databases
+2. FaceForensics++: Learning to Detect Manipulated Facial Images
+3. FreqDebias: Towards Generalizable Deepfake Detection via Consistency-Driven Frequency Debiasing
+4. Decoupling Bias, Aligning Distributions: Synergistic Fairness Optimization for Deepfake Detection
+5. UCF: Unsupervised Cross-domain Deepfake Detection
 
-## Main conclusion
+## Week 1 checklist
 
-High in-dataset accuracy on clean frames is insufficient. The project must evaluate at least one realistic degradation or domain shift.
+- [x] Collect and verify the five citations used in the progress report.
+- [x] Begin reading all five papers.
+- [x] Identify the main themes: benchmark design, compression, cross-domain generalization, spectral bias, and demographic fairness.
+- [x] Record the difference between in-dataset accuracy and generalization performance.
+- [ ] Complete the final comparison; this continues in Week 2.
 
-## Evidence carried forward
+## Week 1 conclusion
 
-The Week 3 report records that H.264/social-media compression can weaken pixel-level artifacts and cause detector performance to deteriorate. This motivates a dedicated robustness experiment later in the project.
+The initial literature suggests that strong results on a clean benchmark do not guarantee performance under compression, unseen manipulation methods, dataset shift, or demographic imbalance.

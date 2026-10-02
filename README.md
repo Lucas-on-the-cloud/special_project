@@ -4,7 +4,7 @@
 
 ## Project status
 
-- **Stage:** Semester 1, Week 4 literature and reproducibility review
+- **Stage:** Semester 1, Week 4 literature review
 - **Current direction:** Generalizable and bias-resilient deepfake detection
 - **Compute environment:** Kaggle notebooks only
 - **Scope status:** Provisional — the Week 4 review will select the first reproduction target and evaluation protocol
@@ -24,11 +24,12 @@ The project must include:
 
 The current evidence favors image/frame-level classification and cross-dataset evaluation. This will be frozen only after the Week 4 code and dataset feasibility review.
 
-## Current Week 4 reading
+## Project documents
 
-The advisor supplied five sources covering robust ensembles, hierarchical routing, retrieval-augmented MLLMs, domain-incremental learning, and wavelet-guided detection. Their verified roles and Kaggle feasibility are tracked in [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md).
-
-The complete weekly checklist is in [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md).
+- [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md): the complete 18-week plan and checklist.
+- [`docs/literature-review/README.md`](docs/literature-review/README.md): literature groups and review process.
+- [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md): comparison of the five papers assigned for Weeks 3–4.
+- [`docs/weekly-logs/semester-1/`](docs/weekly-logs/semester-1/): evidence and progress recorded by week.
 
 ## Decisions that must be supported by sources
 
@@ -109,4 +110,4 @@ Do not commit videos, extracted frames, datasets, checkpoints, Kaggle credential
 
 ## Immediate next action
 
-Complete the Week 4 paper matrix, then make a go/no-go decision for a small Kaggle inference reproduction. The current preferred candidate is DFD-HR because its official repository includes a checkpoint and a single-GPU testing path; WGN is the leading candidate for a later lightweight improvement. These are provisional choices, not completed reproductions.
+Finish reading the five papers assigned for Weeks 3–4, complete their structured notes, and then make a go/no-go decision for a small Kaggle reproduction. No reproduction has been claimed yet.

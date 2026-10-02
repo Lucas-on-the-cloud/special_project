@@ -19,10 +19,10 @@ Reading and coding run in parallel. A week is complete only when its evidence is
 
 | Week | Reading and research | Experiment or coding | Required deliverable | Status |
 |---:|---|---|---|---|
-| 01 | Deepfake taxonomy: DeepFakes, FaceSwap, Face2Face, NeuralTextures; FaceForensics++ and compression challenge | Define the image/frame classification pipeline and list real-world failure modes | Week 1 notes: manipulation types, task definition, compression risk | [x] Background reviewed<br>[x] Scope notes recorded |
-| 02 | Demographic bias, spectral shortcut learning, FreqDebias, UCF, and fairness optimization | Convert claims into candidate evaluation axes: cross-dataset, compression, and subgroup gaps | Week 2 notes plus evidence table used in the Week 3 report | [x] Bias/generalization reviewed<br>[x] Candidate metrics identified |
-| 03 | Consolidate Weeks 1–2 and incorporate advisor feedback | Reset the repository for deepfake detection; define source-intake and Kaggle rules | Week 3 progress report, provisional scope, clean repository | [x] Report completed<br>[x] Repository pivot completed |
-| **04** | Read and compare the five advisor-supplied 2026 sources | Audit official code, checkpoints, data, dependencies, and Kaggle feasibility; do not full-train all methods | Week 4 paper matrix and one justified reproduction candidate | [ ] Finish five structured paper notes<br>[x] Initial code/compute triage<br>[ ] Confirm Week 5 target |
+| 01 | Begin the five papers cited in the progress report: Fairness Analysis, FaceForensics++, FreqDebias, Synergistic Fairness Optimization, and UCF | Extract each paper's problem, dataset, method, metric, and limitation; no model training yet | First-pass notes for all five cited papers | [x] Five-paper reading started<br>[x] Core problems identified |
+| 02 | Finish the same five cited papers and connect them through generalization, compression, spectral bias, and demographic fairness | Build the comparison and convert the literature findings into research questions | Progress report covering the five cited papers | [x] Five-paper review completed at report level<br>[x] Report completed |
+| 03 | Begin the five newly assigned sources: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Verify official links; inspect task, method, datasets, code, checkpoints, and compute requirements | Initial notes and source-verification record for the new five-paper set | [x] Sources received and verified<br>[x] Initial reading/code audit started |
+| **04** | Continue and deepen the same five papers assigned in Week 3, with priority on DFD-HR and WGN | Complete the comparison matrix and Kaggle feasibility analysis; do not full-train all methods | Five structured notes, paper matrix, and one justified Week 5 reproduction candidate | [ ] Finish five structured paper notes<br>[x] Initial code/compute triage<br>[ ] Confirm Week 5 target |
 | 05 | Read the selected repository documentation and its closest baseline paper | Obtain approved datasets/weights; build a minimal Kaggle environment and run 10–50 samples | Environment record, dataset-access log, first predictions, go/no-go decision | [ ] |
 | 06 | Study the selected dataset protocol and leakage risks | Reproduce pretrained inference or a short smoke evaluation; export AUC/accuracy and runtime | `EXP-001` baseline smoke test and reproducible Kaggle notebook | [ ] |
 | 07 | Read the evaluation sections of DFD-HR, WGN, and the chosen baseline | Run the baseline on a fixed validation subset; verify labels and video/frame aggregation | `EXP-002` baseline table with AUC, accuracy, sample count, seed, and timing | [ ] |
@@ -37,6 +37,24 @@ Reading and coding run in parallel. A week is complete only when its evidence is
 | 16 | Review all cited experimental protocols | Run the final locked evaluation without changing settings after seeing test results | Final result tables, plots, configs, and artifact manifest | [ ] |
 | 17 | Read related work needed to position the contribution honestly | Build a Kaggle demo or upload/batch inference notebook; draft methods, experiments, limitations | Draft report and end-to-end demonstration | [ ] |
 | 18 | Final citation and claim audit | Re-run a small reproducibility check from a clean Kaggle session; fix documentation only | Final report, presentation, repository release, and reproducibility checklist | [ ] |
+
+## Weeks 1–4 literature structure
+
+### Weeks 1–2: five papers cited in the progress report
+
+1. Analyzing Fairness in Deepfake Detection With Massively Annotated Databases
+2. FaceForensics++: Learning to Detect Manipulated Facial Images
+3. FreqDebias: Towards Generalizable Deepfake Detection via Consistency-Driven Frequency Debiasing
+4. Decoupling Bias, Aligning Distributions: Synergistic Fairness Optimization for Deepfake Detection
+5. UCF: Unsupervised Cross-domain Deepfake Detection
+
+### Weeks 3–4: five sources newly assigned by the professor
+
+1. NTIRE 2026 Robust Deepfake Detection repository and paper
+2. DFD-HR
+3. VRAG-DFD
+4. Efficient Domain-Incremental Deepfake Detection via Difficulty-Aware Curriculum Learning
+5. WGN
 
 ## Week 4 decision policy
 

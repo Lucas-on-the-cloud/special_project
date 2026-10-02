@@ -1,23 +1,27 @@
-# Semester 1 — Week 02 — Bias and Generalization
+# Semester 1 — Week 02 — Complete First Five-Paper Review
 
-**Status:** Completed and reconstructed from the Week 3 progress report
+**Status:** Completed at report level
 
-## Completed
+## Continued reading
 
-- [x] Reviewed demographic and visual-attribute bias in common deepfake datasets.
-- [x] Reviewed spectral shortcut learning and failure on unseen generators.
-- [x] Studied FreqDebias: frequency-band identification, amplitude scrambling, and consistency constraints.
-- [x] Studied UCF as a generalizable deepfake detection reference.
-- [x] Reviewed a fairness framework based on structural decoupling and distribution alignment.
+Week 2 continued the same five papers started in Week 1; it was not a separate paper set.
 
-## Main conclusion
+## Week 2 checklist
 
-The capstone should not claim success from one random in-dataset split. The evaluation should include cross-dataset or cross-manipulation performance, corruption robustness, and subgroup metrics only where trustworthy metadata exists.
+- [x] Finish the report-level review of the five cited papers.
+- [x] Summarize FaceForensics++ and the main face-manipulation categories.
+- [x] Explain real-world degradation caused by compression and post-processing.
+- [x] Summarize demographic/visual-attribute bias from the fairness analysis.
+- [x] Summarize spectral shortcut learning and FreqDebias.
+- [x] Summarize cross-domain detection through UCF.
+- [x] Summarize structural fairness decoupling and global distribution alignment.
+- [x] Consolidate the findings into the progress report.
 
-## Candidate measurements
+## Output
 
-- AUC and accuracy under the exact selected protocol
-- False-positive and false-negative rates
-- Cross-dataset AUC gap
-- Performance change under compression/resize/blur
-- Subgroup AUC/FPR/FNR gap when valid demographic annotations are available
+The progress report is the main Week 1–2 deliverable. It connects the five cited papers into two research axes:
+
+1. generalization under compression and domain shift;
+2. demographic fairness and bias resilience.
+
+This was a literature milestone, not a completed reproduction experiment.

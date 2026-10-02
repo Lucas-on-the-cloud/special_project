@@ -1,7 +1,8 @@
 # Week 4 Paper and Code Matrix
 
 **Review date:** 2026-10-02  
-**Purpose:** decide what to read deeply, what to reproduce on Kaggle, and what to defer.
+**Reading period:** Weeks 3–4  
+**Purpose:** compare the five newly assigned sources, decide what to read deeply, what to reproduce on Kaggle, and what to defer.
 
 ## Comparison
 

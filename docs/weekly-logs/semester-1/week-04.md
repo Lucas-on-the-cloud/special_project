@@ -5,7 +5,7 @@
 
 ## Advisor request
 
-Review five 2026 sources covering robust ensembles, hierarchical routing, retrieval-augmented MLLMs, domain-incremental curriculum learning, and wavelet-guided detection.
+Continue the same five sources assigned in Week 3. Week 4 is the second half of this reading block, not a new paper set.
 
 ## Checklist
 
