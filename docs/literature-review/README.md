@@ -18,9 +18,13 @@ The literature review is organized into two two-week reading blocks:
 | W03–04-02 | DFD-HR | CVPR paper + repository | Yes | Checkpoint released | Preferred reproduction candidate | Initial audit complete; reading continues |
 | W03–04-03 | VRAG-DFD | CVPR Findings paper + repository link | Yes | Training resources require further audit | Interpretability and future work | Initial audit complete; reading continues |
 | W03–04-04 | Domain-incremental curriculum | CVPR Workshop paper | No official code link found in the paper | DF40 + recent-generator data | Continual-learning reference | Initial audit complete; reading continues |
-| W03–04-05 | WGN | CVPR Workshop paper | No official code link found in the paper | FF++, FaceShifter, Celeb-DF, DFDC, WDF | Candidate lightweight improvement | Initial audit complete; reading continues |
+| W03–04-05 | WGN | CVPR Workshop paper | No official code link found in the paper | FF++, FaceShifter, Celeb-DF, DFDC, WDF | Candidate lightweight improvement | Detailed review complete; simplified reimplementation candidate |
 
 See [`week-04-paper-matrix.md`](week-04-paper-matrix.md) for the detailed comparison of the **Weeks 3–4** paper set.
+
+## Detailed paper notes
+
+- [WGN: Wavelet-Guided Network for Efficient and Generalised Deepfake Detection](wgn-wavelet-guided-network.md) — detailed reading complete; simplified Kaggle reimplementation is feasible but no official code was located.
 
 ## Review order
 

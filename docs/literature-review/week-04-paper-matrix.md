@@ -14,6 +14,10 @@
 | [Difficulty-Aware Domain-Incremental Learning](https://openaccess.thecvf.com/content/CVPR2026W/AIMS/html/Park_Efficient_Domain-Incremental_Deepfake_Detection_via_Difficulty-Aware_Curriculum_Learning_CVPRW_2026_paper.html) | Store easy/medium/hard samples in compact caches using entropy, feature distance, and diversity; train easy-to-hard with increasing augmentation and contrastive loss | DF40 plus Veo 3/Kling 2.5; 10 epochs, batch 64, one A5000; reports adaptation using 3% of new data | No official code URL was found in the paper during initial audit | **Low–medium.** Compute is plausible, but data volume and from-scratch continual-learning implementation are risky | Method reference; defer full reproduction |
 | [WGN](https://openaccess.thecvf.com/content/CVPR2026W/PPMisDet/html/Ghosh_WGN_Wavelet-Guided_Network_for_Efficient_and_Generalised_Deepfake_Detection_CVPRW_2026_paper.html) | Differentiable Haar DWT creates frequency subbands that guide spatial attention through a lightweight WGSA module | FF++/FaceShifter in-domain and cross-dataset Celeb-DF, DFDC, WDF; 25 epochs on one RTX A2000 12 GB; 5.7M parameters and 3.7G FLOPs | No official code URL was found in the paper during initial audit | **Medium–high for a simplified reimplementation.** Resource profile fits Kaggle; reproduction risk comes from missing official code | Leading candidate for the later improvement phase |
 
+## Completed detailed reviews
+
+- [WGN: Wavelet-Guided Network for Efficient and Generalised Deepfake Detection](wgn-wavelet-guided-network.md) — methodology, results, ablations, limitations, and Kaggle reproduction scope reviewed on 2026-10-04.
+
 ## Provisional decision
 
 1. Read **DFD-HR** and **WGN** in depth because they are closest to a feasible capstone experiment.
