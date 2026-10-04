@@ -53,23 +53,23 @@ flowchart TD
 
 ## 4. What each pipeline step means
 
-### 4.1 Backbone feature \(F\)
+### 4.1 Backbone feature $F$
 
 MobileViT-S converts the input face into multiple feature maps:
 
-\[
+$$
 F \in \mathbb{R}^{C \times H \times W}.
-\]
+$$
 
-- \(C\) is the number of feature channels.
-- \(H \times W\) preserves approximate spatial position.
+- $C$ is the number of feature channels.
+- $H \times W$ preserves approximate spatial position.
 - Different channels may respond to texture, boundaries, shapes, or other learned patterns.
 
-Deepfake artifacts are often weak and local. If global pooling is applied directly to \(F\), these small responses can be diluted by the rest of the face or background.
+Deepfake artifacts are often weak and local. If global pooling is applied directly to $F$, these small responses can be diluted by the rest of the face or background.
 
 ### 4.2 Channel pooling
 
-WGN combines mean pooling and max pooling across channels while retaining \(H \times W\).
+WGN combines mean pooling and max pooling across channels while retaining $H \times W$.
 
 Our interpretation:
 
@@ -77,11 +77,11 @@ Our interpretation:
 - **Max pooling** preserves a sparse but strong response from one or a few channels.
 - Combining them gives a more stable guide without losing strong localized evidence.
 
-The result is the single-channel guide map \(F_g\).
+The result is the single-channel guide map $F_g$.
 
 ### 4.3 Haar DWT
 
-Haar DWT decomposes \(F_g\) into:
+Haar DWT decomposes $F_g$ into:
 
 | Subband | What we understood |
 |---|---|
@@ -117,58 +117,58 @@ Adaptive gating answers:
 
 IDWT converts the weighted subbands back to the spatial domain. It does not independently choose important positions; it reconstructs the weighted frequency responses into a map that preserves their locations.
 
-The resulting attention map \(A\) answers:
+The resulting attention map $A$ answers:
 
 > Where are the frequency-guided responses located?
 
-Min-max normalization constrains the map to approximately \(0\)–\(1\).
+Min-max normalization constrains the map to approximately $0$–$1$.
 
 ### 4.6 Attention-modulated feature
 
 WGN computes:
 
-\[
+$$
 F_{\text{att}} = F \times A.
-\]
+$$
 
 Example discussed:
 
-- \(F = 0.8\)
-- \(A = 0.9\)
-- \(F_{\text{att}} = 0.72\)
+- $F = 0.8$
+- $A = 0.9$
+- $F_{\text{att}} = 0.72$
 
 The region is mostly preserved because the attention value is high. A low attention value suppresses the corresponding spatial position.
 
-Therefore, \(F_{\text{att}}\) is not a completely new feature. It is a frequency-guided copy of \(F\).
+Therefore, $F_{\text{att}}$ is not a completely new feature. It is a frequency-guided copy of $F$.
 
-### 4.7 Why retain both \(F\) and \(F_{\text{att}}\)
+### 4.7 Why retain both $F$ and $F_{\text{att}}$
 
 WGN concatenates:
 
-- \(F\): complete original feature information;
-- \(F_{\text{att}}\): feature information focused on suspicious regions.
+- $F$: complete original feature information;
+- $F_{\text{att}}$: feature information focused on suspicious regions.
 
-If attention is imperfect, using only \(F_{\text{att}}\) may discard useful information. Retaining \(F\) provides a safety path.
+If attention is imperfect, using only $F_{\text{att}}$ may discard useful information. Retaining $F$ provides a safety path.
 
 If each tensor contains 128 channels:
 
-\[
+$$
 128 + 128 = 256 \text{ channels after concatenation}.
-\]
+$$
 
-### 4.8 Why use a \(1 \times 1\) convolution
+### 4.8 Why use a $1 \times 1$ convolution
 
-A \(1 \times 1\) convolution mixes information across channels at each spatial position.
+A $1 \times 1$ convolution mixes information across channels at each spatial position.
 
 Example discussed:
 
-\[
+$$
 256 \times 16 \times 16
 \rightarrow
 128 \times 16 \times 16.
-\]
+$$
 
-It changes the number of channels but retains the \(16 \times 16\) spatial size when stride is one. Its purpose is to learn how to combine the original and attention-guided features with relatively low overhead.
+It changes the number of channels but retains the $16 \times 16$ spatial size when stride is one. Its purpose is to learn how to combine the original and attention-guided features with relatively low overhead.
 
 ### 4.9 Global pooling and classification
 
@@ -176,11 +176,11 @@ After fusion, global average pooling converts each channel into one value.
 
 Example discussed:
 
-\[
+$$
 128 \times 16 \times 16
 \rightarrow
 \text{a vector containing 128 values}.
-\]
+$$
 
 A linear layer then produces a real/fake logit.
 
@@ -276,7 +276,7 @@ Other conclusions we discussed:
 - Mean-only pooling is worse than mean plus max.
 - Removing LL is slightly worse, so useful evidence is not limited to high frequencies.
 - HH alone is insufficient; multiple directional bands are useful.
-- Addition or multiplication-only fusion is worse than concatenating \(F\) and \(F_{\text{att}}\).
+- Addition or multiplication-only fusion is worse than concatenating $F$ and $F_{\text{att}}$.
 
 ## 9. Limitations we identified
 
