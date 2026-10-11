@@ -4,10 +4,10 @@
 
 ## Project status
 
-- **Stage:** Semester 1, Week 4 literature review
+- **Stage:** Semester 1, Week 5 reproduction setup
 - **Current direction:** Generalizable and bias-resilient deepfake detection
-- **Compute environment:** Kaggle notebooks only
-- **Scope status:** Provisional — the Week 4 review will select the first reproduction target and evaluation protocol
+- **Compute environment:** Hosted GPU; current run is on an EZYCLOUDX V100 Docker rental
+- **Scope status:** DFD-HR is selected as the first reproduction; dataset access and exact evaluation splits still need verification
 - **Previous direction:** Parking occupancy work has been removed from the active tree and remains recoverable through Git history
 
 ## Current objective
@@ -20,13 +20,14 @@ The project must include:
 2. a clearly reproduced baseline;
 3. an evaluation protocol that measures generalization rather than only in-dataset accuracy;
 4. one evidence-driven improvement;
-5. a Kaggle-runnable pipeline and a practical demonstration.
+5. a hosted-GPU-runnable pipeline and a practical demonstration.
 
-The current evidence favors image/frame-level classification and cross-dataset evaluation. This will be frozen only after the Week 4 code and dataset feasibility review.
+The current evidence favors image/frame-level classification and cross-dataset evaluation. DFD-HR is the first reproduction target; the final capstone scope remains provisional until dataset access and evaluation splits are verified.
 
 ## Project documents
 
 - [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md): the complete 18-week plan and checklist.
+- [`experiments/EXP-001-DFD-HR/README.md`](experiments/EXP-001-DFD-HR/README.md): DFD-HR reproduction runbook and result record.
 - [`docs/literature-review/README.md`](docs/literature-review/README.md): literature groups and review process.
 - [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md): comparison of the five papers assigned for Weeks 3–4.
 - [`docs/weekly-logs/semester-1/`](docs/weekly-logs/semester-1/): evidence and progress recorded by week.
@@ -39,10 +40,10 @@ The current evidence favors image/frame-level classification and cross-dataset e
 | 02 | Finish the same five cited papers; connect generalization, compression, spectral bias, and demographic fairness | Week 1–2 progress report | ✅ Completed |
 | 03 | Begin the five sources newly assigned by the professor: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Initial notes plus code, checkpoint, dataset, and compute audit | ✅ Initial review completed |
 | **04** | Continue reading the same five Week 3 sources; study DFD-HR and WGN more deeply | Five structured notes, comparison matrix, and Week 5 reproduction decision | 🚧 In progress |
-| 05 | Select the first reproducible paper and inspect its repository, checkpoint, preprocessing, and dataset requirements | Kaggle environment, dataset-access record, and 10–50 sample inference test | ⬜ Pending |
-| 06 | Study dataset protocol and leakage risks; reproduce pretrained inference or a short evaluation | `EXP-001` baseline smoke test and Kaggle notebook | ⬜ Pending |
-| 07 | Run the selected baseline on a fixed validation subset | `EXP-002` baseline AUC, accuracy, runtime, seed, and sample-count table | ⬜ Pending |
-| 08 | Study robustness literature and the NTIRE degradation setting | `EXP-003` JPEG/resize/blur robustness curves and failure analysis | ⬜ Pending |
+| 05 | Begin the DFD-HR reproduction; verify its official code, dataset access, and training protocol | EZYCLOUDX V100 preflight, pinned-code setup, and a documented data-access decision | ⬜ Pending |
+| 06 | Verify FaceForensics++ c23 data layout, splits, and one-batch training pipeline | `EXP-001` data/forward-pass smoke test; no full training until this passes | ⬜ Pending |
+| 07 | Fresh-train DFD-HR with the official single-GPU configuration; measure runtime and memory | `EXP-001` training log and checkpoint; `EXP-002` evaluation record | ⬜ Pending |
+| 08 | Evaluate the trained DFD-HR model on paper-matched cross-dataset splits | `EXP-003` AUC/ACC/EER/AP table and protocol notes | ⬜ Pending |
 | 09 | Study cross-dataset and cross-manipulation protocols | `EXP-004` source-domain versus held-out-domain result table | ⬜ Pending |
 | 10 | Analyze false positives, false negatives, confidence, quality, and manipulation types | Error-analysis report and one frozen improvement hypothesis | ⬜ Pending |
 | 11 | Deep-read the selected improvement paper; likely frequency/wavelet guidance if supported by Week 10 | `EXP-005` improvement v1 implementation and smoke test | ⬜ Pending |
@@ -77,7 +78,7 @@ Freeze problem and evaluation protocol
         ↓
 Select code-first baseline and dataset
         ↓
-Reproduce on Kaggle
+Reproduce on the hosted GPU
         ↓
 Analyze failure modes and generalization gap
         ↓
@@ -92,7 +93,7 @@ Ablation, robustness evaluation, and demo
 
 - Deepfake detection research
 - Public datasets and reproducible baselines
-- Kaggle-only execution
+- Hosted-GPU execution (currently EZYCLOUDX V100; no local workstation)
 - Evidence-based experiment design
 - Compact metrics, plots, configs, and reports committed to GitHub
 
@@ -124,15 +125,15 @@ special_project/
 └── requirements.txt
 ```
 
-## Kaggle-only workflow
+## Hosted-GPU workflow
 
-1. Notebooks are authored and committed here.
-2. Training and evaluation run on Kaggle.
-3. Datasets and checkpoints stay on Kaggle or approved external storage.
-4. Only compact JSON/CSV metrics, selected figures, and documentation return to GitHub.
+1. Code, configs, and documentation are versioned in this repository.
+2. Clone or pull this repository on the rented remote GPU container; run training there.
+3. Keep datasets, extracted frames, logs, and checkpoints on the rented disk or approved persistent storage.
+4. Commit only compact JSON/CSV metrics, selected figures, configs, and documentation to GitHub.
 
-Do not commit videos, extracted frames, datasets, checkpoints, Kaggle credentials, or large archives.
+Do not commit videos, extracted frames, datasets, checkpoints, cloud credentials, or large archives.
 
 ## Immediate next action
 
-Finish reading the five papers assigned for Weeks 3–4, complete their structured notes, and then make a go/no-go decision for a small Kaggle reproduction. No reproduction has been claimed yet.
+Clone this project repository onto the rented container and run the read-only DFD-HR preflight script. Review its output before installing anything. No DFD-HR reproduction result is claimed yet.
