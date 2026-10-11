@@ -52,7 +52,7 @@ The current evidence favors image/frame-level classification and cross-dataset e
 | 14 | Revisit fairness literature and verify whether trustworthy demographic metadata exists | `EXP-008` subgroup AUC/FPR/FNR audit, or a documented decision not to make demographic claims | ⬜ Pending |
 | 15 | Evaluate efficiency, calibration, and practical deployment constraints | `EXP-009` accuracy–robustness–efficiency comparison | ⬜ Pending |
 | 16 | Lock the protocol and run the final evaluation without tuning on test results | Final tables, plots, configs, and artifact manifest | ⬜ Pending |
-| 17 | Build an application-oriented Kaggle demo and write the research report | End-to-end demo plus report draft | ⬜ Pending |
+| 17 | Build an application-oriented hosted-GPU demo and write the research report | End-to-end demo plus report draft | ⬜ Pending |
 | 18 | Perform citation, claim, and reproducibility audits; prepare the defense | Final report, presentation, repository release, and clean-session verification | ⬜ Pending |
 
 The detailed checklist and decision rules remain available in [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md).
@@ -62,7 +62,7 @@ The detailed checklist and decision rules remain available in [`docs/project-pla
 | Decision | Questions to resolve |
 |---|---|
 | Task unit | Image, sampled video frames, or full video? |
-| Dataset | Which public datasets are accessible, licensed, and realistic for Kaggle? |
+| Dataset | Which public datasets are accessible, licensed, and realistic for the rented hosted GPU? |
 | Baseline | Which paper has runnable code, pretrained weights, and clear evaluation instructions? |
 | Generalization | In-dataset, cross-manipulation, cross-dataset, or unseen-generator evaluation? |
 | Improvement | Spatial artifacts, frequency cues, temporal cues, augmentation, domain generalization, or another justified method? |
@@ -119,7 +119,7 @@ special_project/
 │   ├── meetings/                # Advisor meeting records
 │   └── project-scope.md         # Current boundaries and open decisions
 ├── experiments/                 # One documented folder per experiment
-├── notebooks/                   # Kaggle notebooks
+├── notebooks/                   # Optional experiment notebooks
 ├── results/                     # Small metrics and figures only
 ├── src/                         # Reusable training/evaluation code
 └── requirements.txt

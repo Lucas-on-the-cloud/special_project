@@ -59,7 +59,7 @@ These are evaluation categories to investigate, not committed experiments:
 
 After the scope is frozen, a complete project should contain:
 
-- one paper/repository reproduced on Kaggle;
+- one paper/repository reproduced on the rented hosted GPU;
 - one documented dataset audit and leakage-resistant split;
 - one maintained baseline;
 - at least one generalization or robustness evaluation;
