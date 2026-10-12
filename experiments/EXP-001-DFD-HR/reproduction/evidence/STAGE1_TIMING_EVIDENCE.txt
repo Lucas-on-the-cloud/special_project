@@ -1,0 +1,26 @@
+DFD-HR stage-1 timing evidence
+Date: 2026-10-12 (Asia/Bangkok)
+
+Training log excerpts:
+2026-10-12 13:55:29,107 - INFO - ===> Epoch[0] start!
+2026-10-12 13:56:22,592 - INFO - Iter: 0 training-loss, overall: 0.5899892449378967
+2026-10-12 14:18:52,677 - INFO - Iter: 300 training-loss, overall: 0.5873547196388245
+2026-10-12 14:42:55,018 - INFO - Iter: 600 training-loss, overall: 0.5216424465179443
+2026-10-12 15:06:55,784 - INFO - Iter: 900 training-loss, overall: 0.4693506956100464
+
+Final progress record before intentional stop:
+1079 / 7192 micro-batches, elapsed 1:25:08, approximately 4.71 seconds/iteration.
+
+Derived projection:
+- 7192 * 4.71 seconds = approximately 9.41 hours for the training portion of one epoch.
+- Approximately 8-9 days for 20/21 epochs, before complete evaluation overhead.
+
+Runtime configuration:
+- NVIDIA GeForce RTX 5090, 32,607 MiB reported VRAM
+- FP32
+- Physical batch size 4
+- Gradient accumulation 4
+- Effective batch size 16
+- 8 DataLoader workers
+
+The process was intentionally stopped during epoch 0. No checkpoint was produced.
