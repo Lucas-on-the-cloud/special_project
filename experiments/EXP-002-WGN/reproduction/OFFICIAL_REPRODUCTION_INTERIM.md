@@ -89,7 +89,7 @@ All evaluations use the best FF++ c23 checkpoint without target-dataset fine-tun
   <tr>
     <td><img src="assets/wgn-paper-table2-05.png" alt="Original WGN paper Table 2"></td>
     <td valign="top">
-      <b>Celeb-DF-v2</b><br>
+      <b>Celeb-DF (official v2 test split)</b><br>
       Frame AUC: 65.03%<br>
       Video AUC: 69.70%<br>
       Paper: 77.62%<br><br>
@@ -107,9 +107,19 @@ All evaluations use the best FF++ c23 checkpoint without target-dataset fine-tun
 
 | Target dataset | Frames | Videos | Frame AUC | Video AUC | Paper AUC |
 |---|---:|---:|---:|---:|---:|
-| Celeb-DF-v2 | 16,420 | 518 | 65.03% | 69.70% | 77.62% |
+| Celeb-DF (v2 used here) | 16,420 | 518 | 65.03% | 69.70% | 77.62% |
 | DFDC | 132,116 | 4,704 | 69.54% | 71.00% | 70.41% |
 | WildDeepfake | 165,662 | 806 | 70.35% | 75.35% | 68.65% |
+
+**Celeb-DF version note.** Table 2 abbreviates the dataset as `Celeb-DF` and
+does not print a version number. Its citation [13] is the CVPR 2020
+*Celeb-DF: A Large-scale Challenging Dataset for DeepFake Forensics* release.
+The dataset authors' official repository identifies that CVPR 2020 release as
+Celeb-DF v2 and provides an official 518-video test list. Our evaluation used
+exactly those 518 test videos. Therefore using v2 is well supported rather than
+an apparent v1/v2 substitution, but the missing version label in the WGN paper
+is retained here as a reporting ambiguity. See the
+[official Celeb-DF repository](https://github.com/yuezunli/celeb-deepfakeforensics).
 
 ## FaceShifter results
 
@@ -125,6 +135,17 @@ Final test metrics from the best validation-accuracy checkpoints are:
 Models were independently trained for 25 epochs on one FF++ c23 manipulation
 and evaluated on all four test sets. Values are frame-level AUC (%). The `Avg`
 columns follow the paper exactly: the mean includes the in-domain diagonal.
+
+### Original Table 3 image
+
+The image below is the direct PDF page capture, not a recreated table. Table 3
+is in the upper-right portion; click the image to inspect it at full resolution.
+
+<a href="assets/wgn-paper-page-05.png">
+  <img src="assets/wgn-paper-page-05.png" alt="Original WGN paper page containing Table 3" width="1000">
+</a>
+
+### Numeric side-by-side comparison
 
 <table>
   <tr>
