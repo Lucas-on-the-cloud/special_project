@@ -2,7 +2,7 @@
 
 **Date:** 13 October 2026  
 **Paper:** *WGN: Wavelet-Guided Network for Efficient and Generalised Deepfake Detection* (CVPRW 2026)  
-**Status:** Main FaceForensics++ c23/c40, cross-dataset evaluation, and FaceShifter c23 are complete; FaceShifter c40 and cross-manipulation experiments are still running.
+**Status:** Main FaceForensics++ c23/c40, cross-dataset evaluation, and FaceShifter c23/c40 are complete; cross-manipulation experiments are still running.
 
 ## Reproduction scope and caveat
 
@@ -49,7 +49,8 @@ Paper values and our values below are frame-level test metrics.
       ACC: 98.24% (paper: 98.00%)<br>
       AUC: 98.88% (paper: 99.92%)<br><br>
       <b>FaceShifter c40</b><br>
-      Training in progress at interim-commit time.
+      ACC: 93.87% (paper: 94.99%)<br>
+      AUC: 97.20% (paper: 98.66%)
     </td>
   </tr>
 </table>
@@ -60,6 +61,10 @@ Paper values and our values below are frame-level test metrics.
 | FF++ c23 | AUC | 98.90% | 98.44% | -0.46 pp |
 | FF++ c40 | ACC | 80.20% | 78.80% | -1.40 pp |
 | FF++ c40 | AUC | 89.00% | 87.09% | -1.91 pp |
+| FaceShifter c23 | ACC | 98.00% | 98.24% | +0.24 pp |
+| FaceShifter c23 | AUC | 99.92% | 98.88% | -1.04 pp |
+| FaceShifter c40 | ACC | 94.99% | 93.87% | -1.12 pp |
+| FaceShifter c40 | AUC | 98.66% | 97.20% | -1.46 pp |
 
 Additional video-level results:
 
@@ -67,6 +72,8 @@ Additional video-level results:
 |---|---:|---:|
 | FF++ c23 | 97.00% | 99.51% |
 | FF++ c40 | 89.86% | 93.52% |
+| FaceShifter c23 | 97.50% | 99.66% |
+| FaceShifter c40 | 93.21% | 99.29% |
 
 The c23 run selected epoch 13 (zero-based checkpoint epoch 12) by validation accuracy and took approximately 41 minutes. The c40 run selected epoch 19 (zero-based checkpoint epoch 18) and took approximately 40 minutes.
 
@@ -104,16 +111,14 @@ All evaluations use the best FF++ c23 checkpoint without target-dataset fine-tun
 | DFDC | 132,116 | 4,704 | 69.54% | 71.00% | 70.41% |
 | WildDeepfake | 165,662 | 806 | 70.35% | 75.35% | 68.65% |
 
-## FaceShifter status
+## FaceShifter results
 
-FaceShifter c23 is complete. Its final test metrics from the best validation-accuracy checkpoint are:
+Final test metrics from the best validation-accuracy checkpoints are:
 
-- Frame ACC: 98.24% (paper: 98.00%)
-- Frame AUC: 98.88% (paper: 99.92%)
-- Video ACC: 97.50%
-- Video AUC: 99.66%
-
-FaceShifter c40 is still training, so no final c40 test metric is reported here yet.
+| Compression | Best epoch | Frame ACC | Frame AUC | Video ACC | Video AUC |
+|---|---:|---:|---:|---:|---:|
+| c23 | 12 | 98.24% | 98.88% | 97.50% | 99.66% |
+| c40 | 16 | 93.87% | 97.20% | 93.21% | 99.29% |
 
 ## Work implemented
 
@@ -128,8 +133,7 @@ FaceShifter c40 is still training, so no final c40 test metric is reported here 
 
 ## Remaining work
 
-1. Complete the FaceShifter c40 test run.
-2. Complete four independent cross-manipulation training/evaluation runs.
-3. Add final comparison tables, runtimes, checkpoints, and analysis of remaining gaps to the paper.
+1. Complete four independent cross-manipulation training/evaluation runs.
+2. Add final comparison tables, runtimes, checkpoints, and analysis of remaining gaps to the paper.
 
 
