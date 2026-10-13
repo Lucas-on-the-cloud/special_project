@@ -1,0 +1,37 @@
+{
+  "paper_source": "https://openaccess.thecvf.com/content/CVPR2026W/PPMisDet/papers/Ghosh_WGN_Wavelet-Guided_Network_for_Efficient_and_Generalised_Deepfake_Detection_CVPRW_2026_paper.pdf",
+  "paper_table": 3,
+  "metric": "frame-level AUC",
+  "unit": "percent",
+  "average_definition": "mean over DF, F2F, FS, and NT, including the training manipulation",
+  "columns": ["DF", "F2F", "FS", "NT", "Avg"],
+  "rows": {
+    "DF": {
+      "paper": [99.93, 72.94, 39.02, 77.73, 72.40],
+      "reproduction": [99.83, 73.49, 43.35, 72.76, 72.36]
+    },
+    "F2F": {
+      "paper": [84.31, 99.23, 52.19, 70.13, 76.47],
+      "reproduction": [77.40, 99.04, 56.29, 66.41, 74.79]
+    },
+    "FS": {
+      "paper": [64.53, 69.93, 99.79, 48.31, 70.64],
+      "reproduction": [55.76, 69.99, 99.80, 49.68, 68.80]
+    },
+    "NT": {
+      "paper": [88.51, 70.56, 46.74, 97.93, 75.93],
+      "reproduction": [80.62, 64.97, 42.11, 97.66, 71.34]
+    }
+  },
+  "overall_all_cells": {
+    "paper": 73.86,
+    "reproduction": 71.82,
+    "difference_percentage_points": -2.04
+  },
+  "overall_unseen_only_derived": {
+    "paper": 65.41,
+    "reproduction": 62.74,
+    "difference_percentage_points": -2.67
+  }
+}
+

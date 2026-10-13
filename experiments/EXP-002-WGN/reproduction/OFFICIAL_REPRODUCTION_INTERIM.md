@@ -1,8 +1,8 @@
-# WGN Official-Data Reproduction: Interim Report
+# WGN Official-Data Reproduction: Final Results
 
 **Date:** 13 October 2026  
 **Paper:** *WGN: Wavelet-Guided Network for Efficient and Generalised Deepfake Detection* (CVPRW 2026)  
-**Status:** Main FaceForensics++ c23/c40, cross-dataset evaluation, and FaceShifter c23/c40 are complete; cross-manipulation experiments are still running.
+**Status:** All planned main, cross-dataset, FaceShifter, and cross-manipulation experiments are complete.
 
 ## Reproduction scope and caveat
 
@@ -120,6 +120,72 @@ Final test metrics from the best validation-accuracy checkpoints are:
 | c23 | 12 | 98.24% | 98.88% | 97.50% | 99.66% |
 | c40 | 16 | 93.87% | 97.20% | 93.21% | 99.29% |
 
+## Cross-manipulation: paper Table 3 versus reproduction
+
+Models were independently trained for 25 epochs on one FF++ c23 manipulation
+and evaluated on all four test sets. Values are frame-level AUC (%). The `Avg`
+columns follow the paper exactly: the mean includes the in-domain diagonal.
+
+<table>
+  <tr>
+    <th rowspan="2">Training set</th>
+    <th colspan="5">Original paper — Table 3</th>
+    <th colspan="5">Our reproduction</th>
+  </tr>
+  <tr>
+    <th>DF</th><th>F2F</th><th>FS</th><th>NT</th><th>Avg</th>
+    <th>DF</th><th>F2F</th><th>FS</th><th>NT</th><th>Avg</th>
+  </tr>
+  <tr>
+    <td>Deepfakes</td>
+    <td>99.93</td><td>72.94</td><td>39.02</td><td>77.73</td><td><b>72.40</b></td>
+    <td>99.83</td><td>73.49</td><td>43.35</td><td>72.76</td><td><b>72.36</b></td>
+  </tr>
+  <tr>
+    <td>Face2Face</td>
+    <td>84.31</td><td>99.23</td><td>52.19</td><td>70.13</td><td><b>76.47</b></td>
+    <td>77.40</td><td>99.04</td><td>56.29</td><td>66.41</td><td><b>74.79</b></td>
+  </tr>
+  <tr>
+    <td>FaceSwap</td>
+    <td>64.53</td><td>69.93</td><td>99.79</td><td>48.31</td><td><b>70.64</b></td>
+    <td>55.76</td><td>69.99</td><td>99.80</td><td>49.68</td><td><b>68.80</b></td>
+  </tr>
+  <tr>
+    <td>NeuralTextures</td>
+    <td>88.51</td><td>70.56</td><td>46.74</td><td>97.93</td><td><b>75.93</b></td>
+    <td>80.62</td><td>64.97</td><td>42.11</td><td>97.66</td><td><b>71.34</b></td>
+  </tr>
+</table>
+
+| Training set | Paper Avg | Reproduced Avg | Difference |
+|---|---:|---:|---:|
+| Deepfakes | 72.40% | 72.36% | -0.04 pp |
+| Face2Face | 76.47% | 74.79% | -1.68 pp |
+| FaceSwap | 70.64% | 68.80% | -1.84 pp |
+| NeuralTextures | 75.93% | 71.34% | -4.59 pp |
+| **All 16 train/test cells** | **73.86%** | **71.82%** | **-2.04 pp** |
+
+For completeness, if only genuinely unseen off-diagonal cells are averaged,
+the paper obtains 65.41% and this reproduction obtains 62.74% (-2.67 pp).
+This is a derived diagnostic and is not the `Avg` definition printed in Table 3.
+
+### Evidence
+
+- [Original CVPRW paper](https://openaccess.thecvf.com/content/CVPR2026W/PPMisDet/papers/Ghosh_WGN_Wavelet-Guided_Network_for_Efficient_and_Generalised_Deepfake_Detection_CVPRW_2026_paper.pdf), Table 3 on PDF page 5
+- [Direct page capture containing original Table 3](assets/wgn-paper-page-05.png)
+- [Deepfakes result JSON](evidence/cross_manipulation/df/cross_manipulation.json) and [training summary](evidence/cross_manipulation/df/summary.json)
+- [Face2Face result JSON](evidence/cross_manipulation/f2f/cross_manipulation.json) and [training summary](evidence/cross_manipulation/f2f/summary.json)
+- [FaceSwap result JSON](evidence/cross_manipulation/fs/cross_manipulation.json) and [training summary](evidence/cross_manipulation/fs/summary.json)
+- [NeuralTextures result JSON](evidence/cross_manipulation/nt/cross_manipulation.json) and [training summary](evidence/cross_manipulation/nt/summary.json)
+- [Complete 100-epoch console record](evidence/cross_manipulation/training.stdout.log)
+- [Machine-readable paper/reproduction comparison](evidence/cross_manipulation/comparison.json)
+- [SHA-256 checksums](evidence/cross_manipulation/SHA256SUMS.txt)
+
+All four runs contain 25 metric records, their summary and evaluation files are
+present, and the runner ended with `ALL OFFICIAL CROSS-MANIPULATION EXPERIMENTS
+COMPLETE` at 2026-10-13 16:51:34 (UTC+7). The stderr log was empty.
+
 ## Work implemented
 
 - Official FaceForensics++ EU2 parallel downloader and integrity checks
@@ -131,9 +197,11 @@ Final test metrics from the best validation-accuracy checkpoints are:
 - Automatic validation and end-to-end experiment runner
 - Separate JSON summaries and metric histories for each experiment
 
-## Remaining work
+## Completion
 
-1. Complete four independent cross-manipulation training/evaluation runs.
-2. Add final comparison tables, runtimes, checkpoints, and analysis of remaining gaps to the paper.
+All experiments in the stated reproduction scope are complete. Checkpoints and
+datasets remain local because of their size and dataset licensing constraints;
+the source code, configs, paper comparison, metric JSON files, full training
+record, and checksums are committed for auditability.
 
 
