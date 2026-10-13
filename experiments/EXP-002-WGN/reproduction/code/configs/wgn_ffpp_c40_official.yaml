@@ -1,0 +1,28 @@
+experiment: wgn_ffpp_c40_official_mtcnn
+seed: 1024
+
+data:
+  root: C:/sp1/data
+  json: C:/sp1/data/FaceForensics++-official.json
+  image_size: 256
+  compression: c40
+  frames_per_real: 40
+  frames_per_fake: 10
+  manipulations: [FF-DF, FF-F2F, FF-FS, FF-NT]
+
+model:
+  backbone: mobilevit_s.cvnets_in1k
+  pretrained: true
+  gate_hidden_dim: 4
+
+training:
+  epochs: 25
+  batch_size: 32
+  workers: 8
+  optimizer: adam
+  learning_rate: 0.0001
+  weight_decay: 0.0
+  scheduler: cosine
+  precision: fp32
+  output_dir: C:/sp1/WGN/runs/wgn_ffpp_c40_official
+
