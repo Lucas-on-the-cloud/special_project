@@ -31,6 +31,28 @@ The authors' official WGN source code and pretrained checkpoint were not publicl
 
 Paper values and our values below are frame-level test metrics.
 
+<table>
+  <tr>
+    <th width="58%">Original paper â€” Table 1</th>
+    <th width="42%">Our completed reproduction</th>
+  </tr>
+  <tr>
+    <td><img src="assets/wgn-paper-table1-05.png" alt="Original WGN paper Table 1"></td>
+    <td valign="top">
+      <b>FF++ c23 test</b><br>
+      ACC: 94.12% (paper: 95.32%)<br>
+      AUC: 98.44% (paper: 98.90%)<br><br>
+      <b>FF++ c40 test</b><br>
+      ACC: 78.80% (paper: 80.20%)<br>
+      AUC: 87.09% (paper: 89.00%)<br><br>
+      <b>FaceShifter c23</b><br>
+      Training in progress at interim-commit time.<br><br>
+      <b>FaceShifter c40</b><br>
+      Pending at interim-commit time.
+    </td>
+  </tr>
+</table>
+
 | Experiment | Metric | Paper | Ours | Difference |
 |---|---:|---:|---:|---:|
 | FF++ c23 | ACC | 95.32% | 94.12% | -1.20 pp |
@@ -50,6 +72,30 @@ The c23 run selected epoch 13 (zero-based checkpoint epoch 12) by validation acc
 ## Completed cross-dataset evaluation
 
 All evaluations use the best FF++ c23 checkpoint without target-dataset fine-tuning. Both frame- and video-aggregated AUC are reported because the exact aggregation used for the paper table is not fully specified.
+
+<table>
+  <tr>
+    <th width="58%">Original paper â€” Table 2</th>
+    <th width="42%">Our completed reproduction</th>
+  </tr>
+  <tr>
+    <td><img src="assets/wgn-paper-table2-05.png" alt="Original WGN paper Table 2"></td>
+    <td valign="top">
+      <b>Celeb-DF-v2</b><br>
+      Frame AUC: 65.03%<br>
+      Video AUC: 69.70%<br>
+      Paper: 77.62%<br><br>
+      <b>DFDC</b><br>
+      Frame AUC: 69.54%<br>
+      Video AUC: 71.00%<br>
+      Paper: 70.41%<br><br>
+      <b>WildDeepfake</b><br>
+      Frame AUC: 70.35%<br>
+      Video AUC: 75.35%<br>
+      Paper: 68.65%
+    </td>
+  </tr>
+</table>
 
 | Target dataset | Frames | Videos | Frame AUC | Video AUC | Paper AUC |
 |---|---:|---:|---:|---:|---:|
