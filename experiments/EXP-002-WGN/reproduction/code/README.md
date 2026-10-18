@@ -51,10 +51,25 @@ video, detects/crops faces with MTCNN, resizes them to 256 x 256, and writes the
 JSON manifest expected by the data loader. Official FaceForensics++ train,
 validation, and test pairs are stored in `splits/`.
 
-Celeb-DF-v2, DFDC, and WildDeepfake must be acquired separately under their
-respective licenses. Their manifests use the same JSON layout as the provided
-FaceForensics++ manifest. `prepare_wilddeepfake_json.py` builds the
-WildDeepfake manifest from an extracted dataset.
+### Selected external-evaluation source
+
+The project has received permission for Celeb-DF v2, DFDC, and WildDeepfake. For
+this improvement phase, use DeepfakeBench's preprocessed RGB face crops and
+matching JSON configurations to avoid repeating full face detection and
+cropping on the rented GPU. Keep the original provider terms and citations.
+
+- DeepfakeBench repository: <https://github.com/SCLBD/DeepfakeBench>
+- RGB data archive: <https://drive.google.com/drive/folders/1N4X3rvx9IhmkEZK-KIk4OxBrQb9BRUcs?usp=drive_link>
+- JSON configurations: <https://drive.google.com/drive/folders/1ZV3fz5MZZU5BTB5neziN6i8Yv0Z21_LO?usp=drive_link>
+- Celeb-DF v2 Google Drive: <https://drive.google.com/open?id=1iLx76wsbi9itnkxSqz9BVBl4ZvnbIazj>
+- Celeb-DF v2 Baidu mirror: <https://pan.baidu.com/s/1EcYX0s4U3kbI1V2vdrP46A> (code: `yxa1`)
+
+The WGN loader still requires a validated compatible JSON layout. Do not assume
+the DeepfakeBench JSON is directly compatible: first inspect paths, labels,
+video IDs, and split names, then run the planned conversion/validation step.
+Raw external downloads are a fallback only if the processed archive cannot be
+validated. The existing FF++ c23/c40 preparation remains the reproduction
+baseline.
 
 ## Run
 
