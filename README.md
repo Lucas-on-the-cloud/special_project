@@ -41,7 +41,7 @@ The current evidence favors image/frame-level classification and cross-dataset e
 | 02 | Finish the same five cited papers; connect generalization, compression, spectral bias, and demographic fairness | Week 1–2 progress report | ✅ Completed |
 | 03 | Begin the five sources newly assigned by the professor: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Initial notes plus code, checkpoint, dataset, and compute audit | ✅ Initial review completed |
 | **04** | Continue reading the same five Week 3 sources; study DFD-HR and WGN more deeply | Five structured notes, comparison matrix, and Week 5 reproduction decision | 🚧 In progress |
-| 05 | Begin the DFD-HR reproduction; verify its official code, dataset access, and training protocol | EZYCLOUDX V100 preflight, pinned-code setup, and a documented data-access decision | ⬜ Pending |
+| **05** | Plan and prepare WGN improvement experiments: gradient fusion, difficulty-aware curriculum, and temporal consistency | GPU preflight, dataset-path verification, and three candidate configs | 🚧 In progress |
 | 06 | Verify FaceForensics++ c23 data layout, splits, and one-batch training pipeline | `EXP-001` data/forward-pass smoke test; no full training until this passes | ⬜ Pending |
 | 07 | Fresh-train DFD-HR with the official single-GPU configuration; measure runtime and memory | `EXP-001` training log and checkpoint; `EXP-002` evaluation record | ⬜ Pending |
 | 08 | Evaluate the trained DFD-HR model on paper-matched cross-dataset splits | `EXP-003` AUC/ACC/EER/AP table and protocol notes | ⬜ Pending |
