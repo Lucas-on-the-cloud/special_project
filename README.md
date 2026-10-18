@@ -42,14 +42,14 @@ The current evidence favors image/frame-level classification and cross-dataset e
 | 03 | Begin the five sources newly assigned by the professor: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Initial notes plus code, checkpoint, dataset, and compute audit | ✅ Initial review completed |
 | **04** | Continue reading the same five Week 3 sources; study DFD-HR and WGN more deeply | Five structured notes, comparison matrix, and Week 5 reproduction decision | 🚧 In progress |
 | **05** | Plan and prepare WGN improvement experiments: gradient fusion, difficulty-aware curriculum, and temporal consistency | GPU preflight, dataset-path verification, and three candidate configs | 🚧 In progress |
-| 06 | Verify FaceForensics++ c23 data layout, splits, and one-batch training pipeline | `EXP-001` data/forward-pass smoke test; no full training until this passes | ⬜ Pending |
-| 07 | Fresh-train DFD-HR with the official single-GPU configuration; measure runtime and memory | `EXP-001` training log and checkpoint; `EXP-002` evaluation record | ⬜ Pending |
-| 08 | Evaluate the trained DFD-HR model on paper-matched cross-dataset splits | `EXP-003` AUC/ACC/EER/AP table and protocol notes | ⬜ Pending |
-| 09 | Study cross-dataset and cross-manipulation protocols | `EXP-004` source-domain versus held-out-domain result table | ⬜ Pending |
-| 10 | Analyze false positives, false negatives, confidence, quality, and manipulation types | Error-analysis report and one frozen improvement hypothesis | ⬜ Pending |
-| 11 | Deep-read the selected improvement paper; likely frequency/wavelet guidance if supported by Week 10 | `EXP-005` improvement v1 implementation and smoke test | ⬜ Pending |
-| 12 | Train or tune the improvement using the same controlled baseline protocol | `EXP-006` baseline-versus-improvement comparison | ⬜ Pending |
-| 13 | Study and run component ablations; repeat important runs when feasible | `EXP-007` ablation table with multiple seeds or an explicit single-run limitation | ⬜ Pending |
+| 06 | Read SGFF-Net in depth and implement the gradient-fusion candidate | Install the pinned environment, verify the data manifest, and run the `EXP-003` smoke test | ⬜ Pending |
+| 07 | Read the difficulty-aware curriculum paper and implement training-only difficulty ranking | Run the `EXP-004` 5-epoch pilot without using validation/test data for ranking | ⬜ Pending |
+| 08 | Read the temporal consistency paper and implement same-video frame pairing | Run the `EXP-005` numerical smoke test and 5-epoch pilot | ⬜ Pending |
+| 09 | Compare the three WGN pilots | Run full 25-epoch training for the strongest candidates under the frozen protocol | ⬜ Pending |
+| 10 | Review improvement results and failure cases | Evaluate FF++ c23/c40, Celeb-DF v2, DFDC, and WildDeepfake | ⬜ Pending |
+| 11 | Select the strongest single WGN improvement | Run cross-manipulation and lock the final improvement hypothesis | ⬜ Pending |
+| 12 | Read supporting literature for the selected method | Train the selected improvement with the locked 25-epoch protocol | ⬜ Pending |
+| 13 | Study and run component ablations; repeat important runs when feasible | `EXP-007` ablation table | ⬜ Pending |
 | 14 | Revisit fairness literature and verify whether trustworthy demographic metadata exists | `EXP-008` subgroup AUC/FPR/FNR audit, or a documented decision not to make demographic claims | ⬜ Pending |
 | 15 | Evaluate efficiency, calibration, and practical deployment constraints | `EXP-009` accuracy–robustness–efficiency comparison | ⬜ Pending |
 | 16 | Lock the protocol and run the final evaluation without tuning on test results | Final tables, plots, configs, and artifact manifest | ⬜ Pending |
