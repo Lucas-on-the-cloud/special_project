@@ -29,6 +29,7 @@ The current evidence favors image/frame-level classification and cross-dataset e
 - [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md): the complete 18-week plan and checklist.
 - [`experiments/EXP-001-DFD-HR/README.md`](experiments/EXP-001-DFD-HR/README.md): DFD-HR reproduction runbook and result record.
 - [`experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md`](experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md): detailed WGN improvement plan, experiment IDs, protocols, and pre-rental checklist.
+- [`docs/dataset-access-plan.md`](docs/dataset-access-plan.md): official dataset links, permission forms, download sources, and private data-access checklist.
 - [`docs/literature-review/README.md`](docs/literature-review/README.md): literature groups and review process.
 - [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md): comparison of the five papers assigned for Weeks 3–4.
 - [`docs/weekly-logs/semester-1/`](docs/weekly-logs/semester-1/): evidence and progress recorded by week.
