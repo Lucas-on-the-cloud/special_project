@@ -9,9 +9,9 @@
 | Dataset | Purpose in this project | Access status | Action |
 |---|---|---|---|
 | FaceForensics++ | Main training set, c23/c40 control, and manipulation experiments | Permission email received | Keep the approval email and use the official download script |
-| Celeb-DF v2 | Main cross-dataset evaluation; current WGN weakness | Permission required | Submit the Google or Tencent form |
-| DFDC full dataset | Cross-dataset evaluation and robustness check | Meta/AWS access required | Create AWS account/IAM credentials and request access |
-| WildDeepfake | Real-world cross-dataset evaluation | Agreement required | Submit the agreement form; use the official Hugging Face mirror after approval |
+| Celeb-DF v2 | Main cross-dataset evaluation; current WGN weakness | **Approved; direct links received** | Download v2 and keep the access email private |
+| DFDC full dataset | Cross-dataset evaluation and robustness check | **Approved; access granted** | Use the approved DeepfakeBench-processed copy for this phase |
+| WildDeepfake | Real-world cross-dataset evaluation | **Approved; agreement accepted** | Use the approved DeepfakeBench-processed copy for this phase |
 
 FaceShifter and DeepfakeDetection do not need a separate request for the current plan if they are downloaded through the approved FaceForensics++ script. Verify the exact permission scope in the reply received from the FaceForensics authors.
 
@@ -46,20 +46,19 @@ The existing WGN reproduction uses FF++ c23 for training and c40 for compression
 - [Tencent access/terms form](https://wj.qq.com/s2/8540155/b5d9/)
 - Contact: deepfakeforensics@gmail.com
 
-### What to request
+### Access received
 
-Request **Celeb-DF v2**, not v1. The official repository describes v2 as 590 original videos and 5,639 synthesized videos, with an official 518-video testing list. We will use the official test list for cross-dataset evaluation and will not fine-tune WGN on Celeb-DF.
+The project will use **Celeb-DF v2 only** for external evaluation. The access email supplied the following official download locations:
 
-Suggested form description:
+- Google Drive (v2): <https://drive.google.com/open?id=1iLx76wsbi9itnkxSqz9BVBl4ZvnbIazj>
+- Baidu Netdisk (v2): <https://pan.baidu.com/s/1EcYX0s4U3kbI1V2vdrP46A> — extraction code: `yxa1`
 
-~~~text
-I am an undergraduate student at Yuan Ze University conducting an academic
-capstone project on generalizable deepfake detection. I will train a WGN-based
-detector on the approved FaceForensics++ dataset and use Celeb-DF v2 only for
-cross-dataset evaluation. The data will not be redistributed or used for
-commercial purposes. I will cite the Celeb-DF paper and follow the dataset
-terms of use.
-~~~
+The v1 links are recorded for reference only and are not required for this project:
+
+- Google Drive (v1): <https://drive.google.com/open?id=10NGF38RgF8FZneKOuCOdRIsPzpC7_WDd>
+- Baidu Netdisk (v1): <https://pan.baidu.com/s/16QulfMFG4TQB9iMZIZnsjQ> — extraction code: `ku0s`
+
+We will use the official test list for cross-dataset evaluation and will not fine-tune WGN on Celeb-DF. Keep the approval email and any downloaded archive outside GitHub.
 
 ## 4. DFDC
 
@@ -72,9 +71,9 @@ terms of use.
 
 ### Access requirements
 
-The official Meta page states that access requires an AWS account, an IAM user with access keys, and the AWS account number. Prepare these before the GPU rental. Do not put AWS keys in this repository or in experiment logs.
+The project has received DFDC access approval. For the current improvement phase, use the approved **DeepfakeBench preprocessed RGB/JSON copy** for external evaluation instead of repeating full video extraction and face preprocessing on the rented GPU. The original Meta/DFDC terms still apply; never commit AWS credentials, private access messages, or raw data.
 
-The full DFDC contains approximately 124,000 videos and is much larger than the other evaluation sets. We should request access now but download only the exact split needed for the agreed evaluation protocol. The current WGN plan uses DFDC as an external test set, not as a training set.
+The full DFDC contains approximately 124,000 videos and is much larger than the other evaluation sets. Download only the exact split needed for the agreed evaluation protocol. The current WGN plan uses DFDC as an external test set, not as a training set.
 
 ## 5. WildDeepfake
 
@@ -86,7 +85,7 @@ The full DFDC contains approximately 124,000 videos and is much larger than the 
 - [Official Hugging Face dataset mirror](https://huggingface.co/datasets/xingjunm/WildDeepfake)
 - Contact listed by the authors: danxjma@gmail.com
 
-The official repository describes 7,314 face sequences from 707 deepfake videos. Only face sequences are released. Complete the agreement form before using the dataset. The Hugging Face mirror is a download location, not a replacement for the authors' usage agreement.
+The official repository describes 7,314 face sequences from 707 deepfake videos. Only face sequences are released. The project has received approval to use WildDeepfake. For this phase, use the approved **DeepfakeBench preprocessed RGB/JSON copy**; the original authors' privacy, citation, and removal requirements still apply.
 
 Suggested form description:
 
@@ -98,32 +97,39 @@ The data will not be redistributed or used commercially, and I will follow the
 privacy, citation, and removal requirements in the dataset agreement.
 ~~~
 
-## 6. Optional preprocessed data from DeepfakeBench
+## 6. Selected preprocessed data source (DeepfakeBench)
 
-DeepfakeBench provides preprocessed RGB face crops, masks, landmarks, and JSON configurations. This can save preprocessing time, but it does not replace the original dataset providers' terms.
+DeepfakeBench is now the selected source for the external-evaluation copies of **Celeb-DF v2, DFDC, and WildDeepfake**. This saves GPU time by avoiding a second full face-detection/cropping pipeline. It does not replace the original dataset providers' terms or citations.
 
 - [DeepfakeBench official repository](https://github.com/SCLBD/DeepfakeBench)
 - [Preprocessed RGB data on Google Drive](https://drive.google.com/drive/folders/1N4X3rvx9IhmkEZK-KIk4OxBrQb9BRUcs?usp=drive_link)
 - [JSON configurations on Google Drive](https://drive.google.com/drive/folders/1ZV3fz5MZZU5BTB5neziN6i8Yv0Z21_LO?usp=drive_link)
 - [DeepfakeBench paper](https://arxiv.org/abs/2307.01426)
 
-Important limitations:
+Use the processed RGB data and matching JSON configurations only after confirming that the relevant source-dataset approvals cover this academic use. The project will not fine-tune WGN on these target datasets.
 
-- The provided processed data is generally 32 cropped frames per video.
-- The provided FaceForensics++/FaceShifter data is c23 only, so it cannot replace the c40 download.
-- DeepfakeBench explicitly states that copyright belongs to the original providers.
-- Use the processed data only after confirming that the relevant original-provider terms permit this academic use.
-- Record the downloaded archive name, date, checksum, and source URL in the private data log.
+Important limitations and validation requirements:
 
-For a faithful WGN reproduction, use the approved FF++ data and the existing preprocessing pipeline for the final c23/c40 control. Use DeepfakeBench data only for a pilot or when preprocessing time is the bottleneck.
+- The processed data is generally 32 cropped frames per video.
+- The available FaceForensics++/FaceShifter processed copy is c23 only, so it does not replace the FF++ c40 control.
+- Copyright remains with the original dataset providers.
+- Record archive name, download date, checksum, source URL, and local path in the private data log.
+- The current WGN loader expects a compatible JSON layout. **Do not assume DeepfakeBench JSON is directly compatible**; first validate paths, labels, video IDs, and split names, then write the small conversion step if needed.
+- Raw external downloads are a fallback only if the processed archive or manifest cannot be validated.
 
-## 7. Recommended request order
+For faithful reproduction, keep the existing approved FF++ c23/c40 pipeline as the baseline/control. Use DeepfakeBench data for the external-evaluation phase to reduce preprocessing time.
 
-1. **Celeb-DF v2:** submit both forms now; it is the most important target because the WGN baseline has its largest generalization gap there.
-2. **WildDeepfake:** submit the agreement form now; approval may require an academic email and signature.
-3. **DFDC:** create the AWS/IAM access prerequisites now; request access before renting the GPU because the dataset is large.
-4. **FaceForensics++:** keep the existing author approval email and download-script instructions.
-5. **DeepfakeBench processed data:** download only after the source-dataset permissions are clear.
+## 7. Next data-access actions
+
+All required permissions have now been received for this phase:
+
+1. Keep the FaceForensics++ approval email and existing FF++ download instructions.
+2. Download the DeepfakeBench RGB archive and matching JSON configurations.
+3. Record checksums and inspect the archive layout.
+4. Validate or convert the DeepfakeBench JSON into the WGN manifest format.
+5. Run a small external-evaluation smoke test before renting long GPU sessions.
+
+Do not commit signed agreements, private download links, credentials, raw videos, face crops, or checkpoints.
 
 ## 8. Private data-access log
 
@@ -148,12 +154,12 @@ Commit only a redacted status file containing dataset name, approval status, dat
 
 ## 9. Machine preparation rule
 
-Do not rent the GPU for final experiments until:
+Do not start long final GPU runs until:
 
 - FF++ data path and manifest are confirmed;
-- Celeb-DF v2 request has been submitted;
-- WildDeepfake agreement has been submitted;
-- DFDC AWS prerequisites are ready;
-- at least one cross-dataset target is physically available or its download is scheduled;
+- DeepfakeBench RGB and JSON archives are downloaded or scheduled;
+- archive checksums and sample paths are recorded privately;
+- the DeepfakeBench-to-WGN manifest validation/conversion passes;
+- at least one external target smoke test completes;
 - the WGN smoke test can run on the rented environment.
 
