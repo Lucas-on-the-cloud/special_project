@@ -1,7 +1,7 @@
 # 18-Week Research and Experiment Plan
 
 **Current week:** Week 5  
-**Compute:** Hosted GPU Docker; current rental is EZYCLOUDX V100  
+**Compute:** Hosted GPU Docker; a new rental is planned for WGN improvement experiments  
 **Working direction:** Generalizable and bias-resilient deepfake detection  
 **Status key:** `[x]` completed, `[ ]` pending/in progress
 
@@ -23,15 +23,15 @@ Reading and coding run in parallel. A week is complete only when its evidence is
 | 02 | Finish the same five cited papers and connect them through generalization, compression, spectral bias, and demographic fairness | Build the comparison and convert the literature findings into research questions | Progress report covering the five cited papers | [x] Five-paper review completed at report level<br>[x] Report completed |
 | 03 | Begin the five newly assigned sources: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Verify official links; inspect task, method, datasets, code, checkpoints, and compute requirements | Initial notes and source-verification record for the new five-paper set | [x] Sources received and verified<br>[x] Initial reading/code audit started |
 | **04** | Continue and deepen the same five papers assigned in Week 3, with priority on DFD-HR and WGN | Complete the comparison matrix and rented-GPU feasibility analysis; do not full-train all methods | Five structured notes, paper matrix, and one justified Week 5 reproduction candidate | [ ] Finish five structured paper notes<br>[x] Initial code/compute triage<br>[ ] Confirm Week 5 target |
-| 05 | Read the official DFD-HR setup/data instructions and verify its pinned code | Run the read-only cloud preflight; confirm approved data access and available storage; do not start full training | Preflight record, source commit, and dataset-access decision | [ ] |
-| 06 | Study FaceForensics++ c23 preprocessing, data splits, and model-selection protocol | Install the pinned environment, verify the data manifest, and run one batch/optimizer-step smoke test | `EXP-001` environment and data-pipeline record; no full run until it passes | [ ] |
-| 07 | Recheck the DFD-HR training and evaluation protocol | Fresh-train DFD-HR with the official single-GPU command; record actual epoch count, runtime, memory, and checkpoint | `EXP-001` training log and deviation record | [ ] |
-| 08 | Read DFD-HR cross-dataset result protocol and compare dataset splits | Evaluate the trained checkpoint on paper-matched datasets/splits; keep any model-selection set labelled as validation | `EXP-002` cross-dataset metrics and protocol table | [ ] |
-| 09 | Read cross-dataset and cross-manipulation protocols | Train/evaluate on the selected source domain and test on at least one held-out domain | `EXP-004` generalization gap table | [ ] |
-| 10 | Review errors and the most relevant method family | Stratify false positives/negatives by quality, manipulation, and confidence; select exactly one improvement | Error-analysis report and frozen improvement hypothesis | [ ] |
-| 11 | Deep-read the chosen improvement paper; likely WGN/frequency guidance if supported by Week 10 | Implement improvement v1 behind a config flag; run unit and smoke tests | `EXP-005` implementation validation and architecture note | [ ] |
-| 12 | Read one supporting paper about the chosen mechanism | Train/tune improvement v1 on a controlled subset using the same baseline protocol | `EXP-006` baseline-vs-improvement result | [ ] |
-| 13 | Read ablation and reproducibility guidance | Run ablations that isolate each new component; repeat the key comparison with multiple seeds when feasible | `EXP-007` ablation table with mean/spread or explicit single-run limitation | [ ] |
+| **05** | Read the three selected 2026 improvement papers and freeze the WGN improvement hypotheses | Run GPU preflight; verify processed FF++ paths; prepare gradient, curriculum, and temporal pilot configs | WGN improvement plan, pre-rental checklist, and pilot commands | [x] Plan committed; [ ] GPU pilots pending |
+| 06 | Read SGFF-Net in depth and implement the gradient-fusion candidate | Install the pinned environment, verify the data manifest, and run the `EXP-003` smoke test | `EXP-003` gradient branch and 5-epoch pilot | [ ] |
+| 07 | Read difficulty-aware curriculum paper and implement training-only difficulty ranking | Run the `EXP-004` 5-epoch pilot; ensure validation/test data never affect ranking | `EXP-004` curriculum pilot and data-leakage check | [ ] |
+| 08 | Read temporal consistency paper and implement same-video frame pairing | Run the `EXP-005` numerical smoke test and 5-epoch pilot | `EXP-005` temporal pilot and loss verification | [ ] |
+| 09 | Compare the three WGN pilots | Run full 25-epoch training for the strongest candidates under the frozen protocol | Baseline-versus-candidate screening table | [ ] |
+| 10 | Review the improvement results and failure cases | Evaluate FF++ c23/c40, Celeb-DF v2, DFDC, and WildDeepfake | Cross-dataset improvement table | [ ] |
+| 11 | Select the strongest single WGN improvement | Run cross-manipulation and lock the final improvement hypothesis | Error analysis and selected-method decision | [ ] |
+| 12 | Read supporting literature for the selected method | Train the selected improvement with the locked 25-epoch protocol | Final candidate checkpoint and metrics | [ ] |
+| 13 | Read ablation and reproducibility guidance | Run component ablations and repeat the key comparison with additional seeds when feasible | `EXP-007` ablation table | [ ] |
 | 14 | Revisit fairness literature and confirm whether demographic metadata is valid and licensed | If metadata exists, report subgroup AUC/FPR/FNR and gaps; otherwise document why demographic claims cannot be made | `EXP-008` fairness audit or a documented no-claim decision | [ ] |
 | 15 | Read deployment/efficiency and calibration references | Measure parameters, inference time, GPU memory, calibration, and robustness of final candidates | `EXP-009` accuracy–robustness–efficiency comparison | [ ] |
 | 16 | Review all cited experimental protocols | Run the final locked evaluation without changing settings after seeing test results | Final result tables, plots, configs, and artifact manifest | [ ] |
@@ -60,12 +60,14 @@ Reading and coding run in parallel. A week is complete only when its evidence is
 
 The five sources do not receive equal implementation priority:
 
-- **Selected first reproduction:** fresh DFD-HR training with the official code and paper data protocol; do not load the released DFD-HR final checkpoint. The official pretrained CLIP ViT-L/14 backbone remains the initialization and is frozen by the authors' implementation.
-- **Secondary inference candidate:** NTIRE 2026 ensemble, only if its CUDA/MMCV/FlashAttention environment installs reliably on the rented container.
-- **Preferred improvement candidate:** a WGN-inspired wavelet-guided module, subject to baseline error evidence.
-- **Background/future-work sources:** VRAG-DFD and domain-incremental curriculum learning because their full settings are substantially heavier than the first reproduction milestone.
+- **Current execution target:** WGN improvement experiments. The independent WGN reproduction is complete and documented in `experiments/EXP-002-WGN/reproduction/`.
+- **Three candidates:** gradient-aware fusion, difficulty-aware curriculum learning, and lightweight temporal consistency.
+- **First priority:** gradient-aware fusion because it is the closest architectural extension of WGN's wavelet-guided features.
+- **Second priority:** curriculum learning because it changes training only and adds no inference cost.
+- **Third priority:** temporal consistency if same-video frame pairing is reliable.
+- **Deferred:** DFD-HR and NTIRE reproduction remain future work after the WGN improvement decision.
 
-The target is selected, but the full run is gated on environment, data-layout, and legal-access checks. Record any blocker or deviation in the weekly log.
+All runs are gated on environment, data-layout, and legal-access checks. Record every deviation in the weekly log.
 
 ## Minimum Week 4 definition of done
 
@@ -73,7 +75,9 @@ The target is selected, but the full run is gated on environment, data-layout, a
 - [x] Record method, data, metrics, code/weights, and compute requirements in the comparison matrix.
 - [ ] Read DFD-HR and WGN in depth; skim the remaining three for problem, method, experiments, and limitations.
 - [ ] Confirm legal access to the required dataset on the rented storage.
-- [x] Select DFD-HR as the first reproduction target; dataset access and exact evaluation split remain pending.
+- [x] Complete the independent WGN reproduction and document its generalization gap.
+- [x] Commit the detailed WGN improvement plan.
+- [ ] Run the three WGN pilot experiments on the rented GPU.
 - [ ] Write `week-04.md` conclusions in the student's own words.
 
 ## Scope guardrails
