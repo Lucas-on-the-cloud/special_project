@@ -4,10 +4,10 @@
 
 ## Project status
 
-- **Stage:** Semester 1, Week 5 reproduction setup
+- **Stage:** Semester 1, Week 5 WGN improvement planning
 - **Current direction:** Generalizable and bias-resilient deepfake detection
-- **Compute environment:** Hosted GPU; current run is on an EZYCLOUDX V100 Docker rental
-- **Scope status:** DFD-HR is selected as the first reproduction; dataset access and exact evaluation splits still need verification
+- **Compute environment:** Hosted GPU; a new rental is planned for the improvement experiments
+- **Scope status:** WGN reproduction is complete; three WGN improvement candidates are planned. DFD-HR is deferred.
 - **Previous direction:** Parking occupancy work has been removed from the active tree and remains recoverable through Git history
 
 ## Current objective
@@ -28,6 +28,7 @@ The current evidence favors image/frame-level classification and cross-dataset e
 
 - [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md): the complete 18-week plan and checklist.
 - [`experiments/EXP-001-DFD-HR/README.md`](experiments/EXP-001-DFD-HR/README.md): DFD-HR reproduction runbook and result record.
+- [`experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md`](experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md): detailed WGN improvement plan, experiment IDs, protocols, and pre-rental checklist.
 - [`docs/literature-review/README.md`](docs/literature-review/README.md): literature groups and review process.
 - [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md): comparison of the five papers assigned for Weeks 3–4.
 - [`docs/weekly-logs/semester-1/`](docs/weekly-logs/semester-1/): evidence and progress recorded by week.
@@ -136,4 +137,4 @@ Do not commit videos, extracted frames, datasets, checkpoints, cloud credentials
 
 ## Immediate next action
 
-Clone this project repository onto the rented container and run the read-only DFD-HR preflight script. Review its output before installing anything. No DFD-HR reproduction result is claimed yet.
+Read `experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md`, freeze the WGN baseline, then run the GPU preflight and the three 5-epoch pilot experiments. No improvement claim is made until the locked cross-dataset evaluation is complete.
