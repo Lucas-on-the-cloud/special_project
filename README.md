@@ -22,7 +22,7 @@ The project must include:
 4. one evidence-driven improvement;
 5. a hosted-GPU-runnable pipeline and a practical demonstration.
 
-The current evidence favors image/frame-level classification and cross-dataset evaluation. DFD-HR is the first reproduction target; the final capstone scope remains provisional until dataset access and evaluation splits are verified.
+The current evidence favors image/frame-level classification and cross-dataset evaluation. WGN is the active improvement target; DFD-HR remains deferred until the WGN experiments are complete.
 
 ## Project documents
 
