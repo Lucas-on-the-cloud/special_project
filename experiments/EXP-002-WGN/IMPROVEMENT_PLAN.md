@@ -33,13 +33,21 @@ The baseline result is documented in:
 
 The baseline must be rerun only as a control when an improvement is trained under a new environment. Do not tune the improvement using the test set.
 
+## Dataset source decision for this phase
+
+- **Training/control:** keep the approved FaceForensics++ c23 pipeline and the existing c40 control unchanged.
+- **External evaluation:** use the approved DeepfakeBench preprocessed RGB face crops and matching JSON configurations for Celeb-DF v2, DFDC, and WildDeepfake.
+- **No target fine-tuning:** these external datasets remain locked evaluation sets.
+- **No repeated raw preprocessing:** do not run full face detection/cropping on the rented GPU unless the processed archive fails validation.
+- **Required preflight:** record archive checksums, inspect sample paths and labels, verify video IDs/split names, and convert the DeepfakeBench JSON only if it is not already compatible with the WGN loader.
+
 ## 2. Research problem
 
 The baseline is strong on FF++ c23 but has a clear generalization gap:
 
-- Celeb-DF video AUC: 69.70%
-- DFDC video AUC: 71.00%
-- WildDeepfake video AUC: 75.35%
+- Celeb-DF video AUC: 69.70% (evaluated using the approved external-data protocol)
+- DFDC video AUC: 71.00% (evaluated using the approved external-data protocol)
+- WildDeepfake video AUC: 75.35% (evaluated using the approved external-data protocol)
 - FF++ c40 AUC: 87.09%
 
 The improvement question for this phase is:
