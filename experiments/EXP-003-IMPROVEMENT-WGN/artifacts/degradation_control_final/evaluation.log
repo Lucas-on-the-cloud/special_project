@@ -13,3 +13,7 @@ EVALUATED FaceShifter c40 (held-out) {"loss": 1.3414751195396697, "frames": 7000
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_control_final"]
 EVALUATED_OFFICIAL_CELEBDF {"loss": 0.9495163169818962, "frames": 16576, "videos": 518, "accuracy": 0.7229126447876448, "auc": 0.7390322688393299, "video_accuracy": 0.7683397683397684, "video_auc": 0.8093027098479841}
+
+===== evaluate_degradation_control.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\degradation_control.yaml"]
