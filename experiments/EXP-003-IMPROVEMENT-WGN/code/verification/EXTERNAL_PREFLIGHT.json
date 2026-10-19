@@ -1,0 +1,47 @@
+{
+  "checked": {
+    "Celeb-DF-v2": {
+      "frames": 16420,
+      "full_image_decode": false,
+      "labels": {
+        "0": 5620,
+        "1": 10800
+      },
+      "status": "passed",
+      "video_counts": {
+        "CelebDFv2_fake": 340,
+        "CelebDFv2_real": 178
+      },
+      "videos": 518
+    },
+    "DFDC": {
+      "frames": 132116,
+      "full_image_decode": false,
+      "labels": {
+        "0": 63265,
+        "1": 68851
+      },
+      "status": "passed",
+      "video_counts": {
+        "DFDC_Fake": 2389,
+        "DFDC_Real": 2315
+      },
+      "videos": 4704
+    },
+    "WildDeepfake": {
+      "frames": 165662,
+      "full_image_decode": false,
+      "labels": {
+        "0": 58659,
+        "1": 107003
+      },
+      "status": "passed",
+      "video_counts": {
+        "WildDeepfake_Fake": 410,
+        "WildDeepfake_Real": 396
+      },
+      "videos": 806
+    }
+  },
+  "pending": []
+}

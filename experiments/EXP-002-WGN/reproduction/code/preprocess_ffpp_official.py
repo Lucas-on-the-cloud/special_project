@@ -192,10 +192,14 @@ def main() -> int:
     parser.add_argument("--detector-size", type=int, default=640)
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--precision", choices=("fp32", "fp16"), default="fp32")
+    parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
+    parser.add_argument("--cpu-threads", type=int, default=8)
     parser.add_argument("--limit-videos", type=int, default=0)
     args = parser.parse_args()
 
     cv2.setNumThreads(1)
+    if args.device == "cpu":
+        torch.set_num_threads(args.cpu_threads)
     torch.backends.cudnn.benchmark = True
     input_root = Path(args.input_root).resolve()
     output_root = Path(args.output_root).resolve()
@@ -214,9 +218,9 @@ def main() -> int:
         keep_all=True,
         select_largest=True,
         post_process=False,
-        device="cuda",
+        device=args.device,
     )
-    if args.precision == "fp16":
+    if args.precision == "fp16" and args.device == "cuda":
         mtcnn.half()
 
     manifest = {

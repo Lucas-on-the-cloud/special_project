@@ -91,7 +91,8 @@ Một lần chạy chỉ được coi là **hoàn tất khoa học** khi có đ�
 | `runs/<experiment>/best.pt` | Model tốt nhất theo frame-level validation accuracy. |
 | `runs/<experiment>/summary.json` | Best epoch, best validation metrics và test metrics cuối. |
 | `runs/<experiment>/cross_*.json` | Kết quả cross-dataset hoặc cross-manipulation. |
-| `OFFICIAL_REPRODUCTION_INTERIM.md` | Báo cáo cuối dù tên file lịch sử vẫn còn chữ `INTERIM`. |
+| `CURRENT-REPRODUCTION-STATUS.md` | Trạng thái có thẩm quyền của checkpoint reproduce hiện tại. |
+| `RTX5090-HISTORICAL-REPRODUCTION.md` | Kết quả lịch sử từ máy cũ; checkpoint không được lưu và không phải reference hiện tại. |
 | `evidence/` trên GitHub | JSON, training log, ảnh bảng gốc từ paper và checksum phục vụ audit. |
 
 Dataset, crop PNG và checkpoint không đẩy lên GitHub vì dung lượng và điều khoản dataset. Code, config, metric nhỏ và bằng chứng đối chiếu được commit.
@@ -1012,5 +1013,5 @@ WGN baseline trong project này được coi là hoàn tất vì:
 - code, config, JSON, log và checksum đã commit;
 - caveat “independent reproduction, không phải official author code” được công bố rõ.
 
-Tài liệu kết quả để trích số khi báo cáo là `OFFICIAL_REPRODUCTION_INTERIM.md`. Tài liệu hiện tại dùng để hiểu và vận hành pipeline; nếu hai tài liệu khác nhau về một con số, ưu tiên JSON evidence và checksum, sau đó sửa tài liệu mô tả thay vì sửa dữ liệu gốc.
+Tài liệu kết quả để trích số cho reference hiện tại là `CURRENT-REPRODUCTION-STATUS.md`. `RTX5090-HISTORICAL-REPRODUCTION.md` chỉ dùng để tra cứu lần chạy cũ. Tài liệu hiện tại dùng để hiểu và vận hành pipeline; nếu hai tài liệu khác nhau về một con số, ưu tiên JSON evidence và checksum, sau đó sửa tài liệu mô tả thay vì sửa dữ liệu gốc.
 

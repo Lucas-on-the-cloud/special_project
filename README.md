@@ -4,10 +4,10 @@
 
 ## Project status
 
-- **Stage:** Semester 1, Week 5 WGN improvement planning
+- **Stage:** WGN improvement experiments in progress
 - **Current direction:** Generalizable and bias-resilient deepfake detection
-- **Compute environment:** Hosted GPU; a new rental is planned for the improvement experiments
-- **Scope status:** WGN reproduction is complete; three WGN improvement candidates are planned. DFD-HR is deferred.
+- **Compute environment:** NVIDIA RTX 5060 Ti 16 GB
+- **Scope status:** The current WGN reference has been reproduced and saved; three initial improvement candidates are complete, and degradation robustness experiments are running. Cross-manipulation for the current reference remains pending. DFD-HR is deferred.
 - **Previous direction:** Parking occupancy work has been removed from the active tree and remains recoverable through Git history
 
 ## Current objective
@@ -28,7 +28,8 @@ The current evidence favors image/frame-level classification and cross-dataset e
 
 - [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md): the complete 18-week plan and checklist.
 - [`experiments/EXP-001-DFD-HR/README.md`](experiments/EXP-001-DFD-HR/README.md): DFD-HR reproduction runbook and result record.
-- [`experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md`](experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md): detailed WGN improvement plan, experiment IDs, protocols, and pre-rental checklist.
+- [`experiments/EXP-002-WGN/README.md`](experiments/EXP-002-WGN/README.md): current WGN reproduction status and saved reference checkpoint.
+- [`experiments/EXP-003-IMPROVEMENT-WGN/README.md`](experiments/EXP-003-IMPROVEMENT-WGN/README.md): WGN improvement code, results, and checkpoints.
 - [`docs/dataset-access-plan.md`](docs/dataset-access-plan.md): official dataset links, permission forms, download sources, and private data-access checklist.
 - [`docs/literature-review/README.md`](docs/literature-review/README.md): literature groups and review process.
 - [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md): comparison of the five papers assigned for Weeks 3–4.
@@ -43,11 +44,11 @@ The current evidence favors image/frame-level classification and cross-dataset e
 | 03 | Begin the five sources newly assigned by the professor: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Initial notes plus code, checkpoint, dataset, and compute audit | ✅ Initial review completed |
 | **04** | Continue reading the same five Week 3 sources; study DFD-HR and WGN more deeply | Five structured notes, comparison matrix, and Week 5 reproduction decision | 🚧 In progress |
 | **05** | Plan and prepare WGN improvement experiments: gradient fusion, difficulty-aware curriculum, and temporal consistency | GPU preflight, dataset-path verification, and three candidate configs | 🚧 In progress |
-| 06 | Read SGFF-Net in depth and implement the gradient-fusion candidate | Install the pinned environment, verify the data manifest, and run the `EXP-003` smoke test | ⬜ Pending |
-| 07 | Read the difficulty-aware curriculum paper and implement training-only difficulty ranking | Run the `EXP-004` 5-epoch pilot without using validation/test data for ranking | ⬜ Pending |
-| 08 | Read the temporal consistency paper and implement same-video frame pairing | Run the `EXP-005` numerical smoke test and 5-epoch pilot | ⬜ Pending |
-| 09 | Compare the three WGN pilots | Run full 25-epoch training for the strongest candidates under the frozen protocol | ⬜ Pending |
-| 10 | Review improvement results and failure cases | Evaluate FF++ c23/c40, Celeb-DF v2, DFDC, and WildDeepfake | ⬜ Pending |
+| 06 | Read SGFF-Net in depth and implement the gradient-fusion candidate | EXP-003 gradient variant trained and evaluated | Completed |
+| 07 | Read the difficulty-aware curriculum paper and implement training-only difficulty ranking | EXP-003 curriculum variant trained and evaluated | Completed |
+| 08 | Read the temporal consistency paper and implement same-video frame pairing | EXP-003 temporal variant and control trained and evaluated | Completed |
+| 09 | Compare the three WGN candidates | Full 25-epoch comparison under the frozen protocol | Completed |
+| 10 | Review improvement results and failure cases | Cross-dataset and degradation-robustness evaluation | In progress |
 | 11 | Select the strongest single WGN improvement | Run cross-manipulation and lock the final improvement hypothesis | ⬜ Pending |
 | 12 | Read supporting literature for the selected method | Train the selected improvement with the locked 25-epoch protocol | ⬜ Pending |
 | 13 | Study and run component ablations; repeat important runs when feasible | `EXP-007` ablation table | ⬜ Pending |
@@ -138,4 +139,4 @@ Do not commit videos, extracted frames, datasets, checkpoints, cloud credentials
 
 ## Immediate next action
 
-Read `experiments/EXP-002-WGN/IMPROVEMENT_PLAN.md`, freeze the WGN baseline, then run the GPU preflight and the three 5-epoch pilot experiments. No improvement claim is made until the locked cross-dataset evaluation is complete.
+Complete the queued degradation experiments in `experiments/EXP-003-IMPROVEMENT-WGN`, then run the pending current-checkpoint cross-manipulation work recorded under `experiments/EXP-002-WGN/reproduction/`.

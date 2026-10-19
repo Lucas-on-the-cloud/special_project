@@ -1,0 +1,42 @@
+{
+  "checkpoint_sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+  "deepfakebench_rgb_metrics": {
+    "accuracy": 0.6626065773447016,
+    "auc": 0.6446924756161856,
+    "frames": 16420,
+    "loss": 2.804839284396727,
+    "manifest_sha256": "c056420009cb06b33645077a0c2339d9e4495c03a0f50e967dcd1629b56c1494",
+    "video_accuracy": 0.7181467181467182,
+    "video_auc": 0.6821877065432914,
+    "videos": 518
+  },
+  "metrics": {
+    "accuracy": 0.6322997104247104,
+    "auc": 0.6236823748218564,
+    "frames": 16576,
+    "loss": 3.3448488608459552,
+    "video_accuracy": 0.694980694980695,
+    "video_auc": 0.6830964970257767,
+    "videos": 518
+  },
+  "preprocessing": {
+    "archive_bytes": 9952957051,
+    "archive_sha256": "b22f9d74d4b67bba698677fa2a05f84b26d8250258424a97c940ba94cb126fa2",
+    "center_fallback_frames": 0,
+    "detector": "MTCNN",
+    "detector_size": 512,
+    "frames": 16576,
+    "frames_per_video": 32,
+    "google_drive_file_id": "1iLx76wsbi9itnkxSqz9BVBl4ZvnbIazj",
+    "image_size": 256,
+    "margin": 0,
+    "mtcnn_missing_frames": 4,
+    "precision": "fp32",
+    "select_largest": true,
+    "smoke": false,
+    "test_list_sha256": "07063d46206e011aef9d1ad8d1854f5b87ae519ba6e452b897cc528c3dcfcdc0",
+    "videos": 518
+  },
+  "protocol": "official author videos -> uniform 32 frames -> WGN MTCNN crop",
+  "record_sha256": "6108b983c20391107a6c9fe061c6b4a72f7b7452398b54bbf88c5e1916df5d5f"
+}

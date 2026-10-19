@@ -1,4 +1,10 @@
-# WGN Official-Data Reproduction: Final Results
+# Archived RTX 5090 WGN reproduction results
+
+> Historical evidence only. The checkpoint from this machine was not preserved,
+> so these numbers are not the active reference for EXP-003. The active
+> reproduced WGN reference and its saved checkpoint are documented in
+> [CURRENT-REPRODUCTION-STATUS.md](CURRENT-REPRODUCTION-STATUS.md). Its
+> cross-manipulation rerun is still pending.
 
 **Date:** 13 October 2026  
 **Paper:** *WGN: Wavelet-Guided Network for Efficient and Generalised Deepfake Detection* (CVPRW 2026)  
@@ -195,13 +201,13 @@ This is a derived diagnostic and is not the `Avg` definition printed in Table 3.
 
 - [Original CVPRW paper](https://openaccess.thecvf.com/content/CVPR2026W/PPMisDet/papers/Ghosh_WGN_Wavelet-Guided_Network_for_Efficient_and_Generalised_Deepfake_Detection_CVPRW_2026_paper.pdf), Table 3 on PDF page 5
 - [Direct page capture containing original Table 3](assets/wgn-paper-page-05.png)
-- [Deepfakes result JSON](evidence/cross_manipulation/df/cross_manipulation.json) and [training summary](evidence/cross_manipulation/df/summary.json)
-- [Face2Face result JSON](evidence/cross_manipulation/f2f/cross_manipulation.json) and [training summary](evidence/cross_manipulation/f2f/summary.json)
-- [FaceSwap result JSON](evidence/cross_manipulation/fs/cross_manipulation.json) and [training summary](evidence/cross_manipulation/fs/summary.json)
-- [NeuralTextures result JSON](evidence/cross_manipulation/nt/cross_manipulation.json) and [training summary](evidence/cross_manipulation/nt/summary.json)
-- [Complete 100-epoch console record](evidence/cross_manipulation/training.stdout.log)
-- [Machine-readable paper/reproduction comparison](evidence/cross_manipulation/comparison.json)
-- [SHA-256 checksums](evidence/cross_manipulation/SHA256SUMS.txt)
+- [Deepfakes result JSON](evidence/rtx5090-historical-cross-manipulation/df/cross_manipulation.json) and [training summary](evidence/rtx5090-historical-cross-manipulation/df/summary.json)
+- [Face2Face result JSON](evidence/rtx5090-historical-cross-manipulation/f2f/cross_manipulation.json) and [training summary](evidence/rtx5090-historical-cross-manipulation/f2f/summary.json)
+- [FaceSwap result JSON](evidence/rtx5090-historical-cross-manipulation/fs/cross_manipulation.json) and [training summary](evidence/rtx5090-historical-cross-manipulation/fs/summary.json)
+- [NeuralTextures result JSON](evidence/rtx5090-historical-cross-manipulation/nt/cross_manipulation.json) and [training summary](evidence/rtx5090-historical-cross-manipulation/nt/summary.json)
+- [Complete 100-epoch console record](evidence/rtx5090-historical-cross-manipulation/training.stdout.log)
+- [Machine-readable paper/reproduction comparison](evidence/rtx5090-historical-cross-manipulation/comparison.json)
+- [SHA-256 checksums](evidence/rtx5090-historical-cross-manipulation/SHA256SUMS.txt)
 
 All four runs contain 25 metric records, their summary and evaluation files are
 present, and the runner ended with `ALL OFFICIAL CROSS-MANIPULATION EXPERIMENTS

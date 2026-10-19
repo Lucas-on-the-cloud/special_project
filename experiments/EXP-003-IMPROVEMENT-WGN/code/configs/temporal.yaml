@@ -1,0 +1,42 @@
+﻿experiment: WGN_temporal_5060ti
+method: temporal
+seed: 1024
+data:
+  root: C:/sp/data
+  json: C:/sp/data/FaceForensics++-official.json
+  image_size: 256
+  compression: c23
+  frames_per_real: 40
+  frames_per_fake: 10
+  manipulations: [FF-DF, FF-F2F, FF-FS, FF-NT]
+model:
+  backbone: mobilevit_s.cvnets_in1k
+  pretrained: true
+  gate_hidden_dim: 4
+training:
+  epochs: 25
+  micro_batch_size: 32
+  effective_batch_size: 32
+  workers: 4
+  cpu_threads: 4
+  learning_rate: 0.0001
+  weight_decay: 0.0
+  precision: fp32
+external:
+  - dataset: Celeb-DF-v2
+    root: C:/sp/data
+    json: C:/sp/data/Celeb-DF-v2.json
+    real_group: CelebDFv2_real
+    fake_group: CelebDFv2_fake
+  - dataset: DFDC
+    root: C:/sp/data
+    json: C:/sp/data/DFDC.json
+    real_group: DFDC_Real
+    fake_group: DFDC_Fake
+  - dataset: WildDeepfake
+    root: C:/sp/data
+    json: C:/sp/data/WildDeepfake.json
+    real_group: WildDeepfake_Real
+    fake_group: WildDeepfake_Fake
+
+temporal_lambda: 0.10

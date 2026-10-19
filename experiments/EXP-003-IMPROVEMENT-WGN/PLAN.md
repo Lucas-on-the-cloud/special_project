@@ -28,7 +28,7 @@ The current WGN reproduction is already complete and must not be overwritten.
 
 The baseline result is documented in:
 
-- experiments/EXP-002-WGN/reproduction/OFFICIAL_REPRODUCTION_INTERIM.md
+- experiments/EXP-002-WGN/reproduction/CURRENT-REPRODUCTION-STATUS.md
 - experiments/EXP-002-WGN/reproduction/code/README.md
 
 The baseline must be rerun only as a control when an improvement is trained under a new environment. Do not tune the improvement using the test set.
@@ -36,10 +36,10 @@ The baseline must be rerun only as a control when an improvement is trained unde
 ## Dataset source decision for this phase
 
 - **Training/control:** keep the approved FaceForensics++ c23 pipeline and the existing c40 control unchanged.
-- **External evaluation:** use the approved DeepfakeBench preprocessed RGB face crops and matching JSON configurations for Celeb-DF v2, DFDC, and WildDeepfake.
+- **External evaluation:** use Celeb-DF v2 directly from the authors' MP4 archive with the official 518-video test list and the WGN MTCNN crop pipeline. Retain the approved external packages for DFDC and WildDeepfake.
 - **No target fine-tuning:** these external datasets remain locked evaluation sets.
 - **No repeated raw preprocessing:** do not run full face detection/cropping on the rented GPU unless the processed archive fails validation.
-- **Required preflight:** record archive checksums, inspect sample paths and labels, verify video IDs/split names, and convert the DeepfakeBench JSON only if it is not already compatible with the WGN loader.
+- **Required preflight:** record archive checksums, inspect sample paths and labels, verify video IDs/split names, require exactly 178 real and 340 fake Celeb-DF test videos, and pass a two-video full-decode/CUDA-forward smoke test before full preprocessing.
 
 ## 2. Research problem
 
@@ -90,7 +90,7 @@ This avoids duplicating WGN's wavelet branch and isolates the contribution of gr
 
 ### Experiment record
 
-- ID: EXP-003-WGN-gradient-fusion
+- Variant: EXP-003 / gradient fusion
 - Config: configs/wgn_gradient_fusion.yaml
 - Output: runs/wgn_gradient_fusion/
 - Primary hypothesis: improve Celeb-DF and FF++ c40 AUC.
@@ -130,7 +130,7 @@ The validation and test sets remain unchanged. The difficulty ranking must never
 
 ### Experiment record
 
-- ID: EXP-004-WGN-curriculum
+- Variant: EXP-003 / curriculum
 - Config: configs/wgn_curriculum.yaml
 - Output: runs/wgn_curriculum/
 - Primary hypothesis: improve cross-manipulation and cross-dataset robustness.
@@ -173,7 +173,7 @@ Inference remains frame-level, so this method does not require two frames at dep
 
 ### Experiment record
 
-- ID: EXP-005-WGN-temporal-consistency
+- Variant: EXP-003 / temporal consistency
 - Config: configs/wgn_temporal_consistency.yaml
 - Output: runs/wgn_temporal_consistency/
 - Primary hypothesis: improve video-level AUC, especially on DFDC and WildDeepfake.

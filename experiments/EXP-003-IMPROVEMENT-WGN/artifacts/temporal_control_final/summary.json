@@ -1,0 +1,18 @@
+{
+  "best_epoch": 7,
+  "best_val": {
+    "accuracy": 0.9508035714285714,
+    "auc": 0.988231106505102,
+    "frames": 11200,
+    "loss": 0.21852479850032494,
+    "video_accuracy": 0.9714285714285714,
+    "video_auc": 0.9940051020408163,
+    "videos": 700
+  },
+  "checkpoint": "C:\\sp\\runs\\wgn_overnight\\temporal_control_final\\best.pt",
+  "completed_epochs": 25,
+  "manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907",
+  "method": "temporal_control",
+  "pilot": false,
+  "wall_seconds_this_invocation": 0.0
+}

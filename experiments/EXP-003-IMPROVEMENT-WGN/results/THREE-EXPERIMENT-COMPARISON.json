@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-003-IMPROVEMENT-WGN comparison",
+  "created_at": "2026-10-19",
+  "git_branch": "main",
+  "primary_metric": {
+    "ffpp_c23": "frame_auc",
+    "cross_dataset": "video_auc"
+  },
+  "selection_rule": {
+    "celebdf_official_direct_min_gain_pp": 2.0,
+    "ffpp_c23_max_loss_pp": 1.0
+  },
+  "results": [
+    {
+      "method": "wgn_reproduction_reference",
+      "source_run": "baseline_final",
+      "role": "reference",
+      "best_epoch": 20,
+      "auc": {
+        "ffpp_c23_frame": 0.9821176020408163,
+        "celebdf_v2_official_direct_video": 0.7013879709187045,
+        "dfdc_video": 0.6967410024527465,
+        "wilddeepfake_video": 0.7154440748952944
+      },
+      "delta_vs_baseline_pp": {
+        "ffpp_c23_frame": 0.0,
+        "celebdf_v2_official_direct_video": 0.0,
+        "dfdc_video": 0.0,
+        "wilddeepfake_video": 0.0
+      },
+      "checkpoint": {
+        "path": "experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
+        "bytes": 23203811,
+        "sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6"
+      }
+    },
+    {
+      "method": "gradient",
+      "role": "improvement_1",
+      "best_epoch": 24,
+      "auc": {
+        "ffpp_c23_frame": 0.9851650669642857,
+        "celebdf_v2_official_direct_video": 0.6830964970257767,
+        "dfdc_video": 0.6986513058863202,
+        "wilddeepfake_video": 0.7216894555309189
+      },
+      "delta_vs_baseline_pp": {
+        "ffpp_c23_frame": 0.3047464923469374,
+        "celebdf_v2_official_direct_video": -1.829147389292775,
+        "dfdc_video": 0.19103034335737368,
+        "wilddeepfake_video": 0.6245380635624476
+      },
+      "passes_selection_rule": false,
+      "checkpoint": {
+        "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+        "bytes": 26562737,
+        "sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa"
+      }
+    },
+    {
+      "method": "curriculum",
+      "role": "improvement_2",
+      "best_epoch": 20,
+      "auc": {
+        "ffpp_c23_frame": 0.9833725446428571,
+        "celebdf_v2_official_direct_video": 0.6371116986120291,
+        "dfdc_video": 0.677497565787035,
+        "wilddeepfake_video": 0.6985248829761025
+      },
+      "delta_vs_baseline_pp": {
+        "ffpp_c23_frame": 0.125494260204081,
+        "celebdf_v2_official_direct_video": -6.427627230667536,
+        "dfdc_video": -1.9243436665711524,
+        "wilddeepfake_video": -1.6919191919191973
+      },
+      "passes_selection_rule": false,
+      "checkpoint": {
+        "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+        "bytes": 23203875,
+        "sha256": "3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f"
+      }
+    },
+    {
+      "method": "temporal",
+      "role": "improvement_3",
+      "best_epoch": 16,
+      "auc": {
+        "ffpp_c23_frame": 0.9858032366071428,
+        "celebdf_v2_official_direct_video": 0.710294117647059,
+        "dfdc_video": 0.6889374174469558,
+        "wilddeepfake_video": 0.7171624784429662
+      },
+      "delta_vs_baseline_pp": {
+        "ffpp_c23_frame": 0.3685634566326499,
+        "celebdf_v2_official_direct_video": 0.8906146728354472,
+        "dfdc_video": -0.7803585005790672,
+        "wilddeepfake_video": 0.17184035476718473
+      },
+      "passes_selection_rule": false,
+      "checkpoint": {
+        "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
+        "bytes": 23203811,
+        "sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65"
+      }
+    }
+  ],
+  "ablation": {
+    "method": "temporal_control",
+    "description": "Paired temporal sampling with temporal_lambda=0",
+    "best_epoch": 7,
+    "auc": {
+      "ffpp_c23_frame": 0.9827050063775511,
+      "celebdf_v2_official_direct_video": 0.7192002643754131,
+      "dfdc_video": 0.7078358603643227,
+      "wilddeepfake_video": 0.7509854644000984
+    },
+    "delta_vs_baseline_pp": {
+      "ffpp_c23_frame": 0.05874043367347559,
+      "celebdf_v2_official_direct_video": 1.7812293456708575,
+      "dfdc_video": 1.1094857911576206,
+      "wilddeepfake_video": 3.5541389504803993
+    },
+    "passes_selection_rule": false,
+    "checkpoint": {
+      "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
+      "bytes": 23203811,
+      "sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92"
+    }
+  },
+  "conclusion": {
+    "selected_improvement": null,
+    "strongest_generalization_signal": "paired_temporal_sampling",
+    "next_candidate": "temporal_control",
+    "notes": [
+      "None of the three planned improvements passed the predeclared rule.",
+      "Gradient regularization was mixed across cross-dataset tests.",
+      "Curriculum degraded every cross-dataset result.",
+      "Temporal consistency at lambda=0.10 underperformed its lambda=0 control.",
+      "High FF++ c23 AUC did not reliably predict cross-dataset generalization."
+    ]
+  }
+}

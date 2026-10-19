@@ -24,11 +24,11 @@ Reading and coding run in parallel. A week is complete only when its evidence is
 | 03 | Begin the five newly assigned sources: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Verify official links; inspect task, method, datasets, code, checkpoints, and compute requirements | Initial notes and source-verification record for the new five-paper set | [x] Sources received and verified<br>[x] Initial reading/code audit started |
 | **04** | Continue and deepen the same five papers assigned in Week 3, with priority on DFD-HR and WGN | Complete the comparison matrix and rented-GPU feasibility analysis; do not full-train all methods | Five structured notes, paper matrix, and one justified Week 5 reproduction candidate | [ ] Finish five structured paper notes<br>[x] Initial code/compute triage<br>[ ] Confirm Week 5 target |
 | **05** | Read the three selected 2026 improvement papers and freeze the WGN improvement hypotheses | Run GPU preflight; verify processed FF++ paths; prepare gradient, curriculum, and temporal pilot configs | WGN improvement plan, pre-rental checklist, and pilot commands | [x] Plan committed; [ ] GPU pilots pending |
-| 06 | Read SGFF-Net in depth and implement the gradient-fusion candidate | Install the pinned environment, verify the data manifest, and run the `EXP-003` smoke test | `EXP-003` gradient branch and 5-epoch pilot | [ ] |
-| 07 | Read difficulty-aware curriculum paper and implement training-only difficulty ranking | Run the `EXP-004` 5-epoch pilot; ensure validation/test data never affect ranking | `EXP-004` curriculum pilot and data-leakage check | [ ] |
-| 08 | Read temporal consistency paper and implement same-video frame pairing | Run the `EXP-005` numerical smoke test and 5-epoch pilot | `EXP-005` temporal pilot and loss verification | [ ] |
-| 09 | Compare the three WGN pilots | Run full 25-epoch training for the strongest candidates under the frozen protocol | Baseline-versus-candidate screening table | [ ] |
-| 10 | Review the improvement results and failure cases | Evaluate FF++ c23/c40, Celeb-DF v2, DFDC, and WildDeepfake | Cross-dataset improvement table | [ ] |
+| 06 | Read SGFF-Net in depth and implement the gradient-fusion candidate | Run the EXP-003 gradient smoke test, pilot, and final training | EXP-003 gradient variant | [x] Complete |
+| 07 | Read difficulty-aware curriculum paper and implement training-only difficulty ranking | Run the EXP-003 curriculum pilot and final training; ensure validation/test data never affect ranking | EXP-003 curriculum variant | [x] Complete |
+| 08 | Read temporal consistency paper and implement same-video frame pairing | Run the EXP-003 temporal smoke test, control ablation, pilot, and final training | EXP-003 temporal variant | [x] Complete |
+| 09 | Compare the three WGN candidates | Compare full 25-epoch runs under the frozen protocol | Reproduced-reference-versus-candidate screening table | [x] Complete |
+| 10 | Review improvement results and failure cases | Evaluate cross-dataset, compression, and degradation robustness | Cross-dataset improvement table | [ ] Degradation variants running |
 | 11 | Select the strongest single WGN improvement | Run cross-manipulation and lock the final improvement hypothesis | Error analysis and selected-method decision | [ ] |
 | 12 | Read supporting literature for the selected method | Train the selected improvement with the locked 25-epoch protocol | Final candidate checkpoint and metrics | [ ] |
 | 13 | Read ablation and reproducibility guidance | Run component ablations and repeat the key comparison with additional seeds when feasible | `EXP-007` ablation table | [ ] |
@@ -60,7 +60,7 @@ Reading and coding run in parallel. A week is complete only when its evidence is
 
 The five sources do not receive equal implementation priority:
 
-- **Current execution target:** WGN improvement experiments. The independent WGN reproduction is complete and documented in `experiments/EXP-002-WGN/reproduction/`.
+- **Current execution target:** WGN improvement experiments in `experiments/EXP-003-IMPROVEMENT-WGN/`. The active reproduced WGN reference and checkpoint are stored in `experiments/EXP-002-WGN/reproduction/`; cross-manipulation for that current checkpoint is still pending.
 - **Three candidates:** gradient-aware fusion, difficulty-aware curriculum learning, and lightweight temporal consistency.
 - **First priority:** gradient-aware fusion because it is the closest architectural extension of WGN's wavelet-guided features.
 - **Second priority:** curriculum learning because it changes training only and adds no inference cost.

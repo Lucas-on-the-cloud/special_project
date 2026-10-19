@@ -1,0 +1,203 @@
+{
+  "purpose": "Code and CUDA verification only; not experiment detection results",
+  "gpu": "RTX 5060 Ti 16 GB",
+  "tests": {
+    "baseline_real_mini": {
+      "consistency": 0.0,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 0.6214649677276611,
+      "method": "baseline",
+      "micro_batch_size": 32,
+      "mode": "real-data",
+      "peak_allocated_GiB": 5.548956871032715,
+      "seconds": 1.5619999999998981,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": null
+    },
+    "baseline_synthetic": {
+      "consistency": 0.0,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 0.6301127672195435,
+      "method": "baseline",
+      "micro_batch_size": 32,
+      "mode": "synthetic",
+      "peak_allocated_GiB": 5.548956871032715,
+      "seconds": 1.25,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": {
+        "accuracy": 0.5,
+        "auc": 0.59375,
+        "frames": 32,
+        "loss": 0.6963773965835571,
+        "video_accuracy": 0.5,
+        "video_auc": 0.6875,
+        "videos": 8
+      }
+    },
+    "curriculum_real_mini": {
+      "consistency": 0.0,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 0.6214590072631836,
+      "method": "curriculum",
+      "micro_batch_size": 32,
+      "mode": "real-data",
+      "peak_allocated_GiB": 5.548956871032715,
+      "seconds": 1.0470000000000255,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": null
+    },
+    "curriculum_synthetic": {
+      "consistency": 0.0,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 0.6301087737083435,
+      "method": "curriculum",
+      "micro_batch_size": 32,
+      "mode": "synthetic",
+      "peak_allocated_GiB": 5.548956871032715,
+      "seconds": 1.2660000000000764,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": {
+        "accuracy": 0.5,
+        "auc": 0.58984375,
+        "frames": 32,
+        "loss": 0.696380615234375,
+        "video_accuracy": 0.5,
+        "video_auc": 0.6875,
+        "videos": 8
+      }
+    },
+    "gradient_real_mini": {
+      "consistency": 0.0,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 0.5869963765144348,
+      "method": "gradient",
+      "micro_batch_size": 32,
+      "mode": "real-data",
+      "peak_allocated_GiB": 5.562280178070068,
+      "seconds": 1.2179999999998472,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": null
+    },
+    "gradient_synthetic": {
+      "consistency": 0.0,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 0.5768426656723022,
+      "method": "gradient",
+      "micro_batch_size": 32,
+      "mode": "synthetic",
+      "peak_allocated_GiB": 5.562280178070068,
+      "seconds": 1.405999999999949,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": {
+        "accuracy": 0.5,
+        "auc": 0.578125,
+        "frames": 32,
+        "loss": 0.6930029988288879,
+        "video_accuracy": 0.5,
+        "video_auc": 0.6875,
+        "videos": 8
+      }
+    },
+    "temporal_control_real_mini": {
+      "consistency": 0.0007489356212317944,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 1.255305290222168,
+      "method": "temporal_control",
+      "micro_batch_size": 32,
+      "mode": "real-data",
+      "peak_allocated_GiB": 10.939613342285156,
+      "seconds": 1.4540000000001783,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": null
+    },
+    "temporal_control_synthetic": {
+      "consistency": 0.00039659327012486756,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 1.2669720649719238,
+      "method": "temporal_control",
+      "micro_batch_size": 32,
+      "mode": "synthetic",
+      "peak_allocated_GiB": 10.939613342285156,
+      "seconds": 1.655999999999949,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": {
+        "accuracy": 0.5,
+        "auc": 0.45703125,
+        "frames": 32,
+        "loss": 0.6932320594787598,
+        "video_accuracy": 0.5,
+        "video_auc": 0.375,
+        "videos": 8
+      }
+    },
+    "temporal_real_mini": {
+      "consistency": 0.0007428633980453014,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 1.255399465560913,
+      "method": "temporal",
+      "micro_batch_size": 32,
+      "mode": "real-data",
+      "peak_allocated_GiB": 10.939613342285156,
+      "seconds": 1.4220000000000255,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": null
+    },
+    "temporal_synthetic": {
+      "consistency": 0.00039529617060907185,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "loss": 1.26698637008667,
+      "method": "temporal",
+      "micro_batch_size": 32,
+      "mode": "synthetic",
+      "peak_allocated_GiB": 10.939613342285156,
+      "seconds": 1.6410000000000764,
+      "status": "passed",
+      "torch": "2.7.1+cu128",
+      "validation": {
+        "accuracy": 0.5,
+        "auc": 0.4609375,
+        "frames": 32,
+        "loss": 0.6932337284088135,
+        "video_accuracy": 0.5,
+        "video_auc": 0.375,
+        "videos": 8
+      }
+    }
+  },
+  "trainer_integration": {
+    "baseline": {
+      "checkpoint_roundtrip_and_resume": true,
+      "status": "passed",
+      "steps": 1
+    },
+    "curriculum": {
+      "checkpoint_roundtrip_and_resume": true,
+      "status": "passed",
+      "steps": 1
+    },
+    "gradient": {
+      "checkpoint_roundtrip_and_resume": true,
+      "status": "passed",
+      "steps": 1
+    },
+    "temporal": {
+      "checkpoint_roundtrip_and_resume": true,
+      "status": "passed",
+      "steps": 1
+    },
+    "temporal_control": {
+      "checkpoint_roundtrip_and_resume": true,
+      "status": "passed",
+      "steps": 1
+    }
+  }
+}

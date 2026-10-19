@@ -1,0 +1,18 @@
+{
+  "best_epoch": 20,
+  "best_val": {
+    "accuracy": 0.9529464285714285,
+    "auc": 0.9885130261479593,
+    "frames": 11200,
+    "loss": 0.3037699908536961,
+    "video_accuracy": 0.9757142857142858,
+    "video_auc": 0.9963392857142856,
+    "videos": 700
+  },
+  "checkpoint": "C:\\sp\\runs\\wgn_overnight\\baseline_final\\best.pt",
+  "completed_epochs": 25,
+  "manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907",
+  "method": "baseline",
+  "pilot": false,
+  "wall_seconds_this_invocation": 8566.905999999999
+}
