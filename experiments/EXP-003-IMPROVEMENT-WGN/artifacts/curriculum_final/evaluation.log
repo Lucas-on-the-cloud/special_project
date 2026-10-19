@@ -48,3 +48,5 @@ EVALUATED FaceShifter c23 (held-out) {"loss": 1.0202333057011876, "frames": 7000
 EVALUATED FaceShifter c40 (held-out) {"loss": 1.5931840763602938, "frames": 7000, "videos": 280, "accuracy": 0.5952857142857143, "auc": 0.6095810586734693, "video_accuracy": 0.5964285714285714, "video_auc": 0.6464795918367346}
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\curriculum.yaml"]
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\curriculum.yaml"]
