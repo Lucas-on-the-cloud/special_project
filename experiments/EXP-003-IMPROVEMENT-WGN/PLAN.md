@@ -283,3 +283,8 @@ receive one diagnostic cross-manipulation run, clearly labelled exploratory.
 EXP-002 is exempt from this filtering rule: its current WGN reproduction must
 complete all four DF/F2F/FS/NT training runs so the paper baseline is complete
 and directly comparable with the archived RTX 5090 reproduction.
+
+The finalist decision is serialized to `results/CANDIDATE-SELECTION.json`.
+Eligible EXP-003 cross-manipulation matrices run only after the current EXP-002
+matrix finishes, preserving single-GPU ordering and preventing the selection
+target from influencing training.

@@ -89,6 +89,7 @@ class Runner:
 
     def close(self):
         ctypes.windll.kernel32.SetThreadExecutionState(0x80000000)
+        self.lock.close()
 
     def update(self, phase: str, **values) -> None:
         if phase != "failed":

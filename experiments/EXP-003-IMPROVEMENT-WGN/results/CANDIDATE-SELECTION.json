@@ -1,0 +1,22 @@
+{
+  "decisions": {},
+  "recommended_cross_manipulation": [],
+  "reference": "baseline_final (EXP-002 reproduced WGN)",
+  "schema_version": 1,
+  "status": "pending",
+  "targets": [
+    "FF++ c40 frame",
+    "FaceShifter c23 frame",
+    "FaceShifter c40 frame",
+    "Celeb-DF video",
+    "DFDC video",
+    "WildDeepfake video"
+  ],
+  "thresholds_percentage_points": {
+    "gain_threshold_per_target": 0.5,
+    "maximum_ffpp_c23_loss": 1.0,
+    "maximum_regression_on_any_target": 2.0,
+    "minimum_celeb_df_gain_for_strict_finalist": 2.0,
+    "minimum_gain_count": 2
+  }
+}

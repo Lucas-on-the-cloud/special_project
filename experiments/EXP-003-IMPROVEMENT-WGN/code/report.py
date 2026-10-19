@@ -108,6 +108,25 @@ def generate():
               '| Method | c23 loss | Celeb gain | Improved targets | Worst target regression | Pareto | Decision |',
               '|---|---:|---:|---:|---:|---:|---|']
     decisions, recommended = selection(results, official)
+    selection_complete = bool(decisions) and all(
+        decisions.get(method, {}).get('status') != 'pending' for method in CANDIDATES)
+    selection_payload = {
+        'schema_version': 1,
+        'status': 'complete' if selection_complete else 'pending',
+        'reference': 'baseline_final (EXP-002 reproduced WGN)',
+        'targets': [label for _, _, label in TARGETS],
+        'thresholds_percentage_points': {
+            'minimum_celeb_df_gain_for_strict_finalist': 2.0,
+            'maximum_ffpp_c23_loss': 1.0,
+            'minimum_gain_count': 2,
+            'gain_threshold_per_target': 0.5,
+            'maximum_regression_on_any_target': 2.0,
+        },
+        'decisions': decisions,
+        'recommended_cross_manipulation': recommended if selection_complete else [],
+    }
+    (RUNS / 'SELECTION.json').write_text(
+        json.dumps(selection_payload, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     for method in CANDIDATES:
         decision = decisions.get(method, {'status': 'pending'})
         if decision['status'] == 'pending':

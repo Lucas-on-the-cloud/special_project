@@ -20,7 +20,7 @@ PORTABLE_FILES = [
     'best.pt', 'summary.json', 'resolved_config.yaml', 'environment.json',
     'metrics.jsonl', 'progress.json', 'source.patch', 'difficulty.json',
     'evaluation.json', 'evaluation-celebdf-official-direct.json',
-    'cross_manipulation.json',
+    'cross_manipulation.json', 'training.log', 'evaluation.log',
 ]
 
 
@@ -134,11 +134,12 @@ def package_run(run):
     if training_log.exists():
         shutil.copy2(training_log, target / 'training.log')
     method = summary.get('method', run.name.removesuffix('_final'))
-    concatenate_logs([
-        RUNS / 'logs' / f'early_evaluate_{method}.log',
-        RUNS / 'logs' / f'evaluate_celebdf_official_{method}.log',
-        RUNS / 'logs' / f'evaluate_{method}.log',
-    ], target / 'evaluation.log')
+    if not run.name.startswith('cross_'):
+        concatenate_logs([
+            RUNS / 'logs' / f'early_evaluate_{method}.log',
+            RUNS / 'logs' / f'evaluate_celebdf_official_{method}.log',
+            RUNS / 'logs' / f'evaluate_{method}.log',
+        ], target / 'evaluation.log')
     environment = json.loads((run / 'environment.json').read_text())
     checkpoint_sha = sha256(source)
     write_readme(target, run, summary, environment, checkpoint_sha)
@@ -173,10 +174,13 @@ def commit_and_push(packages, message):
     generate()
     overview = EXP3 / 'results' / 'RESULTS.md'
     shutil.copy2(RUNS / 'RESULTS.md', overview)
+    selection = EXP3 / 'results' / 'CANDIDATE-SELECTION.json'
+    shutil.copy2(RUNS / 'SELECTION.json', selection)
     registry = generate_registry()
     for target, _ in packages:
         git('add', '-f', '--', target.relative_to(REPO).as_posix())
-    git('add', '--', overview.relative_to(REPO).as_posix(), registry.relative_to(REPO).as_posix(),
+    git('add', '--', overview.relative_to(REPO).as_posix(), selection.relative_to(REPO).as_posix(),
+        registry.relative_to(REPO).as_posix(),
         (EXP3 / 'results' / 'EXPERIMENT-REGISTRY.md').relative_to(REPO).as_posix())
     if git('diff', '--cached', '--name-only'):
         git('commit', '-m', message)

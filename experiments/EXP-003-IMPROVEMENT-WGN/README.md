@@ -23,6 +23,12 @@ Every completed final run is packaged using the repository
 [experiment backup and machine handoff policy](../../docs/experiment-backup-and-machine-handoff.md).
 The portable run index is maintained in
 [`results/EXPERIMENT-REGISTRY.md`](results/EXPERIMENT-REGISTRY.md).
+The machine-readable finalist decision is maintained in
+[`results/CANDIDATE-SELECTION.json`](results/CANDIDATE-SELECTION.json). A
+separate resume-safe runner waits for the common sweep and the EXP-002 4 × 4
+reproduction, then runs cross-manipulation only for the locked-criteria
+finalists. If no candidate qualifies, it records that outcome without starting
+an exploratory GPU run.
 
 Completed candidates: gradient, curriculum, temporal consistency, and the
 temporal sampling control. Degradation control and degradation consistency are
