@@ -1,0 +1,80 @@
+{
+  "best_epoch": 20,
+  "checkpoint_sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6",
+  "completed_epochs": 25,
+  "experiment": "EXP-002-WGN",
+  "files": [
+    {
+      "bytes": 23203811,
+      "name": "best.pt",
+      "sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6"
+    },
+    {
+      "bytes": 627,
+      "name": "environment.json",
+      "sha256": "9730837b5174842caab01d89fbdc5af2865267cefbe0fc669eba8e53f0614b1f"
+    },
+    {
+      "bytes": 1483,
+      "name": "evaluation-celebdf-official-direct.json",
+      "sha256": "5ea0ddf51a06c825715fbf955826448e1a5f97a82d39397c8bc8bf60c4ad0cca"
+    },
+    {
+      "bytes": 1651,
+      "name": "evaluation.json",
+      "sha256": "85c2956d85eae624e968dae6e230a8c7c06ce180ffb752c8d1393de1822d9f64"
+    },
+    {
+      "bytes": 3627,
+      "name": "evaluation.log",
+      "sha256": "5a6be9c4dcbfab85196cfd59efb15d6f8dc2f3598d84d52fe0674ba55a5e746a"
+    },
+    {
+      "bytes": 11185,
+      "name": "metrics.jsonl",
+      "sha256": "9384fcd851833a46dcc07180706e4825d0d5222a6efd1ceed99fc68ee73fb8d5"
+    },
+    {
+      "bytes": 584,
+      "name": "progress.json",
+      "sha256": "1a6949e09c3507b26276ee61f3f0e8cb3eddf999daa7275677c6303e1eedb368"
+    },
+    {
+      "bytes": 1355,
+      "name": "README.md",
+      "sha256": "59df96ad1528023ec2716940fee0850f78b1d58ef8e2d742ba20ea6776f69906"
+    },
+    {
+      "bytes": 980,
+      "name": "resolved_config.yaml",
+      "sha256": "05ae5b59829438d6297110abcd82bc77668ec8b09118d6bd78b09b9e6bb90e96"
+    },
+    {
+      "bytes": 998,
+      "name": "SHA256SUMS.txt",
+      "sha256": "a6b054df6372e00702ffed64b3d6f866589813469eeb15141cdcec898e231637"
+    },
+    {
+      "bytes": 0,
+      "name": "source.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 559,
+      "name": "summary.json",
+      "sha256": "a6ac32136aed671b66fdc0186d193814b6b755ad79aa455f9fc3fe407a0f16fd"
+    },
+    {
+      "bytes": 55861,
+      "name": "training.log",
+      "sha256": "7aa7a73676903f053ede04c173b40d9fdf16d7eb89dd3cf112b303d6a2420fe4"
+    }
+  ],
+  "method": "baseline",
+  "run_name": "baseline_final",
+  "runtime_path": "C:\\sp\\runs\\wgn_overnight\\baseline_final",
+  "schema_version": 1,
+  "status": "complete",
+  "training_git_commit": "deb2f4793b98927134404523eca2bae3782b3d9f",
+  "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
+}
