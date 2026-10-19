@@ -19,6 +19,8 @@ ModuleNotFoundError: No module named 'wgn'
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final"]
 EVALUATED_OFFICIAL_CELEBDF {"loss": 1.67086877623163, "frames": 16576, "videos": 518, "accuracy": 0.6274131274131274, "auc": 0.651009714311901, "video_accuracy": 0.6833976833976834, "video_auc": 0.7192002643754131}
 
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final"]
+
 ===== evaluate_temporal_control.log =====
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\temporal_control.yaml"]
