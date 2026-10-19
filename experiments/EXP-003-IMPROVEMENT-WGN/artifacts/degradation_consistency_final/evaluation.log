@@ -1,0 +1,10 @@
+===== early_evaluate_degradation_consistency.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_consistency_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\degradation_consistency.yaml"]
+EVALUATED FF++ c23 {"loss": 0.22418176000690437, "frames": 11200, "videos": 700, "accuracy": 0.9366071428571429, "auc": 0.9821628985969388, "video_accuracy": 0.9685714285714285, "video_auc": 0.9921811224489796}
+EVALUATED Celeb-DF-v2 official-direct {"loss": 0.9396355262691709, "frames": 16576, "videos": 518, "accuracy": 0.7192929536679536, "auc": 0.7322813932894084, "video_accuracy": 0.7586872586872587, "video_auc": 0.7994051553205552}
+EVALUATED DFDC {"loss": 1.0821930201479741, "frames": 132116, "videos": 4704, "accuracy": 0.6542810863180841, "auc": 0.7227987524521328, "video_accuracy": 0.6687925170068028, "video_auc": 0.7376449113874155}
+EVALUATED WildDeepfake {"loss": 1.4270987867147447, "frames": 165662, "videos": 806, "accuracy": 0.6249351088360638, "auc": 0.7082409366290956, "video_accuracy": 0.6799007444168734, "video_auc": 0.7610248829761025}
+EVALUATED FF++ c40 {"loss": 1.1986455558240414, "frames": 11200, "videos": 700, "accuracy": 0.6829464285714286, "auc": 0.7556225765306123, "video_accuracy": 0.7528571428571429, "video_auc": 0.8253698979591837}
+EVALUATED FaceShifter c23 (held-out) {"loss": 0.8965614697848048, "frames": 7000, "videos": 280, "accuracy": 0.8055714285714286, "auc": 0.7639247448979591, "video_accuracy": 0.6464285714285715, "video_auc": 0.7878571428571427}
+EVALUATED FaceShifter c40 (held-out) {"loss": 1.5057079338686807, "frames": 7000, "videos": 280, "accuracy": 0.6135714285714285, "auc": 0.6063940051020408, "video_accuracy": 0.6, "video_auc": 0.6446428571428571}
