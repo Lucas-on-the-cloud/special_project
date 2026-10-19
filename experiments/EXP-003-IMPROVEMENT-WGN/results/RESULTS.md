@@ -9,7 +9,7 @@ AUC values below are percentages. Missing cells are pending, not zero. Synthetic
 | curriculum | 98.34 | pending | pending | pending | 63.71 | 67.75 | 69.85 |
 | temporal sampling control | 98.27 | pending | pending | pending | 71.92 | 70.78 | 75.10 |
 | temporal | 98.58 | 70.51 | 71.17 | 59.88 | 71.03 | 68.89 | 71.72 |
-| degradation_control | pending | pending | pending | pending | pending | pending | pending |
+| degradation_control | 98.30 | 76.70 | 76.39 | 62.31 | 80.93 | 73.34 | 76.39 |
 | degradation_consistency | pending | pending | pending | pending | pending | pending | pending |
 
 Celeb-DF v2 uses the authors' MP4 archive, the official 518-video test list, uniform 32-frame sampling, and the same WGN MTCNN crop code. The earlier DeepfakeBench measurements remain archived for provenance and are excluded from current comparisons.
