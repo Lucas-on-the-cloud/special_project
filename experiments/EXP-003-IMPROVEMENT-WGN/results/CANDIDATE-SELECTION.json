@@ -1,5 +1,62 @@
 {
-  "decisions": {},
+  "decisions": {
+    "curriculum": {
+      "status": "pending"
+    },
+    "degradation_consistency": {
+      "c23_loss": -0.004529655612250938,
+      "gains": [
+        3.3464716198979727,
+        4.02458545918366,
+        -2.7948724489795906,
+        9.80171844018507,
+        4.0903908934669,
+        4.5580808080808115
+      ],
+      "improved": 5,
+      "mean_gain": 3.8377291286391375,
+      "pareto": true,
+      "status": "not retained",
+      "worst_regression": 2.7948724489795906
+    },
+    "degradation_control": {
+      "c23_loss": -0.08689572704082549,
+      "gains": [
+        4.485440051020428,
+        4.01829081632653,
+        -1.1227806122449002,
+        10.79147389292796,
+        3.66090260707147,
+        4.846329145109641
+      ],
+      "improved": 5,
+      "mean_gain": 4.446609316701855,
+      "pareto": true,
+      "status": "strict finalist",
+      "worst_regression": 1.1227806122449002
+    },
+    "gradient": {
+      "status": "pending"
+    },
+    "temporal": {
+      "c23_loss": -0.36856345663264234,
+      "gains": [
+        -1.700851403061221,
+        -1.198016581632655,
+        -3.553450255102031,
+        0.8906146728354436,
+        -0.7803585005790703,
+        0.17184035476718318
+      ],
+      "improved": 1,
+      "mean_gain": -1.0283702854620584,
+      "status": "not retained",
+      "worst_regression": 3.553450255102031
+    },
+    "temporal_control": {
+      "status": "pending"
+    }
+  },
   "recommended_cross_manipulation": [],
   "reference": "baseline_final (EXP-002 reproduced WGN)",
   "schema_version": 1,
