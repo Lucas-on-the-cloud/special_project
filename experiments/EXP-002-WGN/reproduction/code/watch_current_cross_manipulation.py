@@ -45,9 +45,16 @@ def read_json(path):
 
 
 def atomic_json(path, value):
-    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary = path.with_suffix(path.suffix + f".tmp.{os.getpid()}")
     temporary.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
-    os.replace(temporary, path)
+    for attempt in range(30):
+        try:
+            os.replace(temporary, path)
+            return
+        except PermissionError:
+            if attempt == 29:
+                raise
+            time.sleep(min(.01 * (attempt + 1), .25))
 
 
 class Watchdog:

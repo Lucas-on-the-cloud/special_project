@@ -40,9 +40,16 @@ def now() -> str:
 
 def atomic_json(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary = path.with_suffix(path.suffix + f".tmp.{os.getpid()}")
     temporary.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    os.replace(temporary, path)
+    for attempt in range(30):
+        try:
+            os.replace(temporary, path)
+            return
+        except PermissionError:
+            if attempt == 29:
+                raise
+            time.sleep(min(.01 * (attempt + 1), .25))
 
 
 def process_alive(pid) -> bool:
