@@ -20,14 +20,14 @@
       "sha256": "64386bf3d788908bd80108c172ad23386a53fdfe0446ee24390e38e2e673e75e"
     },
     {
-      "bytes": 1679,
+      "bytes": 2697,
       "name": "evaluation.json",
-      "sha256": "3fdab90cb806283233267c70ec0d2aa71a6f7749dd7c77b18746a6f423b8af9b"
+      "sha256": "cacd217842f48849ea6fd621cd9ad27d55af366f4a128f82bfb356ac0992a617"
     },
     {
-      "bytes": 2402,
+      "bytes": 3423,
       "name": "evaluation.log",
-      "sha256": "261ed320d2acc7edc7e97156690373019a76554f32413781777959a50e023366"
+      "sha256": "2b666abb1ab518e9507119e2953716bdf9a71e141b302722e1465a067a5c1772"
     },
     {
       "bytes": 11689,
@@ -52,7 +52,7 @@
     {
       "bytes": 998,
       "name": "SHA256SUMS.txt",
-      "sha256": "bde1db963e45a58ecee7e185c3d0735d1be5bb03a870abfef4c40e78c8b38bf6"
+      "sha256": "e73358294f9a0799057a0b4dc758024690e45ac4c2ac57265d0fbb1f581cb0e4"
     },
     {
       "bytes": 0,

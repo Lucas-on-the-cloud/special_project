@@ -31,6 +31,36 @@
       "video_auc": 0.9926275510204082,
       "videos": 700
     },
+    "FF++ c40": {
+      "accuracy": 0.6470535714285715,
+      "auc": 0.7027136479591837,
+      "frames": 11200,
+      "loss": 1.9707649601250887,
+      "manifest_sha256": "0ac7604d985d2fcabe035679e718c9684be2eb4f759c8be8ceeba4b19a930360",
+      "video_accuracy": 0.6842857142857143,
+      "video_auc": 0.7660714285714285,
+      "videos": 700
+    },
+    "FaceShifter c23 (held-out)": {
+      "accuracy": 0.7845714285714286,
+      "auc": 0.7139740433673469,
+      "frames": 7000,
+      "loss": 1.3747146138293402,
+      "manifest_sha256": "d0bda2e5e6f05d93548687fa0a4fd8464668cd8455f259b952cc5599fe0bf8c3",
+      "video_accuracy": 0.5892857142857143,
+      "video_auc": 0.729030612244898,
+      "videos": 280
+    },
+    "FaceShifter c40 (held-out)": {
+      "accuracy": 0.6377142857142857,
+      "auc": 0.599804974489796,
+      "frames": 7000,
+      "loss": 2.033036832724299,
+      "manifest_sha256": "c4327fc25db9fc06002bca67fd2e70da599846c345d2f65ef45e8d7a96945120",
+      "video_accuracy": 0.6107142857142858,
+      "video_auc": 0.6379591836734694,
+      "videos": 280
+    },
     "WildDeepfake": {
       "accuracy": 0.6905023481546764,
       "auc": 0.7349057706862381,
@@ -42,9 +72,5 @@
       "videos": 806
     }
   },
-  "pending": [
-    "FF++ c40",
-    "FaceShifter c23 (held-out)",
-    "FaceShifter c40 (held-out)"
-  ]
+  "pending": []
 }

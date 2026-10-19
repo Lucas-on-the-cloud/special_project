@@ -79,13 +79,27 @@
       "worst_regression": 3.553450255102031
     },
     "temporal_control": {
-      "status": "pending"
+      "c23_loss": -0.05874043367347648,
+      "gains": [
+        -1.9444212372448866,
+        -0.9704846938775602,
+        -3.4537755102040713,
+        1.781229345670854,
+        1.1094857911576161,
+        3.554138950480401
+      ],
+      "improved": 3,
+      "mean_gain": 0.012695440997058919,
+      "status": "not retained",
+      "worst_regression": 3.4537755102040713
     }
   },
-  "recommended_cross_manipulation": [],
+  "recommended_cross_manipulation": [
+    "degradation_control"
+  ],
   "reference": "baseline_final (EXP-002 reproduced WGN)",
   "schema_version": 1,
-  "status": "pending",
+  "status": "complete",
   "targets": [
     "FF++ c40 frame",
     "FaceShifter c23 frame",
