@@ -1,0 +1,14 @@
+diff --git a/experiments/EXP-003-IMPROVEMENT-WGN/code/common.py b/experiments/EXP-003-IMPROVEMENT-WGN/code/common.py
+index a87d161..630fc58 100644
+--- a/experiments/EXP-003-IMPROVEMENT-WGN/code/common.py
++++ b/experiments/EXP-003-IMPROVEMENT-WGN/code/common.py
+@@ -14,7 +14,8 @@ import torch
+ import yaml
+ 
+ ROOT = Path(__file__).resolve().parent
+-BASE = ROOT.parent / 'reproduction' / 'code'
++REPO = ROOT.parents[2]
++BASE = REPO / 'experiments' / 'EXP-002-WGN' / 'reproduction' / 'code'
+ sys.path.insert(0, str(BASE / 'src'))
+ 
+ 

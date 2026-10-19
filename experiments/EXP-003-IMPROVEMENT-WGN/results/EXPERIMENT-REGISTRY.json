@@ -13,6 +13,17 @@
       "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
     },
     {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final",
+      "best_epoch": 9,
+      "checkpoint_sha256": "0873737be16e0d35f28a60498aae7f639294e8f32bc1a6869b90e8ca893b07ec",
+      "completed_epochs": 25,
+      "method": "degradation_control",
+      "run_name": "degradation_control_final",
+      "status": "complete",
+      "training_git_commit": "b5e84a649a0c1aad1d8d81604f58cb04aa0b044c",
+      "training_manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe"
+    },
+    {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final",
       "best_epoch": 24,
       "checkpoint_sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",

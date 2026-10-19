@@ -1,0 +1,65 @@
+{
+  "best_epoch": 9,
+  "checkpoint_sha256": "0873737be16e0d35f28a60498aae7f639294e8f32bc1a6869b90e8ca893b07ec",
+  "completed_epochs": 25,
+  "experiment": "EXP-003-IMPROVEMENT-WGN",
+  "files": [
+    {
+      "bytes": 23204195,
+      "name": "best.pt",
+      "sha256": "0873737be16e0d35f28a60498aae7f639294e8f32bc1a6869b90e8ca893b07ec"
+    },
+    {
+      "bytes": 638,
+      "name": "environment.json",
+      "sha256": "91236b5197791a94d875e5d21364c36a6413728885b98cfa7a263aac0dc8e22b"
+    },
+    {
+      "bytes": 11621,
+      "name": "metrics.jsonl",
+      "sha256": "13453baa30b9c2f026146cec202fe4d306b4c2f08b71624ab58ea76a304d5046"
+    },
+    {
+      "bytes": 597,
+      "name": "progress.json",
+      "sha256": "8f3ab111abecff7896399e348657295869746e1e7a45a1fb40b89b4181a96335"
+    },
+    {
+      "bytes": 1376,
+      "name": "README.md",
+      "sha256": "2e7b7fe96b7418d6d8c5def0fbd0f85329b602e90513d5bf5169ce58515e47f3"
+    },
+    {
+      "bytes": 1283,
+      "name": "resolved_config.yaml",
+      "sha256": "d855654549e46cbca02d41b51bd4f14b8682fb38bc149b83bbb9792e0bc7bc80"
+    },
+    {
+      "bytes": 726,
+      "name": "SHA256SUMS.txt",
+      "sha256": "d99fb794b4ca8b4e9478a179a00690b528148c3ade07abd28934c524a2465f58"
+    },
+    {
+      "bytes": 545,
+      "name": "source.patch",
+      "sha256": "0418b475a5acc718c5922a53b119f6944d2ae0b20c708585f9a49d839c0fdf88"
+    },
+    {
+      "bytes": 572,
+      "name": "summary.json",
+      "sha256": "27d4f5f9797a5b40f3564516cd3506793584bb0ea3018a110681e26144c6189c"
+    },
+    {
+      "bytes": 55798,
+      "name": "training.log",
+      "sha256": "a981f55e540b3a12f789242e4b89b75935830c6e0f60e5f3ac68ac4078437828"
+    }
+  ],
+  "method": "degradation_control",
+  "run_name": "degradation_control_final",
+  "runtime_path": "C:\\sp\\runs\\wgn_overnight\\degradation_control_final",
+  "schema_version": 1,
+  "status": "complete",
+  "training_git_commit": "b5e84a649a0c1aad1d8d81604f58cb04aa0b044c",
+  "training_manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe"
+}
