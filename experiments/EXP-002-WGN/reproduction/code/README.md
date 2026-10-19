@@ -93,6 +93,19 @@ python evaluate_cross_dataset.py `
   --output runs/wgn_ffpp_c23_official/cross_celeb_df_v2.json
 ```
 
+On the current RTX 5060 Ti machine, the four-run Table 3 reproduction is queued
+behind EXP-003 so both tracks use the GPU sequentially. The watchdog starts a
+resume-safe runner that smoke tests, trains, evaluates, writes the comparison
+table, saves all four best checkpoints, and publishes the completed evidence:
+
+```powershell
+python watch_current_cross_manipulation.py
+```
+
+Runtime progress is stored in
+`C:/sp/runs/wgn_reproduction_current/status.json`; per-stage logs are in its
+`logs/` directory.
+
 `train.py` selects `best.pt` by validation accuracy and writes per-epoch metrics
 to `metrics.jsonl`; final frame- and video-level metrics are stored in
 `summary.json`. Dataset files, generated crops, checkpoints, and logs are

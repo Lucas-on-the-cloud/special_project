@@ -29,7 +29,8 @@ WGN reference; it is not a separate method proposed by EXP-003.
 ## Pending
 
 - Cross-manipulation training and the 4 × 4 DF/F2F/FS/NT evaluation matrix for
-  this exact checkpoint/protocol generation.
+  this exact protocol generation. It is queued after EXP-003 and will preserve
+  all four best checkpoints plus a Paper/RTX 5090/RTX 5060 Ti comparison table.
 - Final FF++ c40 and FaceShifter c23/c40 evaluation in the current queue sweep.
 
 The directory

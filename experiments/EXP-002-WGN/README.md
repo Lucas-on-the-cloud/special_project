@@ -12,6 +12,6 @@ comparisons.
 - [`reproduction/RTX5090-HISTORICAL-REPRODUCTION.md`](reproduction/RTX5090-HISTORICAL-REPRODUCTION.md)
   archives results from the previous machine whose checkpoint was not retained.
 
-The active checkpoint still requires a fresh cross-manipulation run. Historical
-cross-manipulation JSON from the RTX 5090 run is kept for provenance and must not
-be presented as evaluation of the active checkpoint.
+The fresh cross-manipulation run is scheduled behind the active EXP-003
+single-GPU queue. Historical cross-manipulation JSON from the RTX 5090 run is
+kept for provenance and must not be presented as evaluation of the active run.

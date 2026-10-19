@@ -266,3 +266,20 @@ A candidate is retained for further work only if:
 - Celeb-DF video AUC improves by approximately 2 percentage points or more; and
 - FF++ c23 AUC does not drop by more than 1 percentage point; and
 - the improvement is not caused by target-dataset fine-tuning.
+
+## 9. Evaluation funnel
+
+All completed candidates and their controls are evaluated on the same common
+suite: FF++ c23/c40, FaceShifter c23/c40, official-direct Celeb-DF v2, DFDC,
+and WildDeepfake. This common sweep is required because selecting a candidate
+from Celeb-DF alone would overfit the research decision to one target domain.
+
+The expensive 4 × 4 cross-manipulation training matrix is then reserved for
+the Pareto candidates that satisfy the retention criteria above and improve at
+least two generalization targets without a material regression on the others.
+If no method satisfies the threshold, the least-regressing Pareto candidate may
+receive one diagnostic cross-manipulation run, clearly labelled exploratory.
+
+EXP-002 is exempt from this filtering rule: its current WGN reproduction must
+complete all four DF/F2F/FS/NT training runs so the paper baseline is complete
+and directly comparable with the archived RTX 5090 reproduction.
