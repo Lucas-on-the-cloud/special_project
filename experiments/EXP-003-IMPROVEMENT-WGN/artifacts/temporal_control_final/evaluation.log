@@ -29,3 +29,5 @@ COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experime
 EVALUATED FF++ c40 {"loss": 1.9707649601250887, "frames": 11200, "videos": 700, "accuracy": 0.6470535714285715, "auc": 0.7027136479591837, "video_accuracy": 0.6842857142857143, "video_auc": 0.7660714285714285}
 EVALUATED FaceShifter c23 (held-out) {"loss": 1.3747146138293402, "frames": 7000, "videos": 280, "accuracy": 0.7845714285714286, "auc": 0.7139740433673469, "video_accuracy": 0.5892857142857143, "video_auc": 0.729030612244898}
 EVALUATED FaceShifter c40 (held-out) {"loss": 2.033036832724299, "frames": 7000, "videos": 280, "accuracy": 0.6377142857142857, "auc": 0.599804974489796, "video_accuracy": 0.6107142857142858, "video_auc": 0.6379591836734694}
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\temporal_control.yaml"]
