@@ -5,7 +5,7 @@ AUC values below are percentages. Missing cells are pending, not zero. Synthetic
 | Model | FF++ c23 frame | FF++ c40 frame | FaceShifter c23 frame | FaceShifter c40 frame | Celeb-DF official video | DFDC video | WildDeepfake video |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | WGN reproduced reference (EXP-002) | 98.21 | 72.22 | 72.37 | 63.43 | 70.14 | 69.67 | 71.54 |
-| gradient | 98.52 | pending | pending | pending | 68.31 | 69.87 | 72.17 |
+| gradient | 98.52 | 70.60 | 74.39 | 62.73 | 68.31 | 69.87 | 72.17 |
 | curriculum | 98.34 | pending | pending | pending | 63.71 | 67.75 | 69.85 |
 | temporal sampling control | 98.27 | pending | pending | pending | 71.92 | 70.78 | 75.10 |
 | temporal | 98.58 | 70.51 | 71.17 | 59.88 | 71.03 | 68.89 | 71.72 |
@@ -20,7 +20,7 @@ A strict finalist must gain at least 2 pp on Celeb-DF, lose no more than 1 pp on
 
 | Method | c23 loss | Celeb gain | Improved targets | Worst target regression | Pareto | Decision |
 |---|---:|---:|---:|---:|---:|---|
-| gradient | pending | pending | pending | pending | pending | pending |
+| gradient | -0.30 | -1.83 | 2/6 | 1.83 | yes | diagnostic eligible |
 | curriculum | pending | pending | pending | pending | pending | pending |
 | temporal sampling control | pending | pending | pending | pending | pending | pending |
 | temporal | -0.37 | +0.89 | 1/6 | 3.55 | no | not retained |
