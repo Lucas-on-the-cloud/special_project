@@ -19,6 +19,11 @@ The common reference checkpoint is owned by
 EXP-003 stores only candidate and ablation checkpoints in its own `artifacts/`
 directory.
 
+Every completed final run is packaged using the repository
+[experiment backup and machine handoff policy](../../docs/experiment-backup-and-machine-handoff.md).
+The portable run index is maintained in
+[`results/EXPERIMENT-REGISTRY.md`](results/EXPERIMENT-REGISTRY.md).
+
 Completed candidates: gradient, curriculum, temporal consistency, and the
 temporal sampling control. Degradation control and degradation consistency are
 currently queued. See

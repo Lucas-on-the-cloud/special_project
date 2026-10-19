@@ -43,7 +43,12 @@ The current comparison is available in
 Selected inference checkpoints are committed inside their owning experiment so
 the work can be moved to another machine. Each committed checkpoint has a
 SHA-256 record and adjacent configuration, environment, metrics, and evaluation
-files. Raw datasets, videos, generated face crops, optimizer states, and local
-runtime logs are not stored in the repository.
+files. Final-run training and evaluation logs are included in the portable
+handoff package. Raw datasets, videos, generated face crops, and repeated
+optimizer-state snapshots are not stored in normal Git history.
+
+The required backup, GitHub publication, and machine-restoration procedure is
+defined in
+[`docs/experiment-backup-and-machine-handoff.md`](docs/experiment-backup-and-machine-handoff.md).
 
 All active work is committed directly to `main`.
