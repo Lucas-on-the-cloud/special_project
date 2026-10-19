@@ -13,6 +13,17 @@
       "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
     },
     {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final",
+      "best_epoch": 9,
+      "checkpoint_sha256": "ea4aa65d629f0f0aff515408c9f56f22ea743399c20a6ae7d25b352d1f1f4da0",
+      "completed_epochs": 25,
+      "method": "degradation_consistency",
+      "run_name": "degradation_consistency_final",
+      "status": "complete",
+      "training_git_commit": "fda5760784306315d41718fb4022cfbd04529210",
+      "training_manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe"
+    },
+    {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final",
       "best_epoch": 9,
       "checkpoint_sha256": "0873737be16e0d35f28a60498aae7f639294e8f32bc1a6869b90e8ca893b07ec",

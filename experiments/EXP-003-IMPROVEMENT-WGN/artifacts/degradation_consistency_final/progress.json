@@ -1,0 +1,19 @@
+{
+  "best_epoch": 9,
+  "best_val": {
+    "accuracy": 0.945625,
+    "auc": 0.9849208545918368,
+    "frames": 11200,
+    "loss": 0.20002575535755632,
+    "video_accuracy": 0.9642857142857143,
+    "video_auc": 0.9901530612244899,
+    "videos": 700
+  },
+  "checkpoint": "C:\\sp\\runs\\wgn_overnight\\degradation_consistency_final\\best.pt",
+  "completed_epochs": 25,
+  "manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe",
+  "method": "degradation_consistency",
+  "pilot": false,
+  "status": "complete",
+  "wall_seconds_this_invocation": 15613.031999999992
+}

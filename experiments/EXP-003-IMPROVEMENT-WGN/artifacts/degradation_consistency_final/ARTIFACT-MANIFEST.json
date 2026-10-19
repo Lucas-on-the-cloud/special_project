@@ -1,0 +1,65 @@
+{
+  "best_epoch": 9,
+  "checkpoint_sha256": "ea4aa65d629f0f0aff515408c9f56f22ea743399c20a6ae7d25b352d1f1f4da0",
+  "completed_epochs": 25,
+  "experiment": "EXP-003-IMPROVEMENT-WGN",
+  "files": [
+    {
+      "bytes": 23204195,
+      "name": "best.pt",
+      "sha256": "ea4aa65d629f0f0aff515408c9f56f22ea743399c20a6ae7d25b352d1f1f4da0"
+    },
+    {
+      "bytes": 642,
+      "name": "environment.json",
+      "sha256": "6c3a7287baafdf5e75e2adced4d09592ea16189d9b2d7d5e8b3501480ee17650"
+    },
+    {
+      "bytes": 11618,
+      "name": "metrics.jsonl",
+      "sha256": "4d88b1c4a5609cb1d45419ec83fb39013caae1c172d08f333306307b7e39a83c"
+    },
+    {
+      "bytes": 605,
+      "name": "progress.json",
+      "sha256": "42c4ecbcc8121760ba01192c9929667a230b8c2c250c8b31531a62e82eee91d8"
+    },
+    {
+      "bytes": 1384,
+      "name": "README.md",
+      "sha256": "34da5609d47de16b30d6e27978189c8d59b721dc667dbff0fda51796e4c7ad49"
+    },
+    {
+      "bytes": 1291,
+      "name": "resolved_config.yaml",
+      "sha256": "6acbadee70ba524563af5089f35e75a23ed6ba56c54caa5165194258f2c6ef19"
+    },
+    {
+      "bytes": 726,
+      "name": "SHA256SUMS.txt",
+      "sha256": "b6f277b6310bd565fd885f0f7c653f2e212112bbf81ac16845b2640f9d7b9ad9"
+    },
+    {
+      "bytes": 0,
+      "name": "source.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 580,
+      "name": "summary.json",
+      "sha256": "70d6bdc43e893498980f9faea01b4a2122eec1bc79ff07a9dd3fc616b75b94f4"
+    },
+    {
+      "bytes": 55818,
+      "name": "training.log",
+      "sha256": "aadfdfadc8ab1e4799df918e8b5247ae0f0c71d7818f9c1be92cd83b1a370e43"
+    }
+  ],
+  "method": "degradation_consistency",
+  "run_name": "degradation_consistency_final",
+  "runtime_path": "C:\\sp\\runs\\wgn_overnight\\degradation_consistency_final",
+  "schema_version": 1,
+  "status": "complete",
+  "training_git_commit": "fda5760784306315d41718fb4022cfbd04529210",
+  "training_manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe"
+}
