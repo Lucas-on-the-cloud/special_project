@@ -81,4 +81,4 @@ Người dùng yêu cầu lưu `best.pt` lên GitHub, ghi đè hướng dẫn c�
 & C:\sp\.tools\py311\python.exe C:\sp\special_project\experiments\EXP-003-IMPROVEMENT-WGN\code\run_queue.py
 ```
 
-Queue có khóa để từ chối hai bản chạy đồng thời và bỏ qua stage đã hoàn tất. Các thư viện được pin trong `requirements.txt`; facenet-pytorch 2.6.0 cài `--no-deps` vì pin torch cũ chưa hỗ trợ Blackwell. MTCNN trên GPU thật đã được kiểm tra trước khi dùng.
+Queue có khóa để từ chối hai bản chạy đồng thời và bỏ qua stage đã hoàn tất. Các thư viện được pin trong `../code/requirements.txt`; facenet-pytorch 2.6.0 cài `--no-deps` vì pin torch cũ chưa hỗ trợ Blackwell. MTCNN trên GPU thật đã được kiểm tra trước khi dùng.

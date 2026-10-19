@@ -14,7 +14,8 @@ import torch
 import yaml
 
 ROOT = Path(__file__).resolve().parent
-BASE = ROOT.parent / 'reproduction' / 'code'
+REPO = ROOT.parents[2]
+BASE = REPO / 'experiments' / 'EXP-002-WGN' / 'reproduction' / 'code'
 sys.path.insert(0, str(BASE / 'src'))
 
 

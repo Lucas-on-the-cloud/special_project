@@ -1,142 +1,49 @@
-# Generalizable Deepfake Detection — Capstone Project
+# Generalizable Deepfake Detection
 
-> A research-oriented computer-vision capstone on detecting manipulated visual media.
+Research repository for reproducing WGN and testing changes intended to improve
+generalization across datasets, manipulation methods, and compression levels.
 
-## Project status
-
-- **Stage:** WGN improvement experiments in progress
-- **Current direction:** Generalizable and bias-resilient deepfake detection
-- **Compute environment:** NVIDIA RTX 5060 Ti 16 GB
-- **Scope status:** The current WGN reference has been reproduced and saved; three initial improvement candidates are complete, and degradation robustness experiments are running. Cross-manipulation for the current reference remains pending. DFD-HR is deferred.
-- **Previous direction:** Parking occupancy work has been removed from the active tree and remains recoverable through Git history
-
-## Current objective
-
-Build a reproducible deepfake-detection project that studies performance under compression, unseen manipulation methods, and dataset shift, while treating demographic fairness as an evaluation requirement when suitable metadata is available.
-
-The project must include:
-
-1. public data and preferably official/public code;
-2. a clearly reproduced baseline;
-3. an evaluation protocol that measures generalization rather than only in-dataset accuracy;
-4. one evidence-driven improvement;
-5. a hosted-GPU-runnable pipeline and a practical demonstration.
-
-The current evidence favors image/frame-level classification and cross-dataset evaluation. WGN is the active improvement target; DFD-HR remains deferred until the WGN experiments are complete.
-
-## Project documents
-
-- [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md): the complete 18-week plan and checklist.
-- [`experiments/EXP-001-DFD-HR/README.md`](experiments/EXP-001-DFD-HR/README.md): DFD-HR reproduction runbook and result record.
-- [`experiments/EXP-002-WGN/README.md`](experiments/EXP-002-WGN/README.md): current WGN reproduction status and saved reference checkpoint.
-- [`experiments/EXP-003-IMPROVEMENT-WGN/README.md`](experiments/EXP-003-IMPROVEMENT-WGN/README.md): WGN improvement code, results, and checkpoints.
-- [`docs/dataset-access-plan.md`](docs/dataset-access-plan.md): official dataset links, permission forms, download sources, and private data-access checklist.
-- [`docs/literature-review/README.md`](docs/literature-review/README.md): literature groups and review process.
-- [`docs/literature-review/week-04-paper-matrix.md`](docs/literature-review/week-04-paper-matrix.md): comparison of the five papers assigned for Weeks 3–4.
-- [`docs/weekly-logs/semester-1/`](docs/weekly-logs/semester-1/): evidence and progress recorded by week.
-
-## 18-week timeline
-
-| Week | Main work | Weekly deliverable | Status |
-|---:|---|---|---|
-| 01 | Begin the five papers cited in the progress report: Fairness Analysis, FaceForensics++, FreqDebias, Synergistic Fairness Optimization, and UCF | First-pass notes identifying each paper's problem, method, dataset, metrics, and limitations | ✅ Completed |
-| 02 | Finish the same five cited papers; connect generalization, compression, spectral bias, and demographic fairness | Week 1–2 progress report | ✅ Completed |
-| 03 | Begin the five sources newly assigned by the professor: NTIRE 2026, DFD-HR, VRAG-DFD, domain-incremental curriculum learning, and WGN | Initial notes plus code, checkpoint, dataset, and compute audit | ✅ Initial review completed |
-| **04** | Continue reading the same five Week 3 sources; study DFD-HR and WGN more deeply | Five structured notes, comparison matrix, and Week 5 reproduction decision | 🚧 In progress |
-| **05** | Plan and prepare WGN improvement experiments: gradient fusion, difficulty-aware curriculum, and temporal consistency | GPU preflight, dataset-path verification, and three candidate configs | 🚧 In progress |
-| 06 | Read SGFF-Net in depth and implement the gradient-fusion candidate | EXP-003 gradient variant trained and evaluated | Completed |
-| 07 | Read the difficulty-aware curriculum paper and implement training-only difficulty ranking | EXP-003 curriculum variant trained and evaluated | Completed |
-| 08 | Read the temporal consistency paper and implement same-video frame pairing | EXP-003 temporal variant and control trained and evaluated | Completed |
-| 09 | Compare the three WGN candidates | Full 25-epoch comparison under the frozen protocol | Completed |
-| 10 | Review improvement results and failure cases | Cross-dataset and degradation-robustness evaluation | In progress |
-| 11 | Select the strongest single WGN improvement | Run cross-manipulation and lock the final improvement hypothesis | ⬜ Pending |
-| 12 | Read supporting literature for the selected method | Train the selected improvement with the locked 25-epoch protocol | ⬜ Pending |
-| 13 | Study and run component ablations; repeat important runs when feasible | `EXP-007` ablation table | ⬜ Pending |
-| 14 | Revisit fairness literature and verify whether trustworthy demographic metadata exists | `EXP-008` subgroup AUC/FPR/FNR audit, or a documented decision not to make demographic claims | ⬜ Pending |
-| 15 | Evaluate efficiency, calibration, and practical deployment constraints | `EXP-009` accuracy–robustness–efficiency comparison | ⬜ Pending |
-| 16 | Lock the protocol and run the final evaluation without tuning on test results | Final tables, plots, configs, and artifact manifest | ⬜ Pending |
-| 17 | Build an application-oriented hosted-GPU demo and write the research report | End-to-end demo plus report draft | ⬜ Pending |
-| 18 | Perform citation, claim, and reproducibility audits; prepare the defense | Final report, presentation, repository release, and clean-session verification | ⬜ Pending |
-
-The detailed checklist and decision rules remain available in [`docs/project-plan-18-weeks.md`](docs/project-plan-18-weeks.md).
-
-## Decisions that must be supported by sources
-
-| Decision | Questions to resolve |
-|---|---|
-| Task unit | Image, sampled video frames, or full video? |
-| Dataset | Which public datasets are accessible, licensed, and realistic for the rented hosted GPU? |
-| Baseline | Which paper has runnable code, pretrained weights, and clear evaluation instructions? |
-| Generalization | In-dataset, cross-manipulation, cross-dataset, or unseen-generator evaluation? |
-| Improvement | Spatial artifacts, frequency cues, temporal cues, augmentation, domain generalization, or another justified method? |
-| Metrics | Accuracy alone or also AUC, F1, EER, calibration, latency, and robustness? |
-| Application | Upload-based detector, batch analysis, or another feasible demo? |
-
-## Research workflow
-
-```text
-Review supplied sources
-        ↓
-Freeze problem and evaluation protocol
-        ↓
-Select code-first baseline and dataset
-        ↓
-Reproduce on the hosted GPU
-        ↓
-Analyze failure modes and generalization gap
-        ↓
-Select one justified improvement
-        ↓
-Ablation, robustness evaluation, and demo
-```
-
-## Current scope guardrails
-
-### In scope now
-
-- Deepfake detection research
-- Public datasets and reproducible baselines
-- Hosted-GPU execution (currently EZYCLOUDX V100; no local workstation)
-- Evidence-based experiment design
-- Compact metrics, plots, configs, and reports committed to GitHub
-
-### Not yet approved
-
-- A particular architecture or dataset
-- Deepfake generation
-- Localization or segmentation of manipulated regions
-- Audio deepfake detection or audio-visual fusion
-- Real-time deployment claims
-- A final capstone title or novelty claim
-
-These may be added only when the literature and available code justify them.
-
-## Repository structure
+## Repository layout
 
 ```text
 special_project/
-├── configs/                     # Experiment configurations
-├── docs/
-│   ├── literature-review/       # Source intake and paper notes
-│   ├── weekly-logs/             # Weekly decisions and evidence
-│   ├── meetings/                # Advisor meeting records
-│   └── project-scope.md         # Current boundaries and open decisions
-├── experiments/                 # One documented folder per experiment
-├── notebooks/                   # Optional experiment notebooks
-├── results/                     # Small metrics and figures only
-├── src/                         # Reusable training/evaluation code
-└── requirements.txt
+├── README.md
+├── docs/                           project plans, literature, and research notes
+└── experiments/
+    ├── EXP-001-DFD-HR/             deferred DFD-HR reproduction work
+    ├── EXP-002-WGN/                WGN reproduction and frozen reference
+    └── EXP-003-IMPROVEMENT-WGN/    WGN improvement experiments
 ```
 
-## Hosted-GPU workflow
+## Active experiments
 
-1. Code, configs, and documentation are versioned in this repository.
-2. Clone or pull this repository on the rented remote GPU container; run training there.
-3. Keep datasets, extracted frames, logs, and checkpoints on the rented disk or approved persistent storage.
-4. Commit only compact JSON/CSV metrics, selected figures, configs, and documentation to GitHub.
+### EXP-002 — WGN reproduction
 
-Do not commit videos, extracted frames, datasets, checkpoints, cloud credentials, or large archives.
+[`experiments/EXP-002-WGN/`](experiments/EXP-002-WGN/) owns the independently
+reproduced WGN reference. The current RTX 5060 Ti checkpoint, configuration,
+metrics, and checksum are stored with the experiment.
 
-## Immediate next action
+The main and cross-dataset rerun is complete. Cross-manipulation for this exact
+current checkpoint remains pending. Results from the earlier RTX 5090 machine
+are retained as historical evidence because its checkpoint was not preserved.
 
-Complete the queued degradation experiments in `experiments/EXP-003-IMPROVEMENT-WGN`, then run the pending current-checkpoint cross-manipulation work recorded under `experiments/EXP-002-WGN/reproduction/`.
+### EXP-003 — WGN improvement
+
+[`experiments/EXP-003-IMPROVEMENT-WGN/`](experiments/EXP-003-IMPROVEMENT-WGN/)
+contains all improvement code, configurations, reports, and candidate
+checkpoints. Gradient fusion, curriculum learning, temporal consistency, and
+the temporal sampling control are complete. Degradation robustness experiments
+are running.
+
+The current comparison is available in
+[`THREE-EXPERIMENT-COMPARISON.md`](experiments/EXP-003-IMPROVEMENT-WGN/results/THREE-EXPERIMENT-COMPARISON.md).
+
+## Artifact policy
+
+Selected inference checkpoints are committed inside their owning experiment so
+the work can be moved to another machine. Each committed checkpoint has a
+SHA-256 record and adjacent configuration, environment, metrics, and evaluation
+files. Raw datasets, videos, generated face crops, optimizer states, and local
+runtime logs are not stored in the repository.
+
+All active work is committed directly to `main`.

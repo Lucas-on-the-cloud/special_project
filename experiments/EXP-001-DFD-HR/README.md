@@ -41,7 +41,7 @@ Run the read-only preflight script in this repository. Confirm GPU model, availa
 
 ### 1. Pin and install the official code
 
-Use scripts/dfd_hr/setup_environment.sh. It clones the exact upstream commit and creates an isolated Python 3.10.15 environment with the official pinned requirements. The final check must show CUDA available and the V100 visible.
+EXP-001 is deferred. Its former root-level setup scripts were removed during the repository cleanup; if this experiment resumes, recreate the environment tooling inside this experiment directory and pin the upstream commit and dependencies here.
 
 ### 2. Confirm dataset access and layout
 

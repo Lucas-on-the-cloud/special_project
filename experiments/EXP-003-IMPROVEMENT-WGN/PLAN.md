@@ -91,7 +91,7 @@ This avoids duplicating WGN's wavelet branch and isolates the contribution of gr
 ### Experiment record
 
 - Variant: EXP-003 / gradient fusion
-- Config: configs/wgn_gradient_fusion.yaml
+- Config: `code/configs/gradient.yaml`
 - Output: runs/wgn_gradient_fusion/
 - Primary hypothesis: improve Celeb-DF and FF++ c40 AUC.
 - Inference cost: expected to be only slightly higher than baseline.
@@ -131,7 +131,7 @@ The validation and test sets remain unchanged. The difficulty ranking must never
 ### Experiment record
 
 - Variant: EXP-003 / curriculum
-- Config: configs/wgn_curriculum.yaml
+- Config: `code/configs/curriculum.yaml`
 - Output: runs/wgn_curriculum/
 - Primary hypothesis: improve cross-manipulation and cross-dataset robustness.
 - Inference cost: unchanged from baseline.
@@ -174,7 +174,7 @@ Inference remains frame-level, so this method does not require two frames at dep
 ### Experiment record
 
 - Variant: EXP-003 / temporal consistency
-- Config: configs/wgn_temporal_consistency.yaml
+- Config: `code/configs/temporal.yaml`
 - Output: runs/wgn_temporal_consistency/
 - Primary hypothesis: improve video-level AUC, especially on DFDC and WildDeepfake.
 - Inference cost: unchanged; training cost will increase because two frames are processed.
@@ -221,7 +221,7 @@ For each candidate:
 Pilot command pattern:
 
 ~~~powershell
-python train.py --config configs/<candidate>.yaml --epochs 5 --output-dir runs/<candidate>_pilot
+python code/train.py --config code/configs/<candidate>.yaml --epochs 5 --output-dir runs/<candidate>_pilot
 ~~~
 
 The exact command should be checked with:
