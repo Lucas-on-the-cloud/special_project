@@ -25,9 +25,9 @@
       "sha256": "723a5455f37205ba13386b4839754697f5c7e6cca1f221a50f7c033e138cf438"
     },
     {
-      "bytes": 4324,
+      "bytes": 4545,
       "name": "evaluation.log",
-      "sha256": "f73bc101b64b3ce41a09abec68386d6e2d57cea5797333778431ed7ad18458b6"
+      "sha256": "d77046977dc26e05ffa784a09b72fe8d5448d6a8b98ef7e1e83f20e40e9c120a"
     },
     {
       "bytes": 11618,
@@ -52,7 +52,7 @@
     {
       "bytes": 998,
       "name": "SHA256SUMS.txt",
-      "sha256": "c0d32f991de48ee41472b517414a64d7083d83d4f0bbf91514f12c9753d64b46"
+      "sha256": "f57ef2b3ecc6646b1f385454c0054252136da8dddf47a15790090b8602cf4dc5"
     },
     {
       "bytes": 0,
