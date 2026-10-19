@@ -14,6 +14,8 @@ EVALUATED FaceShifter c40 (held-out) {"loss": 1.5057079338686807, "frames": 7000
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_consistency_final"]
 EVALUATED_OFFICIAL_CELEBDF {"loss": 0.9396355262691709, "frames": 16576, "videos": 518, "accuracy": 0.7192929536679536, "auc": 0.7322813932894084, "video_accuracy": 0.7586872586872587, "video_auc": 0.7994051553205552}
 
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_consistency_final"]
+
 ===== evaluate_degradation_consistency.log =====
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_consistency_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\degradation_consistency.yaml"]
