@@ -82,6 +82,7 @@ class Runner:
         self.state_path = RUNS / "status.json"
         self.state = json.loads(self.state_path.read_text(encoding="utf-8")) if self.state_path.exists() else {}
         self.state.setdefault("stages", {})
+        self.state.pop("error", None)
         self.state["pid"] = os.getpid()
         (RUNS / "runner.pid").write_text(str(os.getpid()), encoding="ascii")
         ctypes.windll.kernel32.SetThreadExecutionState(0x80000001)
@@ -90,6 +91,8 @@ class Runner:
         ctypes.windll.kernel32.SetThreadExecutionState(0x80000000)
 
     def update(self, phase: str, **values) -> None:
+        if phase != "failed":
+            self.state.pop("error", None)
         self.state.update(updated_at=now(), phase=phase, **values)
         atomic_json(self.state_path, self.state)
 
