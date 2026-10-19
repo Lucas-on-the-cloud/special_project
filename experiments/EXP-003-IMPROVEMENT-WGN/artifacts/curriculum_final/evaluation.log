@@ -30,3 +30,11 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'wgn'
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final"]
+
+===== evaluate_curriculum.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\curriculum.yaml"]
+EVALUATED Celeb-DF-v2 official-direct {"loss": 1.5682632832644772, "frames": 16576, "videos": 518, "accuracy": 0.6213199806949807, "auc": 0.6032437301202082, "video_accuracy": 0.6795366795366795, "video_auc": 0.6371116986120291}
+EVALUATED FF++ c40 {"loss": 1.4088280393715416, "frames": 11200, "videos": 700, "accuracy": 0.6488392857142857, "auc": 0.7134449298469387, "video_accuracy": 0.7085714285714285, "video_auc": 0.7680229591836736}
+EVALUATED FaceShifter c23 (held-out) {"loss": 1.0202333057011876, "frames": 7000, "videos": 280, "accuracy": 0.7821428571428571, "auc": 0.7229808035714285, "video_accuracy": 0.6071428571428571, "video_auc": 0.7425510204081633}
+EVALUATED FaceShifter c40 (held-out) {"loss": 1.5931840763602938, "frames": 7000, "videos": 280, "accuracy": 0.5952857142857143, "auc": 0.6095810586734693, "video_accuracy": 0.5964285714285714, "video_auc": 0.6464795918367346}
