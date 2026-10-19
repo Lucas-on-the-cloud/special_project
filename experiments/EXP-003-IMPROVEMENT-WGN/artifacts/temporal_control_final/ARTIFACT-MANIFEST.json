@@ -15,14 +15,19 @@
       "sha256": "d437a1ae2d874bebb8f953e5401a6c8afa507ebefa460446230b7b8126247664"
     },
     {
+      "bytes": 1125,
+      "name": "evaluation-celebdf-official-direct.json",
+      "sha256": "64386bf3d788908bd80108c172ad23386a53fdfe0446ee24390e38e2e673e75e"
+    },
+    {
       "bytes": 1679,
       "name": "evaluation.json",
       "sha256": "3fdab90cb806283233267c70ec0d2aa71a6f7749dd7c77b18746a6f423b8af9b"
     },
     {
-      "bytes": 1972,
+      "bytes": 2402,
       "name": "evaluation.log",
-      "sha256": "8a630c2e1a5cef3d5df33da3f1dfb6708221b678099c36e610329e7d142e57f8"
+      "sha256": "261ed320d2acc7edc7e97156690373019a76554f32413781777959a50e023366"
     },
     {
       "bytes": 11689,
@@ -45,9 +50,9 @@
       "sha256": "467146d9d0867e15eb35a4ff764839b992d9e4faf3239f67a60650d4609a0a8b"
     },
     {
-      "bytes": 891,
+      "bytes": 998,
       "name": "SHA256SUMS.txt",
-      "sha256": "e8e369ea211efce3d4c146f64a8c69c2ca395adf35eea9a0c7f32fb85d127291"
+      "sha256": "bde1db963e45a58ecee7e185c3d0735d1be5bb03a870abfef4c40e78c8b38bf6"
     },
     {
       "bytes": 0,
