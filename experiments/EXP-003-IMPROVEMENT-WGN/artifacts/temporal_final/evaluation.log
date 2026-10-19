@@ -1,0 +1,15 @@
+===== early_evaluate_temporal.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\temporal.yaml"]
+EVALUATED FF++ c23 {"loss": 0.3364701718019141, "frames": 11200, "videos": 700, "accuracy": 0.9476785714285715, "auc": 0.9858032366071428, "video_accuracy": 0.9757142857142858, "video_auc": 0.9939413265306123}
+EVALUATED Celeb-DF-v2 official-direct {"loss": 3.2170659218551063, "frames": 16576, "videos": 518, "accuracy": 0.6326013513513513, "auc": 0.6418738446484633, "video_accuracy": 0.6988416988416989, "video_auc": 0.710294117647059}
+EVALUATED DFDC {"loss": 2.8158155850584925, "frames": 132116, "videos": 4704, "accuracy": 0.6309909473492991, "auc": 0.6866676598195247, "video_accuracy": 0.6328656462585034, "video_auc": 0.6889374174469558}
+EVALUATED WildDeepfake {"loss": 2.7864783350877365, "frames": 165662, "videos": 806, "accuracy": 0.6702261230698652, "auc": 0.7075202124516549, "video_accuracy": 0.6327543424317618, "video_auc": 0.7171624784429662}
+EVALUATED FF++ c40 {"loss": 3.212883600454245, "frames": 11200, "videos": 700, "accuracy": 0.6473214285714286, "auc": 0.7051493463010203, "video_accuracy": 0.6428571428571429, "video_auc": 0.760765306122449}
+EVALUATED FaceShifter c23 (held-out) {"loss": 2.193046303808689, "frames": 7000, "videos": 280, "accuracy": 0.8007142857142857, "auc": 0.711698724489796, "video_accuracy": 0.5714285714285714, "video_auc": 0.7234183673469388}
+EVALUATED FaceShifter c40 (held-out) {"loss": 3.215248669539179, "frames": 7000, "videos": 280, "accuracy": 0.6552857142857142, "auc": 0.5988082270408164, "video_accuracy": 0.5964285714285714, "video_auc": 0.6381632653061224}
+
+===== evaluate_celebdf_official_temporal.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_final"]
+EVALUATED_OFFICIAL_CELEBDF {"loss": 3.2170659218551063, "frames": 16576, "videos": 518, "accuracy": 0.6326013513513513, "auc": 0.6418738446484633, "video_accuracy": 0.6988416988416989, "video_auc": 0.710294117647059}

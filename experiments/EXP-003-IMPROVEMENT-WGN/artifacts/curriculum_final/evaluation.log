@@ -1,0 +1,30 @@
+===== early_evaluate_curriculum.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\curriculum.yaml"]
+EVALUATED FF++ c23 {"loss": 0.23974118878289077, "frames": 11200, "videos": 700, "accuracy": 0.9303571428571429, "auc": 0.9833725446428571, "video_accuracy": 0.97, "video_auc": 0.9930994897959183}
+EVALUATED Celeb-DF-v2 {"loss": 1.5075388177566857, "frames": 16420, "videos": 518, "accuracy": 0.6579171741778319, "auc": 0.6067419105048109, "video_accuracy": 0.7007722007722008, "video_auc": 0.6296265697290152}
+EVALUATED DFDC {"loss": 1.6054204385576838, "frames": 132116, "videos": 4704, "accuracy": 0.620916467346877, "auc": 0.6720466868745392, "video_accuracy": 0.6258503401360545, "video_auc": 0.677497565787035}
+EVALUATED WildDeepfake {"loss": 1.680087265568426, "frames": 165662, "videos": 806, "accuracy": 0.6708297618041554, "auc": 0.6867443639943162, "video_accuracy": 0.5992555831265509, "video_auc": 0.6985248829761025}
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\curriculum.yaml"]
+
+===== evaluate_celebdf_official_curriculum.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final"]
+EVALUATED_OFFICIAL_CELEBDF {"loss": 1.5682632832644772, "frames": 16576, "videos": 518, "accuracy": 0.6213199806949807, "auc": 0.6032437301202082, "video_accuracy": 0.6795366795366795, "video_auc": 0.6371116986120291}
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final"]
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final"]
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final"]
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final"]
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\curriculum_final"]
+Traceback (most recent call last):
+  File "C:\sp\special_project\experiments\EXP-003-IMPROVEMENT-WGN\code\evaluate_celebdf_official.py", line 13, in <module>
+    from data import FaceForensicsJsonDataset, build_binary_dataset_records
+  File "C:\sp\special_project\experiments\EXP-003-IMPROVEMENT-WGN\code\data.py", line 13, in <module>
+    from wgn.data import FaceForensicsJsonDataset, build_datasets, build_binary_dataset_records
+ModuleNotFoundError: No module named 'wgn'

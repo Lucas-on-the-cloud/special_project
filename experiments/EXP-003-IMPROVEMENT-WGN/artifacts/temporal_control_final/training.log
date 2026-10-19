@@ -1,0 +1,507 @@
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\train.py", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\temporal_control.yaml", "--output-dir", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--resume"]
+{"event": "progress", "epoch": 1, "batch": 1, "batches": 1800, "loss": 1.413567066192627}
+{"event": "progress", "epoch": 1, "batch": 101, "batches": 1800, "loss": 0.879518985748291}
+{"event": "progress", "epoch": 1, "batch": 201, "batches": 1800, "loss": 0.4528569281101227}
+{"event": "progress", "epoch": 1, "batch": 301, "batches": 1800, "loss": 0.26621687412261963}
+{"event": "progress", "epoch": 1, "batch": 401, "batches": 1800, "loss": 0.2681657671928406}
+{"event": "progress", "epoch": 1, "batch": 501, "batches": 1800, "loss": 0.4028446078300476}
+{"event": "progress", "epoch": 1, "batch": 601, "batches": 1800, "loss": 0.40289872884750366}
+{"event": "progress", "epoch": 1, "batch": 701, "batches": 1800, "loss": 0.28380653262138367}
+{"event": "progress", "epoch": 1, "batch": 801, "batches": 1800, "loss": 0.17327184975147247}
+{"event": "progress", "epoch": 1, "batch": 901, "batches": 1800, "loss": 0.15124762058258057}
+{"event": "progress", "epoch": 1, "batch": 1001, "batches": 1800, "loss": 0.18795929849147797}
+{"event": "progress", "epoch": 1, "batch": 1101, "batches": 1800, "loss": 0.17436623573303223}
+{"event": "progress", "epoch": 1, "batch": 1201, "batches": 1800, "loss": 0.4466058611869812}
+{"event": "progress", "epoch": 1, "batch": 1301, "batches": 1800, "loss": 0.17887818813323975}
+{"event": "progress", "epoch": 1, "batch": 1401, "batches": 1800, "loss": 0.10419689863920212}
+{"event": "progress", "epoch": 1, "batch": 1501, "batches": 1800, "loss": 0.10688374191522598}
+{"event": "progress", "epoch": 1, "batch": 1601, "batches": 1800, "loss": 0.5996557474136353}
+{"event": "progress", "epoch": 1, "batch": 1701, "batches": 1800, "loss": 0.0787050649523735}
+{"epoch": 0, "curriculum_fraction": 1.0, "train": {"loss": 0.3608201128368576, "consistency": 0.04300546571017346, "samples": 57600, "updates": 1800, "seconds": 593.375, "accuracy": 0.9208159722222222, "auc": 0.9791027440200617}, "val": {"loss": 0.18372957987877142, "frames": 11200, "videos": 700, "accuracy": 0.9335714285714286, "auc": 0.9821187659438776, "video_accuracy": 0.9657142857142857, "video_auc": 0.9926785714285714}, "lr": 9.96057350657239e-05}
+{"event": "progress", "epoch": 2, "batch": 1, "batches": 1800, "loss": 0.08129043877124786}
+{"event": "progress", "epoch": 2, "batch": 101, "batches": 1800, "loss": 0.12605330348014832}
+{"event": "progress", "epoch": 2, "batch": 201, "batches": 1800, "loss": 0.10992716252803802}
+{"event": "progress", "epoch": 2, "batch": 301, "batches": 1800, "loss": 0.10710209608078003}
+{"event": "progress", "epoch": 2, "batch": 401, "batches": 1800, "loss": 0.10372677445411682}
+{"event": "progress", "epoch": 2, "batch": 501, "batches": 1800, "loss": 0.06896704435348511}
+{"event": "progress", "epoch": 2, "batch": 601, "batches": 1800, "loss": 0.11840720474720001}
+{"event": "progress", "epoch": 2, "batch": 701, "batches": 1800, "loss": 0.07757722586393356}
+{"event": "progress", "epoch": 2, "batch": 801, "batches": 1800, "loss": 0.14219625294208527}
+{"event": "progress", "epoch": 2, "batch": 901, "batches": 1800, "loss": 0.05925992876291275}
+{"event": "progress", "epoch": 2, "batch": 1001, "batches": 1800, "loss": 0.03901144862174988}
+{"event": "progress", "epoch": 2, "batch": 1101, "batches": 1800, "loss": 0.26016002893447876}
+{"event": "progress", "epoch": 2, "batch": 1201, "batches": 1800, "loss": 0.08000781387090683}
+{"event": "progress", "epoch": 2, "batch": 1301, "batches": 1800, "loss": 0.052740104496479034}
+{"event": "progress", "epoch": 2, "batch": 1401, "batches": 1800, "loss": 0.14254054427146912}
+{"event": "progress", "epoch": 2, "batch": 1501, "batches": 1800, "loss": 0.1554703712463379}
+{"event": "progress", "epoch": 2, "batch": 1601, "batches": 1800, "loss": 0.01690003275871277}
+{"event": "progress", "epoch": 2, "batch": 1701, "batches": 1800, "loss": 0.012018322013318539}
+{"epoch": 1, "curriculum_fraction": 1.0, "train": {"loss": 0.13927829750917023, "consistency": 0.025577487872267535, "samples": 57600, "updates": 1800, "seconds": 588.6100000000006, "accuracy": 0.9722569444444444, "auc": 0.9965624397183642}, "val": {"loss": 0.18178149939065666, "frames": 11200, "videos": 700, "accuracy": 0.94, "auc": 0.985335012755102, "video_accuracy": 0.9657142857142857, "video_auc": 0.9938647959183674}, "lr": 9.842915805643155e-05}
+{"event": "progress", "epoch": 3, "batch": 1, "batches": 1800, "loss": 0.024673696607351303}
+{"event": "progress", "epoch": 3, "batch": 101, "batches": 1800, "loss": 0.46584439277648926}
+{"event": "progress", "epoch": 3, "batch": 201, "batches": 1800, "loss": 0.03758952394127846}
+{"event": "progress", "epoch": 3, "batch": 301, "batches": 1800, "loss": 0.12384913861751556}
+{"event": "progress", "epoch": 3, "batch": 401, "batches": 1800, "loss": 0.130624458193779}
+{"event": "progress", "epoch": 3, "batch": 501, "batches": 1800, "loss": 0.15582260489463806}
+{"event": "progress", "epoch": 3, "batch": 601, "batches": 1800, "loss": 0.01481051929295063}
+{"event": "progress", "epoch": 3, "batch": 701, "batches": 1800, "loss": 0.09862751513719559}
+{"event": "progress", "epoch": 3, "batch": 801, "batches": 1800, "loss": 0.02603650651872158}
+{"event": "progress", "epoch": 3, "batch": 901, "batches": 1800, "loss": 0.08119388669729233}
+{"event": "progress", "epoch": 3, "batch": 1001, "batches": 1800, "loss": 0.021852383390069008}
+{"event": "progress", "epoch": 3, "batch": 1101, "batches": 1800, "loss": 0.0054860906675457954}
+{"event": "progress", "epoch": 3, "batch": 1201, "batches": 1800, "loss": 0.030624357983469963}
+{"event": "progress", "epoch": 3, "batch": 1301, "batches": 1800, "loss": 0.1598137617111206}
+{"event": "progress", "epoch": 3, "batch": 1401, "batches": 1800, "loss": 0.014444535598158836}
+{"event": "progress", "epoch": 3, "batch": 1501, "batches": 1800, "loss": 0.014200336299836636}
+{"event": "progress", "epoch": 3, "batch": 1601, "batches": 1800, "loss": 0.0069630341604352}
+{"event": "progress", "epoch": 3, "batch": 1701, "batches": 1800, "loss": 0.031169572845101357}
+{"epoch": 2, "curriculum_fraction": 1.0, "train": {"loss": 0.08421376454113569, "consistency": 0.016871626065417835, "samples": 57600, "updates": 1800, "seconds": 588.6870000000054, "accuracy": 0.9828819444444444, "auc": 0.9987063681520062}, "val": {"loss": 0.19562323747398425, "frames": 11200, "videos": 700, "accuracy": 0.9402678571428571, "auc": 0.9845996014030611, "video_accuracy": 0.9657142857142857, "video_auc": 0.9937117346938775}, "lr": 9.648882429441257e-05}
+{"event": "progress", "epoch": 4, "batch": 1, "batches": 1800, "loss": 0.302405446767807}
+{"event": "progress", "epoch": 4, "batch": 101, "batches": 1800, "loss": 0.0698591023683548}
+{"event": "progress", "epoch": 4, "batch": 201, "batches": 1800, "loss": 0.042486272752285004}
+{"event": "progress", "epoch": 4, "batch": 301, "batches": 1800, "loss": 0.09232078492641449}
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\train.py", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\temporal_control.yaml", "--output-dir", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--resume"]
+{"event": "progress", "epoch": 4, "batch": 1, "batches": 1800, "loss": 0.302405446767807}
+{"event": "progress", "epoch": 4, "batch": 101, "batches": 1800, "loss": 0.06936226040124893}
+{"event": "progress", "epoch": 4, "batch": 201, "batches": 1800, "loss": 0.04218210279941559}
+{"event": "progress", "epoch": 4, "batch": 301, "batches": 1800, "loss": 0.09326736629009247}
+{"event": "progress", "epoch": 4, "batch": 401, "batches": 1800, "loss": 0.045059509575366974}
+{"event": "progress", "epoch": 4, "batch": 501, "batches": 1800, "loss": 0.06503191590309143}
+{"event": "progress", "epoch": 4, "batch": 601, "batches": 1800, "loss": 0.011942017823457718}
+{"event": "progress", "epoch": 4, "batch": 701, "batches": 1800, "loss": 0.025288064032793045}
+{"event": "progress", "epoch": 4, "batch": 801, "batches": 1800, "loss": 0.14378078281879425}
+{"event": "progress", "epoch": 4, "batch": 901, "batches": 1800, "loss": 0.056021541357040405}
+{"event": "progress", "epoch": 4, "batch": 1001, "batches": 1800, "loss": 0.014405710622668266}
+{"event": "progress", "epoch": 4, "batch": 1101, "batches": 1800, "loss": 0.04397387057542801}
+{"event": "progress", "epoch": 4, "batch": 1201, "batches": 1800, "loss": 0.03764244541525841}
+{"event": "progress", "epoch": 4, "batch": 1301, "batches": 1800, "loss": 0.016974642872810364}
+{"event": "progress", "epoch": 4, "batch": 1401, "batches": 1800, "loss": 0.07102419435977936}
+{"event": "progress", "epoch": 4, "batch": 1501, "batches": 1800, "loss": 0.09793239086866379}
+{"event": "progress", "epoch": 4, "batch": 1601, "batches": 1800, "loss": 0.007306437473744154}
+{"event": "progress", "epoch": 4, "batch": 1701, "batches": 1800, "loss": 0.03770184516906738}
+{"epoch": 3, "curriculum_fraction": 1.0, "train": {"loss": 0.057340045041896194, "consistency": 0.01164438028121266, "samples": 57600, "updates": 1800, "seconds": 588.8279999999941, "accuracy": 0.9889756944444444, "auc": 0.9994398612316744}, "val": {"loss": 0.23017259835466714, "frames": 11200, "videos": 700, "accuracy": 0.9429464285714285, "auc": 0.984394706632653, "video_accuracy": 0.9714285714285714, "video_auc": 0.9934311224489796}, "lr": 9.381533400219318e-05}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "multiprocessing\spawn.py", line 122, in spawn_main
+  File "multiprocessing\spawn.py", line 132, in _main
+_pickle.UnpicklingError: pickle data was truncated
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\train.py", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\temporal_control.yaml", "--output-dir", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--resume"]
+{"event": "progress", "epoch": 5, "batch": 1, "batches": 1800, "loss": 0.009130872786045074}
+{"event": "progress", "epoch": 5, "batch": 101, "batches": 1800, "loss": 0.001768416492268443}
+{"event": "progress", "epoch": 5, "batch": 201, "batches": 1800, "loss": 0.149305060505867}
+{"event": "progress", "epoch": 5, "batch": 301, "batches": 1800, "loss": 0.008022203110158443}
+{"event": "progress", "epoch": 5, "batch": 401, "batches": 1800, "loss": 0.0552116222679615}
+{"event": "progress", "epoch": 5, "batch": 501, "batches": 1800, "loss": 0.07728409767150879}
+{"event": "progress", "epoch": 5, "batch": 601, "batches": 1800, "loss": 0.06448511779308319}
+{"event": "progress", "epoch": 5, "batch": 701, "batches": 1800, "loss": 0.007100849412381649}
+{"event": "progress", "epoch": 5, "batch": 801, "batches": 1800, "loss": 0.014549455605447292}
+{"event": "progress", "epoch": 5, "batch": 901, "batches": 1800, "loss": 0.14655429124832153}
+{"event": "progress", "epoch": 5, "batch": 1001, "batches": 1800, "loss": 0.04822437837719917}
+{"event": "progress", "epoch": 5, "batch": 1101, "batches": 1800, "loss": 0.022452840581536293}
+{"event": "progress", "epoch": 5, "batch": 1201, "batches": 1800, "loss": 0.0571957528591156}
+{"event": "progress", "epoch": 5, "batch": 1301, "batches": 1800, "loss": 0.026084644719958305}
+{"event": "progress", "epoch": 5, "batch": 1401, "batches": 1800, "loss": 0.054148875176906586}
+{"event": "progress", "epoch": 5, "batch": 1501, "batches": 1800, "loss": 0.08961833268404007}
+{"event": "progress", "epoch": 5, "batch": 1601, "batches": 1800, "loss": 0.0027739163488149643}
+{"event": "progress", "epoch": 5, "batch": 1701, "batches": 1800, "loss": 0.04520086199045181}
+{"epoch": 4, "curriculum_fraction": 1.0, "train": {"loss": 0.042692417934239425, "consistency": 0.009033228695121744, "samples": 57600, "updates": 1800, "seconds": 588.3280000000013, "accuracy": 0.9919791666666666, "auc": 0.9996102924864969}, "val": {"loss": 0.43691822580462975, "frames": 11200, "videos": 700, "accuracy": 0.8979464285714286, "auc": 0.9809121014030613, "video_accuracy": 0.9642857142857143, "video_auc": 0.9913137755102042}, "lr": 9.045084971874738e-05}
+{"event": "progress", "epoch": 6, "batch": 1, "batches": 1800, "loss": 0.03672472760081291}
+{"event": "progress", "epoch": 6, "batch": 101, "batches": 1800, "loss": 0.18751153349876404}
+{"event": "progress", "epoch": 6, "batch": 201, "batches": 1800, "loss": 0.02272733487188816}
+{"event": "progress", "epoch": 6, "batch": 301, "batches": 1800, "loss": 0.014885848388075829}
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\train.py", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\temporal_control.yaml", "--output-dir", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--resume"]
+{"event": "progress", "epoch": 6, "batch": 1, "batches": 1800, "loss": 0.03672472760081291}
+{"event": "progress", "epoch": 6, "batch": 101, "batches": 1800, "loss": 0.1868104636669159}
+{"event": "progress", "epoch": 6, "batch": 201, "batches": 1800, "loss": 0.022939255461096764}
+{"event": "progress", "epoch": 6, "batch": 301, "batches": 1800, "loss": 0.014791610650718212}
+{"event": "progress", "epoch": 6, "batch": 401, "batches": 1800, "loss": 0.011094089597463608}
+{"event": "progress", "epoch": 6, "batch": 501, "batches": 1800, "loss": 0.10342509299516678}
+{"event": "progress", "epoch": 6, "batch": 601, "batches": 1800, "loss": 0.04430080205202103}
+{"event": "progress", "epoch": 6, "batch": 701, "batches": 1800, "loss": 0.012685004621744156}
+{"event": "progress", "epoch": 6, "batch": 801, "batches": 1800, "loss": 0.0216352678835392}
+{"event": "progress", "epoch": 6, "batch": 901, "batches": 1800, "loss": 0.09183560311794281}
+{"event": "progress", "epoch": 6, "batch": 1001, "batches": 1800, "loss": 0.1408936232328415}
+{"event": "progress", "epoch": 6, "batch": 1101, "batches": 1800, "loss": 0.00024414266226813197}
+{"event": "progress", "epoch": 6, "batch": 1201, "batches": 1800, "loss": 0.011485777795314789}
+{"event": "progress", "epoch": 6, "batch": 1301, "batches": 1800, "loss": 0.10671884566545486}
+{"event": "progress", "epoch": 6, "batch": 1401, "batches": 1800, "loss": 0.011970489285886288}
+{"event": "progress", "epoch": 6, "batch": 1501, "batches": 1800, "loss": 0.0471927635371685}
+{"event": "progress", "epoch": 6, "batch": 1601, "batches": 1800, "loss": 0.021106963977217674}
+{"event": "progress", "epoch": 6, "batch": 1701, "batches": 1800, "loss": 0.006682155653834343}
+{"epoch": 5, "curriculum_fraction": 1.0, "train": {"loss": 0.03215465682013827, "consistency": 0.007291718548798967, "samples": 57600, "updates": 1800, "seconds": 591.015999999996, "accuracy": 0.9936284722222222, "auc": 0.999797146267361}, "val": {"loss": 0.22457436340835604, "frames": 11200, "videos": 700, "accuracy": 0.94, "auc": 0.9853296396683674, "video_accuracy": 0.97, "video_auc": 0.9934183673469388}, "lr": 8.644843137107059e-05}
+{"event": "progress", "epoch": 7, "batch": 1, "batches": 1800, "loss": 0.016415979713201523}
+{"event": "progress", "epoch": 7, "batch": 101, "batches": 1800, "loss": 0.0015136089641600847}
+{"event": "progress", "epoch": 7, "batch": 201, "batches": 1800, "loss": 0.007095464505255222}
+{"event": "progress", "epoch": 7, "batch": 301, "batches": 1800, "loss": 0.006617255508899689}
+{"event": "progress", "epoch": 7, "batch": 401, "batches": 1800, "loss": 0.021522140130400658}
+{"event": "progress", "epoch": 7, "batch": 501, "batches": 1800, "loss": 0.008958402089774609}
+{"event": "progress", "epoch": 7, "batch": 601, "batches": 1800, "loss": 0.0003575888113118708}
+{"event": "progress", "epoch": 7, "batch": 701, "batches": 1800, "loss": 0.0005387250566855073}
+{"event": "progress", "epoch": 7, "batch": 801, "batches": 1800, "loss": 0.002924917498603463}
+{"event": "progress", "epoch": 7, "batch": 901, "batches": 1800, "loss": 0.1884198635816574}
+{"event": "progress", "epoch": 7, "batch": 1001, "batches": 1800, "loss": 0.00030372670153155923}
+{"event": "progress", "epoch": 7, "batch": 1101, "batches": 1800, "loss": 0.006854918785393238}
+{"event": "progress", "epoch": 7, "batch": 1201, "batches": 1800, "loss": 0.0025248555466532707}
+{"event": "progress", "epoch": 7, "batch": 1301, "batches": 1800, "loss": 0.0025261191185563803}
+{"event": "progress", "epoch": 7, "batch": 1401, "batches": 1800, "loss": 0.01488843746483326}
+{"event": "progress", "epoch": 7, "batch": 1501, "batches": 1800, "loss": 0.00779174268245697}
+{"event": "progress", "epoch": 7, "batch": 1601, "batches": 1800, "loss": 0.03696300834417343}
+{"event": "progress", "epoch": 7, "batch": 1701, "batches": 1800, "loss": 0.01598968915641308}
+{"epoch": 6, "curriculum_fraction": 1.0, "train": {"loss": 0.026766965453405445, "consistency": 0.005741715380736395, "samples": 57600, "updates": 1800, "seconds": 588.0310000000027, "accuracy": 0.99484375, "auc": 0.9998705078125}, "val": {"loss": 0.21852479850032494, "frames": 11200, "videos": 700, "accuracy": 0.9508035714285714, "auc": 0.988231106505102, "video_accuracy": 0.9714285714285714, "video_auc": 0.9940051020408163}, "lr": 8.18711994874345e-05}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "multiprocessing\spawn.py", line 122, in spawn_main
+  File "multiprocessing\spawn.py", line 132, in _main
+_pickle.UnpicklingError: pickle data was truncated
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\train.py", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\temporal_control.yaml", "--output-dir", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--resume"]
+{"event": "progress", "epoch": 8, "batch": 1, "batches": 1800, "loss": 0.011522073298692703}
+{"event": "progress", "epoch": 8, "batch": 101, "batches": 1800, "loss": 0.00010751034278655425}
+{"event": "progress", "epoch": 8, "batch": 201, "batches": 1800, "loss": 0.09491632133722305}
+{"event": "progress", "epoch": 8, "batch": 301, "batches": 1800, "loss": 0.003533611074090004}
+{"event": "progress", "epoch": 8, "batch": 401, "batches": 1800, "loss": 0.01465694885700941}
+{"event": "progress", "epoch": 8, "batch": 501, "batches": 1800, "loss": 0.01076573133468628}
+{"event": "progress", "epoch": 8, "batch": 601, "batches": 1800, "loss": 0.009925470687448978}
+{"event": "progress", "epoch": 8, "batch": 701, "batches": 1800, "loss": 0.0006266848649829626}
+{"event": "progress", "epoch": 8, "batch": 801, "batches": 1800, "loss": 0.0036769916769117117}
+{"event": "progress", "epoch": 8, "batch": 901, "batches": 1800, "loss": 0.03475094586610794}
+{"event": "progress", "epoch": 8, "batch": 1001, "batches": 1800, "loss": 0.036469195038080215}
+{"event": "progress", "epoch": 8, "batch": 1101, "batches": 1800, "loss": 0.0020871181041002274}
+{"event": "progress", "epoch": 8, "batch": 1201, "batches": 1800, "loss": 0.007726133335381746}
+{"event": "progress", "epoch": 8, "batch": 1301, "batches": 1800, "loss": 0.15338589251041412}
+{"event": "progress", "epoch": 8, "batch": 1401, "batches": 1800, "loss": 0.013500330969691277}
+{"event": "progress", "epoch": 8, "batch": 1501, "batches": 1800, "loss": 0.05143586918711662}
+{"event": "progress", "epoch": 8, "batch": 1601, "batches": 1800, "loss": 0.026343565434217453}
+{"event": "progress", "epoch": 8, "batch": 1701, "batches": 1800, "loss": 0.0019813550170511007}
+{"epoch": 7, "curriculum_fraction": 1.0, "train": {"loss": 0.021114298995232983, "consistency": 0.004571874801250411, "samples": 57600, "updates": 1800, "seconds": 593.9369999999981, "accuracy": 0.9960416666666667, "auc": 0.9999140130690586}, "val": {"loss": 0.2639651554465215, "frames": 11200, "videos": 700, "accuracy": 0.9420535714285714, "auc": 0.986318606505102, "video_accuracy": 0.9728571428571429, "video_auc": 0.9944260204081632}, "lr": 7.679133974894983e-05}
+{"event": "progress", "epoch": 9, "batch": 1, "batches": 1800, "loss": 0.0030404406134039164}
+{"event": "progress", "epoch": 9, "batch": 101, "batches": 1800, "loss": 0.0006968087982386351}
+{"event": "progress", "epoch": 9, "batch": 201, "batches": 1800, "loss": 0.0012594535946846008}
+{"event": "progress", "epoch": 9, "batch": 301, "batches": 1800, "loss": 0.005769556388258934}
+{"event": "progress", "epoch": 9, "batch": 401, "batches": 1800, "loss": 0.038762692362070084}
+{"event": "progress", "epoch": 9, "batch": 501, "batches": 1800, "loss": 0.005368567071855068}
+{"event": "progress", "epoch": 9, "batch": 601, "batches": 1800, "loss": 0.001268993248231709}
+{"event": "progress", "epoch": 9, "batch": 701, "batches": 1800, "loss": 0.021563775837421417}
+{"event": "progress", "epoch": 9, "batch": 801, "batches": 1800, "loss": 0.00016927870456129313}
+{"event": "progress", "epoch": 9, "batch": 901, "batches": 1800, "loss": 0.000424356636358425}
+{"event": "progress", "epoch": 9, "batch": 1001, "batches": 1800, "loss": 0.021964680403470993}
+{"event": "progress", "epoch": 9, "batch": 1101, "batches": 1800, "loss": 0.0004956218181177974}
+{"event": "progress", "epoch": 9, "batch": 1201, "batches": 1800, "loss": 0.0023847552947700024}
+{"event": "progress", "epoch": 9, "batch": 1301, "batches": 1800, "loss": 0.020462116226553917}
+{"event": "progress", "epoch": 9, "batch": 1401, "batches": 1800, "loss": 0.0011427249992266297}
+{"event": "progress", "epoch": 9, "batch": 1501, "batches": 1800, "loss": 0.000980075914412737}
+{"event": "progress", "epoch": 9, "batch": 1601, "batches": 1800, "loss": 0.005434760358184576}
+{"event": "progress", "epoch": 9, "batch": 1701, "batches": 1800, "loss": 0.009937228634953499}
+{"epoch": 8, "curriculum_fraction": 1.0, "train": {"loss": 0.01881093212355457, "consistency": 0.004055901105142402, "samples": 57600, "updates": 1800, "seconds": 592.6869999999981, "accuracy": 0.9963888888888889, "auc": 0.9999093737943673}, "val": {"loss": 0.2899433022819075, "frames": 11200, "videos": 700, "accuracy": 0.9380357142857143, "auc": 0.9845875159438776, "video_accuracy": 0.9685714285714285, "video_auc": 0.9925765306122449}, "lr": 7.128896457825363e-05}
+{"event": "progress", "epoch": 10, "batch": 1, "batches": 1800, "loss": 0.07880714535713196}
+{"event": "progress", "epoch": 10, "batch": 101, "batches": 1800, "loss": 0.0007734507671557367}
+{"event": "progress", "epoch": 10, "batch": 201, "batches": 1800, "loss": 0.001487399684265256}
+{"event": "progress", "epoch": 10, "batch": 301, "batches": 1800, "loss": 0.02149357460439205}
+{"event": "progress", "epoch": 10, "batch": 401, "batches": 1800, "loss": 0.004850134719163179}
+{"event": "progress", "epoch": 10, "batch": 501, "batches": 1800, "loss": 0.02599373087286949}
+{"event": "progress", "epoch": 10, "batch": 601, "batches": 1800, "loss": 0.004763302858918905}
+{"event": "progress", "epoch": 10, "batch": 701, "batches": 1800, "loss": 0.008746367879211903}
+{"event": "progress", "epoch": 10, "batch": 801, "batches": 1800, "loss": 0.0008940214174799621}
+{"event": "progress", "epoch": 10, "batch": 901, "batches": 1800, "loss": 0.002270156517624855}
+{"event": "progress", "epoch": 10, "batch": 1001, "batches": 1800, "loss": 0.0007170584285631776}
+{"event": "progress", "epoch": 10, "batch": 1101, "batches": 1800, "loss": 0.0005356539622880518}
+{"event": "progress", "epoch": 10, "batch": 1201, "batches": 1800, "loss": 0.00019626437278930098}
+{"event": "progress", "epoch": 10, "batch": 1301, "batches": 1800, "loss": 0.0010130598675459623}
+{"event": "progress", "epoch": 10, "batch": 1401, "batches": 1800, "loss": 0.021885691210627556}
+{"event": "progress", "epoch": 10, "batch": 1501, "batches": 1800, "loss": 0.003212342970073223}
+{"event": "progress", "epoch": 10, "batch": 1601, "batches": 1800, "loss": 0.045175593346357346}
+{"event": "progress", "epoch": 10, "batch": 1701, "batches": 1800, "loss": 0.001898067886941135}
+{"epoch": 9, "curriculum_fraction": 1.0, "train": {"loss": 0.014442109049366788, "consistency": 0.0032744054141300603, "samples": 57600, "updates": 1800, "seconds": 590.3280000000013, "accuracy": 0.9972916666666667, "auc": 0.9999376476900078}, "val": {"loss": 0.2690956978413266, "frames": 11200, "videos": 700, "accuracy": 0.9489285714285715, "auc": 0.9875637755102042, "video_accuracy": 0.97, "video_auc": 0.9950892857142857}, "lr": 6.545084971874737e-05}
+{"event": "progress", "epoch": 11, "batch": 1, "batches": 1800, "loss": 0.02066529542207718}
+{"event": "progress", "epoch": 11, "batch": 101, "batches": 1800, "loss": 0.022359143942594528}
+{"event": "progress", "epoch": 11, "batch": 201, "batches": 1800, "loss": 0.05446287989616394}
+{"event": "progress", "epoch": 11, "batch": 301, "batches": 1800, "loss": 0.00014112993085291237}
+{"event": "progress", "epoch": 11, "batch": 401, "batches": 1800, "loss": 0.00013079906057100743}
+{"event": "progress", "epoch": 11, "batch": 501, "batches": 1800, "loss": 0.0015976483700796962}
+{"event": "progress", "epoch": 11, "batch": 601, "batches": 1800, "loss": 0.00022845255443826318}
+{"event": "progress", "epoch": 11, "batch": 701, "batches": 1800, "loss": 0.045827604830265045}
+{"event": "progress", "epoch": 11, "batch": 801, "batches": 1800, "loss": 0.0190450306981802}
+{"event": "progress", "epoch": 11, "batch": 901, "batches": 1800, "loss": 0.0010709540219977498}
+{"event": "progress", "epoch": 11, "batch": 1001, "batches": 1800, "loss": 0.08518291264772415}
+{"event": "progress", "epoch": 11, "batch": 1101, "batches": 1800, "loss": 0.029883580282330513}
+{"event": "progress", "epoch": 11, "batch": 1201, "batches": 1800, "loss": 8.897046791389585e-05}
+{"event": "progress", "epoch": 11, "batch": 1301, "batches": 1800, "loss": 0.00015445357712451369}
+{"event": "progress", "epoch": 11, "batch": 1401, "batches": 1800, "loss": 0.033074721693992615}
+{"event": "progress", "epoch": 11, "batch": 1501, "batches": 1800, "loss": 0.0006038276478648186}
+{"event": "progress", "epoch": 11, "batch": 1601, "batches": 1800, "loss": 0.0015373087953776121}
+{"event": "progress", "epoch": 11, "batch": 1701, "batches": 1800, "loss": 0.0005230791866779327}
+{"epoch": 10, "curriculum_fraction": 1.0, "train": {"loss": 0.012254838814869799, "consistency": 0.002865823523617442, "samples": 57600, "updates": 1800, "seconds": 593.5930000000008, "accuracy": 0.9978125, "auc": 0.9999710346739971}, "val": {"loss": 0.2806917306579894, "frames": 11200, "videos": 700, "accuracy": 0.9467857142857142, "auc": 0.9867163903061223, "video_accuracy": 0.9714285714285714, "video_auc": 0.9936862244897959}, "lr": 5.936906572928624e-05}
+{"event": "progress", "epoch": 12, "batch": 1, "batches": 1800, "loss": 0.00048118524136953056}
+{"event": "progress", "epoch": 12, "batch": 101, "batches": 1800, "loss": 0.012940456159412861}
+{"event": "progress", "epoch": 12, "batch": 201, "batches": 1800, "loss": 0.0031332233920693398}
+{"event": "progress", "epoch": 12, "batch": 301, "batches": 1800, "loss": 0.010605456307530403}
+{"event": "progress", "epoch": 12, "batch": 401, "batches": 1800, "loss": 2.7954785764450207e-05}
+{"event": "progress", "epoch": 12, "batch": 501, "batches": 1800, "loss": 0.08335784077644348}
+{"event": "progress", "epoch": 12, "batch": 601, "batches": 1800, "loss": 4.244378942530602e-05}
+{"event": "progress", "epoch": 12, "batch": 701, "batches": 1800, "loss": 0.0064882030710577965}
+{"event": "progress", "epoch": 12, "batch": 801, "batches": 1800, "loss": 0.0012470087967813015}
+{"event": "progress", "epoch": 12, "batch": 901, "batches": 1800, "loss": 0.007163910660892725}
+{"event": "progress", "epoch": 12, "batch": 1001, "batches": 1800, "loss": 5.303263969835825e-05}
+{"event": "progress", "epoch": 12, "batch": 1101, "batches": 1800, "loss": 0.0003049498191103339}
+{"event": "progress", "epoch": 12, "batch": 1201, "batches": 1800, "loss": 0.047289371490478516}
+{"event": "progress", "epoch": 12, "batch": 1301, "batches": 1800, "loss": 0.0002119356213370338}
+{"event": "progress", "epoch": 12, "batch": 1401, "batches": 1800, "loss": 0.002559872344136238}
+{"event": "progress", "epoch": 12, "batch": 1501, "batches": 1800, "loss": 0.0029754922725260258}
+{"event": "progress", "epoch": 12, "batch": 1601, "batches": 1800, "loss": 0.06450115889310837}
+{"event": "progress", "epoch": 12, "batch": 1701, "batches": 1800, "loss": 0.00024071888765320182}
+{"epoch": 11, "curriculum_fraction": 1.0, "train": {"loss": 0.009839057087954945, "consistency": 0.0020665592038980685, "samples": 57600, "updates": 1800, "seconds": 590.5469999999987, "accuracy": 0.9980729166666666, "auc": 0.9999779067804785}, "val": {"loss": 0.371753610312875, "frames": 11200, "videos": 700, "accuracy": 0.9424107142857143, "auc": 0.9847340401785714, "video_accuracy": 0.9685714285714285, "video_auc": 0.9952933673469389}, "lr": 5.313952597646568e-05}
+{"event": "progress", "epoch": 13, "batch": 1, "batches": 1800, "loss": 0.00021389845642261207}
+{"event": "progress", "epoch": 13, "batch": 101, "batches": 1800, "loss": 0.00038765333010815084}
+{"event": "progress", "epoch": 13, "batch": 201, "batches": 1800, "loss": 0.0023041050881147385}
+{"event": "progress", "epoch": 13, "batch": 301, "batches": 1800, "loss": 0.020077476277947426}
+{"event": "progress", "epoch": 13, "batch": 401, "batches": 1800, "loss": 0.0006250501028262079}
+{"event": "progress", "epoch": 13, "batch": 501, "batches": 1800, "loss": 0.00011062003613915294}
+{"event": "progress", "epoch": 13, "batch": 601, "batches": 1800, "loss": 0.0003737788647413254}
+{"event": "progress", "epoch": 13, "batch": 701, "batches": 1800, "loss": 0.00020419713109731674}
+{"event": "progress", "epoch": 13, "batch": 801, "batches": 1800, "loss": 0.001633264822885394}
+{"event": "progress", "epoch": 13, "batch": 901, "batches": 1800, "loss": 4.35062320320867e-05}
+{"event": "progress", "epoch": 13, "batch": 1001, "batches": 1800, "loss": 0.00018930883379653096}
+{"event": "progress", "epoch": 13, "batch": 1101, "batches": 1800, "loss": 0.0003909280931111425}
+{"event": "progress", "epoch": 13, "batch": 1201, "batches": 1800, "loss": 0.0033901529386639595}
+{"event": "progress", "epoch": 13, "batch": 1301, "batches": 1800, "loss": 0.02928469330072403}
+{"event": "progress", "epoch": 13, "batch": 1401, "batches": 1800, "loss": 0.002131430897861719}
+{"event": "progress", "epoch": 13, "batch": 1501, "batches": 1800, "loss": 0.02165713906288147}
+{"event": "progress", "epoch": 13, "batch": 1601, "batches": 1800, "loss": 4.504747630562633e-05}
+{"event": "progress", "epoch": 13, "batch": 1701, "batches": 1800, "loss": 0.010499805212020874}
+{"epoch": 12, "curriculum_fraction": 1.0, "train": {"loss": 0.008615413692245966, "consistency": 0.001848144981121118, "samples": 57600, "updates": 1800, "seconds": 582.5940000000046, "accuracy": 0.9984201388888889, "auc": 0.9999841471354166}, "val": {"loss": 0.338902921729717, "frames": 11200, "videos": 700, "accuracy": 0.9420535714285714, "auc": 0.985685794005102, "video_accuracy": 0.9657142857142857, "video_auc": 0.9940688775510205}, "lr": 4.6860474023534335e-05}
+{"event": "progress", "epoch": 14, "batch": 1, "batches": 1800, "loss": 0.0003657990600913763}
+{"event": "progress", "epoch": 14, "batch": 101, "batches": 1800, "loss": 0.00011052208719775081}
+{"event": "progress", "epoch": 14, "batch": 201, "batches": 1800, "loss": 0.00041318676085211337}
+{"event": "progress", "epoch": 14, "batch": 301, "batches": 1800, "loss": 0.0004488005652092397}
+{"event": "progress", "epoch": 14, "batch": 401, "batches": 1800, "loss": 7.262932922458276e-05}
+{"event": "progress", "epoch": 14, "batch": 501, "batches": 1800, "loss": 8.106592576950788e-05}
+{"event": "progress", "epoch": 14, "batch": 601, "batches": 1800, "loss": 0.0020787615794688463}
+{"event": "progress", "epoch": 14, "batch": 701, "batches": 1800, "loss": 0.004347978159785271}
+{"event": "progress", "epoch": 14, "batch": 801, "batches": 1800, "loss": 0.0008471962064504623}
+{"event": "progress", "epoch": 14, "batch": 901, "batches": 1800, "loss": 0.00022024937788955867}
+{"event": "progress", "epoch": 14, "batch": 1001, "batches": 1800, "loss": 0.0006475296686403453}
+{"event": "progress", "epoch": 14, "batch": 1101, "batches": 1800, "loss": 0.018484115600585938}
+{"event": "progress", "epoch": 14, "batch": 1201, "batches": 1800, "loss": 0.00023587155737914145}
+{"event": "progress", "epoch": 14, "batch": 1301, "batches": 1800, "loss": 0.0002895020297728479}
+{"event": "progress", "epoch": 14, "batch": 1401, "batches": 1800, "loss": 0.0011643011821433902}
+{"event": "progress", "epoch": 14, "batch": 1501, "batches": 1800, "loss": 0.030919665470719337}
+{"event": "progress", "epoch": 14, "batch": 1601, "batches": 1800, "loss": 0.0026715563144534826}
+{"event": "progress", "epoch": 14, "batch": 1701, "batches": 1800, "loss": 0.001828362699598074}
+{"epoch": 13, "curriculum_fraction": 1.0, "train": {"loss": 0.006341584148252903, "consistency": 0.001291887576657967, "samples": 57600, "updates": 1800, "seconds": 582.3899999999994, "accuracy": 0.9989236111111112, "auc": 0.9999931278935185}, "val": {"loss": 0.29713054847300374, "frames": 11200, "videos": 700, "accuracy": 0.95, "auc": 0.9888448182397958, "video_accuracy": 0.9742857142857143, "video_auc": 0.9965561224489796}, "lr": 4.0630934270713774e-05}
+{"event": "progress", "epoch": 15, "batch": 1, "batches": 1800, "loss": 0.0002775157627183944}
+{"event": "progress", "epoch": 15, "batch": 101, "batches": 1800, "loss": 0.0026350989937782288}
+{"event": "progress", "epoch": 15, "batch": 201, "batches": 1800, "loss": 0.00108858582098037}
+{"event": "progress", "epoch": 15, "batch": 301, "batches": 1800, "loss": 0.007434950675815344}
+{"event": "progress", "epoch": 15, "batch": 401, "batches": 1800, "loss": 7.821300823707134e-05}
+{"event": "progress", "epoch": 15, "batch": 501, "batches": 1800, "loss": 4.6404325985349715e-05}
+{"event": "progress", "epoch": 15, "batch": 601, "batches": 1800, "loss": 0.00022928293037693948}
+{"event": "progress", "epoch": 15, "batch": 701, "batches": 1800, "loss": 3.252298847655766e-05}
+{"event": "progress", "epoch": 15, "batch": 801, "batches": 1800, "loss": 0.0003061858587898314}
+{"event": "progress", "epoch": 15, "batch": 901, "batches": 1800, "loss": 0.013417679816484451}
+{"event": "progress", "epoch": 15, "batch": 1001, "batches": 1800, "loss": 3.860088327201083e-05}
+{"event": "progress", "epoch": 15, "batch": 1101, "batches": 1800, "loss": 0.0029477537609636784}
+{"event": "progress", "epoch": 15, "batch": 1201, "batches": 1800, "loss": 0.002204948104918003}
+{"event": "progress", "epoch": 15, "batch": 1301, "batches": 1800, "loss": 0.09947698563337326}
+{"event": "progress", "epoch": 15, "batch": 1401, "batches": 1800, "loss": 0.00021570865646936}
+{"event": "progress", "epoch": 15, "batch": 1501, "batches": 1800, "loss": 5.382868948800024e-06}
+{"event": "progress", "epoch": 15, "batch": 1601, "batches": 1800, "loss": 0.0006505531491711736}
+{"event": "progress", "epoch": 15, "batch": 1701, "batches": 1800, "loss": 5.207281355978921e-05}
+{"epoch": 14, "curriculum_fraction": 1.0, "train": {"loss": 0.00405485807487859, "consistency": 0.0009096978948979593, "samples": 57600, "updates": 1800, "seconds": 582.140999999996, "accuracy": 0.9993402777777778, "auc": 0.9999976707175927}, "val": {"loss": 0.31001930193970123, "frames": 11200, "videos": 700, "accuracy": 0.9505357142857143, "auc": 0.987282142857143, "video_accuracy": 0.9685714285714285, "video_auc": 0.9938647959183674}, "lr": 3.454915028125265e-05}
+{"event": "progress", "epoch": 16, "batch": 1, "batches": 1800, "loss": 0.0029928418807685375}
+{"event": "progress", "epoch": 16, "batch": 101, "batches": 1800, "loss": 0.00023700120800640434}
+{"event": "progress", "epoch": 16, "batch": 201, "batches": 1800, "loss": 0.0002574869431555271}
+{"event": "progress", "epoch": 16, "batch": 301, "batches": 1800, "loss": 0.0010871088597923517}
+{"event": "progress", "epoch": 16, "batch": 401, "batches": 1800, "loss": 9.042434612638317e-06}
+{"event": "progress", "epoch": 16, "batch": 501, "batches": 1800, "loss": 2.5932366042979993e-05}
+{"event": "progress", "epoch": 16, "batch": 601, "batches": 1800, "loss": 0.00018799766257870942}
+{"event": "progress", "epoch": 16, "batch": 701, "batches": 1800, "loss": 8.104355219984427e-05}
+{"event": "progress", "epoch": 16, "batch": 801, "batches": 1800, "loss": 7.176888175308704e-05}
+{"event": "progress", "epoch": 16, "batch": 901, "batches": 1800, "loss": 2.192081774410326e-05}
+{"event": "progress", "epoch": 16, "batch": 1001, "batches": 1800, "loss": 7.788630682625808e-06}
+{"event": "progress", "epoch": 16, "batch": 1101, "batches": 1800, "loss": 0.00031391115044243634}
+{"event": "progress", "epoch": 16, "batch": 1201, "batches": 1800, "loss": 2.4750092961767223e-06}
+{"event": "progress", "epoch": 16, "batch": 1301, "batches": 1800, "loss": 0.0015001894207671285}
+{"event": "progress", "epoch": 16, "batch": 1401, "batches": 1800, "loss": 2.2953418010729365e-05}
+{"event": "progress", "epoch": 16, "batch": 1501, "batches": 1800, "loss": 0.005672631785273552}
+{"event": "progress", "epoch": 16, "batch": 1601, "batches": 1800, "loss": 7.508252747356892e-05}
+{"event": "progress", "epoch": 16, "batch": 1701, "batches": 1800, "loss": 0.00023143223370425403}
+{"epoch": 15, "curriculum_fraction": 1.0, "train": {"loss": 0.004099906435772911, "consistency": 0.0009479488411283359, "samples": 57600, "updates": 1800, "seconds": 585.3280000000013, "accuracy": 0.9993055555555556, "auc": 0.9999969509548612}, "val": {"loss": 0.3210746324723849, "frames": 11200, "videos": 700, "accuracy": 0.9471428571428572, "auc": 0.9864771205357143, "video_accuracy": 0.9685714285714285, "video_auc": 0.9932908163265306}, "lr": 2.871103542174637e-05}
+{"event": "progress", "epoch": 17, "batch": 1, "batches": 1800, "loss": 0.007988972589373589}
+{"event": "progress", "epoch": 17, "batch": 101, "batches": 1800, "loss": 0.0001051988365361467}
+{"event": "progress", "epoch": 17, "batch": 201, "batches": 1800, "loss": 0.0018880550051108003}
+{"event": "progress", "epoch": 17, "batch": 301, "batches": 1800, "loss": 0.06075558438897133}
+{"event": "progress", "epoch": 17, "batch": 401, "batches": 1800, "loss": 0.00010475899034645408}
+{"event": "progress", "epoch": 17, "batch": 501, "batches": 1800, "loss": 0.0001003327124635689}
+{"event": "progress", "epoch": 17, "batch": 601, "batches": 1800, "loss": 5.432546458905563e-05}
+{"event": "progress", "epoch": 17, "batch": 701, "batches": 1800, "loss": 0.012864301912486553}
+{"event": "progress", "epoch": 17, "batch": 801, "batches": 1800, "loss": 0.002566525712609291}
+{"event": "progress", "epoch": 17, "batch": 901, "batches": 1800, "loss": 0.00019024551147595048}
+{"event": "progress", "epoch": 17, "batch": 1001, "batches": 1800, "loss": 0.0005382978706620634}
+{"event": "progress", "epoch": 17, "batch": 1101, "batches": 1800, "loss": 1.2881573638878763e-05}
+{"event": "progress", "epoch": 17, "batch": 1201, "batches": 1800, "loss": 4.6112065319903195e-05}
+{"event": "progress", "epoch": 17, "batch": 1301, "batches": 1800, "loss": 3.433715755818412e-05}
+{"event": "progress", "epoch": 17, "batch": 1401, "batches": 1800, "loss": 1.2712924217339605e-05}
+{"event": "progress", "epoch": 17, "batch": 1501, "batches": 1800, "loss": 0.03946399316191673}
+{"event": "progress", "epoch": 17, "batch": 1601, "batches": 1800, "loss": 0.0001006640013656579}
+{"event": "progress", "epoch": 17, "batch": 1701, "batches": 1800, "loss": 0.0006102914339862764}
+{"epoch": 16, "curriculum_fraction": 1.0, "train": {"loss": 0.002403540100047634, "consistency": 0.0005653611941513041, "samples": 57600, "updates": 1800, "seconds": 592.0780000000013, "accuracy": 0.9997222222222222, "auc": 0.9999994104456018}, "val": {"loss": 0.3484504597119338, "frames": 11200, "videos": 700, "accuracy": 0.9464285714285714, "auc": 0.9859154336734693, "video_accuracy": 0.9728571428571429, "video_auc": 0.9949107142857143}, "lr": 2.3208660251050158e-05}
+{"event": "progress", "epoch": 18, "batch": 1, "batches": 1800, "loss": 8.211498061427847e-05}
+{"event": "progress", "epoch": 18, "batch": 101, "batches": 1800, "loss": 5.923203571001068e-05}
+{"event": "progress", "epoch": 18, "batch": 201, "batches": 1800, "loss": 8.282561793748755e-06}
+{"event": "progress", "epoch": 18, "batch": 301, "batches": 1800, "loss": 5.5280220294662286e-06}
+{"event": "progress", "epoch": 18, "batch": 401, "batches": 1800, "loss": 8.279268513433635e-06}
+{"event": "progress", "epoch": 18, "batch": 501, "batches": 1800, "loss": 6.8224853748688474e-06}
+{"event": "progress", "epoch": 18, "batch": 601, "batches": 1800, "loss": 1.009681545838248e-05}
+{"event": "progress", "epoch": 18, "batch": 701, "batches": 1800, "loss": 8.789467392489314e-05}
+{"event": "progress", "epoch": 18, "batch": 801, "batches": 1800, "loss": 1.732684722810518e-05}
+{"event": "progress", "epoch": 18, "batch": 901, "batches": 1800, "loss": 3.87993941330933e-06}
+{"event": "progress", "epoch": 18, "batch": 1001, "batches": 1800, "loss": 0.00010461173951625824}
+{"event": "progress", "epoch": 18, "batch": 1101, "batches": 1800, "loss": 6.632266376982443e-06}
+{"event": "progress", "epoch": 18, "batch": 1201, "batches": 1800, "loss": 1.201010491058696e-06}
+{"event": "progress", "epoch": 18, "batch": 1301, "batches": 1800, "loss": 1.7563159417477436e-05}
+{"event": "progress", "epoch": 18, "batch": 1401, "batches": 1800, "loss": 0.0009319839300587773}
+{"event": "progress", "epoch": 18, "batch": 1501, "batches": 1800, "loss": 0.00011023855768144131}
+{"event": "progress", "epoch": 18, "batch": 1601, "batches": 1800, "loss": 2.9385719244601205e-05}
+{"event": "progress", "epoch": 18, "batch": 1701, "batches": 1800, "loss": 1.2606453310581855e-05}
+{"epoch": 17, "curriculum_fraction": 1.0, "train": {"loss": 0.001536126941941518, "consistency": 0.0004080796797782541, "samples": 57600, "updates": 1800, "seconds": 592.6100000000006, "accuracy": 0.9997048611111111, "auc": 0.9999996925636574}, "val": {"loss": 0.34836087890960504, "frames": 11200, "videos": 700, "accuracy": 0.949375, "auc": 0.9873321109693878, "video_accuracy": 0.9757142857142858, "video_auc": 0.9954336734693877}, "lr": 1.8128800512565513e-05}
+{"event": "progress", "epoch": 19, "batch": 1, "batches": 1800, "loss": 1.496924232924357e-05}
+{"event": "progress", "epoch": 19, "batch": 101, "batches": 1800, "loss": 0.0003793253854382783}
+{"event": "progress", "epoch": 19, "batch": 201, "batches": 1800, "loss": 8.487870218232274e-06}
+{"event": "progress", "epoch": 19, "batch": 301, "batches": 1800, "loss": 0.0006798300892114639}
+{"event": "progress", "epoch": 19, "batch": 401, "batches": 1800, "loss": 3.904104232788086e-05}
+{"event": "progress", "epoch": 19, "batch": 501, "batches": 1800, "loss": 3.230062065995298e-05}
+{"event": "progress", "epoch": 19, "batch": 601, "batches": 1800, "loss": 8.533971822544117e-07}
+{"event": "progress", "epoch": 19, "batch": 701, "batches": 1800, "loss": 0.0009177561150863767}
+{"event": "progress", "epoch": 19, "batch": 801, "batches": 1800, "loss": 0.0004907271941192448}
+{"event": "progress", "epoch": 19, "batch": 901, "batches": 1800, "loss": 1.8223330698674545e-05}
+{"event": "progress", "epoch": 19, "batch": 1001, "batches": 1800, "loss": 0.0005458444356918335}
+{"event": "progress", "epoch": 19, "batch": 1101, "batches": 1800, "loss": 1.1353637091815472e-05}
+{"event": "progress", "epoch": 19, "batch": 1201, "batches": 1800, "loss": 0.00012477205018512905}
+{"event": "progress", "epoch": 19, "batch": 1301, "batches": 1800, "loss": 2.3793232685420662e-05}
+{"event": "progress", "epoch": 19, "batch": 1401, "batches": 1800, "loss": 0.00013060090714134276}
+{"event": "progress", "epoch": 19, "batch": 1501, "batches": 1800, "loss": 0.022807370871305466}
+{"event": "progress", "epoch": 19, "batch": 1601, "batches": 1800, "loss": 0.00031545537058264017}
+{"event": "progress", "epoch": 19, "batch": 1701, "batches": 1800, "loss": 1.1716999324562494e-05}
+{"epoch": 18, "curriculum_fraction": 1.0, "train": {"loss": 0.0013998538128791754, "consistency": 0.0003803204177337308, "samples": 57600, "updates": 1800, "seconds": 590.1399999999994, "accuracy": 0.9997222222222222, "auc": 0.9999996322820216}, "val": {"loss": 0.40663560439319535, "frames": 11200, "videos": 700, "accuracy": 0.9434821428571428, "auc": 0.9861888711734694, "video_accuracy": 0.9785714285714285, "video_auc": 0.995829081632653}, "lr": 1.3551568628929434e-05}
+{"event": "progress", "epoch": 20, "batch": 1, "batches": 1800, "loss": 1.5043644452816807e-05}
+{"event": "progress", "epoch": 20, "batch": 101, "batches": 1800, "loss": 0.0021760258823633194}
+{"event": "progress", "epoch": 20, "batch": 201, "batches": 1800, "loss": 1.4962319255573675e-05}
+{"event": "progress", "epoch": 20, "batch": 301, "batches": 1800, "loss": 1.5142518350330647e-05}
+{"event": "progress", "epoch": 20, "batch": 401, "batches": 1800, "loss": 0.0006643567467108369}
+{"event": "progress", "epoch": 20, "batch": 501, "batches": 1800, "loss": 0.00020734297868330032}
+{"event": "progress", "epoch": 20, "batch": 601, "batches": 1800, "loss": 6.011060804667068e-07}
+{"event": "progress", "epoch": 20, "batch": 701, "batches": 1800, "loss": 0.0014114291407167912}
+{"event": "progress", "epoch": 20, "batch": 801, "batches": 1800, "loss": 2.1851104975212365e-05}
+{"event": "progress", "epoch": 20, "batch": 901, "batches": 1800, "loss": 2.638248770381324e-05}
+{"event": "progress", "epoch": 20, "batch": 1001, "batches": 1800, "loss": 1.5032814189908095e-05}
+{"event": "progress", "epoch": 20, "batch": 1101, "batches": 1800, "loss": 3.615396963141393e-06}
+{"event": "progress", "epoch": 20, "batch": 1201, "batches": 1800, "loss": 0.05748533084988594}
+{"event": "progress", "epoch": 20, "batch": 1301, "batches": 1800, "loss": 1.228625251314952e-06}
+{"event": "progress", "epoch": 20, "batch": 1401, "batches": 1800, "loss": 4.917675323667936e-05}
+{"event": "progress", "epoch": 20, "batch": 1501, "batches": 1800, "loss": 0.0001609211612958461}
+{"event": "progress", "epoch": 20, "batch": 1601, "batches": 1800, "loss": 0.00040847412310540676}
+{"event": "progress", "epoch": 20, "batch": 1701, "batches": 1800, "loss": 5.8213518059346825e-05}
+{"epoch": 19, "curriculum_fraction": 1.0, "train": {"loss": 0.0005461868340321669, "consistency": 0.0001265697696457851, "samples": 57600, "updates": 1800, "seconds": 593.0470000000059, "accuracy": 0.9999131944444445, "auc": 0.9999999770929784}, "val": {"loss": 0.36591960033547, "frames": 11200, "videos": 700, "accuracy": 0.9491071428571428, "auc": 0.9865230229591837, "video_accuracy": 0.9742857142857143, "video_auc": 0.9949489795918367}, "lr": 9.549150281252635e-06}
+{"event": "progress", "epoch": 21, "batch": 1, "batches": 1800, "loss": 3.4793529266607948e-06}
+{"event": "progress", "epoch": 21, "batch": 101, "batches": 1800, "loss": 0.00030809789313934743}
+{"event": "progress", "epoch": 21, "batch": 201, "batches": 1800, "loss": 0.00017355402815155685}
+{"event": "progress", "epoch": 21, "batch": 301, "batches": 1800, "loss": 1.3818322486258694e-06}
+{"event": "progress", "epoch": 21, "batch": 401, "batches": 1800, "loss": 4.990583875041921e-06}
+{"event": "progress", "epoch": 21, "batch": 501, "batches": 1800, "loss": 0.0021245183888822794}
+{"event": "progress", "epoch": 21, "batch": 601, "batches": 1800, "loss": 7.207654562080279e-07}
+{"event": "progress", "epoch": 21, "batch": 701, "batches": 1800, "loss": 0.000129655483760871}
+{"event": "progress", "epoch": 21, "batch": 801, "batches": 1800, "loss": 8.012776561372448e-06}
+{"event": "progress", "epoch": 21, "batch": 901, "batches": 1800, "loss": 9.259072612621821e-06}
+{"event": "progress", "epoch": 21, "batch": 1001, "batches": 1800, "loss": 3.5027031117351726e-05}
+{"event": "progress", "epoch": 21, "batch": 1101, "batches": 1800, "loss": 0.002377114025875926}
+{"event": "progress", "epoch": 21, "batch": 1201, "batches": 1800, "loss": 6.640431138293934e-07}
+{"event": "progress", "epoch": 21, "batch": 1301, "batches": 1800, "loss": 1.2608272299985401e-05}
+{"event": "progress", "epoch": 21, "batch": 1401, "batches": 1800, "loss": 4.684247869590763e-06}
+{"event": "progress", "epoch": 21, "batch": 1501, "batches": 1800, "loss": 2.489783810233348e-06}
+{"event": "progress", "epoch": 21, "batch": 1601, "batches": 1800, "loss": 9.897122254187707e-06}
+{"event": "progress", "epoch": 21, "batch": 1701, "batches": 1800, "loss": 1.8260092474520206e-05}
+{"epoch": 20, "curriculum_fraction": 1.0, "train": {"loss": 0.0004760041653211052, "consistency": 0.00012268194873906016, "samples": 57600, "updates": 1800, "seconds": 590.3589999999967, "accuracy": 0.9999131944444445, "auc": 0.9999999758873457}, "val": {"loss": 0.39186226733700813, "frames": 11200, "videos": 700, "accuracy": 0.9463392857142857, "auc": 0.98558671875, "video_accuracy": 0.9742857142857143, "video_auc": 0.9947321428571428}, "lr": 6.184665997806822e-06}
+{"event": "progress", "epoch": 22, "batch": 1, "batches": 1800, "loss": 8.714623618288897e-06}
+{"event": "progress", "epoch": 22, "batch": 101, "batches": 1800, "loss": 0.0023244500625878572}
+{"event": "progress", "epoch": 22, "batch": 201, "batches": 1800, "loss": 0.05970223248004913}
+{"event": "progress", "epoch": 22, "batch": 301, "batches": 1800, "loss": 7.154819741117535e-06}
+{"event": "progress", "epoch": 22, "batch": 401, "batches": 1800, "loss": 5.56824124942068e-06}
+{"event": "progress", "epoch": 22, "batch": 501, "batches": 1800, "loss": 9.604752267478034e-05}
+{"event": "progress", "epoch": 22, "batch": 601, "batches": 1800, "loss": 4.372257899376564e-05}
+{"event": "progress", "epoch": 22, "batch": 701, "batches": 1800, "loss": 3.605764504754916e-06}
+{"event": "progress", "epoch": 22, "batch": 801, "batches": 1800, "loss": 2.5293642465840094e-05}
+{"event": "progress", "epoch": 22, "batch": 901, "batches": 1800, "loss": 0.00036340486258268356}
+{"event": "progress", "epoch": 22, "batch": 1001, "batches": 1800, "loss": 2.367840806982713e-06}
+{"event": "progress", "epoch": 22, "batch": 1101, "batches": 1800, "loss": 1.1821166481240653e-06}
+{"event": "progress", "epoch": 22, "batch": 1201, "batches": 1800, "loss": 1.013261680782307e-05}
+{"event": "progress", "epoch": 22, "batch": 1301, "batches": 1800, "loss": 3.0615701689384878e-06}
+{"event": "progress", "epoch": 22, "batch": 1401, "batches": 1800, "loss": 1.4849702893116046e-05}
+{"event": "progress", "epoch": 22, "batch": 1501, "batches": 1800, "loss": 1.3402630429482087e-05}
+{"event": "progress", "epoch": 22, "batch": 1601, "batches": 1800, "loss": 0.00022690171317663044}
+{"event": "progress", "epoch": 22, "batch": 1701, "batches": 1800, "loss": 3.0710104965692153e-06}
+{"epoch": 21, "curriculum_fraction": 1.0, "train": {"loss": 0.0003395049960061808, "consistency": 8.242718892990959e-05, "samples": 57600, "updates": 1800, "seconds": 590.7030000000013, "accuracy": 0.9999826388888889, "auc": 0.9999999927662037}, "val": {"loss": 0.3869802516180504, "frames": 11200, "videos": 700, "accuracy": 0.948125, "auc": 0.9862915338010204, "video_accuracy": 0.9742857142857143, "video_auc": 0.995484693877551}, "lr": 3.5111757055874332e-06}
+{"event": "progress", "epoch": 23, "batch": 1, "batches": 1800, "loss": 3.521123232985701e-07}
+{"event": "progress", "epoch": 23, "batch": 101, "batches": 1800, "loss": 5.151317054696847e-06}
+{"event": "progress", "epoch": 23, "batch": 201, "batches": 1800, "loss": 7.451928013324505e-06}
+{"event": "progress", "epoch": 23, "batch": 301, "batches": 1800, "loss": 2.111825551764923e-06}
+{"event": "progress", "epoch": 23, "batch": 401, "batches": 1800, "loss": 3.109723593297531e-06}
+{"event": "progress", "epoch": 23, "batch": 501, "batches": 1800, "loss": 3.1661963930673664e-06}
+{"event": "progress", "epoch": 23, "batch": 601, "batches": 1800, "loss": 2.5318138796137646e-05}
+{"event": "progress", "epoch": 23, "batch": 701, "batches": 1800, "loss": 7.89347632235149e-06}
+{"event": "progress", "epoch": 23, "batch": 801, "batches": 1800, "loss": 1.5812051969987806e-06}
+{"event": "progress", "epoch": 23, "batch": 901, "batches": 1800, "loss": 2.9735988391621504e-06}
+{"event": "progress", "epoch": 23, "batch": 1001, "batches": 1800, "loss": 2.616230176499812e-06}
+{"event": "progress", "epoch": 23, "batch": 1101, "batches": 1800, "loss": 0.006227764766663313}
+{"event": "progress", "epoch": 23, "batch": 1201, "batches": 1800, "loss": 4.362182721706631e-07}
+{"event": "progress", "epoch": 23, "batch": 1301, "batches": 1800, "loss": 2.9325781724764965e-05}
+{"event": "progress", "epoch": 23, "batch": 1401, "batches": 1800, "loss": 2.0170483594483812e-07}
+{"event": "progress", "epoch": 23, "batch": 1501, "batches": 1800, "loss": 6.842448055977002e-05}
+{"event": "progress", "epoch": 23, "batch": 1601, "batches": 1800, "loss": 7.867398380767554e-06}
+{"event": "progress", "epoch": 23, "batch": 1701, "batches": 1800, "loss": 7.986692799022421e-05}
+{"epoch": 22, "curriculum_fraction": 1.0, "train": {"loss": 0.00024315685942578034, "consistency": 5.980205041242958e-05, "samples": 57600, "updates": 1800, "seconds": 591.8440000000046, "accuracy": 0.9999652777777778, "auc": 0.9999999939718365}, "val": {"loss": 0.404657652517011, "frames": 11200, "videos": 700, "accuracy": 0.9469642857142857, "auc": 0.9858827168367347, "video_accuracy": 0.9757142857142858, "video_auc": 0.9944005102040816}, "lr": 1.570841943568452e-06}
+{"event": "progress", "epoch": 24, "batch": 1, "batches": 1800, "loss": 5.587355644820491e-06}
+{"event": "progress", "epoch": 24, "batch": 101, "batches": 1800, "loss": 2.1947971617919393e-06}
+{"event": "progress", "epoch": 24, "batch": 201, "batches": 1800, "loss": 2.206330009357771e-06}
+{"event": "progress", "epoch": 24, "batch": 301, "batches": 1800, "loss": 1.5286309462680947e-06}
+{"event": "progress", "epoch": 24, "batch": 401, "batches": 1800, "loss": 4.505601737037068e-06}
+{"event": "progress", "epoch": 24, "batch": 501, "batches": 1800, "loss": 2.6305792744096834e-06}
+{"event": "progress", "epoch": 24, "batch": 601, "batches": 1800, "loss": 1.0764844773802906e-05}
+{"event": "progress", "epoch": 24, "batch": 701, "batches": 1800, "loss": 2.8323336664470844e-05}
+{"event": "progress", "epoch": 24, "batch": 801, "batches": 1800, "loss": 8.481894724354788e-07}
+{"event": "progress", "epoch": 24, "batch": 901, "batches": 1800, "loss": 2.4879776901798323e-05}
+{"event": "progress", "epoch": 24, "batch": 1001, "batches": 1800, "loss": 1.7952144844457507e-05}
+{"event": "progress", "epoch": 24, "batch": 1101, "batches": 1800, "loss": 2.961303380288882e-06}
+{"event": "progress", "epoch": 24, "batch": 1201, "batches": 1800, "loss": 3.2894735340960324e-05}
+{"event": "progress", "epoch": 24, "batch": 1301, "batches": 1800, "loss": 1.8686628209252376e-06}
+{"event": "progress", "epoch": 24, "batch": 1401, "batches": 1800, "loss": 6.4240321080433205e-06}
+{"event": "progress", "epoch": 24, "batch": 1501, "batches": 1800, "loss": 2.3805283490219153e-05}
+{"event": "progress", "epoch": 24, "batch": 1601, "batches": 1800, "loss": 7.440803528879769e-07}
+{"event": "progress", "epoch": 24, "batch": 1701, "batches": 1800, "loss": 5.355577377486043e-05}
+{"epoch": 23, "curriculum_fraction": 1.0, "train": {"loss": 0.00020382381358490933, "consistency": 5.003191151440172e-05, "samples": 57600, "updates": 1800, "seconds": 592.0630000000019, "accuracy": 0.9999305555555555, "auc": 0.9999999867380401}, "val": {"loss": 0.37780666491646614, "frames": 11200, "videos": 700, "accuracy": 0.9482142857142857, "auc": 0.9865745057397958, "video_accuracy": 0.9742857142857143, "video_auc": 0.9949744897959184}, "lr": 3.942649342761118e-07}
+{"event": "progress", "epoch": 25, "batch": 1, "batches": 1800, "loss": 1.528965549368877e-05}
+{"event": "progress", "epoch": 25, "batch": 101, "batches": 1800, "loss": 5.789384522358887e-05}
+{"event": "progress", "epoch": 25, "batch": 201, "batches": 1800, "loss": 0.004834144376218319}
+{"event": "progress", "epoch": 25, "batch": 301, "batches": 1800, "loss": 4.930069735564757e-06}
+{"event": "progress", "epoch": 25, "batch": 401, "batches": 1800, "loss": 1.7635535414228798e-06}
+{"event": "progress", "epoch": 25, "batch": 501, "batches": 1800, "loss": 2.501402605048497e-06}
+{"event": "progress", "epoch": 25, "batch": 601, "batches": 1800, "loss": 2.6001862352131866e-07}
+{"event": "progress", "epoch": 25, "batch": 701, "batches": 1800, "loss": 5.942029474681476e-06}
+{"event": "progress", "epoch": 25, "batch": 801, "batches": 1800, "loss": 2.0365827367641032e-05}
+{"event": "progress", "epoch": 25, "batch": 901, "batches": 1800, "loss": 1.426453422936902e-06}
+{"event": "progress", "epoch": 25, "batch": 1001, "batches": 1800, "loss": 2.506172904759296e-07}
+{"event": "progress", "epoch": 25, "batch": 1101, "batches": 1800, "loss": 2.3205675461213104e-06}
+{"event": "progress", "epoch": 25, "batch": 1201, "batches": 1800, "loss": 9.804470028029755e-05}
+{"event": "progress", "epoch": 25, "batch": 1301, "batches": 1800, "loss": 3.184412344126031e-05}
+{"event": "progress", "epoch": 25, "batch": 1401, "batches": 1800, "loss": 8.928390343498904e-06}
+{"event": "progress", "epoch": 25, "batch": 1501, "batches": 1800, "loss": 6.306789146037772e-05}
+{"event": "progress", "epoch": 25, "batch": 1601, "batches": 1800, "loss": 5.206508149058209e-07}
+{"event": "progress", "epoch": 25, "batch": 1701, "batches": 1800, "loss": 1.929627387653454e-06}
+{"epoch": 24, "curriculum_fraction": 1.0, "train": {"loss": 0.00016275896787110216, "consistency": 3.692478148947705e-05, "samples": 57600, "updates": 1800, "seconds": 587.9219999999987, "accuracy": 0.9999652777777778, "auc": 0.9999999963831019}, "val": {"loss": 0.40273403870470703, "frames": 11200, "videos": 700, "accuracy": 0.9469642857142857, "auc": 0.9861768973214285, "video_accuracy": 0.9742857142857143, "video_auc": 0.9948086734693877}, "lr": 0.0}
+TRAINING_COMPLETE {"method": "temporal_control", "pilot": false, "best_epoch": 7, "best_val": {"loss": 0.21852479850032494, "frames": 11200, "videos": 700, "accuracy": 0.9508035714285714, "auc": 0.988231106505102, "video_accuracy": 0.9714285714285714, "video_auc": 0.9940051020408163}, "checkpoint": "C:\\sp\\runs\\wgn_overnight\\temporal_control_final\\best.pt", "completed_epochs": 25, "manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907", "wall_seconds_this_invocation": 11208.046999999999}
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\train.py", "--config", "C:\\sp\\special_project\\experiments\\EXP-002-WGN\\improvements\\configs\\temporal_control.yaml", "--output-dir", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--resume"]
+TRAINING_COMPLETE {"method": "temporal_control", "pilot": false, "best_epoch": 7, "best_val": {"loss": 0.21852479850032494, "frames": 11200, "videos": 700, "accuracy": 0.9508035714285714, "auc": 0.988231106505102, "video_accuracy": 0.9714285714285714, "video_auc": 0.9940051020408163}, "checkpoint": "C:\\sp\\runs\\wgn_overnight\\temporal_control_final\\best.pt", "completed_epochs": 25, "manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907", "wall_seconds_this_invocation": 0.0}

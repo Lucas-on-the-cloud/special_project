@@ -1,0 +1,75 @@
+{
+  "best_epoch": 7,
+  "checkpoint_sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92",
+  "completed_epochs": 25,
+  "experiment": "EXP-003-IMPROVEMENT-WGN",
+  "files": [
+    {
+      "bytes": 23203811,
+      "name": "best.pt",
+      "sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92"
+    },
+    {
+      "bytes": 635,
+      "name": "environment.json",
+      "sha256": "d437a1ae2d874bebb8f953e5401a6c8afa507ebefa460446230b7b8126247664"
+    },
+    {
+      "bytes": 1679,
+      "name": "evaluation.json",
+      "sha256": "3fdab90cb806283233267c70ec0d2aa71a6f7749dd7c77b18746a6f423b8af9b"
+    },
+    {
+      "bytes": 1972,
+      "name": "evaluation.log",
+      "sha256": "8a630c2e1a5cef3d5df33da3f1dfb6708221b678099c36e610329e7d142e57f8"
+    },
+    {
+      "bytes": 11689,
+      "name": "metrics.jsonl",
+      "sha256": "bd372585c01b023c4f2c63b3f88828e0fef3715d86bd115c6f77cf9551e24487"
+    },
+    {
+      "bytes": 585,
+      "name": "progress.json",
+      "sha256": "5eb5037d0ce2d1d9c8f5af019d1fae676b25b3996a4b0a33e1e46208240b3f2f"
+    },
+    {
+      "bytes": 1370,
+      "name": "README.md",
+      "sha256": "0ac51c143c40c896cbc32bf6f18d6e46168e61fbdd9be0042f933e5a8440295c"
+    },
+    {
+      "bytes": 1019,
+      "name": "resolved_config.yaml",
+      "sha256": "467146d9d0867e15eb35a4ff764839b992d9e4faf3239f67a60650d4609a0a8b"
+    },
+    {
+      "bytes": 891,
+      "name": "SHA256SUMS.txt",
+      "sha256": "e8e369ea211efce3d4c146f64a8c69c2ca395adf35eea9a0c7f32fb85d127291"
+    },
+    {
+      "bytes": 0,
+      "name": "source.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 560,
+      "name": "summary.json",
+      "sha256": "750e60ea2c76438b47703681275e32e06c23728267246ac0f7d0d623634647e8"
+    },
+    {
+      "bytes": 59741,
+      "name": "training.log",
+      "sha256": "952a0204ff57ca316b4cc9b2e7b68c275c4be83033cc6ce93dca281a17199f4f"
+    }
+  ],
+  "method": "temporal_control",
+  "run_name": "temporal_control_final",
+  "runtime_path": "C:\\sp\\runs\\wgn_overnight\\temporal_control_final",
+  "schema_version": 1,
+  "status": "complete",
+  "training_git_commit": "98bf801d146c1d3195bde3f57f6e488590f4a654",
+  "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
+}

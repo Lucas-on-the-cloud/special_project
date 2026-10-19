@@ -1,0 +1,50 @@
+{
+  "experiment": "EXP-003-IMPROVEMENT-WGN",
+  "runs": [
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final",
+      "best_epoch": 20,
+      "checkpoint_sha256": "3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f",
+      "completed_epochs": 25,
+      "method": "curriculum",
+      "run_name": "curriculum_final",
+      "status": "complete",
+      "training_git_commit": "b8ede7ccca3f64179c39ad9d2cdd2974700ed31c",
+      "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final",
+      "best_epoch": 24,
+      "checkpoint_sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+      "completed_epochs": 25,
+      "method": "gradient",
+      "run_name": "gradient_final",
+      "status": "complete",
+      "training_git_commit": "393ecbf5f9c80e8c967b5f2e4565a0d642b02262",
+      "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final",
+      "best_epoch": 7,
+      "checkpoint_sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92",
+      "completed_epochs": 25,
+      "method": "temporal_control",
+      "run_name": "temporal_control_final",
+      "status": "complete",
+      "training_git_commit": "98bf801d146c1d3195bde3f57f6e488590f4a654",
+      "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final",
+      "best_epoch": 16,
+      "checkpoint_sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65",
+      "completed_epochs": 25,
+      "method": "temporal",
+      "run_name": "temporal_final",
+      "status": "complete",
+      "training_git_commit": "477caa29f35267ad48a97c765555e47a139db108",
+      "training_manifest_sha256": "5a80c890733faacc2401ad774c740a8476a6c0f68dc3e5d9b9cad8ec9844fbe2"
+    }
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,19 @@
+{
+  "best_epoch": 24,
+  "best_val": {
+    "accuracy": 0.9557142857142857,
+    "auc": 0.9881633450255103,
+    "frames": 11200,
+    "loss": 0.3180535217745987,
+    "video_accuracy": 0.9771428571428571,
+    "video_auc": 0.9961352040816327,
+    "videos": 700
+  },
+  "checkpoint": "C:\\sp\\runs\\wgn_overnight\\gradient_final\\best.pt",
+  "completed_epochs": 25,
+  "manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907",
+  "method": "gradient",
+  "pilot": false,
+  "status": "complete",
+  "wall_seconds_this_invocation": 8654.203000000001
+}

@@ -1,0 +1,19 @@
+{
+  "best_epoch": 20,
+  "best_val": {
+    "accuracy": 0.9455357142857143,
+    "auc": 0.9893554846938775,
+    "frames": 11200,
+    "loss": 0.18795877450689655,
+    "video_accuracy": 0.98,
+    "video_auc": 0.9966836734693877,
+    "videos": 700
+  },
+  "checkpoint": "C:\\sp\\runs\\wgn_overnight\\curriculum_final\\best.pt",
+  "completed_epochs": 25,
+  "manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907",
+  "method": "curriculum",
+  "pilot": false,
+  "status": "complete",
+  "wall_seconds_this_invocation": 6821.000000000004
+}

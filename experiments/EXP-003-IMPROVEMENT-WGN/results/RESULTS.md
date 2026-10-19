@@ -2,26 +2,34 @@
 
 AUC values below are percentages. Missing cells are pending, not zero. Synthetic smoke-test numbers and 5-epoch pilots are excluded.
 
-| Model | FF++ c23 frame AUC | FF++ c40 frame AUC | Celeb-DF v2 official-direct video AUC | DFDC video AUC | WildDeepfake video AUC |
-|---|---|---|---|---|---|
-| WGN reproduced reference (EXP-002) | 98.21 | pending | 70.14 | 69.67 | 71.54 |
-| gradient | 98.52 | pending | 68.31 | 69.87 | 72.17 |
-| curriculum | 98.34 | pending | 63.71 | 67.75 | 69.85 |
-| temporal_control | 98.27 | pending | 71.92 | 70.78 | 75.10 |
-| temporal | 98.58 | 70.51 | 71.03 | 68.89 | 71.72 |
-| degradation_control | pending | pending | pending | pending | pending |
-| degradation_consistency | pending | pending | pending | pending | pending |
+| Model | FF++ c23 frame | FF++ c40 frame | FaceShifter c23 frame | FaceShifter c40 frame | Celeb-DF official video | DFDC video | WildDeepfake video |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| WGN reproduced reference (EXP-002) | 98.21 | pending | pending | pending | 70.14 | 69.67 | 71.54 |
+| gradient | 98.52 | pending | pending | pending | 68.31 | 69.87 | 72.17 |
+| curriculum | 98.34 | pending | pending | pending | 63.71 | 67.75 | 69.85 |
+| temporal sampling control | 98.27 | pending | pending | pending | 71.92 | 70.78 | 75.10 |
+| temporal | 98.58 | 70.51 | 71.17 | 59.88 | 71.03 | 68.89 | 71.72 |
+| degradation_control | pending | pending | pending | pending | pending | pending | pending |
+| degradation_consistency | pending | pending | pending | pending | pending | pending | pending |
 
 Celeb-DF v2 uses the authors' MP4 archive, the official 518-video test list, uniform 32-frame sampling, and the same WGN MTCNN crop code. The earlier DeepfakeBench measurements remain archived for provenance and are excluded from current comparisons.
 
+## Candidate selection
 
-Selection check: Celeb-DF video AUC gain >=2 percentage points; FF++ c23 frame AUC loss <=1 percentage point, relative to the EXP-002 reproduced WGN reference.
+A strict finalist must gain at least 2 pp on Celeb-DF, lose no more than 1 pp on FF++ c23, improve at least two generalization targets by 0.5 pp, and regress by no more than 2 pp on any generalization target. If none passes, a non-dominated method meeting the last three conditions is marked diagnostic eligible.
 
-- gradient: Celeb-DF gain -1.83 pp; c23 loss -0.30 pp; does not meet initial criterion.
-- curriculum: Celeb-DF gain -6.43 pp; c23 loss -0.13 pp; does not meet initial criterion.
-- temporal: Celeb-DF gain +0.89 pp; c23 loss -0.37 pp; does not meet initial criterion.
+| Method | c23 loss | Celeb gain | Improved targets | Worst target regression | Pareto | Decision |
+|---|---:|---:|---:|---:|---:|---|
+| gradient | pending | pending | pending | pending | pending | pending |
+| curriculum | pending | pending | pending | pending | pending | pending |
+| temporal sampling control | pending | pending | pending | pending | pending | pending |
+| temporal | pending | pending | pending | pending | pending | pending |
+| degradation_control | pending | pending | pending | pending | pending | pending |
+| degradation_consistency | pending | pending | pending | pending | pending | pending |
+
+**Recommended cross-manipulation follow-up:** pending completion of the common sweep.
 
 ## Cross-manipulation follow-up
 
 | Method/train group | Mean frame AUC including diagonal | Unseen mean frame AUC |
-|---|---|---|
+|---|---:|---:|

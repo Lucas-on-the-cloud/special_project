@@ -1,0 +1,80 @@
+{
+  "best_epoch": 24,
+  "checkpoint_sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+  "completed_epochs": 25,
+  "experiment": "EXP-003-IMPROVEMENT-WGN",
+  "files": [
+    {
+      "bytes": 26562737,
+      "name": "best.pt",
+      "sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa"
+    },
+    {
+      "bytes": 627,
+      "name": "environment.json",
+      "sha256": "fcda2eb3654a4f5b075dd81327aca27a3d1e9cb996ef01298b20a3016d0f9139"
+    },
+    {
+      "bytes": 1482,
+      "name": "evaluation-celebdf-official-direct.json",
+      "sha256": "180cc6b8e1bc750adb358207217b9290af1a90e5c2b9b32cf588274449a371d8"
+    },
+    {
+      "bytes": 1666,
+      "name": "evaluation.json",
+      "sha256": "cc95173ee671468c50f3783e8f3522b612aa5da4b01b72beaab3920eca462087"
+    },
+    {
+      "bytes": 3435,
+      "name": "evaluation.log",
+      "sha256": "3bf175fa803cf3996f52229e56b4a117ecd0d5399b56669ba0503738d2176cb2"
+    },
+    {
+      "bytes": 11250,
+      "name": "metrics.jsonl",
+      "sha256": "0cb7851c16c67ab2e1321e20b0a64aaa69ea8baaf34735c817485e4afdb50f8f"
+    },
+    {
+      "bytes": 584,
+      "name": "progress.json",
+      "sha256": "776506390e257f3c5e71c91df9d201ff20a89adbec7b76cc01ba0f08cac1db64"
+    },
+    {
+      "bytes": 1355,
+      "name": "README.md",
+      "sha256": "4806ab612d52269bce33097149fc92855df093819a752d111e73f03baf9edbd3"
+    },
+    {
+      "bytes": 981,
+      "name": "resolved_config.yaml",
+      "sha256": "e89a2ef6a6134c78fd160f673f19844a688ce5aa12f066688cda9b403e204300"
+    },
+    {
+      "bytes": 998,
+      "name": "SHA256SUMS.txt",
+      "sha256": "a4e80fc315ec9ac2ea5217ff6a0fca10fa7a5015b9a9fb3c18960d18b5108fdf"
+    },
+    {
+      "bytes": 0,
+      "name": "source.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 559,
+      "name": "summary.json",
+      "sha256": "87bd534eaa63df31818f17b2dc227d117a7c05b8fe768fcdd75f7ba4de3cbc74"
+    },
+    {
+      "bytes": 55904,
+      "name": "training.log",
+      "sha256": "595aa54686e9bc30ceedfe40a10eead68e2227f12b05cf3f80e3e23cd3dc6dca"
+    }
+  ],
+  "method": "gradient",
+  "run_name": "gradient_final",
+  "runtime_path": "C:\\sp\\runs\\wgn_overnight\\gradient_final",
+  "schema_version": 1,
+  "status": "complete",
+  "training_git_commit": "393ecbf5f9c80e8c967b5f2e4565a0d642b02262",
+  "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
+}
