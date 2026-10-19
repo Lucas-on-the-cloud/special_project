@@ -15,3 +15,7 @@ COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experime
 EVALUATED_OFFICIAL_CELEBDF {"loss": 3.2170659218551063, "frames": 16576, "videos": 518, "accuracy": 0.6326013513513513, "auc": 0.6418738446484633, "video_accuracy": 0.6988416988416989, "video_auc": 0.710294117647059}
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate_celebdf_official.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_final"]
+
+===== evaluate_temporal.log =====
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\temporal.yaml"]
