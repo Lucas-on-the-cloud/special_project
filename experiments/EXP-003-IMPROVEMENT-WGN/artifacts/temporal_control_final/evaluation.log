@@ -35,3 +35,5 @@ EVALUATED FaceShifter c23 (held-out) {"loss": 1.3747146138293402, "frames": 7000
 EVALUATED FaceShifter c40 (held-out) {"loss": 2.033036832724299, "frames": 7000, "videos": 280, "accuracy": 0.6377142857142857, "auc": 0.599804974489796, "video_accuracy": 0.6107142857142858, "video_auc": 0.6379591836734694}
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\temporal_control.yaml"]
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\temporal_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\temporal_control.yaml"]
