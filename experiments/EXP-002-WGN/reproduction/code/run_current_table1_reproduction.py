@@ -19,6 +19,8 @@ CODE = Path(__file__).resolve().parent
 REPRODUCTION = CODE.parent
 REPO = CODE.parents[3]
 EXP3_CODE = REPO / "experiments" / "EXP-003-IMPROVEMENT-WGN" / "code"
+sys.path.insert(0, str(EXP3_CODE))
+from checkpoint_store import update_registry, upload_checkpoint, write_checkpoint_pointer
 CONFIGS = CODE / "configs" / "current-rtx5060-table1"
 RUNS = Path("C:/sp/runs/wgn_reproduction_table1")
 CROSS_RUNS = Path("C:/sp/runs/wgn_reproduction_current")
@@ -198,7 +200,7 @@ class Runner:
             if not all((run / name).is_file() for name in required):
                 raise FileNotFoundError(f"Incomplete Table 1 run: {slug}")
             target.mkdir(parents=True, exist_ok=True)
-            for name in ("best.pt", "summary.json", "resolved_config.yaml", "environment.json",
+            for name in ("summary.json", "resolved_config.yaml", "environment.json",
                          "metrics.jsonl", "progress.json", "in_domain_evaluation.json", "source.patch"):
                 if (run / name).exists():
                     shutil.copy2(run / name, target / name)
@@ -206,7 +208,15 @@ class Runner:
             evaluation_log = RUNS / "logs" / f"evaluate_{slug}.log"
             shutil.copy2(training_log, target / "training.log")
             shutil.copy2(evaluation_log, target / "evaluation.log")
-            (target / "SHA256SUMS.txt").write_text(f"{sha256(run / 'best.pt')}  best.pt\n", encoding="utf-8")
+            remote_path = (target.relative_to(REPO) / "best.pt").as_posix()
+            checkpoint = upload_checkpoint(run / "best.pt", remote_path)
+            checkpoint["uploaded_at"] = now()
+            write_checkpoint_pointer(target, checkpoint)
+            update_registry(REPO / "docs" / "checkpoint-registry.json", remote_path, checkpoint)
+            (target / "best.pt").unlink(missing_ok=True)
+            (target / "SHA256SUMS.txt").write_text(
+                f"{checkpoint['sha256']}  huggingface://{checkpoint['repo_id']}/{remote_path}\n",
+                encoding="utf-8")
         comparison = build_comparison()
         atomic_json(REPRODUCTION / "CURRENT-FULL-REPRODUCTION.json", comparison)
         REPORT.write_text(render_report(comparison), encoding="utf-8")

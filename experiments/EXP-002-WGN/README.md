@@ -7,8 +7,8 @@ comparisons.
 - [`reproduction/CURRENT-REPRODUCTION-STATUS.md`](reproduction/CURRENT-REPRODUCTION-STATUS.md)
   is the authoritative status for the active reproduced checkpoint.
 - [`reproduction/artifacts/baseline_final/`](reproduction/artifacts/baseline_final/)
-  contains that checkpoint, configuration, training metrics, evaluations, and
-  checksum.
+  contains the private checkpoint pointer, configuration, training metrics,
+  evaluations, and checksum. The weights are in `lucashwang0102/wgn-checkpoints`.
 - [`reproduction/RTX5090-HISTORICAL-REPRODUCTION.md`](reproduction/RTX5090-HISTORICAL-REPRODUCTION.md)
   archives results from the previous machine whose checkpoint was not retained.
 

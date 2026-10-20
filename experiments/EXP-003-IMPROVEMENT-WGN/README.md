@@ -10,14 +10,15 @@ EXP-003-IMPROVEMENT-WGN/
 ├── code/       training, evaluation, queue, configs, and verification
 ├── docs/       protocol and operating notes
 ├── results/    comparison reports and machine-readable summaries
-├── artifacts/  final improvement checkpoints and run metadata
+├── artifacts/  private-checkpoint pointers and final-run metadata
 └── PLAN.md     hypotheses, protocol, and selection rule
 ```
 
 The common reference checkpoint is owned by
 [`../EXP-002-WGN/reproduction/artifacts/baseline_final/`](../EXP-002-WGN/reproduction/artifacts/baseline_final/).
-EXP-003 stores only candidate and ablation checkpoints in its own `artifacts/`
-directory.
+EXP-003 stores candidate and ablation metadata plus `CHECKPOINT.json` pointers
+in its own `artifacts/` directory. The weight files are in the private Hugging
+Face model repository `lucashwang0102/wgn-checkpoints`.
 
 Every completed final run is packaged using the repository
 [experiment backup and machine handoff policy](../../docs/experiment-backup-and-machine-handoff.md).

@@ -9,6 +9,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
+from checkpoint_store import REPO_ID, update_registry, upload_checkpoint, write_checkpoint_pointer
+
 
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parents[2]
@@ -17,7 +19,7 @@ EXP3 = REPO / 'experiments' / 'EXP-003-IMPROVEMENT-WGN'
 GIT = Path('C:/sp/.tools/git-portable/cmd/git.exe')
 BRANCH = 'main'
 PORTABLE_FILES = [
-    'best.pt', 'summary.json', 'resolved_config.yaml', 'environment.json',
+    'summary.json', 'resolved_config.yaml', 'environment.json',
     'metrics.jsonl', 'progress.json', 'source.patch', 'difficulty.json',
     'evaluation.json', 'evaluation-celebdf-official-direct.json',
     'cross_manipulation.json', 'training.log', 'evaluation.log',
@@ -58,7 +60,7 @@ def concatenate_logs(paths, destination):
     destination.write_text(''.join(parts).rstrip() + '\n', encoding='utf-8')
 
 
-def write_readme(target, run, summary, environment, checkpoint_sha):
+def write_readme(target, run, summary, environment, checkpoint):
     method = summary.get('method', environment.get('method', 'unknown'))
     lines = [
         f'# {run.name}', '',
@@ -73,11 +75,11 @@ def write_readme(target, run, summary, environment, checkpoint_sha):
         f'| Precision | {environment.get("precision", "unknown")} |',
         f'| Training source commit | `{environment.get("git_commit", "unknown")}` |',
         f'| Training manifest SHA-256 | `{environment.get("manifest_sha256", summary.get("manifest_sha256", "unknown"))}` |',
-        f'| Checkpoint SHA-256 | `{checkpoint_sha}` |', '',
-        'Use `best.pt` for inference and final evaluation. `last.pt` is intentionally '
-        'not committed to normal Git history because it contains optimizer state and '
-        'would create large repeated blobs; use a GitHub Release asset when an unfinished '
-        'run must be moved and resumed.', '',
+        f'| Checkpoint SHA-256 | `{checkpoint["sha256"]}` |',
+        f'| Private checkpoint | [`best.pt`]({checkpoint["browser"]}) |', '',
+        'The selected `best.pt` is stored in the private Hugging Face model repository '
+        f'`{REPO_ID}`. Authenticate first, then download the path recorded in '
+        '`CHECKPOINT.json`. `last.pt` remains local unless an unfinished run must be moved.', '',
         'Read `resolved_config.yaml`, `environment.json`, and `summary.json` first. '
         '`training.log` records the executed training command and epoch output; '
         '`evaluation.log` collects the available locked-evaluation logs. '
@@ -88,7 +90,7 @@ def write_readme(target, run, summary, environment, checkpoint_sha):
     (target / 'README.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def write_checksums_and_manifest(target, run, summary, environment, checkpoint_sha):
+def write_checksums_and_manifest(target, run, summary, environment, checkpoint):
     excluded = {'SHA256SUMS.txt', 'ARTIFACT-MANIFEST.json'}
     payload_files = sorted(path for path in target.iterdir() if path.is_file() and path.name not in excluded)
     checksums = [f'{sha256(path)}  {path.name}' for path in payload_files]
@@ -96,14 +98,18 @@ def write_checksums_and_manifest(target, run, summary, environment, checkpoint_s
     inventoried = sorted(path for path in target.iterdir()
                          if path.is_file() and path.name != 'ARTIFACT-MANIFEST.json')
     manifest = {
-        'schema_version': 1,
+        'schema_version': 2,
         'experiment': 'EXP-002-WGN' if run.name == 'baseline_final' else 'EXP-003-IMPROVEMENT-WGN',
         'run_name': run.name,
         'method': summary.get('method'),
         'status': 'complete',
         'completed_epochs': summary.get('completed_epochs'),
         'best_epoch': summary.get('best_epoch'),
-        'checkpoint_sha256': checkpoint_sha,
+        'checkpoint_sha256': checkpoint['sha256'],
+        'checkpoint_bytes': checkpoint['bytes'],
+        'checkpoint_hf_repo': checkpoint['repo_id'],
+        'checkpoint_hf_path': checkpoint['remote_path'],
+        'checkpoint_url': checkpoint['browser'],
         'training_git_commit': environment.get('git_commit'),
         'training_manifest_sha256': environment.get('manifest_sha256', summary.get('manifest_sha256')),
         'runtime_path': str(run),
@@ -123,10 +129,16 @@ def package_run(run):
     if summary['pilot']:
         raise ValueError('Pilot checkpoints are not published as final artifacts')
     source = run / 'best.pt'
-    if source.stat().st_size > 95 * 1024**2:
-        raise ValueError('Checkpoint exceeds direct GitHub blob budget; use a Release or Git LFS')
     target = target_for(run)
     target.mkdir(parents=True, exist_ok=True)
+    remote_path = (target.relative_to(REPO) / 'best.pt').as_posix()
+    checkpoint = upload_checkpoint(
+        source, remote_path, message=f'Upload selected checkpoint for {run.name}')
+    checkpoint['uploaded_at'] = __import__('datetime').datetime.now().astimezone().isoformat(timespec='seconds')
+    update_registry(
+        REPO / 'docs' / 'checkpoint-registry.json', remote_path, checkpoint)
+    write_checkpoint_pointer(target, checkpoint)
+    (target / 'best.pt').unlink(missing_ok=True)
     for name in PORTABLE_FILES:
         if (run / name).exists():
             shutil.copy2(run / name, target / name)
@@ -141,9 +153,8 @@ def package_run(run):
             RUNS / 'logs' / f'evaluate_{method}.log',
         ], target / 'evaluation.log')
     environment = json.loads((run / 'environment.json').read_text())
-    checkpoint_sha = sha256(source)
-    write_readme(target, run, summary, environment, checkpoint_sha)
-    manifest = write_checksums_and_manifest(target, run, summary, environment, checkpoint_sha)
+    write_readme(target, run, summary, environment, checkpoint)
+    manifest = write_checksums_and_manifest(target, run, summary, environment, checkpoint)
     return target, manifest
 
 
@@ -153,17 +164,19 @@ def generate_registry():
         value = json.loads(path.read_text())
         rows.append({key: value.get(key) for key in [
             'run_name', 'method', 'status', 'completed_epochs', 'best_epoch',
-            'checkpoint_sha256', 'training_git_commit', 'training_manifest_sha256']})
+            'checkpoint_sha256', 'checkpoint_url', 'checkpoint_hf_path',
+            'training_git_commit', 'training_manifest_sha256']})
         rows[-1]['artifact_path'] = path.parent.relative_to(REPO).as_posix()
     registry = {'schema_version': 1, 'experiment': 'EXP-003-IMPROVEMENT-WGN', 'runs': rows}
     destination = EXP3 / 'results' / 'EXPERIMENT-REGISTRY.json'
     destination.write_text(json.dumps(registry, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     lines = ['# EXP-003 experiment registry', '',
-             '| Run | Method | Epochs | Best epoch | Checkpoint SHA-256 |',
-             '|---|---|---:|---:|---|']
+             '| Run | Method | Epochs | Best epoch | Checkpoint | SHA-256 |',
+             '|---|---|---:|---:|---|---|']
     for row in rows:
         lines.append(f"| [{row['run_name']}](../artifacts/{row['run_name']}/) | {row['method']} | "
-                     f"{row['completed_epochs']} | {row['best_epoch']} | `{row['checkpoint_sha256']}` |")
+                     f"{row['completed_epochs']} | {row['best_epoch']} | "
+                     f"[Hugging Face]({row['checkpoint_url']}) | `{row['checkpoint_sha256']}` |")
     lines += ['', 'Machine-readable registry: [`EXPERIMENT-REGISTRY.json`](EXPERIMENT-REGISTRY.json).', '']
     (EXP3 / 'results' / 'EXPERIMENT-REGISTRY.md').write_text('\n'.join(lines), encoding='utf-8')
     return destination
@@ -181,6 +194,7 @@ def commit_and_push(packages, message):
         git('add', '-f', '--', target.relative_to(REPO).as_posix())
     git('add', '--', overview.relative_to(REPO).as_posix(), selection.relative_to(REPO).as_posix(),
         registry.relative_to(REPO).as_posix(),
+        (REPO / 'docs' / 'checkpoint-registry.json').relative_to(REPO).as_posix(),
         (EXP3 / 'results' / 'EXPERIMENT-REGISTRY.md').relative_to(REPO).as_posix())
     if git('diff', '--cached', '--name-only'):
         git('commit', '-m', message)
@@ -190,14 +204,12 @@ def commit_and_push(packages, message):
     if remote != commit:
         raise RuntimeError('Remote commit verification failed')
     for target, manifest in packages:
-        relative = target.relative_to(REPO).as_posix()
         source = Path(manifest['runtime_path']) / 'best.pt'
-        if git('rev-parse', f'HEAD:{relative}/best.pt') != git('hash-object', str(source)):
-            raise RuntimeError(f'Committed checkpoint differs from local best.pt: {source}')
-        status = {'status': 'uploaded', 'commit': commit,
+        status = {'status': 'uploaded', 'metadata_commit': commit,
                   'checkpoint_sha256': manifest['checkpoint_sha256'],
-                  'url': f'https://github.com/Lucas-on-the-cloud/special_project/tree/{BRANCH}/{relative}'}
-        (source.parent / 'github-upload.json').write_text(json.dumps(status, indent=2) + '\n')
+                  'checkpoint_url': manifest['checkpoint_url'],
+                  'checkpoint_hf_path': manifest['checkpoint_hf_path']}
+        (source.parent / 'checkpoint-upload.json').write_text(json.dumps(status, indent=2) + '\n')
     print(json.dumps({'status': 'uploaded', 'commit': commit,
                       'runs': [manifest['run_name'] for _, manifest in packages]}), flush=True)
     return commit

@@ -1,13 +1,17 @@
 {
   "best_epoch": 9,
+  "checkpoint_bytes": 23204195,
+  "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
+  "checkpoint_hf_repo": "lucashwang0102/wgn-checkpoints",
   "checkpoint_sha256": "ea4aa65d629f0f0aff515408c9f56f22ea743399c20a6ae7d25b352d1f1f4da0",
+  "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
   "completed_epochs": 25,
   "experiment": "EXP-003-IMPROVEMENT-WGN",
   "files": [
     {
-      "bytes": 23204195,
-      "name": "best.pt",
-      "sha256": "ea4aa65d629f0f0aff515408c9f56f22ea743399c20a6ae7d25b352d1f1f4da0"
+      "bytes": 788,
+      "name": "CHECKPOINT.json",
+      "sha256": "5785b05e97678ad45dab4fb77bb6bafff30e9615f64335ddef4d1c185f9cd017"
     },
     {
       "bytes": 642,
@@ -40,9 +44,9 @@
       "sha256": "42c4ecbcc8121760ba01192c9929667a230b8c2c250c8b31531a62e82eee91d8"
     },
     {
-      "bytes": 1384,
+      "bytes": 1563,
       "name": "README.md",
-      "sha256": "34da5609d47de16b30d6e27978189c8d59b721dc667dbff0fda51796e4c7ad49"
+      "sha256": "a775d680995760203ea660b6471668a84905c651f06d09010cfcef3a3429366c"
     },
     {
       "bytes": 1291,
@@ -50,9 +54,9 @@
       "sha256": "6acbadee70ba524563af5089f35e75a23ed6ba56c54caa5165194258f2c6ef19"
     },
     {
-      "bytes": 998,
+      "bytes": 1006,
       "name": "SHA256SUMS.txt",
-      "sha256": "7846111bd1c1e003ca4ab121c1501e2f1a8f2e21e9a5120abd201ddfe4d99ff1"
+      "sha256": "ebf2d9d0009617c428a1826bc9e17e571151809921cfc0f1c77defa9fb053fa7"
     },
     {
       "bytes": 0,
@@ -73,7 +77,7 @@
   "method": "degradation_consistency",
   "run_name": "degradation_consistency_final",
   "runtime_path": "C:\\sp\\runs\\wgn_overnight\\degradation_consistency_final",
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "complete",
   "training_git_commit": "fda5760784306315d41718fb4022cfbd04529210",
   "training_manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe"

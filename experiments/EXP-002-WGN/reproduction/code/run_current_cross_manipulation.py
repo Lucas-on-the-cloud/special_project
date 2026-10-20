@@ -19,6 +19,8 @@ CODE = Path(__file__).resolve().parent
 REPRODUCTION = CODE.parent
 REPO = CODE.parents[3]
 EXP3_CODE = REPO / "experiments" / "EXP-003-IMPROVEMENT-WGN" / "code"
+sys.path.insert(0, str(EXP3_CODE))
+from checkpoint_store import update_registry, upload_checkpoint, write_checkpoint_pointer
 CONFIGS = CODE / "configs" / "current-rtx5060-cross-manipulation"
 RUNS = Path("C:/sp/runs/wgn_reproduction_current")
 IMPROVEMENT_RUNS = Path("C:/sp/runs/wgn_overnight")
@@ -185,15 +187,22 @@ class Runner:
             target, compact = ARTIFACTS / slug, EVIDENCE / slug
             target.mkdir(parents=True, exist_ok=True)
             compact.mkdir(parents=True, exist_ok=True)
-            for name in ("best.pt", "summary.json", "resolved_config.yaml", "environment.json",
+            for name in ("summary.json", "resolved_config.yaml", "environment.json",
                          "metrics.jsonl", "cross_manipulation.json"):
                 if (run / name).exists():
                     shutil.copy2(run / name, target / name)
             for name in ("summary.json", "cross_manipulation.json"):
                 shutil.copy2(run / name, compact / name)
-            digest = sha256(run / "best.pt")
-            (target / "SHA256SUMS.txt").write_text(f"{digest}  best.pt\n", encoding="utf-8")
-            checksums.append(f"{digest}  ../../artifacts/current-cross-manipulation/{slug}/best.pt")
+            remote_path = (target.relative_to(REPO) / "best.pt").as_posix()
+            checkpoint = upload_checkpoint(run / "best.pt", remote_path)
+            checkpoint["uploaded_at"] = now()
+            write_checkpoint_pointer(target, checkpoint)
+            update_registry(REPO / "docs" / "checkpoint-registry.json", remote_path, checkpoint)
+            (target / "best.pt").unlink(missing_ok=True)
+            digest = checkpoint["sha256"]
+            (target / "SHA256SUMS.txt").write_text(
+                f"{digest}  huggingface://{checkpoint['repo_id']}/{remote_path}\n", encoding="utf-8")
+            checksums.append(f"{digest}  huggingface://{checkpoint['repo_id']}/{remote_path}")
         (EVIDENCE / "SHA256SUMS.txt").write_text("\n".join(checksums) + "\n", encoding="utf-8")
         comparison = build_comparison()
         atomic_json(EVIDENCE / "comparison.json", comparison)

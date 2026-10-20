@@ -20,8 +20,9 @@ special_project/
 ### EXP-002 — WGN reproduction
 
 [`experiments/EXP-002-WGN/`](experiments/EXP-002-WGN/) owns the independently
-reproduced WGN reference. The current RTX 5060 Ti checkpoint, configuration,
-metrics, and checksum are stored with the experiment.
+reproduced WGN reference. Its configuration, metrics, checksum, and checkpoint
+pointer are stored with the experiment; the weights are in the private
+Hugging Face model repository.
 
 The main and cross-dataset rerun is complete. Cross-manipulation for this exact
 current checkpoint remains pending. Results from the earlier RTX 5090 machine
@@ -40,16 +41,18 @@ The current comparison is available in
 
 ## Artifact policy
 
-Selected inference checkpoints are committed inside their owning experiment so
-the work can be moved to another machine. Each committed checkpoint has a
-SHA-256 record and adjacent configuration, environment, metrics, and evaluation
-files. Final-run training and evaluation logs are included in the portable
-handoff package. Raw datasets, videos, generated face crops, and repeated
-optimizer-state snapshots are not stored in normal Git history.
+Selected inference checkpoints are uploaded to the private Hugging Face model
+repository [`lucashwang0102/wgn-checkpoints`](https://huggingface.co/lucashwang0102/wgn-checkpoints).
+Each GitHub artifact directory contains `CHECKPOINT.json` with its remote path,
+URL, size, and SHA-256, plus the configuration, environment, metrics, and
+evaluation files. Raw datasets, videos, generated face crops, model weights,
+and repeated optimizer-state snapshots are not stored in normal Git history.
 
 The required backup, GitHub publication, and machine-restoration procedure is
 defined in
 [`docs/experiment-backup-and-machine-handoff.md`](docs/experiment-backup-and-machine-handoff.md).
+Direct checkpoint links and restore commands are in
+[`docs/private-checkpoint-handoff.md`](docs/private-checkpoint-handoff.md).
 The separately stored processed datasets can be restored from the authorized
 private Hugging Face backup by following
 [`docs/private-processed-data-handoff.md`](docs/private-processed-data-handoff.md).

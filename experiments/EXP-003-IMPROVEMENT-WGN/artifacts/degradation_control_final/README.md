@@ -14,7 +14,7 @@ Portable final-run package for EXP-003. This directory contains the minimum stat
 | Training manifest SHA-256 | `f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe` |
 | Checkpoint SHA-256 | `0873737be16e0d35f28a60498aae7f639294e8f32bc1a6869b90e8ca893b07ec` |
 
-Use `best.pt` for inference and final evaluation. `last.pt` is intentionally not committed to normal Git history because it contains optimizer state and would create large repeated blobs; use a GitHub Release asset when an unfinished run must be moved and resumed.
+The selected `best.pt` is stored in the private Hugging Face model repository. Download it from [Hugging Face](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final/best.pt) after authentication, then verify the SHA-256 above. `CHECKPOINT.json` records the stable remote path and download URL. `last.pt` remains local unless an unfinished run must be moved.
 
 Read `resolved_config.yaml`, `environment.json`, and `summary.json` first. `training.log` records the executed training command and epoch output; `evaluation.log` collects the available locked-evaluation logs. `ARTIFACT-MANIFEST.json` inventories the package and its checksums.
 

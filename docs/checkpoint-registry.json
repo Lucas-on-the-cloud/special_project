@@ -1,0 +1,162 @@
+{
+  "checkpoints": [
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
+      "bytes": 23203811,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6",
+      "uploaded_at": "2026-10-20T20:18:06+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/df/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/df/best.pt",
+      "bytes": 23203811,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/df/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/df/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "cb20a1e840a395539941f14fe6d5bd8fdd994db309199015f9e019dc0f0d03ad",
+      "uploaded_at": "2026-10-20T20:18:15+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/f2f/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/f2f/best.pt",
+      "bytes": 23203811,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/f2f/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/f2f/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "9c9b76a5863813a01750ca718f57541158f57b1bbf054f1e394ff24af9901191",
+      "uploaded_at": "2026-10-20T20:18:23+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/fs/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/fs/best.pt",
+      "bytes": 23203811,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/fs/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/fs/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "598ef8d29bfb76708d67f7834c84d579ea3f75c6e552a3cafc60e363458f2d43",
+      "uploaded_at": "2026-10-20T20:18:33+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/nt/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/nt/best.pt",
+      "bytes": 23203811,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/nt/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/nt/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "bade0bfe8cfaaf820c65b28a2766224946c07ab979748bcf03c0491f13aa6794",
+      "uploaded_at": "2026-10-20T20:18:40+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c23/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c23/best.pt",
+      "bytes": 23203107,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c23/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c23/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "38ac972ef77c3d7ccfd6b8f7567cd7461e46f37dbf20539f2c4b77cb52d4052a",
+      "uploaded_at": "2026-10-20T20:18:47+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c40/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c40/best.pt",
+      "bytes": 23203107,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c40/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c40/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "a5c2bc3e0498979e0fa27413e0c11e674b4adf89c1a83535afb99f56c2795989",
+      "uploaded_at": "2026-10-20T20:18:51+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-table1/ffpp_c40/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/ffpp_c40/best.pt",
+      "bytes": 23203107,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/ffpp_c40/best.pt",
+      "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-table1/ffpp_c40/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "cf8a16d2f5368870498eb24c57c4ff8c4d14ba53a3b794bb43e0d325560400c7",
+      "uploaded_at": "2026-10-20T20:18:55+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+      "bytes": 23203875,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+      "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f",
+      "uploaded_at": "2026-10-20T20:19:00+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
+      "bytes": 23204195,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
+      "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "ea4aa65d629f0f0aff515408c9f56f22ea743399c20a6ae7d25b352d1f1f4da0",
+      "uploaded_at": "2026-10-20T20:19:05+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final/best.pt",
+      "bytes": 23204195,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final/best.pt",
+      "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "0873737be16e0d35f28a60498aae7f639294e8f32bc1a6869b90e8ca893b07ec",
+      "uploaded_at": "2026-10-20T20:19:12+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+      "bytes": 26562737,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+      "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+      "uploaded_at": "2026-10-20T20:19:19+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
+      "bytes": 23203811,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
+      "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92",
+      "uploaded_at": "2026-10-20T20:19:27+07:00"
+    },
+    {
+      "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
+      "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
+      "bytes": 23203811,
+      "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
+      "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+      "sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65",
+      "uploaded_at": "2026-10-20T20:19:32+07:00"
+    }
+  ],
+  "private": true,
+  "repo_id": "lucashwang0102/wgn-checkpoints",
+  "schema_version": 1,
+  "updated_at": "2026-10-20T20:19:32+07:00"
+}

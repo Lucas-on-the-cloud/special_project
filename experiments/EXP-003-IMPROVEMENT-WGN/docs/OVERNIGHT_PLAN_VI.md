@@ -31,7 +31,7 @@
 | 8 | Temporal pilot 5 → fresh final 25 epochs | `BCE(t)+BCE(t')+0.1*MSE(sigmoid logits)` |
 | 9 | C40 + FaceShifter data và đánh giá bổ sung | Không fine-tune target |
 
-Sau mỗi final run: lưu checkpoint ngay, push GitHub, đánh giá các test set sẵn có rồi push kết quả. Thứ tự/cấu hình các run tiếp theo không phụ thuộc kết quả test. Sau giai đoạn chính, hoàn tất các cột robustness còn thiếu.
+Sau mỗi final run: upload checkpoint vào Hugging Face private, xác minh SHA-256, đánh giá các test set sẵn có rồi push metadata và kết quả lên GitHub. Thứ tự/cấu hình các run tiếp theo không phụ thuộc kết quả test. Sau giai đoạn chính, hoàn tất các cột robustness còn thiếu.
 
 ## A — Gradient fusion
 
@@ -66,14 +66,14 @@ Giai đoạn này có thể kéo dài qua sáng hôm sau; không hứa hoàn t�
 - Cấu hình và manifest hash phải giữ nguyên để resume; metrics chưa có checkpoint tương ứng sẽ được loại trước khi chạy tiếp.
 - Pilot yêu cầu 5 metric records hữu hạn và train loss cuối thấp hơn đầu. Không đạt thì không chạy final của ứng viên đó.
 - Một job train lỗi được thử tiếp từ checkpoint một lần; lỗi độc lập không làm mất các run đã xong.
-- GitHub upload retry riêng, không xóa local checkpoint khi lỗi. Check commit remote và blob SHA khớp file local.
+- Hugging Face upload retry riêng, không xóa local checkpoint khi lỗi. Chỉ ghi pointer sau khi SHA-256 remote khớp file local; sau đó kiểm tra commit metadata trên GitHub.
 - Queue giữ máy không sleep khi tiến trình sống, không đổi thiết lập nguồn toàn hệ thống.
 - `C:/sp/runs/wgn_overnight/STATUS.md`, `queue-status.json`, `events.jsonl`, `logs/` là nơi kiểm tra sáng hôm sau.
 - Tạo file `C:/sp/runs/wgn_overnight/STOP_AFTER_CURRENT` để dừng sau job hiện tại. Không tắt máy nếu muốn job tiếp tục.
 
-## GitHub checkpoint theo yêu cầu người dùng
+## Lưu checkpoint private trên Hugging Face
 
-Người dùng yêu cầu lưu `best.pt` lên GitHub, ghi đè hướng dẫn cũ không commit checkpoint. Checkpoint reference được lưu trong `experiments/EXP-002-WGN/reproduction/artifacts/`; checkpoint cải tiến và metadata được lưu trong `experiments/EXP-003-IMPROVEMENT-WGN/artifacts/` trên nhánh `main`. Không upload datasets, `last.pt`/optimizer state hay credentials. Checkpoint >95 MiB bị từ chối và phải dùng Release/LFS thay thế; không báo uploaded nếu push/verify chưa thành công.
+Theo quyết định ngày 20-10-2026, mọi `best.pt` được lưu trong model repo private `lucashwang0102/wgn-checkpoints`. GitHub chỉ lưu `CHECKPOINT.json`, checksum, config, metrics, log và kết quả trong experiment tương ứng trên nhánh `main`. Không upload `last.pt`/optimizer state hay credentials. Không báo hoàn tất nếu chưa xác minh SHA-256 trên Hugging Face và commit metadata trên GitHub.
 
 ## Cách chạy lại
 

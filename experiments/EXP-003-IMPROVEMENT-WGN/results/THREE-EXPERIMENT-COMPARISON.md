@@ -43,16 +43,18 @@ are evaluated.
 
 ## Portable checkpoints
 
-All checkpoints below are normal Git-tracked files. The hash records the exact
-weights used for the results above.
+All checkpoints below are stored in the private Hugging Face model repository.
+Authentication is required. The hash records the exact weights used for the
+results above; each GitHub artifact directory contains a `CHECKPOINT.json`
+pointer with the same identity.
 
 | Model | Best epoch | Bytes | SHA-256 | Checkpoint |
 |---|---:|---:|---|---|
-| WGN reproduced reference (EXP-002) | 20 | 23,203,811 | `a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6` | [best.pt](../../EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt) |
-| Gradient | 24 | 26,562,737 | `9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa` | [best.pt](../artifacts/gradient_final/best.pt) |
-| Curriculum | 20 | 23,203,875 | `3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f` | [best.pt](../artifacts/curriculum_final/best.pt) |
-| Temporal consistency | 16 | 23,203,811 | `9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65` | [best.pt](../artifacts/temporal_final/best.pt) |
-| Temporal control ablation | 7 | 23,203,811 | `4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92` | [best.pt](../artifacts/temporal_control_final/best.pt) |
+| WGN reproduced reference (EXP-002) | 20 | 23,203,811 | `a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6` | [best.pt](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt) |
+| Gradient | 24 | 26,562,737 | `9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa` | [best.pt](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt) |
+| Curriculum | 20 | 23,203,875 | `3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f` | [best.pt](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt) |
+| Temporal consistency | 16 | 23,203,811 | `9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65` | [best.pt](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt) |
+| Temporal control ablation | 7 | 23,203,811 | `4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92` | [best.pt](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt) |
 
 The adjacent artifact directories also contain the resolved configuration,
 environment record, per-epoch metrics, evaluation JSON, and checksum file. Raw
@@ -65,10 +67,9 @@ size; restore them separately when moving machines.
 git clone https://github.com/Lucas-on-the-cloud/special_project.git
 cd special_project
 git checkout main
-Get-FileHash experiments\EXP-002-WGN\reproduction\artifacts\baseline_final\best.pt -Algorithm SHA256
-Get-FileHash experiments\EXP-003-IMPROVEMENT-WGN\artifacts\gradient_final\best.pt -Algorithm SHA256
-Get-FileHash experiments\EXP-003-IMPROVEMENT-WGN\artifacts\curriculum_final\best.pt -Algorithm SHA256
-Get-FileHash experiments\EXP-003-IMPROVEMENT-WGN\artifacts\temporal_final\best.pt -Algorithm SHA256
+C:\sp\.tools\hf-cli\Scripts\hf.exe download lucashwang0102/wgn-checkpoints `
+  --local-dir C:\sp\checkpoint-handoff
+Get-FileHash C:\sp\checkpoint-handoff\experiments\EXP-003-IMPROVEMENT-WGN\artifacts\gradient_final\best.pt -Algorithm SHA256
 ```
 
 The machine-readable copy of this table, including full-precision metrics and

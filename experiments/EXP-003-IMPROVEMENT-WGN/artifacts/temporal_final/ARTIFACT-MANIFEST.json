@@ -1,13 +1,17 @@
 {
   "best_epoch": 16,
+  "checkpoint_bytes": 23203811,
+  "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
+  "checkpoint_hf_repo": "lucashwang0102/wgn-checkpoints",
   "checkpoint_sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65",
+  "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
   "completed_epochs": 25,
   "experiment": "EXP-003-IMPROVEMENT-WGN",
   "files": [
     {
-      "bytes": 23203811,
-      "name": "best.pt",
-      "sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65"
+      "bytes": 743,
+      "name": "CHECKPOINT.json",
+      "sha256": "11e5386d6e8a4f6cc7f18d8438360c57413adc2331ed33fef2f560819a9219b4"
     },
     {
       "bytes": 627,
@@ -40,9 +44,9 @@
       "sha256": "d088b4150ec0286b59ae7ff89c84e573849f33be62ed7df9a9c939b0fc085f1a"
     },
     {
-      "bytes": 1355,
+      "bytes": 1519,
       "name": "README.md",
-      "sha256": "4aa5ac9ad94ea74a57db4873d7d0c57de6a03bad1e3ad109a25d77897d7b5fe2"
+      "sha256": "63bb2a9f6884a1da93efc7d9c73fba7bc73f5b189ffd3a32b5570aef63c1a649"
     },
     {
       "bytes": 1003,
@@ -50,9 +54,9 @@
       "sha256": "64672918cf6d7d876a9909a13a772407de1d341213dec7adcf323c174b431463"
     },
     {
-      "bytes": 998,
+      "bytes": 1006,
       "name": "SHA256SUMS.txt",
-      "sha256": "6117f8a32b2a217d48fb69cb8e0575b47e7233aa814c6a66b0f4e46f8aba2b92"
+      "sha256": "fcde10123923ef732970661696f54b10a87f8658630b01077d789cf9444b9276"
     },
     {
       "bytes": 0,
@@ -73,7 +77,7 @@
   "method": "temporal",
   "run_name": "temporal_final",
   "runtime_path": "C:\\sp\\runs\\wgn_overnight\\temporal_final",
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "complete",
   "training_git_commit": "477caa29f35267ad48a97c765555e47a139db108",
   "training_manifest_sha256": "5a80c890733faacc2401ad774c740a8476a6c0f68dc3e5d9b9cad8ec9844fbe2"

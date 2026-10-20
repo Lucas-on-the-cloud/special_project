@@ -1,13 +1,17 @@
 {
   "best_epoch": 24,
+  "checkpoint_bytes": 26562737,
+  "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+  "checkpoint_hf_repo": "lucashwang0102/wgn-checkpoints",
   "checkpoint_sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+  "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
   "completed_epochs": 25,
   "experiment": "EXP-003-IMPROVEMENT-WGN",
   "files": [
     {
-      "bytes": 26562737,
-      "name": "best.pt",
-      "sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa"
+      "bytes": 743,
+      "name": "CHECKPOINT.json",
+      "sha256": "0d07294f25fe3be2d9b1d423fe5bee01e080ed5c1c31e0b41c5803b2e9c0336b"
     },
     {
       "bytes": 627,
@@ -40,9 +44,9 @@
       "sha256": "776506390e257f3c5e71c91df9d201ff20a89adbec7b76cc01ba0f08cac1db64"
     },
     {
-      "bytes": 1355,
+      "bytes": 1519,
       "name": "README.md",
-      "sha256": "4806ab612d52269bce33097149fc92855df093819a752d111e73f03baf9edbd3"
+      "sha256": "6e6f224977afbe552d7d06635d541968a108927ec3a2eacb13c6191f298bd1d2"
     },
     {
       "bytes": 981,
@@ -50,9 +54,9 @@
       "sha256": "e89a2ef6a6134c78fd160f673f19844a688ce5aa12f066688cda9b403e204300"
     },
     {
-      "bytes": 998,
+      "bytes": 1006,
       "name": "SHA256SUMS.txt",
-      "sha256": "1d42a3fc568524695969a44513e3a8a899df1e105d66a38bbb5c0be14f227aab"
+      "sha256": "70a581de0bbfe2aca9d7cc8a162ceb9f623a5055924f7b4ad482e928a0d8be06"
     },
     {
       "bytes": 0,
@@ -73,7 +77,7 @@
   "method": "gradient",
   "run_name": "gradient_final",
   "runtime_path": "C:\\sp\\runs\\wgn_overnight\\gradient_final",
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "complete",
   "training_git_commit": "393ecbf5f9c80e8c967b5f2e4565a0d642b02262",
   "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"

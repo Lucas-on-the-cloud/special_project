@@ -1,0 +1,12 @@
+{
+  "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+  "bytes": 23203875,
+  "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+  "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+  "repo_id": "lucashwang0102/wgn-checkpoints",
+  "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+  "schema_version": 1,
+  "sha256": "3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f",
+  "storage": "huggingface_private_model_repo",
+  "uploaded_at": "2026-10-20T20:19:00+07:00"
+}

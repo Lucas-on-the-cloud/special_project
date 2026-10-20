@@ -4,7 +4,9 @@
     {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final",
       "best_epoch": 20,
+      "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
       "checkpoint_sha256": "3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f",
+      "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
       "completed_epochs": 25,
       "method": "curriculum",
       "run_name": "curriculum_final",
@@ -15,7 +17,9 @@
     {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final",
       "best_epoch": 9,
+      "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
       "checkpoint_sha256": "ea4aa65d629f0f0aff515408c9f56f22ea743399c20a6ae7d25b352d1f1f4da0",
+      "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_consistency_final/best.pt",
       "completed_epochs": 25,
       "method": "degradation_consistency",
       "run_name": "degradation_consistency_final",
@@ -26,7 +30,9 @@
     {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final",
       "best_epoch": 9,
+      "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final/best.pt",
       "checkpoint_sha256": "0873737be16e0d35f28a60498aae7f639294e8f32bc1a6869b90e8ca893b07ec",
+      "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/degradation_control_final/best.pt",
       "completed_epochs": 25,
       "method": "degradation_control",
       "run_name": "degradation_control_final",
@@ -37,7 +43,9 @@
     {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final",
       "best_epoch": 24,
+      "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
       "checkpoint_sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+      "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
       "completed_epochs": 25,
       "method": "gradient",
       "run_name": "gradient_final",
@@ -48,7 +56,9 @@
     {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final",
       "best_epoch": 7,
+      "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
       "checkpoint_sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92",
+      "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
       "completed_epochs": 25,
       "method": "temporal_control",
       "run_name": "temporal_control_final",
@@ -59,7 +69,9 @@
     {
       "artifact_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final",
       "best_epoch": 16,
+      "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
       "checkpoint_sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65",
+      "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
       "completed_epochs": 25,
       "method": "temporal",
       "run_name": "temporal_final",

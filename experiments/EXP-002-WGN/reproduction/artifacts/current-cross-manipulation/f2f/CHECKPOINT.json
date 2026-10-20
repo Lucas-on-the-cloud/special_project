@@ -1,0 +1,12 @@
+{
+  "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/f2f/best.pt",
+  "bytes": 23203811,
+  "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/f2f/best.pt",
+  "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/f2f/best.pt",
+  "repo_id": "lucashwang0102/wgn-checkpoints",
+  "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+  "schema_version": 1,
+  "sha256": "9c9b76a5863813a01750ca718f57541158f57b1bbf054f1e394ff24af9901191",
+  "storage": "huggingface_private_model_repo",
+  "uploaded_at": "2026-10-20T20:18:23+07:00"
+}

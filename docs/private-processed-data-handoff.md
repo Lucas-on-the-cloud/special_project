@@ -1,7 +1,8 @@
 # Private processed-data handoff
 
-This project keeps its reproducible code, manifests, metrics, and selected
-checkpoints in GitHub. Processed dataset media is backed up separately in the
+This project keeps its reproducible code, manifests, metrics, and checkpoint
+pointers in GitHub. Selected model weights are stored in the private Hugging
+Face model repository `lucashwang0102/wgn-checkpoints`; processed dataset media is backed up in the
 private Hugging Face dataset repository
 `lucashwang0102/wgn-private-data`, accessible only to the authorized account.
 
@@ -13,6 +14,8 @@ The first complete backup finished and passed remote file verification on
 checksums, restore tooling, and verification tooling. This private Hugging Face
 repository is the primary processed-data handoff for moving the experiments to
 another machine; GitHub stores only the reproducible instructions and code.
+Checkpoint restoration is documented separately in
+[Private checkpoint handoff](private-checkpoint-handoff.md).
 
 ## Backed-up scope
 

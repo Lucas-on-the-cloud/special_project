@@ -1,0 +1,12 @@
+{
+  "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+  "bytes": 26562737,
+  "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+  "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+  "repo_id": "lucashwang0102/wgn-checkpoints",
+  "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+  "schema_version": 1,
+  "sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+  "storage": "huggingface_private_model_repo",
+  "uploaded_at": "2026-10-20T20:19:19+07:00"
+}

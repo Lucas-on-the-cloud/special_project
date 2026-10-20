@@ -1,0 +1,12 @@
+{
+  "browser": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c23/best.pt",
+  "bytes": 23203107,
+  "download": "https://huggingface.co/lucashwang0102/wgn-checkpoints/resolve/main/experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c23/best.pt",
+  "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/current-table1/faceshifter_c23/best.pt",
+  "repo_id": "lucashwang0102/wgn-checkpoints",
+  "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
+  "schema_version": 1,
+  "sha256": "38ac972ef77c3d7ccfd6b8f7567cd7461e46f37dbf20539f2c4b77cb52d4052a",
+  "storage": "huggingface_private_model_repo",
+  "uploaded_at": "2026-10-20T20:18:47+07:00"
+}

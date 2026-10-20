@@ -1,13 +1,17 @@
 {
   "best_epoch": 20,
+  "checkpoint_bytes": 23203811,
+  "checkpoint_hf_path": "experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
+  "checkpoint_hf_repo": "lucashwang0102/wgn-checkpoints",
   "checkpoint_sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6",
+  "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
   "completed_epochs": 25,
   "experiment": "EXP-002-WGN",
   "files": [
     {
-      "bytes": 23203811,
-      "name": "best.pt",
-      "sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6"
+      "bytes": 746,
+      "name": "CHECKPOINT.json",
+      "sha256": "407602b170f11727d610215463209b2b6607ad80f1e8f11bbbbc309ca4545521"
     },
     {
       "bytes": 627,
@@ -40,9 +44,9 @@
       "sha256": "1a6949e09c3507b26276ee61f3f0e8cb3eddf999daa7275677c6303e1eedb368"
     },
     {
-      "bytes": 1355,
+      "bytes": 1520,
       "name": "README.md",
-      "sha256": "59df96ad1528023ec2716940fee0850f78b1d58ef8e2d742ba20ea6776f69906"
+      "sha256": "fceebdbe0560479b9fb9633c8d28d16b80990f038cd738c15b01681e1c205518"
     },
     {
       "bytes": 980,
@@ -50,9 +54,9 @@
       "sha256": "05ae5b59829438d6297110abcd82bc77668ec8b09118d6bd78b09b9e6bb90e96"
     },
     {
-      "bytes": 998,
+      "bytes": 1006,
       "name": "SHA256SUMS.txt",
-      "sha256": "a6a12b83cf7335ecc183bab20067e338647d7fd9ff047bf566c980740a9b2e7b"
+      "sha256": "c6c915b8e4a003b360332833238af2b9dcfa49f032e20e9bb4c1fee0c1c4b7b5"
     },
     {
       "bytes": 0,
@@ -73,7 +77,7 @@
   "method": "baseline",
   "run_name": "baseline_final",
   "runtime_path": "C:\\sp\\runs\\wgn_overnight\\baseline_final",
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "complete",
   "training_git_commit": "deb2f4793b98927134404523eca2bae3782b3d9f",
   "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"

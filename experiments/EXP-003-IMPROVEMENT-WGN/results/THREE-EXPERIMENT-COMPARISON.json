@@ -30,9 +30,11 @@
         "wilddeepfake_video": 0.0
       },
       "checkpoint": {
-        "path": "experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
         "bytes": 23203811,
-        "sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6"
+        "sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6",
+        "repo_id": "lucashwang0102/wgn-checkpoints",
+        "remote_path": "experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt",
+        "url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt"
       }
     },
     {
@@ -53,9 +55,11 @@
       },
       "passes_selection_rule": false,
       "checkpoint": {
-        "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
         "bytes": 26562737,
-        "sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa"
+        "sha256": "9b372bb10f8244e3635c9c00e4d310382535cebd04b59399d34e0a054e0f52aa",
+        "repo_id": "lucashwang0102/wgn-checkpoints",
+        "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt",
+        "url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/gradient_final/best.pt"
       }
     },
     {
@@ -72,13 +76,15 @@
         "ffpp_c23_frame": 0.125494260204081,
         "celebdf_v2_official_direct_video": -6.427627230667536,
         "dfdc_video": -1.9243436665711524,
-        "wilddeepfake_video": -1.6919191919191973
+        "wilddeepfake_video": -1.6919191919191974
       },
       "passes_selection_rule": false,
       "checkpoint": {
-        "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
         "bytes": 23203875,
-        "sha256": "3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f"
+        "sha256": "3af3ee3e3b8fe283a105d1b31eb8a62df90ef5c1be387a5df5d7ed8a1794da7f",
+        "repo_id": "lucashwang0102/wgn-checkpoints",
+        "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt",
+        "url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/curriculum_final/best.pt"
       }
     },
     {
@@ -99,9 +105,11 @@
       },
       "passes_selection_rule": false,
       "checkpoint": {
-        "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
         "bytes": 23203811,
-        "sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65"
+        "sha256": "9e8918e0721f57d15335be27f0739dc633797b8e191ac31447a9db9f4be58c65",
+        "repo_id": "lucashwang0102/wgn-checkpoints",
+        "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt",
+        "url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_final/best.pt"
       }
     }
   ],
@@ -117,15 +125,17 @@
     },
     "delta_vs_baseline_pp": {
       "ffpp_c23_frame": 0.05874043367347559,
-      "celebdf_v2_official_direct_video": 1.7812293456708575,
+      "celebdf_v2_official_direct_video": 1.7812293456708574,
       "dfdc_video": 1.1094857911576206,
       "wilddeepfake_video": 3.5541389504803993
     },
     "passes_selection_rule": false,
     "checkpoint": {
-      "path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
       "bytes": 23203811,
-      "sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92"
+      "sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92",
+      "repo_id": "lucashwang0102/wgn-checkpoints",
+      "remote_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
+      "url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt"
     }
   },
   "conclusion": {

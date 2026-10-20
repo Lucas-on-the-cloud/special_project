@@ -1,13 +1,17 @@
 {
   "best_epoch": 7,
+  "checkpoint_bytes": 23203811,
+  "checkpoint_hf_path": "experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
+  "checkpoint_hf_repo": "lucashwang0102/wgn-checkpoints",
   "checkpoint_sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92",
+  "checkpoint_url": "https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-003-IMPROVEMENT-WGN/artifacts/temporal_control_final/best.pt",
   "completed_epochs": 25,
   "experiment": "EXP-003-IMPROVEMENT-WGN",
   "files": [
     {
-      "bytes": 23203811,
-      "name": "best.pt",
-      "sha256": "4f94e5147783d103ff058ca8f805f289a8938060f5a6fdab94f6cc3351750c92"
+      "bytes": 767,
+      "name": "CHECKPOINT.json",
+      "sha256": "7b42fcd6036d2e9dc86996ab16c884e22803f8d3bbd0cb1242f9ae2059445c71"
     },
     {
       "bytes": 635,
@@ -40,9 +44,9 @@
       "sha256": "5eb5037d0ce2d1d9c8f5af019d1fae676b25b3996a4b0a33e1e46208240b3f2f"
     },
     {
-      "bytes": 1370,
+      "bytes": 1542,
       "name": "README.md",
-      "sha256": "0ac51c143c40c896cbc32bf6f18d6e46168e61fbdd9be0042f933e5a8440295c"
+      "sha256": "335ea5adbc2d9a9c275932d59e872b7630c07362a9090ba3447664b91742a43a"
     },
     {
       "bytes": 1019,
@@ -50,9 +54,9 @@
       "sha256": "467146d9d0867e15eb35a4ff764839b992d9e4faf3239f67a60650d4609a0a8b"
     },
     {
-      "bytes": 998,
+      "bytes": 1006,
       "name": "SHA256SUMS.txt",
-      "sha256": "5dee1b9ec2dec1c6fe04f775438d46255f6de9a924c3acb0128fbe9a6040b15b"
+      "sha256": "c6e5279093ef9772854889fa170ae0172c69a321469a9d8ef4ef716c2e7022de"
     },
     {
       "bytes": 0,
@@ -73,7 +77,7 @@
   "method": "temporal_control",
   "run_name": "temporal_control_final",
   "runtime_path": "C:\\sp\\runs\\wgn_overnight\\temporal_control_final",
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "complete",
   "training_git_commit": "98bf801d146c1d3195bde3f57f6e488590f4a654",
   "training_manifest_sha256": "0ea54ffe80127c14320f6e0fe369e395ae8bff1f74d1fb6fa88cedc68c3a8907"
