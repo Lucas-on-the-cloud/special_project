@@ -1,0 +1,44 @@
+{
+  "average_auc_including_diagonal": 0.648603555484694,
+  "average_unseen_auc": 0.5318769132653062,
+  "checkpoint_sha256": "598ef8d29bfb76708d67f7834c84d579ea3f75c6e552a3cafc60e363458f2d43",
+  "results": {
+    "FF-DF": {
+      "accuracy": 0.798,
+      "auc": 0.47114196428571425,
+      "frames": 7000,
+      "loss": 2.8055278226818356,
+      "video_accuracy": 0.5035714285714286,
+      "video_auc": 0.37841836734693884,
+      "videos": 280
+    },
+    "FF-F2F": {
+      "accuracy": 0.806,
+      "auc": 0.6941803571428572,
+      "frames": 7000,
+      "loss": 2.251946534752846,
+      "video_accuracy": 0.5142857142857142,
+      "video_auc": 0.7060204081632654,
+      "videos": 280
+    },
+    "FF-FS": {
+      "accuracy": 0.9914285714285714,
+      "auc": 0.9987834821428572,
+      "frames": 7000,
+      "loss": 0.041849396805623267,
+      "video_accuracy": 0.9964285714285714,
+      "video_auc": 1.0,
+      "videos": 280
+    },
+    "FF-NT": {
+      "accuracy": 0.7964285714285714,
+      "auc": 0.43030841836734696,
+      "frames": 7000,
+      "loss": 2.9389306547130856,
+      "video_accuracy": 0.5,
+      "video_auc": 0.33142857142857146,
+      "videos": 280
+    }
+  },
+  "training_manipulation": "FF-FS"
+}

@@ -26,19 +26,12 @@ WGN reference; it is not a separate method proposed by EXP-003.
 - Checkpoint: [`artifacts/baseline_final/best.pt`](artifacts/baseline_final/best.pt)
 - SHA-256: `a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6`
 
-## Pending
+## Cross-manipulation completed
 
-- Table 3 cross-manipulation training and the 4 × 4 DF/F2F/FS/NT evaluation
-  matrix for this exact protocol generation is running. It preserves all four
-  independently trained checkpoints and creates a Paper/RTX 5090/RTX 5060 Ti
-  comparison.
-- Table 1 still needs three independently trained models: FF++ c40,
-  FaceShifter c23, and FaceShifter c40. They are queued immediately after
-  Table 3 with smoke tests, resume checkpoints, SHA-256 files, and GitHub
-  publication. The existing c40/FaceShifter values from `baseline_final` are
-  held-out evaluations of the c23 model and are not Table 1 reproduction rows.
-- A final three-table report will be written to
-  `CURRENT-FULL-REPRODUCTION.md` after those runs complete.
+- Current RTX 5060 Ti all-cell mean AUC: **71.29%**
+- Current RTX 5060 Ti unseen-only mean AUC: **62.00%**
+- Four independently trained checkpoints: `artifacts/current-cross-manipulation/`
+- Full comparison: `evidence/current-cross-manipulation/RESULTS.md`
 
 The directory
 [`evidence/rtx5090-historical-cross-manipulation/`](evidence/rtx5090-historical-cross-manipulation/)

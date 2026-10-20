@@ -1,0 +1,4 @@
+cb20a1e840a395539941f14fe6d5bd8fdd994db309199015f9e019dc0f0d03ad  ../../artifacts/current-cross-manipulation/df/best.pt
+9c9b76a5863813a01750ca718f57541158f57b1bbf054f1e394ff24af9901191  ../../artifacts/current-cross-manipulation/f2f/best.pt
+598ef8d29bfb76708d67f7834c84d579ea3f75c6e552a3cafc60e363458f2d43  ../../artifacts/current-cross-manipulation/fs/best.pt
+bade0bfe8cfaaf820c65b28a2766224946c07ab979748bcf03c0491f13aa6794  ../../artifacts/current-cross-manipulation/nt/best.pt

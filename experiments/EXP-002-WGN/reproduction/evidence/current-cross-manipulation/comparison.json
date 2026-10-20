@@ -1,0 +1,120 @@
+{
+  "paper_source": "https://openaccess.thecvf.com/content/CVPR2026W/PPMisDet/papers/Ghosh_WGN_Wavelet-Guided_Network_for_Efficient_and_Generalised_Deepfake_Detection_CVPRW_2026_paper.pdf",
+  "paper_table": 3,
+  "metric": "frame-level AUC",
+  "unit": "percent",
+  "average_definition": "mean over DF, F2F, FS, and NT, including the training manipulation",
+  "columns": [
+    "DF",
+    "F2F",
+    "FS",
+    "NT",
+    "Avg"
+  ],
+  "rows": {
+    "DF": {
+      "paper": [
+        99.93,
+        72.94,
+        39.02,
+        77.73,
+        72.4
+      ],
+      "rtx5090_historical": [
+        99.83,
+        73.49,
+        43.35,
+        72.76,
+        72.36
+      ],
+      "rtx5060ti_current": [
+        99.794184,
+        61.842991,
+        44.840804,
+        70.599898,
+        69.269469
+      ]
+    },
+    "F2F": {
+      "paper": [
+        84.31,
+        99.23,
+        52.19,
+        70.13,
+        76.47
+      ],
+      "rtx5090_historical": [
+        77.4,
+        99.04,
+        56.29,
+        66.41,
+        74.79
+      ],
+      "rtx5060ti_current": [
+        72.714496,
+        99.076531,
+        67.175472,
+        67.03824,
+        76.501185
+      ]
+    },
+    "FS": {
+      "paper": [
+        64.53,
+        69.93,
+        99.79,
+        48.31,
+        70.64
+      ],
+      "rtx5090_historical": [
+        55.76,
+        69.99,
+        99.8,
+        49.68,
+        68.8
+      ],
+      "rtx5060ti_current": [
+        47.114196,
+        69.418036,
+        99.878348,
+        43.030842,
+        64.860356
+      ]
+    },
+    "NT": {
+      "paper": [
+        88.51,
+        70.56,
+        46.74,
+        97.93,
+        75.93
+      ],
+      "rtx5090_historical": [
+        80.62,
+        64.97,
+        42.11,
+        97.66,
+        71.34
+      ],
+      "rtx5060ti_current": [
+        84.614764,
+        71.058202,
+        44.59493,
+        97.885191,
+        74.538272
+      ]
+    }
+  },
+  "overall_all_cells": {
+    "paper": 73.86,
+    "rtx5090_historical": 71.82,
+    "rtx5060ti_current": 71.29232
+  },
+  "overall_unseen_only_derived": {
+    "paper": 65.41,
+    "rtx5090_historical": 62.74,
+    "rtx5060ti_current": 62.003572
+  },
+  "completed_at": "2026-10-20T14:23:14+07:00",
+  "machine": "NVIDIA RTX 5060 Ti 16 GB"
+}

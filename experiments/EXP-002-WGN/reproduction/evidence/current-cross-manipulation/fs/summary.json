@@ -1,0 +1,18 @@
+{
+  "best_epoch": 22,
+  "best_val": {
+    "accuracy": 0.9952857142857143,
+    "auc": 0.9963704081632653,
+    "frames": 7000,
+    "loss": 0.03239702902223715,
+    "video_accuracy": 1.0,
+    "video_auc": 1.0,
+    "videos": 280
+  },
+  "checkpoint": "C:\\sp\\runs\\wgn_reproduction_current\\fs_final\\best.pt",
+  "completed_epochs": 25,
+  "manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe",
+  "method": "baseline",
+  "pilot": false,
+  "wall_seconds_this_invocation": 5647.5320000000065
+}
