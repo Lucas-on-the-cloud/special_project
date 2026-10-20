@@ -11,10 +11,27 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parent
-BASE = ROOT.parent/'reproduction'/'code'
+REPO = ROOT.parents[2]
+BASE = REPO/'experiments'/'EXP-002-WGN'/'reproduction'/'code'
 DATA = Path('C:/sp/data')
 RUNS = Path('C:/sp/runs/wgn_overnight')
 GROUPS = ['FF-real', 'FF-DF', 'FF-F2F', 'FF-FS', 'FF-NT']
+
+
+def already_prepared(compression, groups):
+    """Return true when the shared manifest already contains the requested crops."""
+    manifest = DATA/'FaceForensics++-official.json'
+    if not manifest.exists():
+        return False
+    try:
+        root = json.loads(manifest.read_text())['FaceForensics++']
+        return all(
+            root[group][split][compression]
+            for group in groups
+            for split in ('train', 'val', 'test')
+        )
+    except (KeyError, TypeError, ValueError):
+        return False
 
 
 def command_run(command, log):
@@ -28,6 +45,9 @@ def command_run(command, log):
 
 
 def prepare(compression, groups, workers=2, device='cuda', cpu_threads=8):
+    if already_prepared(compression, groups):
+        print(f'ALREADY_PREPARED {compression} groups={",".join(groups)}', flush=True)
+        return
     command_run([sys.executable, ROOT/'download_ffpp.py', '--compression', compression,
                  '--groups', *groups, '--workers', '12'], RUNS/'logs'/f'download_{compression}.log')
 
