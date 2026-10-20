@@ -1,7 +1,7 @@
 # Experiment backup and machine handoff
 
 This policy preserves each experiment across machine changes. GitHub stores the
-research record; the private Hugging Face model repository stores selected
+research record; the public Hugging Face model repository stores selected
 weights.
 
 ## Storage locations
@@ -70,7 +70,7 @@ After a final run:
 
 1. Select `best.pt` by the declared validation metric.
 2. Run the common locked evaluation suite.
-3. Upload `best.pt` to the private Hugging Face model repo.
+3. Upload `best.pt` to the public Hugging Face model repo.
 4. Verify its remote SHA-256 before deleting any Git-tracked copy.
 5. Write the pointer, artifact manifest, checksums and experiment registry.
 6. Commit and push the small research record to GitHub `main`.
