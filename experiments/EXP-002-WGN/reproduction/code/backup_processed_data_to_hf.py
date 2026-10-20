@@ -257,13 +257,23 @@ def main() -> None:
                 print(f"SKIP_UPLOADED {name}", flush=True)
                 continue
             local = WORK_ROOT / Path(name).name
-            state.update(status="packing", current=name, updated_at=now())
-            atomic_json(STATUS, state)
-            create_shard(local, records)
-            digest = sha256(local)
-            group_state[str(index)] = {"status": "packed", "sha256": digest,
-                                       "bytes": local.stat().st_size, "files": len(records)}
-            atomic_json(STATUS, state)
+            reusable = (
+                existing.get("status") == "packed"
+                and local.is_file()
+                and local.stat().st_size == existing.get("bytes")
+                and existing.get("files") == len(records)
+            )
+            if reusable and sha256(local) == existing.get("sha256"):
+                digest = existing["sha256"]
+                print(f"REUSE_PACKED {name} sha256={digest}", flush=True)
+            else:
+                state.update(status="packing", current=name, updated_at=now())
+                atomic_json(STATUS, state)
+                create_shard(local, records)
+                digest = sha256(local)
+                group_state[str(index)] = {"status": "packed", "sha256": digest,
+                                           "bytes": local.stat().st_size, "files": len(records)}
+                atomic_json(STATUS, state)
             state.update(status="uploading", current=name, updated_at=now())
             atomic_json(STATUS, state)
             upload_file(api, args.repo_id, local, name, f"Upload {group} shard {index:03d}")
