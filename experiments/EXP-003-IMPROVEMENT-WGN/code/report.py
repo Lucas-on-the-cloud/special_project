@@ -8,8 +8,14 @@ RUNS = Path('C:/sp/runs/wgn_overnight')
 METHODS = ['baseline', 'gradient', 'curriculum', 'temporal_control', 'temporal',
            'degradation_control', 'degradation_consistency']
 CANDIDATES = METHODS[1:]
-LABELS = {'baseline': 'WGN reproduced reference (EXP-002)',
+LABELS = {'baseline': 'WGN reproduced reference (EXP-002, RTX 5060 Ti)',
           'temporal_control': 'temporal sampling control'}
+HEADLINE_METRICS = [
+    ('FF++ c23', 'auc'),
+    ('Celeb-DF v2 official-direct', 'video_auc'),
+    ('DFDC', 'video_auc'),
+    ('WildDeepfake', 'video_auc'),
+]
 TARGETS = [
     ('FF++ c40', 'auc', 'FF++ c40 frame'),
     ('FaceShifter c23 (held-out)', 'auc', 'FaceShifter c23 frame'),
@@ -84,22 +90,32 @@ def selection(results, official):
 
 def generate():
     results, official = load_results()
+    decisions, recommended = selection(results, official)
     lines = ['# WGN results', '',
              'AUC values below are percentages. Missing cells are pending, not zero. '
              'Synthetic smoke-test numbers and 5-epoch pilots are excluded.', '',
-             '| Model | FF++ c23 frame | FF++ c40 frame | FaceShifter c23 frame | '
-             'FaceShifter c40 frame | Celeb-DF official video | DFDC video | WildDeepfake video |',
-             '|---|---:|---:|---:|---:|---:|---:|---:|']
-    table_metrics = [('FF++ c23', 'auc')] + [(dataset, key) for dataset, key, _ in TARGETS]
+             '| Model | FF++ c23 frame | Celeb-DF official video | DFDC video | WildDeepfake video |',
+             '|---|---:|---:|---:|---:|']
     for method in METHODS:
         fields = []
-        for dataset, key in table_metrics:
+        for dataset, key in HEADLINE_METRICS:
             value = metric(results, official, method, dataset, key)
             fields.append(f'{100 * value:.2f}' if value is not None else 'pending')
-        lines.append('| ' + LABELS.get(method, method) + ' | ' + ' | '.join(fields) + ' |')
+        label = LABELS.get(method, method)
+        if method in recommended:
+            label = f'**{label} — selected potential candidate**'
+            fields = [f'**{value}**' for value in fields]
+        lines.append('| ' + label + ' | ' + ' | '.join(fields) + ' |')
     lines += ['', "Celeb-DF v2 uses the authors' MP4 archive, the official 518-video test list, "
               'uniform 32-frame sampling, and the same WGN MTCNN crop code. The earlier DeepfakeBench '
-              'measurements remain archived for provenance and are excluded from current comparisons.', '',
+              'measurements remain archived for provenance and are excluded from current comparisons. '
+              'FF++ c40 and FaceShifter held-out checks remain in the machine-readable selection record '
+              'but are omitted here because they are not independently trained Table 1 reproductions.', '']
+    if recommended:
+        lines += ['> **Selected potential candidate:** ' +
+                  ', '.join(LABELS.get(method, method) for method in recommended) +
+                  '. It passes the locked generalization criteria and is queued for cross-manipulation validation.', '']
+    lines += [
               '## Candidate selection', '',
               'A strict finalist must gain at least 2 pp on Celeb-DF, lose no more than 1 pp on FF++ c23, '
               'improve at least two generalization targets by 0.5 pp, and regress by no more than 2 pp on '
@@ -107,7 +123,6 @@ def generate():
               'conditions is marked diagnostic eligible.', '',
               '| Method | c23 loss | Celeb gain | Improved targets | Worst target regression | Pareto | Decision |',
               '|---|---:|---:|---:|---:|---:|---|']
-    decisions, recommended = selection(results, official)
     selection_complete = bool(decisions) and all(
         decisions.get(method, {}).get('status') != 'pending' for method in CANDIDATES)
     selection_payload = {
@@ -132,10 +147,13 @@ def generate():
         if decision['status'] == 'pending':
             lines.append(f'| {LABELS.get(method, method)} | pending | pending | pending | pending | pending | pending |')
             continue
-        lines.append(f"| {LABELS.get(method, method)} | {decision['c23_loss']:+.2f} | "
-                     f"{decision['gains'][3]:+.2f} | {decision['improved']}/6 | "
-                     f"{decision['worst_regression']:.2f} | {'yes' if decision.get('pareto') else 'no'} | "
-                     f"{decision['status']} |")
+        fields = [LABELS.get(method, method), f"{decision['c23_loss']:+.2f}",
+                  f"{decision['gains'][3]:+.2f}", f"{decision['improved']}/6",
+                  f"{decision['worst_regression']:.2f}",
+                  'yes' if decision.get('pareto') else 'no', decision['status']]
+        if method in recommended:
+            fields = [f'**{value}**' for value in fields]
+        lines.append('| ' + ' | '.join(fields) + ' |')
     if recommended:
         lines += ['', '**Recommended cross-manipulation follow-up:** ' +
                   ', '.join(LABELS.get(method, method) for method in recommended) + '.', '']
