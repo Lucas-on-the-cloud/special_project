@@ -21,6 +21,7 @@ REPO = ROOT.parents[2]
 MAIN_RUNS = Path('C:/sp/runs/wgn_overnight')
 RUNS = Path('C:/sp/runs/wgn_selected_cross')
 EXP2_RUNS = Path('C:/sp/runs/wgn_reproduction_current')
+EXP2_FULL_RUNS = Path('C:/sp/runs/wgn_reproduction_table1')
 SELECTION = MAIN_RUNS / 'SELECTION.json'
 TZ = timezone(timedelta(hours=7))
 GROUPS = {'df': 'FF-DF', 'f2f': 'FF-F2F', 'fs': 'FF-FS', 'nt': 'FF-NT'}
@@ -95,19 +96,23 @@ class Runner:
             selection_status = selection.get('status', 'unavailable')
             exp2 = read_json(EXP2_RUNS / 'status.json')
             exp2_phase = exp2.get('phase', 'unavailable')
-            observation = (selection_status, tuple(candidates), exp2_phase)
+            exp2_full = read_json(EXP2_FULL_RUNS / 'status.json')
+            exp2_full_phase = exp2_full.get('phase', 'unavailable')
+            observation = (selection_status, tuple(candidates), exp2_phase, exp2_full_phase)
             if observation != previous:
-                self.event(f'WAIT selection={selection_status} candidates={candidates} exp2={exp2_phase}')
+                self.event(f'WAIT selection={selection_status} candidates={candidates} '
+                           f'exp2_table3={exp2_phase} exp2_full={exp2_full_phase}')
                 previous = observation
             if selection_status == 'complete' and not candidates:
                 self.update('complete_no_candidate', selected_candidates=[])
                 self.event('NO_ELIGIBLE_CANDIDATE; CROSS_MANIPULATION_NOT_RUN')
                 return []
-            if selection_status == 'complete' and candidates and exp2_phase == 'complete':
+            if selection_status == 'complete' and candidates and exp2_full_phase == 'complete':
                 self.event(f'START_SELECTED_CROSS candidates={candidates}')
                 return candidates
             self.update('waiting', selection_status=selection_status,
-                        selected_candidates=candidates, exp2_phase=exp2_phase)
+                        selected_candidates=candidates, exp2_phase=exp2_phase,
+                        exp2_full_phase=exp2_full_phase)
             time.sleep(self.interval)
 
     def run_command(self, stage, arguments):

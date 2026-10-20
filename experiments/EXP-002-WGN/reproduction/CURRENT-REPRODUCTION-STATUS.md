@@ -28,10 +28,17 @@ WGN reference; it is not a separate method proposed by EXP-003.
 
 ## Pending
 
-- Cross-manipulation training and the 4 × 4 DF/F2F/FS/NT evaluation matrix for
-  this exact protocol generation. It is queued after EXP-003 and will preserve
-  all four best checkpoints plus a Paper/RTX 5090/RTX 5060 Ti comparison table.
-- Final FF++ c40 and FaceShifter c23/c40 evaluation in the current queue sweep.
+- Table 3 cross-manipulation training and the 4 × 4 DF/F2F/FS/NT evaluation
+  matrix for this exact protocol generation is running. It preserves all four
+  independently trained checkpoints and creates a Paper/RTX 5090/RTX 5060 Ti
+  comparison.
+- Table 1 still needs three independently trained models: FF++ c40,
+  FaceShifter c23, and FaceShifter c40. They are queued immediately after
+  Table 3 with smoke tests, resume checkpoints, SHA-256 files, and GitHub
+  publication. The existing c40/FaceShifter values from `baseline_final` are
+  held-out evaluations of the c23 model and are not Table 1 reproduction rows.
+- A final three-table report will be written to
+  `CURRENT-FULL-REPRODUCTION.md` after those runs complete.
 
 The directory
 [`evidence/rtx5090-historical-cross-manipulation/`](evidence/rtx5090-historical-cross-manipulation/)
