@@ -4,6 +4,7 @@ AUC values below are percentages. Missing cells are pending, not zero. Synthetic
 
 | Model | FF++ c23 frame | Celeb-DF official video | DFDC video | WildDeepfake video |
 |---|---:|---:|---:|---:|
+| Original WGN paper | 98.90 | 77.62 | 70.41 | 68.65 |
 | WGN reproduced reference (EXP-002, RTX 5060 Ti) | 98.21 | 70.14 | 69.67 | 71.54 |
 | gradient | 98.52 | 68.31 | 69.87 | 72.17 |
 | curriculum | 98.34 | 63.71 | 67.75 | 69.85 |
@@ -12,7 +13,7 @@ AUC values below are percentages. Missing cells are pending, not zero. Synthetic
 | **degradation_control — selected potential candidate** | **98.30** | **80.93** | **73.34** | **76.39** |
 | degradation_consistency | 98.22 | 79.94 | 73.76 | 76.10 |
 
-Celeb-DF v2 uses the authors' MP4 archive, the official 518-video test list, uniform 32-frame sampling, and the same WGN MTCNN crop code. The earlier DeepfakeBench measurements remain archived for provenance and are excluded from current comparisons. FF++ c40 and FaceShifter held-out checks remain in the machine-readable selection record but are omitted here because they are not independently trained Table 1 reproductions.
+Celeb-DF v2 uses the authors' MP4 archive, the official 518-video test list, uniform 32-frame sampling, and the same WGN MTCNN crop code. The earlier DeepfakeBench measurements remain archived for provenance and are excluded from current comparisons. FF++ c40 and FaceShifter held-out checks remain in the machine-readable selection record but are omitted here because they are not independently trained Table 1 reproductions. The original-paper row is contextual only; EXP-003 gains and candidate selection use the RTX 5060 Ti reproduced reference under the common local protocol.
 
 > **Selected potential candidate:** degradation_control. It passes the locked generalization criteria and is queued for cross-manipulation validation.
 

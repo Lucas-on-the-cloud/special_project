@@ -16,6 +16,7 @@ HEADLINE_METRICS = [
     ('DFDC', 'video_auc'),
     ('WildDeepfake', 'video_auc'),
 ]
+PAPER_HEADLINE_VALUES = ['98.90', '77.62', '70.41', '68.65']
 TARGETS = [
     ('FF++ c40', 'auc', 'FF++ c40 frame'),
     ('FaceShifter c23 (held-out)', 'auc', 'FaceShifter c23 frame'),
@@ -96,6 +97,7 @@ def generate():
              'Synthetic smoke-test numbers and 5-epoch pilots are excluded.', '',
              '| Model | FF++ c23 frame | Celeb-DF official video | DFDC video | WildDeepfake video |',
              '|---|---:|---:|---:|---:|']
+    lines.append('| Original WGN paper | ' + ' | '.join(PAPER_HEADLINE_VALUES) + ' |')
     for method in METHODS:
         fields = []
         for dataset, key in HEADLINE_METRICS:
@@ -110,7 +112,9 @@ def generate():
               'uniform 32-frame sampling, and the same WGN MTCNN crop code. The earlier DeepfakeBench '
               'measurements remain archived for provenance and are excluded from current comparisons. '
               'FF++ c40 and FaceShifter held-out checks remain in the machine-readable selection record '
-              'but are omitted here because they are not independently trained Table 1 reproductions.', '']
+              'but are omitted here because they are not independently trained Table 1 reproductions. '
+              'The original-paper row is contextual only; EXP-003 gains and candidate selection use the '
+              'RTX 5060 Ti reproduced reference under the common local protocol.', '']
     if recommended:
         lines += ['> **Selected potential candidate:** ' +
                   ', '.join(LABELS.get(method, method) for method in recommended) +
