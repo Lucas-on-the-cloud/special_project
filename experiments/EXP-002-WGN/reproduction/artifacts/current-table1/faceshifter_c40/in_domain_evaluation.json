@@ -1,0 +1,15 @@
+{
+  "checkpoint_epoch_zero_based": 11,
+  "checkpoint_sha256": "a5c2bc3e0498979e0fa27413e0c11e674b4adf89c1a83535afb99f56c2795989",
+  "dataset": "FaceShifter c40",
+  "manifest_sha256": "c4327fc25db9fc06002bca67fd2e70da599846c345d2f65ef45e8d7a96945120",
+  "metrics": {
+    "accuracy": 0.9407142857142857,
+    "auc": 0.9721630739795919,
+    "frames": 7000,
+    "loss": 0.2776928353599672,
+    "video_accuracy": 0.9321428571428572,
+    "video_auc": 0.9912244897959184,
+    "videos": 280
+  }
+}

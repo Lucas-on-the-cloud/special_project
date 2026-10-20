@@ -1,0 +1,19 @@
+{
+  "best_epoch": 15,
+  "best_val": {
+    "accuracy": 0.9912857142857143,
+    "auc": 0.9986771045918367,
+    "frames": 7000,
+    "loss": 0.03927638994835018,
+    "video_accuracy": 0.9928571428571429,
+    "video_auc": 0.9998979591836735,
+    "videos": 280
+  },
+  "checkpoint": "C:\\sp\\runs\\wgn_reproduction_table1\\faceshifter_c23_final\\best.pt",
+  "completed_epochs": 25,
+  "manifest_sha256": "f401d2b1ca01ee745b5c6d7b7020344e9cf4a7320afbbdab4658f86ed560efbe",
+  "method": "baseline",
+  "pilot": false,
+  "status": "complete",
+  "wall_seconds_this_invocation": 5607.453000000009
+}

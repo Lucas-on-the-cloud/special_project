@@ -2,37 +2,17 @@
 
 **Machine:** NVIDIA RTX 5060 Ti 16 GB
 
-**Date:** 19 October 2026
+**Completed:** 2026-10-20T19:58:03+07:00
 
-**Role:** frozen WGN reference for EXP-003 improvements
+All paper-aligned Table 1, Table 2, and Table 3 protocols are complete.
 
-**Runtime run name:** `baseline_final`
+| Table 1 experiment | Frame ACC | Frame AUC |
+|---|---:|---:|
+| FF++ c23 | 93.92% | 98.21% |
+| FF++ c40 | 78.93% | 87.80% |
+| FaceShifter c23 | 98.37% | 99.10% |
+| FaceShifter c40 | 94.07% | 97.22% |
 
-This is a rerun of the independently reproduced WGN configuration from EXP-002.
-It was required because the checkpoint from the earlier RTX 5090 reproduction
-was not saved. The word `baseline` in runtime files refers to this reproduced
-WGN reference; it is not a separate method proposed by EXP-003.
+Full comparison: [CURRENT-FULL-REPRODUCTION.md](CURRENT-FULL-REPRODUCTION.md)
 
-## Completed
-
-| Evaluation | AUC |
-|---|---:|
-| FF++ c23, frame | 98.21% |
-| Celeb-DF v2 official-direct, video | 70.14% |
-| DFDC, video | 69.67% |
-| WildDeepfake, video | 71.54% |
-
-- Best epoch: 20
-- Checkpoint: [`artifacts/baseline_final/best.pt`](artifacts/baseline_final/best.pt)
-- SHA-256: `a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6`
-
-## Cross-manipulation completed
-
-- Current RTX 5060 Ti all-cell mean AUC: **71.29%**
-- Current RTX 5060 Ti unseen-only mean AUC: **62.00%**
-- Four independently trained checkpoints: `artifacts/current-cross-manipulation/`
-- Full comparison: `evidence/current-cross-manipulation/RESULTS.md`
-
-The directory
-[`evidence/rtx5090-historical-cross-manipulation/`](evidence/rtx5090-historical-cross-manipulation/)
-belongs to the earlier machine and does not close the pending item above.
+The EXP-003 same-checkpoint c40/FaceShifter robustness sweep is a separate protocol and is not used as Table 1 reproduction.

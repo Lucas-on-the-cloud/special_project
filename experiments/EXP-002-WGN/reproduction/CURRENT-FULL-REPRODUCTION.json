@@ -1,0 +1,242 @@
+{
+  "completed_at": "2026-10-20T19:58:03+07:00",
+  "machine": "NVIDIA RTX 5060 Ti 16 GB",
+  "protocol": "paper-aligned independent training; 25 epochs; validation-accuracy checkpoint selection",
+  "table1": {
+    "FF++ c23": {
+      "paper": {
+        "accuracy": 95.32,
+        "auc": 98.9
+      },
+      "rtx5090_historical": {
+        "accuracy": 94.12,
+        "auc": 98.44
+      },
+      "rtx5060ti_current": {
+        "accuracy": 93.91964285714286,
+        "auc": 98.21176020408163,
+        "video_accuracy": 97.0,
+        "video_auc": 99.4362244897959
+      }
+    },
+    "FF++ c40": {
+      "paper": {
+        "accuracy": 80.2,
+        "auc": 89.0
+      },
+      "rtx5090_historical": {
+        "accuracy": 78.8,
+        "auc": 87.09
+      },
+      "rtx5060ti_current": {
+        "accuracy": 78.92857142857143,
+        "auc": 87.79729113520406,
+        "video_accuracy": 88.85714285714286,
+        "video_auc": 93.75127551020408
+      }
+    },
+    "FaceShifter c23": {
+      "paper": {
+        "accuracy": 98.0,
+        "auc": 99.92
+      },
+      "rtx5090_historical": {
+        "accuracy": 98.24,
+        "auc": 98.88
+      },
+      "rtx5060ti_current": {
+        "accuracy": 98.37142857142858,
+        "auc": 99.09527423469389,
+        "video_accuracy": 97.5,
+        "video_auc": 99.9387755102041
+      }
+    },
+    "FaceShifter c40": {
+      "paper": {
+        "accuracy": 94.99,
+        "auc": 98.66
+      },
+      "rtx5090_historical": {
+        "accuracy": 93.87,
+        "auc": 97.2
+      },
+      "rtx5060ti_current": {
+        "accuracy": 94.07142857142857,
+        "auc": 97.21630739795918,
+        "video_accuracy": 93.21428571428572,
+        "video_auc": 99.12244897959184
+      }
+    }
+  },
+  "table2": {
+    "Celeb-DF v2": {
+      "paper_auc": 77.62,
+      "rtx5090_historical": {
+        "frame_auc": 65.03,
+        "video_auc": 69.7
+      },
+      "rtx5060ti_current": {
+        "frame_auc": 63.57608903387373,
+        "video_auc": 67.43555849306014,
+        "frames": 16420,
+        "videos": 518
+      }
+    },
+    "DFDC": {
+      "paper_auc": 70.41,
+      "rtx5090_historical": {
+        "frame_auc": 69.54,
+        "video_auc": 71.0
+      },
+      "rtx5060ti_current": {
+        "frame_auc": 69.07911181316227,
+        "video_auc": 69.67410024527464,
+        "frames": 132116,
+        "videos": 4704
+      }
+    },
+    "WildDeepfake": {
+      "paper_auc": 68.65,
+      "rtx5090_historical": {
+        "frame_auc": 70.35,
+        "video_auc": 75.35
+      },
+      "rtx5060ti_current": {
+        "frame_auc": 70.92086385531924,
+        "video_auc": 71.54440748952943,
+        "frames": 165662,
+        "videos": 806
+      }
+    }
+  },
+  "celebdf_official_direct_diagnostic": {
+    "accuracy": 0.6439430501930502,
+    "auc": 0.6469672183524042,
+    "frames": 16576,
+    "loss": 2.8817048320257337,
+    "manifest_sha256": "6108b983c20391107a6c9fe061c6b4a72f7b7452398b54bbf88c5e1916df5d5f",
+    "video_accuracy": 0.6911196911196911,
+    "video_auc": 0.7013879709187045,
+    "videos": 518
+  },
+  "table3": {
+    "paper_source": "https://openaccess.thecvf.com/content/CVPR2026W/PPMisDet/papers/Ghosh_WGN_Wavelet-Guided_Network_for_Efficient_and_Generalised_Deepfake_Detection_CVPRW_2026_paper.pdf",
+    "paper_table": 3,
+    "metric": "frame-level AUC",
+    "unit": "percent",
+    "average_definition": "mean over DF, F2F, FS, and NT, including the training manipulation",
+    "columns": [
+      "DF",
+      "F2F",
+      "FS",
+      "NT",
+      "Avg"
+    ],
+    "rows": {
+      "DF": {
+        "paper": [
+          99.93,
+          72.94,
+          39.02,
+          77.73,
+          72.4
+        ],
+        "rtx5090_historical": [
+          99.83,
+          73.49,
+          43.35,
+          72.76,
+          72.36
+        ],
+        "rtx5060ti_current": [
+          99.794184,
+          61.842991,
+          44.840804,
+          70.599898,
+          69.269469
+        ]
+      },
+      "F2F": {
+        "paper": [
+          84.31,
+          99.23,
+          52.19,
+          70.13,
+          76.47
+        ],
+        "rtx5090_historical": [
+          77.4,
+          99.04,
+          56.29,
+          66.41,
+          74.79
+        ],
+        "rtx5060ti_current": [
+          72.714496,
+          99.076531,
+          67.175472,
+          67.03824,
+          76.501185
+        ]
+      },
+      "FS": {
+        "paper": [
+          64.53,
+          69.93,
+          99.79,
+          48.31,
+          70.64
+        ],
+        "rtx5090_historical": [
+          55.76,
+          69.99,
+          99.8,
+          49.68,
+          68.8
+        ],
+        "rtx5060ti_current": [
+          47.114196,
+          69.418036,
+          99.878348,
+          43.030842,
+          64.860356
+        ]
+      },
+      "NT": {
+        "paper": [
+          88.51,
+          70.56,
+          46.74,
+          97.93,
+          75.93
+        ],
+        "rtx5090_historical": [
+          80.62,
+          64.97,
+          42.11,
+          97.66,
+          71.34
+        ],
+        "rtx5060ti_current": [
+          84.614764,
+          71.058202,
+          44.59493,
+          97.885191,
+          74.538272
+        ]
+      }
+    },
+    "overall_all_cells": {
+      "paper": 73.86,
+      "rtx5090_historical": 71.82,
+      "rtx5060ti_current": 71.29232
+    },
+    "overall_unseen_only_derived": {
+      "paper": 65.41,
+      "rtx5090_historical": 62.74,
+      "rtx5060ti_current": 62.003572
+    },
+    "completed_at": "2026-10-20T14:23:14+07:00",
+    "machine": "NVIDIA RTX 5060 Ti 16 GB"
+  }
+}
