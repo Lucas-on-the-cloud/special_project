@@ -17,7 +17,7 @@ EXP-003-IMPROVEMENT-WGN/
 The common reference checkpoint is owned by
 [`../EXP-002-WGN/reproduction/artifacts/baseline_final/`](../EXP-002-WGN/reproduction/artifacts/baseline_final/).
 EXP-003 stores candidate and ablation metadata plus `CHECKPOINT.json` pointers
-in its own `artifacts/` directory. The weight files are in the private Hugging
+in its own `artifacts/` directory. The weight files are in the public Hugging
 Face model repository `lucashwang0102/wgn-checkpoints`; downloads need no login.
 
 Every completed final run is packaged using the repository
@@ -31,8 +31,9 @@ reproduction, then runs cross-manipulation only for the locked-criteria
 finalists. If no candidate qualifies, it records that outcome without starting
 an exploratory GPU run.
 
-Completed candidates: gradient, curriculum, temporal consistency, and the
-temporal sampling control. Degradation control and degradation consistency are
-currently queued. See
+Completed candidates include gradient, curriculum, temporal consistency,
+temporal sampling control, degradation control, and degradation consistency.
+The full degradation-control cross-manipulation matrix was deferred on
+20 October 2026 until a future architecture change warrants rerunning it. See
 [`results/THREE-EXPERIMENT-COMPARISON.md`](results/THREE-EXPERIMENT-COMPARISON.md)
 for the completed comparison.

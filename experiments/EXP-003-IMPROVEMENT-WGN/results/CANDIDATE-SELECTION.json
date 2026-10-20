@@ -1,4 +1,16 @@
 {
+  "cross_manipulation_execution": {
+    "decision_date": "2026-10-20",
+    "partial_run": {
+      "checkpoint_storage": "local_runtime_only",
+      "completed_epochs": 11,
+      "method": "degradation_control",
+      "reportable_final_result": false,
+      "total_epochs": 25,
+      "train_group": "df"
+    },
+    "status": "deferred_until_future_architecture_change"
+  },
   "decisions": {
     "curriculum": {
       "c23_loss": -0.12549426020407317,

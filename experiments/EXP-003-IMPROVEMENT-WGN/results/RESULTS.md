@@ -15,7 +15,7 @@ AUC values below are percentages. Missing cells are pending, not zero. Synthetic
 
 Celeb-DF v2 uses the authors' MP4 archive, the official 518-video test list, uniform 32-frame sampling, and the same WGN MTCNN crop code. The earlier DeepfakeBench measurements remain archived for provenance and are excluded from current comparisons. FF++ c40 and FaceShifter held-out checks remain in the machine-readable selection record but are omitted here because they are not independently trained Table 1 reproductions. The original-paper row is contextual only; EXP-003 gains and candidate selection use the RTX 5060 Ti reproduced reference under the common local protocol.
 
-> **Selected potential candidate:** degradation_control. It passes the locked generalization criteria and is queued for cross-manipulation validation.
+> **Selected potential candidate:** degradation_control. Full cross-manipulation validation is deferred until the next architecture candidate is ready, so the current table remains intentionally empty.
 
 ## Candidate selection
 
@@ -30,9 +30,11 @@ A strict finalist must gain at least 2 pp on Celeb-DF, lose no more than 1 pp on
 | **degradation_control** | **-0.09** | **+10.79** | **5/6** | **1.12** | **yes** | **strict finalist** |
 | degradation_consistency | -0.00 | +9.80 | 5/6 | 2.79 | yes | not retained |
 
-**Recommended cross-manipulation follow-up:** degradation_control.
+**Recommended future cross-manipulation follow-up:** compare degradation_control with the next architecture candidate under the same locked protocol.
 
 ## Cross-manipulation follow-up
 
 | Method/train group | Mean frame AUC including diagonal | Unseen mean frame AUC |
 |---|---:|---:|
+
+The first degradation_control/DF training run was stopped by decision after 11 of 25 epochs. It is incomplete and is not reported as an experimental result. Runtime checkpoints and metrics were retained locally only for provenance/resume. See [`CROSS-MANIPULATION-DECISION.md`](CROSS-MANIPULATION-DECISION.md).

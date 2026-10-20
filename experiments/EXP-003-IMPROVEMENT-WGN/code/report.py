@@ -25,6 +25,7 @@ TARGETS = [
     ('DFDC', 'video_auc', 'DFDC video'),
     ('WildDeepfake', 'video_auc', 'WildDeepfake video'),
 ]
+CROSS_EXECUTION = RUNS / 'cross-execution-decision.json'
 
 
 def load_results():
@@ -92,6 +93,10 @@ def selection(results, official):
 def generate():
     results, official = load_results()
     decisions, recommended = selection(results, official)
+    cross_execution = (json.loads(CROSS_EXECUTION.read_text(encoding='utf-8'))
+                       if CROSS_EXECUTION.exists() else None)
+    cross_deferred = bool(cross_execution and
+                          cross_execution.get('status') == 'deferred_until_future_architecture_change')
     lines = ['# WGN results', '',
              'AUC values below are percentages. Missing cells are pending, not zero. '
              'Synthetic smoke-test numbers and 5-epoch pilots are excluded.', '',
@@ -116,9 +121,12 @@ def generate():
               'The original-paper row is contextual only; EXP-003 gains and candidate selection use the '
               'RTX 5060 Ti reproduced reference under the common local protocol.', '']
     if recommended:
+        message = ('Full cross-manipulation validation is deferred until the next architecture '
+                   'candidate is ready, so the current table remains intentionally empty.'
+                   if cross_deferred else
+                   'It passes the locked generalization criteria and is queued for cross-manipulation validation.')
         lines += ['> **Selected potential candidate:** ' +
-                  ', '.join(LABELS.get(method, method) for method in recommended) +
-                  '. It passes the locked generalization criteria and is queued for cross-manipulation validation.', '']
+                  ', '.join(LABELS.get(method, method) for method in recommended) + '. ' + message, '']
     lines += [
               '## Candidate selection', '',
               'A strict finalist must gain at least 2 pp on Celeb-DF, lose no more than 1 pp on FF++ c23, '
@@ -144,6 +152,8 @@ def generate():
         'decisions': decisions,
         'recommended_cross_manipulation': recommended if selection_complete else [],
     }
+    if cross_execution:
+        selection_payload['cross_manipulation_execution'] = cross_execution
     (RUNS / 'SELECTION.json').write_text(
         json.dumps(selection_payload, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     for method in CANDIDATES:
@@ -159,8 +169,13 @@ def generate():
             fields = [f'**{value}**' for value in fields]
         lines.append('| ' + ' | '.join(fields) + ' |')
     if recommended:
-        lines += ['', '**Recommended cross-manipulation follow-up:** ' +
-                  ', '.join(LABELS.get(method, method) for method in recommended) + '.', '']
+        if cross_deferred:
+            lines += ['', '**Recommended future cross-manipulation follow-up:** compare ' +
+                      ', '.join(LABELS.get(method, method) for method in recommended) +
+                      ' with the next architecture candidate under the same locked protocol.', '']
+        else:
+            lines += ['', '**Recommended cross-manipulation follow-up:** ' +
+                      ', '.join(LABELS.get(method, method) for method in recommended) + '.', '']
     elif decisions and all(value['status'] != 'pending' for value in decisions.values()):
         lines += ['', '**Recommended cross-manipulation follow-up:** none under the locked criteria.', '']
     else:
@@ -172,6 +187,13 @@ def generate():
         value = json.loads(path.read_text())
         lines.append(f'| {path.parent.name} | {100 * value["average_auc_including_diagonal"]:.2f} | '
                      f'{100 * value["average_unseen_auc"]:.2f} |')
+    if cross_deferred:
+        partial = cross_execution['partial_run']
+        lines += ['', f"The first {partial['method']}/{partial['train_group'].upper()} training run was "
+                  f"stopped by decision after {partial['completed_epochs']} of {partial['total_epochs']} "
+                  'epochs. It is incomplete and is not reported as an experimental result. Runtime '
+                  'checkpoints and metrics were retained locally only for provenance/resume. See '
+                  '[`CROSS-MANIPULATION-DECISION.md`](CROSS-MANIPULATION-DECISION.md).']
     (RUNS / 'RESULTS.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
