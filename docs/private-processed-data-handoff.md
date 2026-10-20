@@ -36,13 +36,17 @@ operation restartable.
 
 ## Authentication
 
-Install the CLI in the project Python environment and use device login. Never
-put a token in source files, shell history, logs, documentation, or chat.
+Install the current CLI in a dedicated virtual environment and use device
+login. Do not upgrade `huggingface_hub` inside the WGN training environment:
+`timm==1.0.15` is paired with the `huggingface-hub==0.29.3` pin in the project
+requirements. Never put a token in source files, shell history, logs,
+documentation, or chat.
 
 ```powershell
-C:\sp\.tools\py311\python.exe -m pip install --upgrade huggingface_hub hf_xet
-hf auth login
-hf auth whoami
+C:\sp\.tools\py311\python.exe -m venv C:\sp\.tools\hf-cli
+C:\sp\.tools\hf-cli\Scripts\python.exe -m pip install --upgrade huggingface_hub hf_xet
+C:\sp\.tools\hf-cli\Scripts\hf.exe auth login
+C:\sp\.tools\hf-cli\Scripts\hf.exe auth whoami
 ```
 
 The repository must remain private. The uploader checks the remote `private`
@@ -68,11 +72,11 @@ C:\sp\.tools\py311\python.exe `
 
 ## Restore on another machine
 
-After installing the Hugging Face CLI and completing `hf auth login`, download
-the private repository and run the included restore script:
+After installing the dedicated Hugging Face CLI and completing device login,
+download the private repository and run the included restore script:
 
 ```powershell
-hf download lucashwang0102/wgn-private-data `
+C:\sp\.tools\hf-cli\Scripts\hf.exe download lucashwang0102/wgn-private-data `
   --repo-type dataset `
   --local-dir C:\sp\data-handoff-download
 

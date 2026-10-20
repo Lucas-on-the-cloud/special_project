@@ -110,6 +110,7 @@ class Runner:
         log = RUNS / "logs" / f"{stage}.log"
         environment = os.environ.copy()
         environment.update(TORCH_HOME="C:/sp/.cache/torch", HF_HOME="C:/sp/.cache/huggingface",
+                           HF_HUB_OFFLINE="1",
                            PYTHONUNBUFFERED="1", GIT_TERMINAL_PROMPT="0", GCM_INTERACTIVE="never")
         for attempt in range(1, 3):
             self.state["stages"][stage] = {"status": "running", "started_at": now(),
