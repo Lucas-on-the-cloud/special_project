@@ -45,3 +45,5 @@ COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experime
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\degradation_control.yaml"]
 
 COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\degradation_control.yaml"]
+
+COMMAND ["C:\\sp\\.tools\\py311\\python.exe", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\evaluate.py", "--run", "C:\\sp\\runs\\wgn_overnight\\degradation_control_final", "--config", "C:\\sp\\special_project\\experiments\\EXP-003-IMPROVEMENT-WGN\\code\\configs\\degradation_control.yaml"]
