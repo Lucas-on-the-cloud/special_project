@@ -42,7 +42,7 @@ flag before sending any data and stops if that check fails.
 ## Upload or resume
 
 ```powershell
-$env:HF_XET_HIGH_PERFORMANCE = "1"
+$env:HF_HUB_DISABLE_XET = "1" # reliable HTTP fallback used by the watchdog
 C:\sp\.tools\py311\python.exe `
   C:\sp\special_project\experiments\EXP-002-WGN\reproduction\code\backup_processed_data_to_hf.py `
   --repo-id lucashwang0102/wgn-private-data `

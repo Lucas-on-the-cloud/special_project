@@ -96,7 +96,11 @@ def main():
         stdout = (WORK / "uploader.stdout.log").open("ab", buffering=0)
         stderr = (WORK / "uploader.stderr.log").open("ab", buffering=0)
         environment = os.environ.copy()
-        environment["HF_XET_HIGH_PERFORMANCE"] = "1"
+        # Xet repeatedly stalled on the same chunk of a 1 GiB shard on this
+        # host. The regular HTTP uploader is slower but deterministic, while
+        # the shard checksum/state still provides safe restart semantics.
+        environment["HF_HUB_DISABLE_XET"] = "1"
+        environment.pop("HF_XET_HIGH_PERFORMANCE", None)
         flags = (subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS |
                  subprocess.BELOW_NORMAL_PRIORITY_CLASS)
         process = subprocess.Popen([sys.executable, str(RUNNER), "--repo-id",
