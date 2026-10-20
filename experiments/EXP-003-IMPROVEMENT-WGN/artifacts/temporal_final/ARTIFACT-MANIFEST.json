@@ -9,9 +9,9 @@
   "experiment": "EXP-003-IMPROVEMENT-WGN",
   "files": [
     {
-      "bytes": 743,
+      "bytes": 742,
       "name": "CHECKPOINT.json",
-      "sha256": "11e5386d6e8a4f6cc7f18d8438360c57413adc2331ed33fef2f560819a9219b4"
+      "sha256": "7ada1a0ce79dd808fca78caa8de952e431b6007df41e453771fbae3e89608e2f"
     },
     {
       "bytes": 627,
@@ -44,9 +44,9 @@
       "sha256": "d088b4150ec0286b59ae7ff89c84e573849f33be62ed7df9a9c939b0fc085f1a"
     },
     {
-      "bytes": 1519,
+      "bytes": 1520,
       "name": "README.md",
-      "sha256": "63bb2a9f6884a1da93efc7d9c73fba7bc73f5b189ffd3a32b5570aef63c1a649"
+      "sha256": "0bfa85cf0d281fc58562f7438d190ac6a928710220fdaba4453a175d6c930f94"
     },
     {
       "bytes": 1003,
@@ -56,7 +56,7 @@
     {
       "bytes": 1006,
       "name": "SHA256SUMS.txt",
-      "sha256": "fcde10123923ef732970661696f54b10a87f8658630b01077d789cf9444b9276"
+      "sha256": "8d109da3e2569d89caa1ec09b8c19941e0448b30af9b43b85f82ff680b32ce03"
     },
     {
       "bytes": 0,

@@ -7,6 +7,6 @@
   "repository": "https://huggingface.co/lucashwang0102/wgn-checkpoints",
   "schema_version": 1,
   "sha256": "a5c2bc3e0498979e0fa27413e0c11e674b4adf89c1a83535afb99f56c2795989",
-  "storage": "huggingface_private_model_repo",
+  "storage": "huggingface_public_model_repo",
   "uploaded_at": "2026-10-20T20:18:51+07:00"
 }

@@ -41,7 +41,7 @@ The current comparison is available in
 
 ## Artifact policy
 
-Selected inference checkpoints are uploaded to the private Hugging Face model
+Selected inference checkpoints are uploaded to the public Hugging Face model
 repository [`lucashwang0102/wgn-checkpoints`](https://huggingface.co/lucashwang0102/wgn-checkpoints).
 Each GitHub artifact directory contains `CHECKPOINT.json` with its remote path,
 URL, size, and SHA-256, plus the configuration, environment, metrics, and
@@ -52,7 +52,7 @@ The required backup, GitHub publication, and machine-restoration procedure is
 defined in
 [`docs/experiment-backup-and-machine-handoff.md`](docs/experiment-backup-and-machine-handoff.md).
 Direct checkpoint links and restore commands are in
-[`docs/private-checkpoint-handoff.md`](docs/private-checkpoint-handoff.md).
+[`docs/checkpoint-handoff.md`](docs/checkpoint-handoff.md).
 The separately stored processed datasets can be restored from the authorized
 private Hugging Face backup by following
 [`docs/private-processed-data-handoff.md`](docs/private-processed-data-handoff.md).

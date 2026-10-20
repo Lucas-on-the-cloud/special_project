@@ -1,4 +1,4 @@
-"""Private Hugging Face storage for selected WGN checkpoints."""
+"""Public Hugging Face storage for selected WGN checkpoints."""
 from __future__ import annotations
 
 import hashlib
@@ -40,11 +40,11 @@ def _remote_lfs_sha(api: HfApi, remote_path: str) -> str | None:
     raise FileNotFoundError(f"Uploaded checkpoint is absent from {REPO_ID}: {remote_path}")
 
 
-def ensure_private_repo(api: HfApi) -> None:
-    api.create_repo(REPO_ID, repo_type="model", private=True, exist_ok=True)
+def ensure_public_repo(api: HfApi) -> None:
+    api.create_repo(REPO_ID, repo_type="model", private=False, exist_ok=True)
     info = api.model_info(REPO_ID)
-    if not info.private:
-        raise PermissionError(f"Refusing to upload checkpoints to non-private repo: {REPO_ID}")
+    if info.private:
+        raise PermissionError(f"Checkpoint repository must be public: {REPO_ID}")
 
 
 def upload_checkpoint(local_path: Path, remote_path: str, message: str | None = None) -> dict:
@@ -53,7 +53,7 @@ def upload_checkpoint(local_path: Path, remote_path: str, message: str | None = 
         raise FileNotFoundError(local_path)
     digest = sha256(local_path)
     api = HfApi()
-    ensure_private_repo(api)
+    ensure_public_repo(api)
     api.upload_file(
         path_or_fileobj=str(local_path),
         path_in_repo=remote_path,
@@ -81,7 +81,7 @@ def write_checkpoint_pointer(directory: Path, metadata: dict) -> Path:
     directory.mkdir(parents=True, exist_ok=True)
     pointer = {
         "schema_version": 1,
-        "storage": "huggingface_private_model_repo",
+        "storage": "huggingface_public_model_repo",
         **metadata,
     }
     destination = directory / "CHECKPOINT.json"

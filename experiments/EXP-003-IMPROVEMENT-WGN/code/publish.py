@@ -76,9 +76,9 @@ def write_readme(target, run, summary, environment, checkpoint):
         f'| Training source commit | `{environment.get("git_commit", "unknown")}` |',
         f'| Training manifest SHA-256 | `{environment.get("manifest_sha256", summary.get("manifest_sha256", "unknown"))}` |',
         f'| Checkpoint SHA-256 | `{checkpoint["sha256"]}` |',
-        f'| Private checkpoint | [`best.pt`]({checkpoint["browser"]}) |', '',
-        'The selected `best.pt` is stored in the private Hugging Face model repository '
-        f'`{REPO_ID}`. Authenticate first, then download the path recorded in '
+        f'| Public checkpoint | [`best.pt`]({checkpoint["browser"]}) |', '',
+        'The selected `best.pt` is stored in the public Hugging Face model repository '
+        f'`{REPO_ID}`. Download the path recorded in '
         '`CHECKPOINT.json`. `last.pt` remains local unless an unfinished run must be moved.', '',
         'Read `resolved_config.yaml`, `environment.json`, and `summary.json` first. '
         '`training.log` records the executed training command and epoch output; '

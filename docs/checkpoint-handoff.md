@@ -1,18 +1,17 @@
-# Private checkpoint handoff
+# Public checkpoint handoff
 
-All selected WGN `best.pt` files are stored in the private Hugging Face model
+All selected WGN `best.pt` files are stored in the public Hugging Face model
 repository [`lucashwang0102/wgn-checkpoints`](https://huggingface.co/lucashwang0102/wgn-checkpoints).
 GitHub stores the experiment record and an adjacent `CHECKPOINT.json` pointer;
 it no longer stores the weight files themselves.
 
 The authoritative machine-readable list of remote paths, direct URLs, sizes and
-SHA-256 hashes is [`checkpoint-registry.json`](checkpoint-registry.json). Access
-requires the authorized `lucashwang0102` Hugging Face account.
+SHA-256 hashes is [`checkpoint-registry.json`](checkpoint-registry.json). No
+Hugging Face login or access token is required to download these weights.
 
 ## Restore all checkpoints
 
 ```powershell
-C:\sp\.tools\hf-cli\Scripts\hf.exe auth login
 C:\sp\.tools\hf-cli\Scripts\hf.exe download lucashwang0102/wgn-checkpoints `
   --local-dir C:\sp\checkpoint-handoff
 ```
@@ -24,7 +23,7 @@ adjacent GitHub `CHECKPOINT.json` or the central registry.
 
 ## Current checkpoint links
 
-| Experiment artifact | Private checkpoint |
+| Experiment artifact | Public checkpoint |
 |---|---|
 | EXP-002 reproduced WGN reference | [baseline_final/best.pt](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt) |
 | EXP-002 cross-manipulation DF | [df/best.pt](https://huggingface.co/lucashwang0102/wgn-checkpoints/blob/main/experiments/EXP-002-WGN/reproduction/artifacts/current-cross-manipulation/df/best.pt) |

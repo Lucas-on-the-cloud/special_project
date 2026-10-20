@@ -9,13 +9,14 @@ weights.
 | Content | Storage |
 |---|---|
 | Code, plans, configs, splits, metrics, logs and manifests | GitHub `main` |
-| Selected final `best.pt` files | Private model repo [`lucashwang0102/wgn-checkpoints`](https://huggingface.co/lucashwang0102/wgn-checkpoints) |
+| Selected final `best.pt` files | Public model repo [`lucashwang0102/wgn-checkpoints`](https://huggingface.co/lucashwang0102/wgn-checkpoints) |
 | Processed dataset shards | Private dataset repo [`lucashwang0102/wgn-private-data`](https://huggingface.co/datasets/lucashwang0102/wgn-private-data) |
 | Active-run `last.pt` with optimizer and RNG state | Local; upload privately only when a run must move |
 | Tokens, signed URLs and approval records | Secure storage outside both repositories |
 
-The model and dataset repositories must remain private. Do not put access tokens
-in source, commands, logs, or documentation.
+The model repository is public so checkpoints can be restored without login.
+The dataset repository must remain private. Do not put access tokens in source,
+commands, logs, or documentation.
 
 ## Completion rule
 
@@ -23,7 +24,7 @@ A final run is complete only when:
 
 1. its hypothesis, code commit, resolved config, dataset manifest and seed are recorded;
 2. training metrics and locked evaluation results are saved;
-3. `best.pt` has been uploaded to the private model repository;
+3. `best.pt` has been uploaded to the public model repository;
 4. the remote LFS SHA-256 matches the local file;
 5. GitHub contains `CHECKPOINT.json`, `ARTIFACT-MANIFEST.json`, checksums and logs;
 6. the metadata commit is pushed and verified on `main`.
@@ -49,7 +50,7 @@ experiments/EXP-XXX/artifacts/<run-name>/
 └── ARTIFACT-MANIFEST.json
 ```
 
-`CHECKPOINT.json` is the versioned pointer to `best.pt`. It records the private
+`CHECKPOINT.json` is the versioned pointer to `best.pt`. It records the public
 repository, remote path, browser and download URLs, byte count, upload time and
 SHA-256. `ARTIFACT-MANIFEST.json` repeats the checkpoint identity alongside the
 run metadata. `SHA256SUMS.txt` covers the small files committed to GitHub.
@@ -78,17 +79,16 @@ After a final run:
 The repository-wide machine-readable index is
 [`checkpoint-registry.json`](checkpoint-registry.json). The human restore guide
 and direct checkpoint links are in
-[`private-checkpoint-handoff.md`](private-checkpoint-handoff.md).
+[`checkpoint-handoff.md`](checkpoint-handoff.md).
 
 ## Restore on another machine
 
-Authenticate with Hugging Face using device login. Use a separate CLI
-environment so the pinned WGN training environment stays unchanged:
+Install the Hugging Face CLI in a separate environment so the pinned WGN
+training environment stays unchanged. Checkpoint downloads do not require login:
 
 ```powershell
 C:\sp\.tools\py311\python.exe -m venv C:\sp\.tools\hf-cli
 C:\sp\.tools\hf-cli\Scripts\python.exe -m pip install --upgrade huggingface_hub hf_xet
-C:\sp\.tools\hf-cli\Scripts\hf.exe auth login
 ```
 
 Download a checkpoint using the path from its `CHECKPOINT.json`:

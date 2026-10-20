@@ -31,7 +31,7 @@
 | 8 | Temporal pilot 5 → fresh final 25 epochs | `BCE(t)+BCE(t')+0.1*MSE(sigmoid logits)` |
 | 9 | C40 + FaceShifter data và đánh giá bổ sung | Không fine-tune target |
 
-Sau mỗi final run: upload checkpoint vào Hugging Face private, xác minh SHA-256, đánh giá các test set sẵn có rồi push metadata và kết quả lên GitHub. Thứ tự/cấu hình các run tiếp theo không phụ thuộc kết quả test. Sau giai đoạn chính, hoàn tất các cột robustness còn thiếu.
+Sau mỗi final run: upload checkpoint vào Hugging Face public, xác minh SHA-256, đánh giá các test set sẵn có rồi push metadata và kết quả lên GitHub. Thứ tự/cấu hình các run tiếp theo không phụ thuộc kết quả test. Sau giai đoạn chính, hoàn tất các cột robustness còn thiếu.
 
 ## A — Gradient fusion
 
@@ -71,9 +71,9 @@ Giai đoạn này có thể kéo dài qua sáng hôm sau; không hứa hoàn t�
 - `C:/sp/runs/wgn_overnight/STATUS.md`, `queue-status.json`, `events.jsonl`, `logs/` là nơi kiểm tra sáng hôm sau.
 - Tạo file `C:/sp/runs/wgn_overnight/STOP_AFTER_CURRENT` để dừng sau job hiện tại. Không tắt máy nếu muốn job tiếp tục.
 
-## Lưu checkpoint private trên Hugging Face
+## Lưu checkpoint public trên Hugging Face
 
-Theo quyết định ngày 20-10-2026, mọi `best.pt` được lưu trong model repo private `lucashwang0102/wgn-checkpoints`. GitHub chỉ lưu `CHECKPOINT.json`, checksum, config, metrics, log và kết quả trong experiment tương ứng trên nhánh `main`. Không upload `last.pt`/optimizer state hay credentials. Không báo hoàn tất nếu chưa xác minh SHA-256 trên Hugging Face và commit metadata trên GitHub.
+Theo quyết định ngày 20-10-2026, mọi `best.pt` được lưu trong model repo public `lucashwang0102/wgn-checkpoints` để chuyển máy không cần đăng nhập. GitHub chỉ lưu `CHECKPOINT.json`, checksum, config, metrics, log và kết quả trong experiment tương ứng trên nhánh `main`. Không upload `last.pt`/optimizer state hay credentials. Không báo hoàn tất nếu chưa xác minh SHA-256 trên Hugging Face và commit metadata trên GitHub.
 
 ## Cách chạy lại
 

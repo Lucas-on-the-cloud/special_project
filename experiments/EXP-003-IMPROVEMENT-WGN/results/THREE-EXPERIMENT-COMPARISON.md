@@ -43,8 +43,8 @@ are evaluated.
 
 ## Portable checkpoints
 
-All checkpoints below are stored in the private Hugging Face model repository.
-Authentication is required. The hash records the exact weights used for the
+All checkpoints below are stored in the public Hugging Face model repository.
+No authentication is required. The hash records the exact weights used for the
 results above; each GitHub artifact directory contains a `CHECKPOINT.json`
 pointer with the same identity.
 

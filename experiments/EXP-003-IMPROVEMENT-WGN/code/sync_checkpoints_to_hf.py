@@ -1,4 +1,4 @@
-"""Upload selected WGN best checkpoints to the private model repository."""
+"""Upload selected WGN best checkpoints to the public model repository."""
 from __future__ import annotations
 
 import argparse
@@ -23,7 +23,7 @@ def write_registry(entries: list[dict]) -> None:
         "schema_version": 1,
         "updated_at": now(),
         "repo_id": REPO_ID,
-        "private": True,
+        "private": False,
         "checkpoints": sorted(entries, key=lambda value: value["artifact_path"]),
     }
     REGISTRY.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")

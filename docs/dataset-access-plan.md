@@ -2,7 +2,7 @@
 
 **Project:** Generalizable Deepfake Detection  
 **Purpose:** obtain, restore, and verify the datasets needed for WGN reproduction and improvement.
-**Important:** raw videos, extracted frames, face crops, credentials, signed agreements, and model weights must never be committed to GitHub. Selected checkpoints use the private Hugging Face model repository under the separate experiment handoff policy.
+**Important:** raw videos, extracted frames, face crops, credentials, signed agreements, and model weights must never be committed to GitHub. Selected checkpoints use the public Hugging Face model repository under the separate experiment handoff policy.
 
 ## Current portable dataset state
 
@@ -157,7 +157,7 @@ All required permissions and processed inputs are available for this phase:
 
 Only return to the original provider downloads when restore or verification
 fails. Do not commit signed agreements, private download links, credentials,
-raw videos, or face crops. Upload selected checkpoints only to the private model
+raw videos, or face crops. Upload selected checkpoints only to the public model
 repository under the documented experiment handoff policy; commit their
 `CHECKPOINT.json` pointers to GitHub.
 

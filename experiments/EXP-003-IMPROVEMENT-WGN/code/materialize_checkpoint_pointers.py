@@ -34,9 +34,9 @@ def main() -> None:
         if readme_path.exists():
             readme = readme_path.read_text(encoding="utf-8")
             readme = re.sub(
-                r"Use `best\.pt`.*?resumed\.\n\n",
-                "The selected `best.pt` is stored in the private Hugging Face model "
-                f"repository. Download it from [Hugging Face]({entry['browser']}) after "
+                r"(?:Use|The selected) `best\.pt`.*?(?:resumed|moved)\.\n\n",
+                "The selected `best.pt` is stored in the public Hugging Face model "
+                f"repository. Download it from [Hugging Face]({entry['browser']}) without "
                 "authentication, then verify the SHA-256 above. `CHECKPOINT.json` records "
                 "the stable remote path and download URL. `last.pt` remains local unless "
                 "an unfinished run must be moved.\n\n",
