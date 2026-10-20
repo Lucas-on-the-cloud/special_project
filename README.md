@@ -50,5 +50,8 @@ optimizer-state snapshots are not stored in normal Git history.
 The required backup, GitHub publication, and machine-restoration procedure is
 defined in
 [`docs/experiment-backup-and-machine-handoff.md`](docs/experiment-backup-and-machine-handoff.md).
+The separately stored processed datasets can be restored from the authorized
+private Hugging Face backup by following
+[`docs/private-processed-data-handoff.md`](docs/private-processed-data-handoff.md).
 
 All active work is committed directly to `main`.

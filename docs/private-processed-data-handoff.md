@@ -5,6 +5,15 @@ checkpoints in GitHub. Processed dataset media is backed up separately in the
 private Hugging Face dataset repository
 `lucashwang0102/wgn-private-data`, accessible only to the authorized account.
 
+## Backup status
+
+The first complete backup finished and passed remote file verification on
+20 October 2026. All 13 planned shards were uploaded: 510,774 files totaling
+30.30 GiB. The remote repository contained all expected shards, manifests,
+checksums, restore tooling, and verification tooling. This private Hugging Face
+repository is the primary processed-data handoff for moving the experiments to
+another machine; GitHub stores only the reproducible instructions and code.
+
 ## Backed-up scope
 
 The backup is generated from the locked manifests rather than by copying the

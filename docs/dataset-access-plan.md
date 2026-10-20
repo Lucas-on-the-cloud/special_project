@@ -1,17 +1,30 @@
 # Dataset Access Plan
 
 **Project:** Generalizable Deepfake Detection  
-**Purpose:** obtain the datasets needed for WGN reproduction and improvement before renting the GPU.  
-**Important:** raw videos, extracted frames, face crops, checkpoints, credentials, and signed agreements must never be committed to GitHub.
+**Purpose:** obtain, restore, and verify the datasets needed for WGN reproduction and improvement.
+**Important:** raw videos, extracted frames, face crops, credentials, and signed agreements must never be committed to GitHub. Selected checkpoints follow the separate experiment handoff policy.
+
+## Current portable dataset state
+
+As of 20 October 2026, the processed data referenced by the five locked WGN
+manifests has been backed up to the private Hugging Face dataset
+[`lucashwang0102/wgn-private-data`](https://huggingface.co/datasets/lucashwang0102/wgn-private-data).
+The verified backup contains 13 tar shards, 510,774 referenced files, and
+30.30 GiB of data. It is private and requires authentication as the authorized
+account. No dataset media is stored in GitHub.
+
+On a new machine, restore and verify this backup before considering a new
+download or preprocessing run. The exact commands and checksum workflow are in
+[Private processed-data handoff](private-processed-data-handoff.md).
 
 ## 1. Datasets required for the current WGN plan
 
 | Dataset | Purpose in this project | Access status | Action |
 |---|---|---|---|
-| FaceForensics++ | Main training set, c23/c40 control, and manipulation experiments | Permission email received | Keep the approval email and use the official download script |
-| Celeb-DF v2 | Main cross-dataset evaluation; current WGN weakness | **Approved; direct links received** | Download v2 and keep the access email private |
-| DFDC full dataset | Cross-dataset evaluation and robustness check | **Approved; access granted** | Use the approved DeepfakeBench-processed copy for this phase |
-| WildDeepfake | Real-world cross-dataset evaluation | **Approved; agreement accepted** | Use the approved DeepfakeBench-processed copy for this phase |
+| FaceForensics++ | Main training set, c23/c40 control, and manipulation experiments | Permission received; processed backup verified | Restore the private processed backup; use the official script only as fallback |
+| Celeb-DF v2 | Main cross-dataset evaluation; current WGN weakness | **Approved; official-direct preprocessing and backup complete** | Restore the official-direct processed copy and official 518-video test manifest |
+| DFDC full dataset | Cross-dataset evaluation and robustness check | **Approved; processed backup verified** | Restore the approved DeepfakeBench-processed evaluation copy |
+| WildDeepfake | Real-world cross-dataset evaluation | **Approved; processed backup verified** | Restore the approved processed evaluation copy |
 
 FaceShifter and DeepfakeDetection do not need a separate request for the current plan if they are downloaded through the approved FaceForensics++ script. Verify the exact permission scope in the reply received from the FaceForensics authors.
 
@@ -58,7 +71,11 @@ The v1 links are recorded for reference only and are not required for this proje
 - Google Drive (v1): <https://drive.google.com/open?id=10NGF38RgF8FZneKOuCOdRIsPzpC7_WDd>
 - Baidu Netdisk (v1): <https://pan.baidu.com/s/16QulfMFG4TQB9iMZIZnsjQ> — extraction code: `ku0s`
 
-We will use the official test list for cross-dataset evaluation and will not fine-tune WGN on Celeb-DF. Keep the approval email and any downloaded archive outside GitHub.
+We use the official 518-video test list and the direct author archive processed
+with the WGN MTCNN crop pipeline for the current EXP-003 comparison. The older
+DeepfakeBench Celeb-DF copy remains backed up for provenance but is excluded
+from the current candidate comparison. We do not fine-tune WGN on Celeb-DF.
+Keep the approval email and downloaded archive outside GitHub.
 
 ## 4. DFDC
 
@@ -97,9 +114,14 @@ The data will not be redistributed or used commercially, and I will follow the
 privacy, citation, and removal requirements in the dataset agreement.
 ~~~
 
-## 6. Selected preprocessed data source (DeepfakeBench)
+## 6. Processed sources and portable backup
 
-DeepfakeBench is now the selected source for the external-evaluation copies of **Celeb-DF v2, DFDC, and WildDeepfake**. This saves GPU time by avoiding a second full face-detection/cropping pipeline. It does not replace the original dataset providers' terms or citations.
+DeepfakeBench remains the selected processed source for **DFDC** and the
+archived Celeb-DF comparison copy. WildDeepfake uses the approved processed
+face-sequence release. The current primary Celeb-DF result uses the authors'
+official v2 archive and the project WGN preprocessing pipeline. These choices
+save GPU time while preserving the current official-direct Celeb-DF protocol;
+they do not replace the original providers' terms or citations.
 
 - [DeepfakeBench official repository](https://github.com/SCLBD/DeepfakeBench)
 - [Preprocessed RGB data on Google Drive](https://drive.google.com/drive/folders/1N4X3rvx9IhmkEZK-KIk4OxBrQb9BRUcs?usp=drive_link)
@@ -117,19 +139,26 @@ Important limitations and validation requirements:
 - The current WGN loader expects a compatible JSON layout. **Do not assume DeepfakeBench JSON is directly compatible**; first validate paths, labels, video IDs, and split names, then write the small conversion step if needed.
 - Raw external downloads are a fallback only if the processed archive or manifest cannot be validated.
 
-For faithful reproduction, keep the existing approved FF++ c23/c40 pipeline as the baseline/control. Use DeepfakeBench data for the external-evaluation phase to reduce preprocessing time.
+For faithful reproduction, keep the existing approved FF++ c23/c40 pipeline as
+the baseline/control. On a new machine, use the verified private backup first.
+The backup contains only files referenced by the locked manifests and includes
+the manifests, shard checksums, restore script, and post-restore verifier.
 
-## 7. Next data-access actions
+## 7. New-machine data actions
 
-All required permissions have now been received for this phase:
+All required permissions and processed inputs are available for this phase:
 
-1. Keep the FaceForensics++ approval email and existing FF++ download instructions.
-2. Download the DeepfakeBench RGB archive and matching JSON configurations.
-3. Record checksums and inspect the archive layout.
-4. Validate or convert the DeepfakeBench JSON into the WGN manifest format.
-5. Run a small external-evaluation smoke test before renting long GPU sessions.
+1. Clone the GitHub repository to recover code, experiment records, and handoff instructions.
+2. Authenticate with Hugging Face using device login; never place a token in the repository or command history.
+3. Download the private `lucashwang0102/wgn-private-data` repository.
+4. Run `restore.ps1`, which verifies all 13 tar-shard checksums before extraction.
+5. Run `verify_restored_data.py` to confirm all 510,774 manifest-referenced files.
+6. Run the dataset and CUDA smoke tests before resuming a long experiment.
 
-Do not commit signed agreements, private download links, credentials, raw videos, face crops, or checkpoints.
+Only return to the original provider downloads when restore or verification
+fails. Do not commit signed agreements, private download links, credentials,
+raw videos, or face crops. Commit selected checkpoints only under the documented
+experiment handoff policy.
 
 ## 8. Private data-access log
 
@@ -154,12 +183,12 @@ Commit only a redacted status file containing dataset name, approval status, dat
 
 ## 9. Machine preparation rule
 
-Do not start long final GPU runs until:
+Do not start long final GPU runs on a new machine until:
 
-- FF++ data path and manifest are confirmed;
-- DeepfakeBench RGB and JSON archives are downloaded or scheduled;
-- archive checksums and sample paths are recorded privately;
-- the DeepfakeBench-to-WGN manifest validation/conversion passes;
+- the private processed-data backup has been restored;
+- all tar-shard checksums pass;
+- the five locked manifests resolve all 510,774 referenced files;
+- FF++ and external-dataset paths, labels, video IDs, and splits are confirmed;
 - at least one external target smoke test completes;
 - the WGN smoke test can run on the rented environment.
 
