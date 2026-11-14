@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+: "${WGN_REPO_ROOT:?Set WGN_REPO_ROOT to cloned special_project directory}"
+: "${WGN_DATA_ROOT:?Set WGN_DATA_ROOT to processed dataset root}"
+: "${WGN_CHECKPOINT:?Set WGN_CHECKPOINT to SHA-verified EXP-002 best.pt}"
+EXP_ROOT="${WGN_REPO_ROOT}/experiments/EXP-004-ADVERSARIAL-WGN"
+MANIFEST="${WGN_MANIFEST:-${WGN_DATA_ROOT}/FaceForensics++-official.json}"
+RUN_DIR="${WGN_OUTPUT:-${WGN_REPO_ROOT}/exp04_runs/pilot_$(date -u +%Y%m%dT%H%M%SZ)}"
+python "${EXP_ROOT}/code/lab_preflight.py" --repo-root "$WGN_REPO_ROOT" --checkpoint "$WGN_CHECKPOINT" --manifest "$MANIFEST" --data-root "$WGN_DATA_ROOT"
+python -m pytest "${EXP_ROOT}/tests" -q
+python "${EXP_ROOT}/code/run_exp04.py" \
+  --repo-root "$WGN_REPO_ROOT" --checkpoint "$WGN_CHECKPOINT" \
+  --manifest "$MANIFEST" --data-root "$WGN_DATA_ROOT" \
+  --expected-sha256 a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6 \
+  --output "$RUN_DIR" --max-samples 40 --batch-size 4 --steps 3
