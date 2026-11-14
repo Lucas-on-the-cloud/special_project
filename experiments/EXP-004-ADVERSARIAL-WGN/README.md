@@ -1,55 +1,37 @@
-# EXP-004 — Adversarial vulnerability of frozen WGN
+# EXP-004 — Paper-attributed adversarial evaluation of frozen WGN
 
-**Status:** CPU unit tests available; GPU/real-data evaluation pending. The experiment does not train or modify EXP-002.
+**Active protocol: V2** — [docs/PROTOCOL.md](docs/PROTOCOL.md) is the authoritative scientific and lab reproducibility document. **Status:** CPU unit tests can be run; real GPU experiment is pending.
 
-## Research questions
-- RQ1: Can small frequency-domain adversarial perturbations misclassify fake images as real?
-- RQ2: How do subband statistics, gating weights, and attention maps change?
-- RQ3 is reserved for EXP-005; a defense is not assumed necessary until demonstrated.
+## Paper grounding
 
-## Threat model
-White-box, untargeted, image-space L-infinity bounded perturbations, default epsilon 4/255 on RGB in [0,1]. FGSM, pixel PGD, block-DCT low/mid/high/all, pixel-DCT hybrid and an exposure/blur/noise statistical proxy are included.
+1. **FGSM and PGD** — Jia et al. CVPR 2022 §3.1 Eqs. (2)–(3), with original adversarial baselines from Goodfellow 2015 / Madry 2018.
+2. **Jia Frequency Adversarial Attack adaptation** — Jia et al. CVPR 2022 §3.2 Eqs. (4)–(7), Figure 2, Algorithm 1. We preserve block DCT → frequency fusion matrix → gradient optimization → IDCT; but use a specifically documented surrogate fusion M and a pixel-L∞ constraint. This is **NOT an exact author reproduction**.
+3. **Hou StatAttack/MStatAttack** are **NOT yet implemented**. The previous `statistical_proxy` is a heuristic, not their algorithm.
+4. **Jia hybrid Algorithm 2** is **NOT yet implemented**. The previous `hybrid_pgd` is not their method.
 
-**These are research probes, not exact reproductions** of Jia et al. (CVPR 2022) or Hou et al. (CVPR 2023). The Jia hybrid is meta-learning-based in the original paper; our hybrid alternates gradients. Pixel projection after inverse DCT may create out-of-band energy.
+**Do not use the old `code/run_exp04.py` to report paper-method results.** It remains only as a legacy exploratory probe for traceability. The lab script now invokes **`code/run_exp04_v2.py`** and **`code/paper_aligned_attacks.py`**.
 
-## Integration
-Uses EXP-002 WGN source and the frozen reproduced checkpoint with strict state-dict loading. Uses original FF++ official manifest and deterministic test preprocessing. Never stores data or weights in Git.
+## Data and checkpoint
+- Frozen independent EXP-002 reference, strict model state_dict.
+- Official FF++ `test` split, MTCNN-cropped 256×256 PNG faces from the EXP-002 manifest.
+- C23 primary; C40 supplementary under identical c23 checkpoint.
+- Real=0, Fake=1. Attack **fake frames only**; keep Real inputs untouched for AUC reference.
+- Exact checkpoint SHA256 is checked by default. Private data are restored from the repository's authorized private Hugging Face handoff; checkpoints from the public handoff.
 
-## Linux lab pilot
+## Run
 
 ```bash
-git clone https://github.com/Lucas-on-the-cloud/special_project.git
-cd special_project
-# Activate existing WGN-compatible Python environment (torch, torchvision, timm,
-# Pillow, scikit-learn, numpy, PyYAML and pytest).
+cd /lab/special_project
+git pull origin main
 export WGN_REPO_ROOT="$PWD"
-export WGN_DATA_ROOT="/lab/path/to/data"
-export WGN_CHECKPOINT="/lab/path/to/baseline_final/best.pt"
+export WGN_DATA_ROOT="/lab/data"
+export WGN_CHECKPOINT="/lab/ckpt/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt"
 bash experiments/EXP-004-ADVERSARIAL-WGN/run_lab_linux.sh
 ```
 
-Expected frozen checkpoint SHA256:
-`a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6`.
+The 40-frame run is for smoke testing only. Exact full-run CLI, arguments, metric definitions, source links, provenance, experiment gating and known deviations are in [PROTOCOL.md](docs/PROTOCOL.md).
 
-Restore via `docs/checkpoint-handoff.md`. Restore processed data privately via `docs/private-processed-data-handoff.md`; no tokens/secrets in Git. Existing Windows-style relative manifest paths are supported by EXP-002 loader, but absolute roots must be Linux paths.
+**Primary endpoint**: fake-to-real ASR conditional on the clean fake being correctly classified at threshold 0.5. **Secondary**: AUC with Real clean and Fake attacked, plus WGSA statistics/gates/attention shifts. Neither is proof of causal WGSA failure without trained control models.
 
-## Windows pilot (existing C:/sp layout)
-```powershell
-python -m pytest experiments/EXP-004-ADVERSARIAL-WGN/tests -q
-python experiments/EXP-004-ADVERSARIAL-WGN/code/run_exp04.py `
-  --repo-root C:/sp/special_project `
-  --checkpoint C:/sp/checkpoint-handoff/experiments/EXP-002-WGN/reproduction/artifacts/baseline_final/best.pt `
-  --manifest C:/sp/data/FaceForensics++-official.json `
-  --data-root C:/sp/data `
-  --expected-sha256 a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6 `
-  --output C:/sp/exp04_runs/pilot_seed1024 `
-  --max-samples 40 --batch-size 4 --steps 3
-```
-
-After the smoke test succeeds, run a full test in a **new** output directory, omit `--max-samples`, and use `--steps 10` or more. Do not use held-out test sets for defense tuning.
-
-## Artifacts and interpretation
-`environment.json`: checkpoint/manifest SHA256, CUDA and attack settings.
-`results.json`: attacked and same-sample clean AUC, attacked accuracy, fake-to-real ASR conditioned on correctly detected fake inputs, pixel L-infinity, WGSA statistic/gate/attention drift.
-
-This implementation attacks **all** input labels. AUC is calculated over attacked real and fake images; fake-evasion ASR uses only initially correct fake predictions. To establish causality, add matched backbone-only and controlled-WGSA ablations. Attack failure is not a robustness guarantee; evaluate multiple restarts and adaptive attacks later. Video-level uncertainty must account for correlated frames.
+### Important
+EXP-004 does not train or mutate the original model; EXP-005 should proceed only if this experiment reveals a meaningful, reproducible vulnerability and the mechanism controls support it.
