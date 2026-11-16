@@ -1,5 +1,7 @@
 # EXP-004 V2 — Paper-attributed adversarial vulnerability protocol
 
+> Archived V2 provenance. Active code, frequency feasibility, locked FF++/DFDC schedule and current claim limits are in [V3-PROTOCOL.md](V3-PROTOCOL.md). The status and pixel-constrained adaptation below describe the historical implementation, not the current lab run.
+
 **Project**: WGN adversarial resilience (2026-11-14). **Research stage**: RQ1 vulnerability / RQ2 mechanism only. **Status**: implementation and CPU test; no laboratory CUDA evaluation results have been claimed. **Baseline**: EXP-002 frozen independent reproduction, not the WGN authors' official source. **Scope**: reproducible, white-box, fake-to-real evasion of a frozen frame classifier.
 
 ## 1. Research questions and falsifiable hypotheses

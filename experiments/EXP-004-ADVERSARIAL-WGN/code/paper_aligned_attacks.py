@@ -12,6 +12,7 @@ from __future__ import annotations
 import torch
 import torch.nn.functional as F
 from attacks import block_transform
+from jia_faa import checked_logits, require_finite, validate_images
 
 def clamp_box_and_linf(candidate, reference, epsilon):
     """Pixel-domain perturbation budget, RGB values in [0,1]."""
@@ -19,23 +20,40 @@ def clamp_box_and_linf(candidate, reference, epsilon):
 
 def loss_fake_to_real(model,images):
     """Maximize BCE with y=1 for fake inputs (reduces fake logit)."""
-    return F.binary_cross_entropy_with_logits(
-        model(images).reshape(-1),torch.ones(images.size(0),device=images.device))
+    # BCE(z,1)=softplus(-z). Its direct derivative avoids the cancellation
+    # sigmoid(z)-1 in float32 BCEWithLogits backward for confident fakes.
+    return F.softplus(-checked_logits(model, images)).mean()
 
 def fgsm_jia_reference(model, x, epsilon):
+    validate_images(x)
     x=x.detach()
     variable=x.clone().requires_grad_(True)
-    grad=torch.autograd.grad(loss_fake_to_real(model,variable),variable)[0]
+    grad=require_finite(torch.autograd.grad(loss_fake_to_real(model,variable),variable)[0], 'FGSM gradient')
     return clamp_box_and_linf(x+epsilon*grad.sign(),x,epsilon).detach()
 
-def pgd_jia_reference(model, x, epsilon, steps, alpha, *, random_start=False):
+def pgd_jia_reference(model, x, epsilon, steps, alpha, *, random_start=False, restarts=1):
+    validate_images(x)
+    if restarts<1 or steps<1 or epsilon<=0 or alpha<=0:
+        raise ValueError('Invalid PGD setting')
     x=x.detach()
-    adv=(x+torch.empty_like(x).uniform_(-epsilon,epsilon)).clamp(0,1) if random_start else x.clone()
-    for _ in range(steps):
-        var=adv.detach().requires_grad_(True)
-        grad=torch.autograd.grad(loss_fake_to_real(model,var),var)[0]
-        adv=clamp_box_and_linf(var.detach()+alpha*grad.sign(),x,epsilon)
-    return adv.detach()
+    best=x.clone()
+    with torch.no_grad():best_loss=F.softplus(-checked_logits(model,best))
+    for restart in range(restarts):
+        # Always retain the clean-start trajectory; extra restarts use noise.
+        use_random=random_start or restart>0
+        adv=(x+torch.empty_like(x).uniform_(-epsilon,epsilon)).clamp(0,1) if use_random else x.clone()
+        for iteration in range(steps+1):
+            var=adv.detach().requires_grad_(iteration<steps)
+            losses=F.softplus(-checked_logits(model,var))
+            with torch.no_grad():
+                detached_loss=losses.detach()
+                improved=detached_loss>best_loss
+                best=torch.where(improved[:,None,None,None],var.detach(),best)
+                best_loss=torch.maximum(best_loss,detached_loss)
+            if iteration==steps:break
+            grad=require_finite(torch.autograd.grad(losses.mean(),var)[0], 'PGD gradient')
+            adv=clamp_box_and_linf(var.detach()+alpha*grad.sign(),x,epsilon)
+    return best.detach()
 
 def fusion_weight_from_clean_image(x,block=8,floor=.10):
     """Declared substitute for Jia's unspecified dynamic M.
@@ -57,7 +75,7 @@ def fusion_weight_from_clean_image(x,block=8,floor=.10):
 def jia_faa_adaptation(model,x,epsilon,steps,alpha,*,block=8,m_floor=.10):
     """Jia Algorithm-1 structured adaptation, with explicitly specified M.
 
-    Initialize P~U(0,1), optimize sign gradient through IDCT(DCT(x_adv)+M*P),
+    Initialize P~U(0,alpha), optimize sign gradient through IDCT(DCT(x_adv)+M*P),
     reconstruct with IDCT and project to a *pixel* Linf epsilon ball.
     Unlike paper Eq.(4), this evaluation uses a pixel-space budget to
     permit direct comparison against FGSM/PGD. See PROTOCOL.md.

@@ -1,5 +1,9 @@
 # Research context and experiment dependency
 
+## Current scope clarification — 2026-11-15
+
+EXP-004 applies Jia frequency-domain attacks to frozen reproduced WGN on FF++, DFDC, Celeb-DF-v2 official-direct and WildDeepfake. The user subsequently replaced the EXP-005 architecture draft with a separate Hou StatAttack/MStatAttack study. EXP-005 planning must not change EXP-004's locked algorithms, metrics or interpretation. Future architecture work depends on both attack studies; the old RCWG draft is archived.
+
 ## Project storyline
 
 This repository follows a staged research program rather than independent code demos.
@@ -51,18 +55,11 @@ WGSA mechanism diagnostics
 
 EXP-004 is **evaluation**, not model improvement. It must preserve model weights, dataset splits and threshold.
 
-### EXP-005 — Develop a defense module only after EXP-004
-Purpose: if EXP-004 establishes a reproducible adversarial vulnerability, identify the failure mechanism and design a new defense module integrated into WGSA/WGN.
+### EXP-005 — A second attack study using Hou2023
 
-The intended publication contribution is not simply "WGN + one extra module." A defensible contribution requires:
-1. a verified vulnerability/failure mechanism;
-2. a method motivated by that mechanism;
-3. comparison with existing defenses and standard adversarial training;
-4. adaptive attacks against the defended model;
-5. preservation or improvement of clean and cross-domain generalization;
-6. ablation and computational-cost analysis.
+Purpose: a separate study of StatAttack and MStatAttack on the same frozen checkpoint and four processed test cohorts. It needs real-reference feature distributions and an audited WGN adapter. Its implementation, live status and results are managed separately from this EXP-004 publication; it does not train a defense or activate the former RCWG prototype.
 
-If EXP-004 does not establish a meaningful vulnerability, EXP-005 must revise the hypothesis rather than fabricate a defense problem.
+Future defense/architecture work remains unnumbered and conditional on evidence from the attacks and causal/ablation controls. It would require comparison with standard adversarial training, adaptive evaluation, clean/generalization retention and computational-cost analysis.
 
 ## Claim discipline
 
@@ -75,7 +72,7 @@ Not permitted without causal controls:
 - "Frequency attacks always defeat WGN."
 - "The model is adversarially robust" because one attack fails.
 
-Not permitted for EXP-005 until validated:
+Not permitted as claims about the archived prototype:
 - "RCWG is a novel defense."
 - "RCWG improves generalization/robustness."
 
@@ -90,19 +87,17 @@ EXP-004 clean-reference validation
        v
 EXP-004 paper-grounded attacks + mechanism measurements
        |
-       +-- no meaningful vulnerability --> revise research question
+       v
+EXP-005 Hou statistical-consistency attack evaluation
        |
-       +-- meaningful vulnerability
-               |
-               v
-       causal/ablation analysis
-               |
-               v
-       EXP-005 defense module
-               |
-               v
-       adaptive defense evaluation + generalization
-               |
-               v
-       paper contribution assessment
+       v
+Joint evidence review and causal/ablation controls
+       |
+       +-- no supported weakness --> revise research question
+       |
+       +-- supported weakness --> future defense design
+                                      |
+                                      v
+                              adaptive evaluation and
+                              contribution assessment
 ```

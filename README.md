@@ -12,7 +12,8 @@ special_project/
 └── experiments/
     ├── EXP-001-DFD-HR/             deferred DFD-HR reproduction work
     ├── EXP-002-WGN/                WGN reproduction and frozen reference
-    └── EXP-003-IMPROVEMENT-WGN/    WGN improvement experiments
+    ├── EXP-003-IMPROVEMENT-WGN/    WGN improvement experiments
+    └── EXP-004-ADVERSARIAL-WGN/    Frozen-WGN adversarial evaluation
 ```
 
 ## Active experiments
@@ -38,6 +39,29 @@ are running.
 
 The current comparison is available in
 [`THREE-EXPERIMENT-COMPARISON.md`](experiments/EXP-003-IMPROVEMENT-WGN/results/THREE-EXPERIMENT-COMPARISON.md).
+
+### EXP-004 — adversarial evaluation of frozen WGN
+
+[EXP-004](experiments/EXP-004-ADVERSARIAL-WGN/) completed four methods on all
+325,554 processed test frames across FF++ c23, DFDC, Celeb-DF-v2 official-direct
+and WildDeepfake. The frozen checkpoint and attack settings are recorded with
+clean-reference gates, source/cohort checksums and completed audits.
+
+| Full test dataset | FAA flips / eligible Fake | FAA ASR |
+|---|---:|---:|
+| FF++ c23 | 2,731/5,333 | 51.21% |
+| DFDC | 36,072/42,932 | 84.02% |
+| Celeb-DF-v2 official-direct | 7,946/8,278 | 95.99% |
+| WildDeepfake | 82,059/88,521 | 92.70% |
+
+[Complete tables and full-precision CSV](experiments/EXP-004-ADVERSARIAL-WGN/results/tables/README.md)
+cover all 16 dataset/method combinations, frame/video metrics, quality, compute,
+manipulations and mechanism diagnostics. See the
+[overview](experiments/EXP-004-ADVERSARIAL-WGN/results/cross-dataset-overview.md)
+and [validation bundle](experiments/EXP-004-ADVERSARIAL-WGN/validation/README.md).
+FAA is an explicit Jia reconstruction, not author-verified exact reproduction;
+ASR conditions on clean-correct Fake. Pixel/DCT budgets are different units,
+and feature drift alone does not establish causal WGSA weakness.
 
 ## Artifact policy
 

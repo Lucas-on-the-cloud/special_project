@@ -9,6 +9,7 @@ from collections import defaultdict
 import json
 from pathlib import Path
 import random
+from paper_aligned_attacks import METHODS
 from sklearn.metrics import roc_auc_score
 
 def aggregate(rows):
@@ -27,6 +28,26 @@ def fake_asr(rows):
     eligible=[r for r in rows if r["label"]==1 and r["clean_score"]>=.5]
     return (sum(r["attacked_score"]<.5 for r in eligible)/len(eligible)) if eligible else None
 
+def counts(rows):
+    eligible=[r for r in rows if r['label']==1 and r['clean_score']>=.5]
+    return {'eligible_clean_correct_fake':len(eligible),
+            'fake_to_real_flips':sum(r['attacked_score']<.5 for r in eligible),
+            'asr_conditional':fake_asr(rows)}
+
+def mechanism_groups(rows):
+    """Descriptive association, not a causal WGSA attribution."""
+    eligible=[r for r in rows if r['label']==1 and r['clean_score']>=.5]
+    result={}
+    for name,selected in [('success',[r for r in eligible if r['attacked_score']<.5]),
+                          ('failure',[r for r in eligible if r['attacked_score']>=.5])]:
+        fields=['mean_mae','abs_mean_mae','variance_mae','energy_mae','gates_mae','attention_mae',
+                'linf','dct_linf','dct_l2','mse','psnr_db','ssim']
+        result[name]={'frames':len(selected)}
+        for field in fields:
+            values=[r[field] for r in selected if r.get(field) is not None]
+            result[name][field+'_mean']=sum(values)/len(values) if values else None
+    return result
+
 def video_auc(rows,field):
     y=[r["label"] for r in rows]
     return float(roc_auc_score(y,[r[field] for r in rows])) if len(set(y))==2 else None
@@ -36,7 +57,7 @@ def cluster_bootstrap_asr(rows,repeats=1000,seed=1024):
     # are kept together within a bootstrap replicate.
     groups=defaultdict(list)
     for r in rows:
-        groups[r["video"]].append(r)
+        groups[r.get('source_cluster',r['video'])].append(r)
     keys=sorted(groups)
     if len(keys)<2:return None
     rng=random.Random(seed);values=[]
@@ -51,7 +72,7 @@ def cluster_bootstrap_asr(rows,repeats=1000,seed=1024):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--run",type=Path,required=True)
-    p.add_argument("--method",required=True,choices=("fgsm","pgd","jia-faa-adapt"))
+    p.add_argument("--method",required=True,choices=(*METHODS,'clean','frequency-init-control','jia-faa-reconstruction'))
     p.add_argument("--bootstrap",type=int,default=1000)
     a=p.parse_args()
     frames=[json.loads(line) for line in (a.run/(a.method+"_per_frame.jsonl")).read_text().splitlines() if line.strip()]
@@ -59,12 +80,16 @@ def main():
     manip={}
     for group in sorted(set(r["manipulation"] for r in frames if r["label"]==1)):
         selected=[r for r in frames if r["manipulation"]==group]
-        manip[group]={"total_fake_frames":len(selected),"asr_conditional":fake_asr(selected)}
+        manip[group]={"total_fake_frames":len(selected),**counts(selected),'mechanism':mechanism_groups(selected)}
     output={"attack":a.method,"frame_asr":fake_asr(frames),
         "frame_asr_95pct_cluster_bootstrap":cluster_bootstrap_asr(frames,a.bootstrap),
         "video_count":len(videos),"clean_video_auc":video_auc(videos,"clean_score"),
         "attacked_fake_clean_real_video_auc":video_auc(videos,"attacked_score"),
-        "video_fake_asr":fake_asr(videos),"by_manipulation":manip}
+        "video_fake_asr":fake_asr(videos),"by_manipulation":manip,
+        'frame_counts':counts(frames),'video_counts':counts(videos),
+        'mechanism_success_vs_failure':mechanism_groups(frames),
+        'bootstrap_clusters':len({r.get('source_cluster',r['video']) for r in frames}),
+        'interpretation':'diagnostic associations only; external dataset video/sequence IDs may lack shared original-source linkage; intervals exploratory'}
     path=a.run/(a.method+"_video_analysis.json")
     path.write_text(json.dumps(output,indent=2))
     print(json.dumps(output,indent=2))

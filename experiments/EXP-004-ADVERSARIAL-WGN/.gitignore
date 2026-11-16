@@ -4,5 +4,22 @@ __pycache__/
 *.pth
 *.ckpt
 results/
+# Keep only compact, face-free evaluation evidence reviewable in Git.
+!/results/
+/results/*
+!/results/README.md
+!/results/initial-evaluation.json
+!/results/full-dfdc-report.md
+!/results/full-dfdc-evaluation.json
+!/results/full-celebdf-report.md
+!/results/full-celebdf-evaluation.json
+!/results/full-wilddeepfake-report.md
+!/results/full-wilddeepfake-evaluation.json
+!/results/cross-dataset-overview.md
+!/results/tables/
+/results/tables/*
+!/results/tables/*.csv
+!/results/tables/*.json
+!/results/tables/*.md
 artifacts/
 runs/

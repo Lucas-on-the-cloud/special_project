@@ -1,0 +1,32 @@
+{
+  "generator": "reporting/export_tables.py",
+  "generator_sha256": "5834a68d632f4d1d8d7dc8bb38f5db51bb6df16cf47b29724c1b44560aef9d8d",
+  "inputs_sha256": {
+    "initial-evaluation.json": "d02269c6eadd0725d0943a7a5833d54efcf29691f3e655278aea06c84576ff80",
+    "full-dfdc-evaluation.json": "a0aa4ff5610fcffeeee1945fb36f9960b1f6175daafeb326ad5ac24118b2366a",
+    "full-celebdf-evaluation.json": "bdcb30434424b667ac196c63e9e3896d5b9d3ae1246029ebf707f5ebe671feca",
+    "full-wilddeepfake-evaluation.json": "1d96d210c09d08c517584c5ead0889d4d7cba294e6611fe823a651fdc60730aa"
+  },
+  "rows": {
+    "cohorts.csv": 4,
+    "methods.csv": 16,
+    "videos.csv": 16,
+    "manipulations.csv": 28,
+    "mechanism-outcomes.csv": 32,
+    "haar-bands.csv": 320,
+    "paired-frequency.csv": 4,
+    "all-numeric-values.csv": 3841
+  },
+  "outputs_sha256": {
+    "README.md": "b422fd723df436b0a8f7a002a58ad229bc663b2941840a4e46c60f917218ee98",
+    "all-numeric-values.csv": "566b88fbb375897ab673a3889e5075e8ca3567b5bc5c25e4f726e42f6e58c1bc",
+    "cohorts.csv": "af41b8bd5c2ab9c6871fceffae22ae47395349087c1567e5578cd93c7d67dd6c",
+    "haar-bands.csv": "ec78175a5764a79e81165ad2614f2c6dbe1642021a4e1a8d668cafacdfe15e17",
+    "manipulations.csv": "7ac99dceb5ca17451afda1083c75c81b6821a5efc1cdc86777e30cb3fc5bddec",
+    "mechanism-outcomes.csv": "8600aeec2cb88a4e48febbaa56c4c349cb8febac548e70babbce95f37e213cb7",
+    "methods.csv": "bea1e7e9ea926d8e79d6d2d8116035adf311ef4d48b531c4f7080218284d0a7f",
+    "paired-frequency.csv": "582ff803945041359ddb5b0d2cd2f039c68e9797dacb6d5abc371523094a49f3",
+    "videos.csv": "a691c86e18db302b6fa93166d56cc1767ae5599067de0dc2ff374f2a7e7563b0"
+  },
+  "scope": "four full processed test cohorts; clean-correct Fake evasion; source JSON precision retained"
+}

@@ -34,7 +34,7 @@ def file_sha256(path):
 def select_pilot(records, maximum, seed):
     """Deterministic round-robin by video, grouped by label+manipulation.
     Ensures both labels, multiple manipulation groups, multiple videos.
-    Never selects from train or val splits.
+    Split selection belongs to the caller; this function only selects indices.
     """
     if maximum<=0 or maximum>=len(records):
         return list(range(len(records)))
@@ -49,11 +49,12 @@ def select_pilot(records, maximum, seed):
         order=sorted(videos)
         rng.shuffle(order)
         pool[group]=[]
+        remaining=[]
         for video in order:
             indices=sorted(videos[video])
             rng.shuffle(indices)
             pool[group].append(indices[0])
-        remaining=[index for video in order for index in videos[video][1:]]
+            remaining.extend(indices[1:])
         pool[group]+=remaining
     selection=[]
     by_label={label:sorted(k for k in pool if k[0]==label) for label in (0,1)}
@@ -67,6 +68,8 @@ def select_pilot(records, maximum, seed):
                 per_label[label]-=1
             i+=1
     if not selection:raise ValueError("Empty pilot")
+    if len(selection)!=len(set(selection)):
+        raise AssertionError('Sampler selected duplicate records')
     return sorted(selection)
 
 def parse():
@@ -89,6 +92,12 @@ def auc(labels,scores):
     return float(roc_auc_score(labels,scores)) if set(labels)=={0,1} else None
 
 def evaluation_summary(rows,method):
+    if not rows:
+        raise ValueError('Empty evaluation population')
+    for row in rows:
+        values=[row[k] for k in ('clean_score','attacked_score','linf','attention_mae','gates_mae')]
+        if not np.isfinite(values).all():
+            raise FloatingPointError('Non-finite per-frame metric')
     total_fake=[r for r in rows if r["label"]==1]
     clean_correct=[r for r in total_fake if r["clean_score"]>=.5]
     flipped=[r for r in clean_correct if r["attacked_score"]<.5]

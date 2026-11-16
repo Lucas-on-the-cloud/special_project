@@ -8,18 +8,27 @@ class WGSADiagnostics:
         if not hasattr(model,"wgsa"): raise ValueError("Expected model.wgsa")
         self.module=model.wgsa
         self.current=None
+        self.enabled=True
         self.handle=self.module.register_forward_hook(self._hook)
     def _hook(self,module,inputs,outputs):
+        if not self.enabled:return
         with torch.no_grad():
             features=inputs[0].detach()
             guide=.5*(features.mean(1,keepdim=True)+features.amax(1,keepdim=True))
             bands=F.conv2d(guide,module.haar_kernels,stride=2)
             means=bands.mean((2,3))
             self.current={"mean":means.cpu(),"abs_mean":bands.abs().mean((2,3)).cpu(),
+                          "variance":bands.var((2,3),unbiased=False).cpu(),
                           "energy":bands.square().mean((2,3)).cpu(),"gates":module.gate(means).cpu(),
                           "attention":outputs[1].detach().cpu()}
     def close(self): self.handle.remove()
 
 def compare_diagnostics(clean,adversarial):
-    return {name+"_mae":float((clean[name]-adversarial[name]).abs().mean())
-            for name in ("mean","abs_mean","energy","gates","attention")}
+    names=[name for name in ('mean','abs_mean','variance','energy','gates','attention')
+           if name in clean and name in adversarial]
+    result={name+"_mae":float((clean[name]-adversarial[name]).abs().mean()) for name in names}
+    for name in names:
+        if name!='attention':
+            result[name+'_clean']=clean[name].flatten().tolist()
+            result[name+'_attacked']=adversarial[name].flatten().tolist()
+    return result
