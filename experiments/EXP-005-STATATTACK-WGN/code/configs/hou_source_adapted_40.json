@@ -1,0 +1,42 @@
+{
+  "name": "hou-source-adapted-40-mstat3-v1",
+  "seed": 1024,
+  "optimization_batch": 30,
+  "evaluation_batch": 32,
+  "reference_bank_size": 960,
+  "reference_access": "FF++ c23 train Real only; deterministic round-robin cyclic bank",
+  "attack": {
+    "steps": 40,
+    "degree": 11,
+    "tune_scale": 8,
+    "kernel": 3,
+    "total_epsilon": 0.23529411764705882,
+    "noise_epsilon": 0.01568627450980392,
+    "exposure_lr": 0.1,
+    "flow_lr": 0.001,
+    "noise_lr": 0.00392156862745098,
+    "blur_lr": 0.1,
+    "mixture_lr": 0.1,
+    "lambda_mmd": 10.0,
+    "lambda_bias": 10.0,
+    "lambda_flow": 10.0,
+    "momentum": 1.0,
+    "exposure_log_limit": 20.0,
+    "bandwidth_floor": 1e-12,
+    "layers": 3
+  },
+  "algorithm_spec_sha256": "9b7ecce92cd8dc568c729d38b6f8c1fbd5ca393b7bc769424b347ccf34d6f795",
+  "methods": [
+    "stat-init-control",
+    "mstat-init-control",
+    "hou-statattack-wgn-adapted",
+    "hou-mstatattack-reconstruction"
+  ],
+  "datasets": [
+    "ffpp",
+    "celebdf",
+    "dfdc",
+    "wilddeepfake"
+  ],
+  "fidelity": "source-adapted StatAttack40 and explicit MStatAttack reconstruction; not exact author experiment"
+}

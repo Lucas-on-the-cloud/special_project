@@ -1,0 +1,74 @@
+{
+  "review_date": "2026-11-15",
+  "status": "complete:49 CPU tests, four actual-WGN clean gates, CUDA smoke, and all four full-cohort method/control evaluations and audits passed; DFDC resume migration is recorded in runtime environment metadata",
+  "user_proposal": {
+    "filename": "WGN_Adversarial_Resilience_Research_Proposal.pdf",
+    "sha256": "c41df1e4fad4b77d91e4400d2c80219f22ebe325d945793cb95cddb3ab5f91cc",
+    "reading_list_item": 2,
+    "role": "research context; current user request defines EXP-005 scope"
+  },
+  "paper": {
+    "title": "Evading DeepFake Detectors via Adversarial Statistical Consistency",
+    "authors": "Yang Hou et al.",
+    "venue": "CVPR 2023",
+    "url": "https://openaccess.thecvf.com/content/CVPR2023/papers/Hou_Evading_DeepFake_Detectors_via_Adversarial_Statistical_Consistency_CVPR_2023_paper.pdf",
+    "sha256": "7f706ee7c50ced98ad91e0a3479ac79ef65077e1e2d5bee44009b139cc21d548",
+    "supplement_read_url": "https://arxiv.org/html/2304.11670",
+    "cache_path_outside_git": "exp04-runtime/sources/hou-cvpr2023.pdf"
+  },
+  "source_repository": {
+    "url": "https://github.com/tobuta/evadingfakedetector",
+    "commit": "bd62d1f44cf822f665a192aa348925ec6c1fa033",
+    "reviewed_files": [
+      {
+        "path": "README.md",
+        "git_blob_sha": "5d3b2a5c72f46a8dcaf9d642fc5550910a178d27",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/README.md"
+      },
+      {
+        "path": "demo.py",
+        "git_blob_sha": "96a734c6068ee8a7edad8cd5868c2a968f8e702b",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/demo.py"
+      },
+      {
+        "path": "attack/mmd.py",
+        "git_blob_sha": "3227820035d6c9b7bed82183503cd4e147f9e441",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/attack/mmd.py"
+      },
+      {
+        "path": "attack/blur.py",
+        "git_blob_sha": "1e2062633078bd8da863079de95c1ad787393a71",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/attack/blur.py"
+      },
+      {
+        "path": "model/resnet.py",
+        "git_blob_sha": "1b6e9d607314805a4af5d5fc3d0ac3b2734a09b6",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/model/resnet.py"
+      },
+      {
+        "path": "utils/dataloader.py",
+        "git_blob_sha": "41154506034ee9c870471073e28dc71af9f36809",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/utils/dataloader.py"
+      },
+      {
+        "path": "requirements.txt",
+        "git_blob_sha": "3a7bc08256ee672e932444ab69cd6b80a6bbefbd",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/requirements.txt"
+      },
+      {
+        "path": "attack/stat_attack.py",
+        "git_blob_sha": "417cf6fd720fa872fdc77bf5fbb56722dc7a205d",
+        "url": "https://github.com/tobuta/evadingfakedetector/blob/bd62d1f44cf822f665a192aa348925ec6c1fa033/attack/stat_attack.py"
+      }
+    ],
+    "statattack_present": true,
+    "mstatattack_present_in_reviewed_tree": false
+  },
+  "known_differences": [
+    "detector and dataset adaptation to frozen WGN and four project datasets",
+    "unresolved paper/supplement/source defaults must be explicitly selected before final lock",
+    "real-reference-bank protocol is a declared project choice",
+    "MStatAttack requires reconstruction from paper; not in reviewed tree"
+  ],
+  "legacy_prototype": "docs/archive/exp005-rcwg-draft/ARCHIVE.json"
+}

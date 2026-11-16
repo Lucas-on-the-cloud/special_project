@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+*.pt
+*.pth
+*.sqlite*
+!/results/
+/results/*
+!/results/*-report.md
+!/results/*-evaluation.json
+!/results/five-method-comparison.md
+!/results/dfdc-resume-audit.json

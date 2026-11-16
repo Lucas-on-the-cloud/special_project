@@ -13,7 +13,8 @@ special_project/
     ├── EXP-001-DFD-HR/             deferred DFD-HR reproduction work
     ├── EXP-002-WGN/                WGN reproduction and frozen reference
     ├── EXP-003-IMPROVEMENT-WGN/    WGN improvement experiments
-    └── EXP-004-ADVERSARIAL-WGN/    Frozen-WGN adversarial evaluation
+    ├── EXP-004-ADVERSARIAL-WGN/    Jia FAA evaluation of frozen WGN
+    └── EXP-005-STATATTACK-WGN/     Hou StatAttack/MStatAttack evaluation
 ```
 
 ## Active experiments
@@ -40,28 +41,24 @@ are running.
 The current comparison is available in
 [`THREE-EXPERIMENT-COMPARISON.md`](experiments/EXP-003-IMPROVEMENT-WGN/results/THREE-EXPERIMENT-COMPARISON.md).
 
-### EXP-004 — adversarial evaluation of frozen WGN
+### EXP-004 / EXP-005 — adversarial evaluation
 
-[EXP-004](experiments/EXP-004-ADVERSARIAL-WGN/) completed four methods on all
-325,554 processed test frames across FF++ c23, DFDC, Celeb-DF-v2 official-direct
-and WildDeepfake. The frozen checkpoint and attack settings are recorded with
-clean-reference gates, source/cohort checksums and completed audits.
+[`EXP-004`](experiments/EXP-004-ADVERSARIAL-WGN/) evaluates the frozen WGN
+with Jia FAA reconstruction and pixel controls. Full FF++ c23, DFDC and
+Celeb-DF-v2 official-direct and WildDeepfake are complete with audits passed.
+See the [four-dataset overview](experiments/EXP-004-ADVERSARIAL-WGN/results/cross-dataset-overview.md).
 
-| Full test dataset | FAA flips / eligible Fake | FAA ASR |
-|---|---:|---:|
-| FF++ c23 | 2,731/5,333 | 51.21% |
-| DFDC | 36,072/42,932 | 84.02% |
-| Celeb-DF-v2 official-direct | 7,946/8,278 | 95.99% |
-| WildDeepfake | 82,059/88,521 | 92.70% |
-
-[Complete tables and full-precision CSV](experiments/EXP-004-ADVERSARIAL-WGN/results/tables/README.md)
-cover all 16 dataset/method combinations, frame/video metrics, quality, compute,
-manipulations and mechanism diagnostics. See the
-[overview](experiments/EXP-004-ADVERSARIAL-WGN/results/cross-dataset-overview.md)
-and [validation bundle](experiments/EXP-004-ADVERSARIAL-WGN/validation/README.md).
-FAA is an explicit Jia reconstruction, not author-verified exact reproduction;
-ASR conditions on clean-correct Fake. Pixel/DCT budgets are different units,
-and feature drift alone does not establish causal WGSA weakness.
+[`EXP-005`](experiments/EXP-005-STATATTACK-WGN/) applies Hou2023
+StatAttack/MStatAttack to the same four full processed test cohorts; all runs
+and audits are complete. The attacks achieved 92.12–95.21% ASR, conditional
+on clean-correct Fake frames. The complete [five-method comparison](experiments/EXP-005-STATATTACK-WGN/results/five-method-comparison.md)
+includes EXP-004 FGSM, PGD and Jia FAA alongside both EXP-005 methods, with
+budget and fidelity qualifications. Per-dataset results, source, tests,
+configuration and [execution plan](experiments/EXP-005-STATATTACK-WGN/PLAN.md)
+are in the experiment folder. The former RCWG architecture draft is preserved
+in [the archive](docs/archive/exp005-rcwg-draft/README.md). Both studies keep
+EXP-002 weights frozen; future defense design follows the evidence rather
+than the archived prototype.
 
 ## Artifact policy
 

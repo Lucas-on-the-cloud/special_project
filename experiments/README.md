@@ -8,16 +8,17 @@ artifacts. Datasets and generated face crops remain outside Git.
 | [EXP-001-DFD-HR](EXP-001-DFD-HR/) | DFD-HR reproduction planning | Deferred |
 | [EXP-002-WGN](EXP-002-WGN/) | Independent WGN reproduction and frozen reference checkpoint | Main/cross-dataset/cross-manipulation reproduction complete |
 | [EXP-003-IMPROVEMENT-WGN](EXP-003-IMPROVEMENT-WGN/) | WGN generalization improvements and ablations | Completed candidates retained as project context |
-| [EXP-004-ADVERSARIAL-WGN](EXP-004-ADVERSARIAL-WGN/) | Apply prior-paper adversarial mechanisms to frozen EXP-002 WGN and measure vulnerability/mechanism | V2 protocol/code/tests prepared; laboratory GPU evaluation pending |
-| [EXP-005-ROBUST-WGSA](EXP-005-ROBUST-WGSA/) | Candidate adversarial-defense module integrated with WGSA | Prototype/hypothesis only; blocked on EXP-004 evidence |
+| [EXP-004-ADVERSARIAL-WGN](EXP-004-ADVERSARIAL-WGN/) | Jia FAA plus FGSM/PGD controls on frozen EXP-002 WGN | Four full cohorts complete; audits and published result tables available |
+| [EXP-005-STATATTACK-WGN](EXP-005-STATATTACK-WGN/) | Hou StatAttack/MStatAttack plus matched initialization controls | Four full cohorts complete; audits pass; five-method comparison published in results folder |
+| [EXP-005-ROBUST-WGSA](EXP-005-ROBUST-WGSA/) | Superseded RCWG defense draft pointer | Draft archived; not an active experiment |
 
 ## Research dependency
 
 EXP-002 is the frozen reproduced baseline. EXP-003 explores generalization
-improvements. EXP-004 opens a separate adversarial-resilience branch by
-challenging EXP-002 with paper-grounded attacks. EXP-005 is conditional: a
-defense architecture should be developed and claimed only after EXP-004
-establishes a reproducible vulnerability and mechanism worth targeting.
+improvements. EXP-004 and EXP-005 challenge the frozen WGN with attacks from
+two papers on the same four full processed cohorts. EXP-005's former RCWG
+defense draft is archived. Any future defense study should be based on both
+attack evaluations and state its own validated protocol.
 
 Raw datasets, generated crops and checkpoints are never stored in ordinary Git
 history; follow the repository checkpoint/data handoff policies.

@@ -1,0 +1,39 @@
+{
+  "status": "recovered_and_complete",
+  "dataset": "dfdc",
+  "cohort_fingerprint": "9ea96ce0ad15da769c91d99be9e14db37e578bb4ef5d735b2c6ece97ef6655e4",
+  "checkpoint_sha256": "a914832d67de66edce3841259e03ebb85aea536e58b4d7a626ec1769acfe45e6",
+  "profile_sha256": "0f943deafd04080e079f7abb46f414c6541fcaabff41305930ed3cbc73f981ea",
+  "canonical_exp04_jsonl_sha256": "45d220fc585dada9feac6ad4df40c8c65d7ec79d87ca832d0ec9eebbd0459640",
+  "clean_score_preflight": {
+    "eligible_fake": 42932,
+    "attack_optimization_batch": 30,
+    "scoring_batch_shape": 32,
+    "threshold": 0.5,
+    "clean_class_changes": 0,
+    "max_absolute_probability_delta": 0.0013550519943237305,
+    "p50_absolute_probability_delta": 0.0,
+    "p95_absolute_probability_delta": 0.0,
+    "p99_absolute_probability_delta": 0.0,
+    "elapsed_seconds": 43.29620425309986,
+    "interpretation": "Canonical EXP-004 scores and eligibility were retained; batch-shape rechecks preserved every clean class. Per-sample rechecked scores and absolute deltas are recorded in the full runtime outputs."
+  },
+  "resume_migration": {
+    "sqlite_integrity_before_resume": "ok",
+    "committed_before_resume": {
+      "stat-init-control": {
+        "frames": 42900,
+        "batches": 1430
+      }
+    },
+    "runner_before_sha256": "aaab0bd1f27ccbc036ed8ae56a35ad03f0d2b1ed9a8e792e48ca289c3d4e5384",
+    "runner_after_sha256": "68a6b4c3552c014f431d238ffc7202b427dd16779e23716aa9e665cc6bc386cf",
+    "attack_profile_or_cohort_changed": false,
+    "previous_runner_snapshot_preserved": true
+  },
+  "completion": {
+    "all_four_methods_full_cohort": true,
+    "per_dataset_integrity_audit_passed": true,
+    "queue_finished_utc": "2026-11-16T11:50:47.127611+00:00"
+  }
+}
