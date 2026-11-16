@@ -1,6 +1,6 @@
 # EXP-004 — Kết quả đánh giá đầu tiên
 
-**Cập nhật 2026-11-16:** Đã hoàn tất cả bốn full test cohorts. Xem [tổng quan](cross-dataset-overview.md), [đủ 16 tổ hợp dataset × method và CSV full precision](tables/README.md), [Celeb-DF-v2](full-celebdf-report.md) và [WildDeepfake](full-wilddeepfake-report.md). Phần dưới giữ nguyên báo cáo lần đầu.
+**Cập nhật 2026-11-16:** Đã hoàn tất cả bốn full test cohorts. Xem [tổng quan](cross-dataset-overview.md), [đủ 16 tổ hợp dataset × method và CSV full precision](tables/COMPLETE-TABLES.md), [Celeb-DF-v2](full-celebdf-report.md) và [WildDeepfake](full-wilddeepfake-report.md). Phần dưới giữ nguyên báo cáo lần đầu.
 
 Ngày chạy: 2026-11-15. Victim: WGN reproduce của EXP-002, checkpoint cố định. EXP-005 không thuộc phạm vi báo cáo này.
 

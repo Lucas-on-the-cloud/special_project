@@ -163,7 +163,7 @@ def generate(destination):
         'Các bảng chính dùng full DFDC132.116 frames; cohort DFDC2.000 ảnh ban đầu vẫn được giữ trong `initial-evaluation.json` để truy vết, không trộn vào full results.','',
         'Nguồn: [initial evidence (FF++ full)](../initial-evaluation.json), [DFDC full](../full-dfdc-evaluation.json), [Celeb-DF-v2 full](../full-celebdf-evaluation.json), [WildDeepfake full](../full-wilddeepfake-evaluation.json). [Tổng quan](../cross-dataset-overview.md).','',
         'CSV fractions nằm trong[0,1] cho ASR/ACC/AUC; các cột có `_pp` (nếu có) dùng điểm phần trăm. `all-numeric-values.csv` giữ mọi numeric/null/bool leaf theo RFC6901 JSON pointer, gồm các thống kê chưa đưa thành cột riêng. JSON `null` không bị biến thành0. Không công bố ảnh/weights/raw per-frame logs trong Git.','']
-    (destination/'README.md').write_text('\n'.join(lines))
+    (destination/'COMPLETE-TABLES.md').write_text('\n'.join(lines))
     manifest={'generator':'reporting/export_tables.py','generator_sha256':sha(Path(__file__)),
         'inputs_sha256':inputs,'rows':{name:len(rows) for name,rows in exports.items()},
         'outputs_sha256':{p.name:sha(p) for p in sorted(destination.iterdir()) if p.name!='PROVENANCE.json'},

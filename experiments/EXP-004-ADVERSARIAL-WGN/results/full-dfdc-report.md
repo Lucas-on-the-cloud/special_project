@@ -57,7 +57,7 @@ FAA giữ nguyên clean ở 10/42.932 ảnh đủ điều kiện; PSNR trung bì
 
 ## Evidence
 
-- [Full compact evidence](full-dfdc-evaluation.json), [kết quả cohort ban đầu](README.md).
+- [Full compact evidence](full-dfdc-evaluation.json), [kết quả cohort ban đầu](INITIAL-EVALUATION-REPORT.md).
 - [Cấu hình full đã khóa](../code/configs/final_reconstruction_dfdc_full.json); [protocol](../docs/V3-PROTOCOL.md).
 - Runtime: `exp04-runtime/runs/final_dfdc_full_reconstruction_001/`; có completion marker, per-frame JSONL, source snapshots/diff, metadata, video analyses và ví dụ float32/PNG. Cohort: `exp04-runtime/cohorts/full_dfdc.json`.
 - Kiểm tra hậu chạy: cohort/config và source identity, unique records, paired clean scores, Real/false negatives không đổi, bounds, best-iterate và consistency counts đều qua kiểm tra. Ảnh và checkpoint giữ ngoài Git.

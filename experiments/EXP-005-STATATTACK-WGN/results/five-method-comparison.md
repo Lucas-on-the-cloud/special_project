@@ -27,6 +27,6 @@ These are processed face-frame evaluations; the full original-video re-encoding 
 
 ## Source tables and reports
 
-- [Complete EXP-004 tables](../../EXP-004-ADVERSARIAL-WGN/results/tables/README.md) include per-method flips, confidence intervals, quality, runtime, video/sequence and manipulation summaries.
+- [Complete EXP-004 tables](../../EXP-004-ADVERSARIAL-WGN/results/tables/COMPLETE-TABLES.md) include per-method flips, confidence intervals, quality, runtime, video/sequence and manipulation summaries.
 - [EXP-005 full-cohort summary](../README.md#full-cohort-results) and its [FF++](ffpp-report.md), [Celeb-DF](celebdf-report.md), [DFDC](dfdc-report.md) and [WildDeepfake](wilddeepfake-report.md) reports provide per-method counts, AUC and quality summaries.
 - [EXP-004 protocol](../../EXP-004-ADVERSARIAL-WGN/docs/V3-PROTOCOL.md), [Jia specification](../../EXP-004-ADVERSARIAL-WGN/docs/JIA-ALGORITHM-SPEC.md) and [Hou algorithm specification](../docs/HOU-ALGORITHM-SPEC.md) record implementation details and fidelity boundaries.

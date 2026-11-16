@@ -51,7 +51,7 @@ Initial FF++ / 2,000-frame DFDC results remain preserved below:
 | Frequency initialization | 6.08% (324/5,333) | 23.60% (143/606) |
 | FAA reconstruction | 51.21% (2,731/5,333) | 83.50% (506/606) |
 
-See [results report](../results/README.md) and [compact evidence](../results/initial-evaluation.json) for uncertainty, quality and mechanism observations. Pixel/frequency budgets do not establish matched strength. DFDC's 394 baseline false negatives are excluded from conditional ASR, not counted as attack success.
+See [results report](../results/INITIAL-EVALUATION-REPORT.md) and [compact evidence](../results/initial-evaluation.json) for uncertainty, quality and mechanism observations. Pixel/frequency budgets do not establish matched strength. DFDC's 394 baseline false negatives are excluded from conditional ASR, not counted as attack success.
 
 FAA is an explicit reconstruction: M, norm/budget and RGB feasibility choices have not been verified against author code. This limits comparisons with Jia's paper.
 

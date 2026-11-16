@@ -4,7 +4,7 @@ No full adversarial experiment should be launched until Gates T0–T5 pass. This
 
 Active definitions and locked schedule: [V3-PROTOCOL.md](V3-PROTOCOL.md). Evidence: [LAB-STATUS.md](LAB-STATUS.md). T0–T5 passed on 2026-11-15: 35 tests, FF++/DFDC restoration, both full clean gates, validation smoke and visual checks. Tests verify the declared reconstruction, not equivalence to author code.
 
-T6–T7 completed for initial FF++ c23 and locked DFDC evaluation; both final runs and post-run audits passed. [Results](../results/README.md) contain the evidence. T8 remains a boundary on causal claims; no causal ablation/training was run.
+T6–T7 completed for initial FF++ c23 and locked DFDC evaluation; both final runs and post-run audits passed. [Results](../results/INITIAL-EVALUATION-REPORT.md) contain the evidence. T8 remains a boundary on causal claims; no causal ablation/training was run.
 
 T6–T7 also passed for the subsequent full DFDC extension (132,116 frames). See the [full report](../results/full-dfdc-report.md). Its independently locked cohort/config, all four completed method outputs, paired scope/bound checks, preserved sources and clean continuity passed audit.
 

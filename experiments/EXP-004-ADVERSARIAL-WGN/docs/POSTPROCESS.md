@@ -2,7 +2,7 @@
 
 ## Published summary tables
 
-[Complete tables](../results/tables/README.md) combine all four full cohorts and all four methods. The initial 2,000-frame DFDC cohort remains historical evidence and is excluded from the full-cohort comparison. Markdown rounds presentation values; CSV retains source JSON float precision. `all-numeric-values.csv` exports every numeric/null/bool leaf through JSON pointers, and `PROVENANCE.json` hashes the generator, inputs and outputs.
+[Complete tables](../results/tables/COMPLETE-TABLES.md) combine all four full cohorts and all four methods. The initial 2,000-frame DFDC cohort remains historical evidence and is excluded from the full-cohort comparison. Markdown rounds presentation values; CSV retains source JSON float precision. `all-numeric-values.csv` exports every numeric/null/bool leaf through JSON pointers, and `PROVENANCE.json` hashes the generator, inputs and outputs.
 
 Regenerate without GPU/data downloads:
 

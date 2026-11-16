@@ -6,5 +6,8 @@
     "docs/RESEARCH-PROPOSAL.md": "cf7d5b9619a9650f08993570f32b75cdbc5169c20b94bebf0135a9da57417af7",
     "code/test_reliability_wgsa.py": "8b3c0ba057a1ef9fce629510db53750542a1e8c9dfbd74af4056b86cf611bf90",
     "code/reliability_wgsa.py": "ab708eb61b8606955ae52716ffb5c455ddcfef257ef114efe033beeca4248284"
+  },
+  "archived_paths": {
+    "README.md": "ORIGINAL-README.md"
   }
 }

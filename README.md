@@ -56,7 +56,7 @@ includes EXP-004 FGSM, PGD and Jia FAA alongside both EXP-005 methods, with
 budget and fidelity qualifications. Per-dataset results, source, tests,
 configuration and [execution plan](experiments/EXP-005-STATATTACK-WGN/PLAN.md)
 are in the experiment folder. The former RCWG architecture draft is preserved
-in [the archive](docs/archive/exp005-rcwg-draft/README.md). Both studies keep
+in [the archive](docs/archive/exp005-rcwg-draft/ARCHIVE-NOTE.md). Both studies keep
 EXP-002 weights frozen; future defense design follows the evidence rather
 than the archived prototype.
 

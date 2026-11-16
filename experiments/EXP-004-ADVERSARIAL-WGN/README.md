@@ -4,7 +4,7 @@ EXP-004 is the adversarial-resilience branch that follows the completed **EXP-00
 
 **Research scope:** reproduced WGN → Jia frequency-domain attacks with FGSM/PGD controls → measure evasion and analyze WGN mechanism. Other attack families and future defense design are separate studies; they do not change this experiment's locked methods, metrics or interpretation.
 
-**Initial evaluation completed (2026-11-15):** FAA reconstruction flipped 2,731/5,333 eligible Fake frames on FF++ c23 (**51.21%**) and 506/606 on the locked 2,000-frame DFDC cohort (**83.50%**). Paired no-gradient controls achieved 6.08% and 23.60%. [Full report and compact evidence](results/README.md) include quality, uncertainty, manipulation/video analysis and claim limits. This does not establish original-author reproduction or a causal WGSA weakness.
+**Initial evaluation completed (2026-11-15):** FAA reconstruction flipped 2,731/5,333 eligible Fake frames on FF++ c23 (**51.21%**) and 506/606 on the locked 2,000-frame DFDC cohort (**83.50%**). Paired no-gradient controls achieved 6.08% and 23.60%. [Full report and compact evidence](results/INITIAL-EVALUATION-REPORT.md) include quality, uncertainty, manipulation/video analysis and claim limits. This does not establish original-author reproduction or a causal WGSA weakness.
 
 **Full DFDC extension completed (2026-11-15):** all 132,116 restored test frames evaluated with unchanged attack settings. FAA flipped **36,072/42,932 eligible Fake frames (84.02%)**, versus **22.40%** for paired initialization control. The video-cluster bootstrap interval is 82.47–85.56% (exploratory source linkage). Clean continuity and post-run audits passed. [Full DFDC report](results/full-dfdc-report.md) and [evidence](results/full-dfdc-evaluation.json) supersede the 2,000-frame cohort as the coverage result; the initial run is preserved.
 
@@ -13,7 +13,7 @@ EXP-004 is the adversarial-resilience branch that follows the completed **EXP-00
 **All four full test cohorts completed:** the extension finished 2026-11-16, 02:31:12 Asia/Taipei, including analyses and all audits. Celeb-DF-v2 official-direct: FAA **7,946/8,278 eligible Fake (95.99%)**, control 18.34%; WildDeepfake: **82,059/88,521 (92.70%)**, control 22.91%. Checkpoint, core attack/quality/diagnostics and settings match full DFDC.
 
 - [Four-dataset overview](results/cross-dataset-overview.md).
-- [Complete tables: all 16 dataset × method combinations](results/tables/README.md), with full-precision CSV for cohorts, methods, video/sequence results, manipulation groups, paired controls, mechanism outcomes and Haar bands.
+- [Complete tables: all 16 dataset × method combinations](results/tables/COMPLETE-TABLES.md), with full-precision CSV for cohorts, methods, video/sequence results, manipulation groups, paired controls, mechanism outcomes and Haar bands.
 - [Table input/output checksums](results/tables/PROVENANCE.json) and [deterministic exporter](reporting/export_tables.py).
 - [Celeb-DF-v2 report](results/full-celebdf-report.md), [WildDeepfake report](results/full-wilddeepfake-report.md).
 

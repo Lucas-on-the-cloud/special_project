@@ -2,7 +2,7 @@
 
 Ngày lập: 2026-11-15, Asia/Taipei.
 
-Trạng thái: đã hoàn thành đánh giá đầu tiên E4-A/E4-B, kiểm tra hậu chạy và báo cáo. FAA reconstruction ASR: FF++ 51,21% (2.731/5.333); DFDC 83,50% (506/606). Xem [kết quả và evidence](results/README.md), [LAB-STATUS](docs/LAB-STATUS.md) và [protocol V3](docs/V3-PROTOCOL.md). Mức claim là bản tái dựng có đặc tả đầy đủ, chưa xác minh tương đương code tác giả. Cross-compression/Hybrid/transfer và đối chứng causal có training vẫn là follow-up riêng.
+Trạng thái: đã hoàn thành đánh giá đầu tiên E4-A/E4-B, kiểm tra hậu chạy và báo cáo. FAA reconstruction ASR: FF++ 51,21% (2.731/5.333); DFDC 83,50% (506/606). Xem [kết quả và evidence](results/INITIAL-EVALUATION-REPORT.md), [LAB-STATUS](docs/LAB-STATUS.md) và [protocol V3](docs/V3-PROTOCOL.md). Mức claim là bản tái dựng có đặc tả đầy đủ, chưa xác minh tương đương code tác giả. Cross-compression/Hybrid/transfer và đối chứng causal có training vẫn là follow-up riêng.
 
 Mở rộng full DFDC theo yêu cầu người dùng cũng **đã hoàn thành**: 132.116 test frames, FAA 84,02% (36.072/42.932), control 22,40%; giữ nguyên cấu hình và checkpoint. Cohort/config/source/bounds/clean continuity đều qua đối soát. [Báo cáo full DFDC](results/full-dfdc-report.md) và [evidence](results/full-dfdc-evaluation.json). Không thực hiện training/đối chứng causal hoặc thiết kế kiến trúc mới.
 

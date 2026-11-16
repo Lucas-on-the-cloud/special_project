@@ -4,7 +4,7 @@ Hoàn tất extension và hậu kiểm: 2026-11-16, 02:31:12 Asia/Taipei. Cả b
 
 | Dataset | Frames | Clean frame AUC | FAA flips / eligible Fake | FAA ASR | Init-control ASR | PGD ASR |
 |---|---:|---:|---:|---:|---:|---:|
-| [FF++ c23](README.md) | 11,200 | 98.21% | 2,731/5,333 | 51.21% | 6.08% | 100.00% |
+| [FF++ c23](INITIAL-EVALUATION-REPORT.md) | 11,200 | 98.21% | 2,731/5,333 | 51.21% | 6.08% | 100.00% |
 | [DFDC](full-dfdc-report.md) | 132,116 | 69.08% | 36,072/42,932 | 84.02% | 22.40% | 100.00% |
 | [Celeb-DF-v2 official-direct](full-celebdf-report.md) | 16,576 | 64.70% | 7,946/8,278 | 95.99% | 18.34% | 100.00% |
 | [WildDeepfake](full-wilddeepfake-report.md) | 165,662 | 70.92% | 82,059/88,521 | 92.70% | 22.91% | 100.00% |
@@ -26,4 +26,4 @@ Celeb-DF-v2: paired FAA−control tăng 77,65 điểm phần trăm; WildDeepfake
 
 Kết quả hỗ trợ việc frozen WGN có thể bị đánh lừa bởi input-DCT attack đã đặc tả trên cả bốn test cohorts. Chưa xác minh tương đương code/hyperparameters gốc của Jia; chưa quy nguyên nhân riêng cho WGSA hoặc kết luận về mọi attack/budget. Haar/gate/attention drift là liên hệ mô tả.
 
-Đọc [bảng chi tiết đủ 16 tổ hợp và CSV full precision](tables/README.md), [checksum/provenance](tables/PROVENANCE.json) và [script xuất bảng](../reporting/export_tables.py). Các số liệu của nghiên cứu attack khác được quản lý riêng, không trộn vào EXP-004.
+Đọc [bảng chi tiết đủ 16 tổ hợp và CSV full precision](tables/COMPLETE-TABLES.md), [checksum/provenance](tables/PROVENANCE.json) và [script xuất bảng](../reporting/export_tables.py). Các số liệu của nghiên cứu attack khác được quản lý riêng, không trộn vào EXP-004.

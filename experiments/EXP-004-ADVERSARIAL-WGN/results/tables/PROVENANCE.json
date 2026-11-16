@@ -1,6 +1,6 @@
 {
   "generator": "reporting/export_tables.py",
-  "generator_sha256": "5834a68d632f4d1d8d7dc8bb38f5db51bb6df16cf47b29724c1b44560aef9d8d",
+  "generator_sha256": "c6e09c4c653ff34f04d7a87539180cf482b1e81db2548394799f1dc8599e0e12",
   "inputs_sha256": {
     "initial-evaluation.json": "d02269c6eadd0725d0943a7a5833d54efcf29691f3e655278aea06c84576ff80",
     "full-dfdc-evaluation.json": "a0aa4ff5610fcffeeee1945fb36f9960b1f6175daafeb326ad5ac24118b2366a",
@@ -18,7 +18,7 @@
     "all-numeric-values.csv": 3841
   },
   "outputs_sha256": {
-    "README.md": "b422fd723df436b0a8f7a002a58ad229bc663b2941840a4e46c60f917218ee98",
+    "COMPLETE-TABLES.md": "b422fd723df436b0a8f7a002a58ad229bc663b2941840a4e46c60f917218ee98",
     "all-numeric-values.csv": "566b88fbb375897ab673a3889e5075e8ca3567b5bc5c25e4f726e42f6e58c1bc",
     "cohorts.csv": "af41b8bd5c2ab9c6871fceffae22ae47395349087c1567e5578cd93c7d67dd6c",
     "haar-bands.csv": "ec78175a5764a79e81165ad2614f2c6dbe1642021a4e1a8d668cafacdfe15e17",

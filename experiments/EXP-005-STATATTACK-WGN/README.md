@@ -1,6 +1,6 @@
 # EXP-005 — StatAttack / MStatAttack against frozen WGN
 
-**Status (2026-11-16, complete):** all four full cohorts have been evaluated by both attacks and both matched initialization controls; coverage, pairing, bounds, reference schedule, source snapshots and summary audits passed. All 49 combined CPU tests (12 EXP-005 plus 37 EXP-004 regression tests), four clean gates and actual-WGN CUDA smoke/benchmark passed. DFDC resumed from its committed SQLite state after a batch-shape score-check correction; a full eligible-Fake clean-class parity preflight found zero class changes. The 960-frame train-only Real bank remains checksum-verified. The user replaced the former RCWG defense draft with this study; [the original draft is archived](../../docs/archive/exp005-rcwg-draft/README.md).
+**Status (2026-11-16, complete):** all four full cohorts have been evaluated by both attacks and both matched initialization controls; coverage, pairing, bounds, reference schedule, source snapshots and summary audits passed. All 49 combined CPU tests (12 EXP-005 plus 37 EXP-004 regression tests), four clean gates and actual-WGN CUDA smoke/benchmark passed. DFDC resumed from its committed SQLite state after a batch-shape score-check correction; a full eligible-Fake clean-class parity preflight found zero class changes. The 960-frame train-only Real bank remains checksum-verified. The user replaced the former RCWG defense draft with this study; [the original draft is archived](../../docs/archive/exp005-rcwg-draft/ARCHIVE-NOTE.md).
 
 Apply Hou et al., CVPR2023, [Evading DeepFake Detectors via Adversarial Statistical Consistency](https://openaccess.thecvf.com/content/CVPR2023/papers/Hou_Evading_DeepFake_Detectors_via_Adversarial_Statistical_Consistency_CVPR_2023_paper.pdf) to the reproduced WGN. StatAttack optimizes exposure, blur and noise using real/fake feature-distribution alignment; MStatAttack learns mixtures of those operations and identity across multiple layers. This is an adaptation to WGN and its four evaluation datasets, not a rerun of all original paper tables.
 
@@ -37,6 +37,16 @@ These are results for this named WGN adaptation, not exact reproduction of Hou e
 The combined [five-method comparison](results/five-method-comparison.md) adds EXP-004's FGSM, PGD and Jia FAA results.
 
 The [DFDC resume audit](results/dfdc-resume-audit.json) records the clean-score batch-shape preflight and narrow database/source migration provenance.
+
+## Validation
+
+The combined EXP-004/EXP-005 CPU suite passed **49 tests** (37 + 12); the recorded JUnit evidence is [cpu-tests.xml](validation/cpu-tests.xml). Re-run it from the repository root with:
+
+```bash
+python -m pytest experiments/EXP-004-ADVERSARIAL-WGN/tests experiments/EXP-005-STATATTACK-WGN/tests -q
+```
+
+The GPU run audits and clean-gate evidence are summarized above and in [the test plan](docs/TEST_PLAN.md).
 
 ## Runtime and provenance
 
